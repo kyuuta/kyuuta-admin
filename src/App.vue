@@ -1,13 +1,7 @@
 <template>
     <a-locale-provider :locale="zh_CN">
         <div id="app">
-            <div>
-                <a-button type="primary">
-                    Primary
-                </a-button>
-                <a-pagination size="small" :total="50" show-size-changer show-quick-jumper />
-            </div>
-            <HelloWorld msg="Welcome to Your Vue.js App" />
+            <router-view />
         </div>
     </a-locale-provider>
 </template>
@@ -25,13 +19,6 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
+    @import '~@/styles/default.less';
 </style>
