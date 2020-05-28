@@ -1,12 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <a-locale-provider :locale="zh_CN">
+        <div id="app">
+            <div>
+                <a-button type="primary">
+                    Primary
+                </a-button>
+                <a-pagination size="small" :total="50" show-size-changer show-quick-jumper />
+            </div>
+            <HelloWorld msg="Welcome to Your Vue.js App" />
+        </div>
+    </a-locale-provider>
 </template>
+
+<script>
+import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
+
+export default {
+    name: 'App',
+    data() {
+        return {
+            zh_CN
+        }
+    }
+}
+</script>
 
 <style>
 #app {
@@ -15,17 +32,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  margin-top: 60px;
 }
 </style>
