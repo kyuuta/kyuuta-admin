@@ -12,5 +12,5 @@ const components = {
 }
 
 Object.keys(components).forEach(key => {
-    Vue.component(components[key].name, components[key])
+    Vue.use(components[key])
 })

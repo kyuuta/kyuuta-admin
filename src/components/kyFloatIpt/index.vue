@@ -14,15 +14,17 @@
         >
         <transition v-if="type === 'password' && inputValue" name="show" mode="out-in">
             <div v-if="!showPassword" class="eye" @click="passwordVisible">
-                <a-icon 
-                    class="icon" 
-                    type="eye-invisible" />
+                <a-icon
+                    class="icon"
+                    type="eye-invisible"
+                />
             </div>
-            <a-icon 
+            <a-icon
                 v-if="showPassword"
+                type="eye"
                 class="eye icon"
                 @click="passwordVisible"
-                type="eye" />
+            />
         </transition>
         <hr class="ky-input-line">
     </div>

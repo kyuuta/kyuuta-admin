@@ -39,7 +39,9 @@
                         :key="3"
                         :loading="loginBtnState"
                         @click="login"
-                    >Ok</kyButton>
+                    >
+                        Ok
+                    </kyButton>
                 </transition-group>
 
                 <transition-group v-show="activeIndex === 1" name="list" class="regis-form" tag="div">
@@ -71,7 +73,9 @@
                         type="text"
                         label="Code"
                     />
-                    <kyButton v-show="activeIndex === 1" :key="5">Ok</kyButton>
+                    <kyButton v-show="activeIndex === 1" :key="5">
+                        Ok
+                    </kyButton>
                 </transition-group>
             </div>
             <div class="footer">
@@ -92,11 +96,11 @@ import kyButton from '@/components/kyButton'
 
 export default {
     name: 'Login',
-    components: { 
-        kyTabs, 
+    components: {
+        kyTabs,
         kyFloatIpt,
-        // logo, 
-        kyButton 
+        // logo,
+        kyButton
     },
     routeInfo: {
         meta: '',

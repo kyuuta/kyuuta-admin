@@ -27,7 +27,7 @@ export default {
         tabList: {
             type: Array,
             default: () => {
-            return []
+                return []
             }
         }
     },

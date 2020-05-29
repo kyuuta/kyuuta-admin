@@ -1,6 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
+const { IgnorePlugin } = require('webpack')
 const CompressionPlugin = require('compression-webpack-plugin')
+const isAnalyz = process.env.IS_ANALYZ === 'true'
 
 function resolve(dir) {
     return path.join(__dirname, dir)
@@ -43,12 +44,13 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
-              '@': resolve('src')
+              '@': resolve('src'),
+              '@ant-design/icons/lib/dist$': resolve('./src/plugins/icons.js')
             }
         },
         plugins: [
             // Ignore all locale files of moment.js
-            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+            new IgnorePlugin(/^\.\/locale$/, /moment$/)
         ],
         externals: process.env.NODE_ENV === 'production' ? assetsCDN.externals : {}
     },
@@ -143,6 +145,15 @@ module.exports = {
                     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
                     .end()
             })
+
+        // if `IS_ANALYZ` env is TRUE on report bundle info
+        isAnalyz &&
+            config.plugin('webpack-report')
+            .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [
+                {
+                    analyzerMode: 'static'
+                }
+            ])
     },
 
     css: {
