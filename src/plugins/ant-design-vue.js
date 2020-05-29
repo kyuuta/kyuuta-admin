@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import {
-    Pagination,
     Button,
     ConfigProvider,
     Icon
 } from 'ant-design-vue'
 
 const components = {
-    Pagination,
     Button,
     ConfigProvider,
     Icon
