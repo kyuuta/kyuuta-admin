@@ -12,36 +12,40 @@ Vue.use(Router)
  * all roles can be accessed
  */
 export const constantRouterMap = [
-  {
-    path: '/',
-    name: 'Login',
-    component: _import('login/index')
-  }
+    {
+        path: '/',
+        redirect: '/login'
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: _import('login/index')
+    }
 ]
 
 export const asyncRouets = []
 
 const createRouter = () =>
-  new Router({
-    scrollBehavior(to, form, savedPosition) {
-      if (savedPosition) {
-        return savedPosition
-      } else {
-        const position = {}
-        if (to.hash) position.selector = to.hash
-        position.x = 0
-        position.y = 0
-        return position
-      }
-    },
-    routes: constantRouterMap
-  })
+    new Router({
+        scrollBehavior(to, form, savedPosition) {
+            if (savedPosition) {
+                return savedPosition
+            } else {
+                const position = {}
+                if (to.hash) position.selector = to.hash
+                position.x = 0
+                position.y = 0
+                return position
+            }
+        },
+        routes: constantRouterMap
+    })
 
 const router = createRouter()
 
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher
+    const newRouter = createRouter()
+    router.matcher = newRouter.matcher
 }
 
 export default router
