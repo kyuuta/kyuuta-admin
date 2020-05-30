@@ -1,14 +1,20 @@
 import Vue from 'vue'
 import {
+    Icon,
+    Menu,
     Button,
-    ConfigProvider,
-    Icon
+    Drawer,
+    Layout,
+    ConfigProvider
 } from 'ant-design-vue'
 
 const components = {
+    Icon,
+    Menu,
     Button,
-    ConfigProvider,
-    Icon
+    Drawer,
+    Layout,
+    ConfigProvider
 }
 
 Object.keys(components).forEach(key => {

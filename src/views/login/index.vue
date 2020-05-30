@@ -81,7 +81,12 @@
             <div class="footer">
                 <a-icon class="icon" type="github" />
                 <div class="info">
-                    <span>FE</span><a href="https://github.com/kyuuta" target="_blank">KYUUTA</a>
+                    <div class="item">
+                        FE <a href="https://github.com/kyuuta" target="_blank">KYUUTA</a>
+                    </div>
+                    <div class="item">
+                        Power By <a href="https://antdv.com/" target="_blank">AntDesignVue</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,6 +139,12 @@ export default {
     },
     methods: {
         login() {
+            console.log('123')
+
+            this.loginBtnState = true
+            setTimeout(() => {
+                this.$router.push('/dashboard')
+            }, 2000)
             // try {
             //     if (this.loginForm.username === '') throw new Error('请输入用户名')
             //     if (this.loginForm.password === '') throw new Error('请输入密码')
@@ -167,6 +178,7 @@ export default {
         flex-direction: row-reverse;
         justify-content: space-between;
         flex: 1;
+        height: 100%;
         // background-image: url('~@/assets/images/xiaoye.jpg');
         // background-repeat: no-repeat;
         // background-size: cover;
@@ -182,8 +194,6 @@ export default {
             position: relative;
             flex: 1;
             text-align: center;
-            // margin-left: 460px;
-            // margin-top: 20px;
             .tit {
                 position: absolute;
                 left: 72%;
@@ -243,12 +253,15 @@ export default {
             align-self: center;
             align-items: center;
             .icon {
-                font-size: 20px;
+                font-size: 32px;
             }
             .info {
-                margin-left: 10px;
                 display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
                 font-weight: 500;
+                margin-left: 12px;
                 span {
                     display: inline-block;
                     width: 26px;

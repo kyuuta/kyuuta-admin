@@ -1,3 +1,5 @@
+import asyncRoutes from './modules/index'
+
 /*
  *  constantRoutes
  *  a base page that does not have permission requirements
@@ -13,5 +15,6 @@ export default [
         path: '/login',
         name: 'Login',
         component: () => import('@/views/login/index')
-    }
+    },
+    ...asyncRoutes
 ]
