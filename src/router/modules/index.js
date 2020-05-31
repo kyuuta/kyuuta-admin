@@ -1,7 +1,7 @@
 import dashboard from './dashboard'
 
 const asyncRoutes = [
-    dashboard
+    ...dashboard
 ]
 
 export default asyncRoutes

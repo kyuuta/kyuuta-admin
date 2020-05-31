@@ -98,6 +98,9 @@ import kyTabs from '@/components/kyTabs'
 import kyFloatIpt from '@/components/kyFloatIpt'
 import kyButton from '@/components/kyButton'
 // import logo from '@/components/logo'
+import {
+    userLogin
+} from '@/api/login'
 
 export default {
     name: 'Login',
@@ -139,12 +142,14 @@ export default {
     },
     methods: {
         login() {
-            console.log('123')
-
             this.loginBtnState = true
-            setTimeout(() => {
+            userLogin({
+                ...this.loginForm
+            }).then(res => {
+                this.loginBtnState = false
                 this.$router.push('/dashboard')
-            }, 2000)
+            })
+
             // try {
             //     if (this.loginForm.username === '') throw new Error('请输入用户名')
             //     if (this.loginForm.password === '') throw new Error('请输入密码')
@@ -296,4 +301,3 @@ export default {
         }
     }
 </style>
-

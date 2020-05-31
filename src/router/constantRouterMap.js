@@ -1,4 +1,5 @@
 import asyncRoutes from './modules/index'
+import BasicLayout from '@/layouts/basicLayout'
 
 /*
  *  constantRoutes
@@ -16,5 +17,12 @@ export default [
         name: 'Login',
         component: () => import('@/views/login/index')
     },
-    ...asyncRoutes
+    {
+        path: '',
+        component: BasicLayout,
+        redirect: '/dashboard',
+        children: [
+            ...asyncRoutes
+        ]
+    }
 ]
