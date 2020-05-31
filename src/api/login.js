@@ -7,6 +7,6 @@ export const userLogin = data => {
     return request({
         url: '/login',
         method: 'get',
-        data: data
+        params: data
     })
 }

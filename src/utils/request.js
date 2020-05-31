@@ -52,8 +52,6 @@ const pendingTesting = config => {
         cancel: CancelToken.cancel,
         routeChangeCancel: config.routeChangeCancel
     })
-
-    console.log(pendingRequestList)
 }
 
 // 请求拦截
