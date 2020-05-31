@@ -1,7 +1,9 @@
 <template>
     <a-config-provider :locale="zhCN">
         <div id="app">
-            <router-view />
+            <transition :name="transitionName">
+                <router-view />
+            </transition>
         </div>
     </a-config-provider>
 </template>
@@ -13,7 +15,13 @@ export default {
     name: 'App',
     data() {
         return {
-            zhCN
+            zhCN,
+            transitionName: ''
+        }
+    },
+    watch: {
+        $route(to, from) {
+            this.transitionName = from.path === '/' ? '' : 'show'
         }
     }
 }
@@ -21,5 +29,18 @@ export default {
 
 <style lang="less" scoped>
     @import '~@/styles/default.less';
-    @import '~@/styles/reset.css';
+
+    @keyframes show {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    .show-enter-active {
+        animation: show .5s;
+    }
+    .show-leave-active, .show-leave-to  {
+        display: none !important;
+    }
+    .show-enter {
+        opacity: 0;
+    }
 </style>

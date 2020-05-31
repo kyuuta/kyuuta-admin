@@ -5,6 +5,9 @@ import store from '@/store'
 import './plugins/icons.js'
 import './plugins/ant-design-vue.js'
 
+import './permission'
+import '@/styles/reset.css'
+
 Vue.config.productionTip = false
 
 new Vue({

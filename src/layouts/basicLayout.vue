@@ -25,7 +25,8 @@
                 </a-layout-content>
 
                 <a-layout-footer :style="{ textAlign: 'center' }">
-                    Ant Design ©2018 Created by Ant UED
+                    <p>FE - KYUUTA</p>
+                    <p>Power By - Ant Desing Vue</p>
                 </a-layout-footer>
             </a-layout>
         </a-layout>
