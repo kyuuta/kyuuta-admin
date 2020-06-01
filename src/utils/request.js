@@ -1,6 +1,8 @@
 import axios from 'axios'
 import config from '@/config'
 import NProgress from 'nprogress'
+import { errorStatus } from './errorStatus'
+import message from 'ant-design-vue/es/message'
 
 NProgress.configure({
     showSpinner: false
@@ -73,14 +75,20 @@ instance.interceptors.response.use(response => {
 
     NProgress.done()
 
+    if (response.status &&
+        (response.status < 200 || response.status >= 300)
+    ) {
+        console.log(errorStatus(response.status))
+    }
+
     return Promise.resolve(response.data)
 }, err => {
     NProgress.done()
 
     if (err.message.includes('timeout')) {
-        // 超时
+        message.error('请求超时')
     } else {
-        // 网络错误
+        message.error('网络错误')
     }
 
     return Promise.reject(err)

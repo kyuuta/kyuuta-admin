@@ -29,3 +29,33 @@ export {
 export {
     default as CloseOutline
 } from '@ant-design/icons/lib/outline/CloseOutline'
+
+/**
+ * @variable InfoCircleFill Message.Info && Notification.Info
+ * @variable CheckCircleFill Message.Success && Notification.Success
+ * @variable CloseCircleFill Message.Error && Notification.Error
+ * @variable ExclamationCircleFill Message.Warning && Notification.Warning
+ */
+export {
+    default as InfoCircleFill
+} from '@ant-design/icons/lib/fill/InfoCircleFill'
+
+export {
+    default as CheckCircleFill
+} from '@ant-design/icons/lib/fill/CheckCircleFill'
+
+export {
+    default as CloseCircleFill
+} from '@ant-design/icons/lib/fill/CloseCircleFill'
+
+export {
+    default as ExclamationCircleFill
+} from '@ant-design/icons/lib/fill/ExclamationCircleFill'
+
+export {
+    default as MessageOutline
+} from '@ant-design/icons/lib/outline/MessageOutline'
+
+export {
+    default as NotificationOutline
+} from '@ant-design/icons/lib/outline/NotificationOutline'
