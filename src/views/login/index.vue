@@ -38,7 +38,7 @@
                         v-show="activeIndex === 0"
                         :key="3"
                         :loading="loginBtnState"
-                        @click="login"
+                        @click="submit"
                     >
                         Ok
                     </kyButton>
@@ -98,9 +98,7 @@ import kyTabs from '@/components/kyTabs'
 import kyFloatIpt from '@/components/kyFloatIpt'
 import kyButton from '@/components/kyButton'
 // import logo from '@/components/logo'
-import {
-    userLogin
-} from '@/api/login'
+import { mapActions } from 'vuex'
 
 export default {
     name: 'Login',
@@ -138,17 +136,19 @@ export default {
     },
     mounted() {
         this.activeIndex = 0
-        // this.$store.dispatch('generateRoutes')
     },
     methods: {
-        login() {
+        ...mapActions(['Login']),
+        submit() {
             this.loginBtnState = true
-            userLogin({
-                ...this.loginForm
-            }).then(res => {
-                this.loginBtnState = false
-                this.$router.push('/dashboard')
-            })
+
+            this.Login(this.loginForm)
+                .then(() => {
+                    this.$router.push('/dashboard')
+                })
+                .finally(() => {
+                    this.loginBtnState = false;
+                })
 
             // try {
             //     if (this.loginForm.username === '') throw new Error('请输入用户名')

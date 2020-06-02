@@ -6,13 +6,17 @@ export default {
     /**
      * @description api请求超时时间
      */
-    requestTimeOut: 20000,
+    requestTimeOut: 15000,
     /**
      * @description api请求基础路径
      */
     baseUrl: {
-        dev: 'https://www.easy-mock.com/mock/5ed3df0a3432d25bb5ec4a6b/kyuuta-admin',
-        pro: 'https://www.easy-mock.com/mock/5ed3df0a3432d25bb5ec4a6b/kyuuta-admin'
+        // easymock
+        // dev: 'https://www.easy-mock.com/mock/5ed3df0a3432d25bb5ec4a6b/kyuuta-admin',
+        // pro: 'https://www.easy-mock.com/mock/5ed3df0a3432d25bb5ec4a6b/kyuuta-admin'
+        // mock
+        dev: '/api',
+        pro: '/api'
     },
     /**
      * @description 默认打开的首页的路由name值，默认为home

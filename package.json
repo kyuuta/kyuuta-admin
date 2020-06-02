@@ -17,7 +17,8 @@
     "axios": "^0.19.0",
     "ant-design-vue": "^1.6.1",
     "nprogress": "^0.2.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "mockjs2": "1.0.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",

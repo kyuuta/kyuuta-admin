@@ -5,8 +5,21 @@ import { request } from '@/utils/request'
  */
 export const userLogin = data => {
     return request({
-        url: '/login',
+        url: '/user/login',
         method: 'get',
         params: data
+    })
+}
+
+/**
+ * @description 获取用户信息
+ */
+export const getUserInfo = params => {
+    return request({
+        url: '/user/info',
+        method: 'post',
+        params: {
+            ...params
+        }
     })
 }

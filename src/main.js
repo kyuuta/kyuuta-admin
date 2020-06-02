@@ -8,6 +8,8 @@ import './plugins/ant-design-vue.js'
 import './permission'
 import '@/styles/reset.css'
 
+import './mock'
+
 Vue.config.productionTip = false
 
 new Vue({
