@@ -147,7 +147,7 @@ export default {
                     this.$router.push('/dashboard')
                 })
                 .finally(() => {
-                    this.loginBtnState = false;
+                    this.loginBtnState = false
                 })
 
             // try {

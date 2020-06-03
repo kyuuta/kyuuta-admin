@@ -39,19 +39,42 @@ export default {
                         commit('SET_TOKEN', res.result.token)
                         resolve(res)
                     }).catch(err => {
-                        console.log(err)
                         reject(err)
                     })
             })
         },
         // 获取用户信息
         GetUserInfo({ commit }) {
-            console.log('store/getuserInfo')
             return new Promise((resolve, reject) => {
                 getUserInfo()
                     .then(res => {
-                        // roles
-                        // info
+                        const result = res.result
+                        if (result.role && result.role.permissions.length) {
+                            // 页面权限
+                            result.role.permissionList = result.role.permissions.map(item => {
+                                return item.permissionId
+                            })
+                            // 页面按钮操作权限
+                            result.role.permissions.forEach(item => {
+                                if (item.actionEntitySet && item.actionEntitySet.length) {
+                                    item.actionList = item.actionEntitySet.map(action => {
+                                        return action.action
+                                    })
+                                }
+                            })
+
+                            commit('SET_ROLES', result.role)
+                            commit('SET_INFO', result)
+                        } else {
+                            reject(
+                              new Error(
+                                'userInfo: roles must be a non-null array !'
+                              )
+                            )
+                        }
+
+                        commit('SET_NAME', result.name)
+                        commit('SET_AVATAR', result.avatar)
                         resolve(res)
                     }).catch(err => {
                         reject(err)

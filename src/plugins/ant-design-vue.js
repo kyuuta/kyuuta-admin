@@ -5,9 +5,10 @@ import {
     Button,
     Drawer,
     Layout,
-    ConfigProvider,
+    Result,
     Message,
-    Notification
+    Notification,
+    ConfigProvider
 } from 'ant-design-vue'
 
 const components = {
@@ -16,9 +17,10 @@ const components = {
     Button,
     Drawer,
     Layout,
-    ConfigProvider,
+    Result,
     Message,
-    Notification
+    Notification,
+    ConfigProvider
 }
 
 Object.keys(components).forEach(key => {

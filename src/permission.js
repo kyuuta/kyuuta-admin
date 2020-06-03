@@ -1,17 +1,17 @@
 import store from './store'
 import router from './router'
 import NProgress from 'nprogress'
+import notification from 'ant-design-vue/es/notification'
 import '@/components/NProgress/nprogress.less' // progress bar custom style
-import config from '@/config'
-import {
-    pendingRequestList
-} from '@/utils/request'
-
-const loginRoutePath = '/login'
-const defaultRoutePath = '/dashboard'
+import confing from '@/config'
+import { pendingRequestList } from '@/utils/request'
 
 router.beforeEach((to, from, next) => {
     NProgress.start()
+
+    document.title = to.meta && typeof to.meta.title !== 'undefined'
+        ? to.meta.title
+        : confing.title
 
     // 跳转取消未完成的http请求
     if (pendingRequestList.length) {
@@ -21,31 +21,43 @@ router.beforeEach((to, from, next) => {
     }
 
     if (localStorage.getItem('token')) {
-        if (to.path === loginRoutePath) {
+        if (to.path === confing.loginRoutePath) {
             next({
-                path: defaultRoutePath
+                path: confing.defaultRoutePath
             })
             NProgress.done()
         } else {
-            // 权限
-            store
-                .dispatch('GetUserInfo')
-                .then(res => {
-                    console.log(res)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-                .finally(() => {
-                    next()
-                })
+            if (Object.keys(store.getters.roles).length === 0) {
+                // 权限
+                store
+                    .dispatch('GetUserInfo')
+                    .then(res => {
+                        const roles = res.result && res.result.role
+                        store.dispatch('GenerateRoutes', { roles }).then(() => {
+                            router.addRoutes(store.getters.addRouters)
+                        })
+                    })
+                    .catch(() => {
+                        notification.error({
+                            message: '错误',
+                            description: '请求用户信息失败，请重试'
+                        })
+                        // 失败时，获取用户信息失败时，调用登出，来清空历史保留信息
+                        // store.dispatch('Logout').then(() => {
+                        //     next({ path: loginRoutePath, query: { redirect: to.fullPath }})
+                        // })
+                        next()
+                    })
+            } else {
+                next()
+            }
         }
     } else {
-        if (config.routeWhiteList.includes(to.name)) {
+        if (confing.routeWhiteList.includes(to.name)) {
             next()
         } else {
             next({
-                path: loginRoutePath,
+                path: confing.loginRoutePath,
                 query: {
                     redirect: to.fullPath
                 }

@@ -7,7 +7,7 @@ import BasicLayout from '@/layouts/basicLayout'
  *  all roles can be accessed
  */
 
-export default [
+export const constantRouterMap = [
     {
         path: '/',
         redirect: '/login'
@@ -15,8 +15,15 @@ export default [
     {
         path: '/login',
         name: 'Login',
-        component: () => import('@/views/login/index')
+        component: () => import(/* webpackChunkName: "user" */ '@/views/login/index')
     },
+    {
+        path: '/404',
+        component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
+    }
+]
+
+export const asyncRouterMap = [
     {
         path: '',
         component: BasicLayout,
