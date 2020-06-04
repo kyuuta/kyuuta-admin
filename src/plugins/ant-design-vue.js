@@ -2,6 +2,7 @@ import Vue from 'vue'
 import {
     Icon,
     Menu,
+    Input,
     Button,
     Drawer,
     Layout,
@@ -14,6 +15,7 @@ import {
 const components = {
     Icon,
     Menu,
+    Input,
     Button,
     Drawer,
     Layout,

@@ -1,5 +1,5 @@
 const state = {
-    cachePage: [] // 缓存页面
+    cachePage: ['multipleRouteC'] // 缓存页面
 }
 
 export default {

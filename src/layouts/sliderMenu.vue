@@ -10,58 +10,67 @@
         :collapsed-width="collapsedSliderMenuWidth"
     >
         <div class="logo" />
-        <a-menu theme="dark" mode="inline" :default-selected-keys="['4']">
-            <a-menu-item key="1">
-                <a-icon type="user" />
-                <span class="nav-text">nav 1</span>
-            </a-menu-item>
-            <a-menu-item key="2">
-                <a-icon type="video-camera" />
-                <span class="nav-text">nav 2</span>
-            </a-menu-item>
-            <a-menu-item key="3">
-                <a-icon type="upload" />
-                <span class="nav-text">nav 3</span>
-            </a-menu-item>
-            <a-menu-item key="4">
-                <a-icon type="bar-chart" />
-                <span class="nav-text">nav 4</span>
-            </a-menu-item>
-            <a-menu-item key="5">
-                <a-icon type="cloud-o" />
-                <span class="nav-text">nav 5</span>
-            </a-menu-item>
-            <a-menu-item key="6">
-                <a-icon type="appstore-o" />
-                <span class="nav-text">nav 6</span>
-            </a-menu-item>
-            <a-menu-item key="7">
-                <a-icon type="team" />
-                <span class="nav-text">nav 7</span>
-            </a-menu-item>
-            <a-menu-item key="8">
-                <a-icon type="shop" />
-                <span class="nav-text">nav 8</span>
-            </a-menu-item>
+
+        <a-menu
+            theme="dark"
+            mode="inline"
+            :inline-collapsed="collapsed"
+        >
+            <template
+                v-for="route in menuRouteList"
+            >
+                <MenuItem
+                    v-if="hasShowChildren(route.children)"
+                    :key="route.name"
+                    :route="route"
+                />
+
+                <SubMenu
+                    v-else
+                    :key="route.name"
+                    :route="route"
+                />
+            </template>
         </a-menu>
     </a-layout-sider>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import MenuItem from './routerMenu/menuItem'
+import SubMenu from './routerMenu/subMenu'
 
 export default {
+    name: 'SliderMenu',
+    components: {
+        MenuItem,
+        SubMenu
+    },
     computed: {
         ...mapState({
             collapsed: state => state.layoutConfig.collapsed,
             fixedSlider: state => state.layoutConfig.fixedSlider,
             sliderMenuWidth: state => state.layoutConfig.sliderMenuWidth,
-            collapsedSliderMenuWidth: state => state.layoutConfig.collapsedSliderMenuWidth
+            collapsedSliderMenuWidth: state => state.layoutConfig.collapsedSliderMenuWidth,
+            menuRouteList: state => {
+                return state.permission.addRouters.find(item => item.path === '')
+                    ? state.permission.addRouters[0].children
+                    : []
+            }
         }),
         classes() {
             return {
                 'ky-layout-slider-fixed': this.fixedSlider
             }
+        }
+    },
+    methods: {
+        hasShowChildren(children = []) {
+            const showingChildren = children.filter(item => {
+                return typeof item.hidden === 'boolean' ? !item.hidden : true
+            })
+
+            return !showingChildren.length
         }
     }
 }

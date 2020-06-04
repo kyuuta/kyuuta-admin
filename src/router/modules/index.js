@@ -1,7 +1,7 @@
 import dashboard from './dashboard'
 
-const asyncRoutes = [
+const routeMap = [
     ...dashboard
 ]
 
-export default asyncRoutes
+export default routeMap

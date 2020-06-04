@@ -36,10 +36,11 @@
 <script>
 import { mapState } from 'vuex'
 import Setting from './setting'
-import SliderMenu from './sliderMenu'
-import BasicHeader from './basicHeader'
+import SliderMenu from './SliderMenu'
+import BasicHeader from './BasicHeader'
 
 export default {
+    name: 'BasicLayout',
     components: {
         Setting,
         SliderMenu,

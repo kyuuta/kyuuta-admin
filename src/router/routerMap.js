@@ -1,5 +1,7 @@
-import asyncRoutes from './modules/index'
-import BasicLayout from '@/layouts/basicLayout'
+import routeMap from './modules/index'
+import {
+    BasicLayout
+} from '@/layouts'
 
 /*
  *  constantRoutes
@@ -29,7 +31,7 @@ export const asyncRouterMap = [
         component: BasicLayout,
         redirect: '/dashboard',
         children: [
-            ...asyncRoutes
+            ...routeMap
         ]
     }
 ]

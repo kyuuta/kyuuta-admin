@@ -25,6 +25,7 @@
 import { mapState } from 'vuex'
 
 export default {
+    name: 'BasicHeader',
     computed: {
         ...mapState({
             collapsed: state => state.layoutConfig.collapsed,

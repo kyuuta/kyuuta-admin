@@ -1,6 +1,7 @@
 const getters = {
-    layoutConfig: state => state.layoutConfig,
     roles: state => state.user.roles,
+    layoutConfig: state => state.layoutConfig,
+    cachePage: state => state.config.cachePage,
     addRouters: state => state.permission.addRouters
 }
 export default getters
