@@ -4,7 +4,7 @@ const dashboard = [
         name: 'Dashboard',
         component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index'),
         meta: {
-            title: '主控页',
+            title: 'Dashboard',
             permission: ['dashboard']
         }
     }

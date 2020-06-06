@@ -1,6 +1,6 @@
 <template functional>
     <a-menu-item :key="props.route.name">
-        <router-link :to="{ path: props.route.path }">
+        <router-link class="a-menu-item-router-link" :to="{ path: props.route.path }">
             <a-icon v-if="props.route.meta.icon" :type="props.route.meta.icon" />
             <span>{{ props.route.meta.title }}</span>
         </router-link>
@@ -18,3 +18,11 @@ export default {
     }
 }
 </script>
+
+<style lang="less" scoped>
+    // fix no icon text-overflow
+    .a-menu-item-router-link {
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+</style>
