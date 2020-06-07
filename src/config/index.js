@@ -6,6 +6,7 @@
  * @property {String} loginRoutePath   - 登录页面的路由path
  * @property {String} defaultRoutePath - 默认打开的首页的路由path
  * @property {String} title            - 项目默认title
+ * @property {Boolean} onlyOneExpandSlider - 导航栏只展开一个
  */
 export default {
     baseUrl: {
@@ -21,5 +22,6 @@ export default {
     requestTimeOut: 15000,
     routeWhiteList: ['Login'],
     loginRoutePath: '/login',
-    defaultRoutePath: '/dashboard'
+    defaultRoutePath: '/dashboard',
+    onlyOneExpandSlider: true
 }
