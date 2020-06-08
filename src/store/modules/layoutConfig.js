@@ -12,6 +12,7 @@ export default {
         fixedSlider: true,
         sliderMenuWidth: 256,
         collapsedSliderMenuWidth: 80,
+        sliderTheme: 'dark',
         /*
          * 顶部相关参数
          * 参数|说明|类型
@@ -20,15 +21,21 @@ export default {
         fixedHeader: true
     },
 
-    mutations: {
-        TOGGLE_SLIDEBAR: state => {
-            state.collapsed = !state.collapsed
-        }
-    },
+	mutations: {
+		TOGGLE_SLIDEBAR: (state) => {
+			state.collapsed = !state.collapsed
+		},
+		TOGGLE_MENUTHEME: (state, theme) => {
+			state.sliderTheme = theme
+		}
+	},
 
-    actions: {
-        toggleSideBar({ commit }) {
-            commit('TOGGLE_SLIDEBAR')
-        }
-    }
+	actions: {
+		toggleSideBar({ commit }) {
+			commit('TOGGLE_SLIDEBAR')
+		},
+		toggleMenuTheme({ commit }, theme) {
+			commit('TOGGLE_MENUTHEME', theme)
+		}
+	}
 }

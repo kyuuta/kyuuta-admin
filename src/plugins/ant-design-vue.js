@@ -7,6 +7,7 @@ import {
     Drawer,
     Layout,
     Result,
+    Tooltip,
     Message,
     Notification,
     ConfigProvider
@@ -20,6 +21,7 @@ const components = {
     Drawer,
     Layout,
     Result,
+    Tooltip,
     Message,
     Notification,
     ConfigProvider
