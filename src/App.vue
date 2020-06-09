@@ -2,7 +2,7 @@
     <a-config-provider :locale="zhCN">
         <div id="app">
             <transition :name="transitionName">
-                <router-view />
+                <router-view v-if="isRouterAlive" />
             </transition>
         </div>
     </a-config-provider>
@@ -13,15 +13,30 @@ import zhCN from 'ant-design-vue/es/locale/zh_CN'
 
 export default {
     name: 'App',
+    provide() {
+        return {
+            reload: this.reload
+        }
+    },
     data() {
         return {
             zhCN,
-            transitionName: ''
+            transitionName: '',
+            isRouterAlive: true
         }
     },
     watch: {
         $route(to, from) {
             this.transitionName = from.path === '/' ? '' : 'show'
+        }
+    },
+    methods: {
+        reload() {
+            this.transitionName = ''
+            this.isRouterAlive = false
+            this.$nextTick(() => {
+                this.isRouterAlive = true
+            })
         }
     }
 }

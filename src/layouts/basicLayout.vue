@@ -6,16 +6,11 @@
 
             <a-layout
                 :style="{
-                    marginLeft: collapsed ? `${collapsedSliderMenuWidth}px` : `${sliderMenuWidth}px`,
-                    transition: 'all .2s',
+                    marginLeft: fixedSlider ? collapsed ? `${collapsedSliderMenuWidth}px` : `${sliderMenuWidth}px` : '0',
+                    transition: 'width .2s',
                     minHeight: '100vh'
                 }"
             >
-                <a-layout-header
-                    v-if="fixedHeader"
-                    style="background-color: #fff"
-                />
-
                 <BasicHeader />
 
                 <a-layout-content :style="{ margin: '24px 16px 0', overflow: 'initial' }">
@@ -49,7 +44,7 @@ export default {
     computed: {
         ...mapState({
             collapsed: state => state.layoutConfig.collapsed,
-            fixedHeader: state => state.layoutConfig.fixedHeader,
+            fixedSlider: state => state.layoutConfig.fixedSlider,
             sliderMenuWidth: state => state.layoutConfig.sliderMenuWidth,
             collapsedSliderMenuWidth: state => state.layoutConfig.collapsedSliderMenuWidth
         })
