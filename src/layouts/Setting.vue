@@ -38,6 +38,34 @@
                 </a-tooltip>
             </div>
             <a-divider>Navigation Mode</a-divider>
+            <div class="slider-config">
+                <a-tooltip placement="top">
+                    <template slot="title">
+                        <span>Side Menu Layout</span>
+                    </template>
+                    <div
+                        :class="['config-item',{
+                            'config-item-checked': menuMode === 'side'
+                        }]"
+                        @click="changeMenuMode('side')"
+                    >
+                        <img src="https://gw.alipayobjects.com/zos/rmsportal/LCkqqYNmvBEbokSDscrm.svg" alt="dark">
+                    </div>
+                </a-tooltip>
+                <a-tooltip placement="top">
+                    <template slot="title">
+                        <span>Top Menu Layout</span>
+                    </template>
+                    <div
+                        :class="['config-item',{
+                            'config-item-checked': menuMode === 'top'
+                        }]"
+                        @click="changeMenuMode('top')"
+                    >
+                        <img src="https://gw.alipayobjects.com/zos/antfincdn/URETY8%24STp/KDNDBbriJhLwuqMoxcAr.svg" alt="light">
+                    </div>
+                </a-tooltip>
+            </div>
             <div class="navigation-item">
                 <span>Fixed Slidebar</span>
                 <a-switch
@@ -83,6 +111,7 @@ export default {
     },
     computed: {
         ...mapState({
+            menuMode: state => state.layoutConfig.menuMode,
             sliderTheme: state => state.layoutConfig.sliderTheme,
             fixedHeader: state => state.layoutConfig.fixedHeader,
             fixedSlider: state => state.layoutConfig.fixedSlider
@@ -94,6 +123,9 @@ export default {
         },
         changeMenuTheme(style) {
             this.$store.dispatch('toggleMenuTheme', style)
+        },
+        changeMenuMode(mode) {
+            this.$store.dispatch('toggleMenuMode', mode)
         },
         changeFixedSlider(checked) {
             this.$store.dispatch('toggleFixedSlider', checked)

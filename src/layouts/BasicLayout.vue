@@ -2,14 +2,10 @@
     <a-config-provider>
         <a-layout>
             <Setting />
-            <SliderMenu />
+            <SliderMenu v-if="menuMode === 'side'" />
 
             <a-layout
-                :style="{
-                    marginLeft: fixedSlider ? collapsed ? `${collapsedSliderMenuWidth}px` : `${sliderMenuWidth}px` : '0',
-                    transition: 'width .2s',
-                    minHeight: '100vh'
-                }"
+                :style="styles"
             >
                 <BasicHeader />
 
@@ -31,23 +27,35 @@
 <script>
 import { mapState } from 'vuex'
 import Setting from './Setting'
-import SliderMenu from './SliderMenu'
 import BasicHeader from './BasicHeader'
+import SliderMenu from './SliderMenu'
 
 export default {
     name: 'BasicLayout',
     components: {
         Setting,
-        SliderMenu,
-        BasicHeader
+        BasicHeader,
+        SliderMenu
     },
     computed: {
         ...mapState({
+            menuMode: state => state.layoutConfig.menuMode,
             collapsed: state => state.layoutConfig.collapsed,
             fixedSlider: state => state.layoutConfig.fixedSlider,
             sliderMenuWidth: state => state.layoutConfig.sliderMenuWidth,
             collapsedSliderMenuWidth: state => state.layoutConfig.collapsedSliderMenuWidth
-        })
+        }),
+        styles() {
+            return {
+                marginLeft:
+                    this.fixedSlider && this.menuMode === 'side'
+                        ? this.collapsed
+                            ? `${this.collapsedSliderMenuWidth}px` : `${this.sliderMenuWidth}px`
+                        : '0',
+                transition: 'width .2s',
+                minHeight: '100vh'
+            }
+        }
     }
 }
 </script>

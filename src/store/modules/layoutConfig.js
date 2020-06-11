@@ -1,7 +1,7 @@
 export default {
     state: {
         /**
-         * 左侧菜单相关参数
+         * 菜单相关参数
          * 目前是若该路由的permission写了多个 只要有一项权限没有拥有则过滤
          * 可改为some调整逻辑 拥有某一个权限即不过滤
          *
@@ -10,6 +10,7 @@ export default {
          * @param {Number, String} sliderMenuWidth 展开宽度
          * @param {Number} collapsedSliderMenuWidth 收起宽度
          */
+        menuMode: 'side',
         collapsed: false,
         fixedSlider: true,
         sliderMenuWidth: 256,
@@ -32,6 +33,9 @@ export default {
 		TOGGLE_MENUTHEME: (state, theme) => {
 			state.sliderTheme = theme
         },
+        TOGGLE_MENUMODE: (state, mode) => {
+            state.menuMode = mode
+        },
         TOGGLE_FIXEDSLIDER: (state, isFixed) => {
             state.fixedSlider = isFixed
         },
@@ -46,6 +50,9 @@ export default {
 		},
 		toggleMenuTheme({ commit }, theme) {
 			commit('TOGGLE_MENUTHEME', theme)
+        },
+        toggleMenuMode({ commit }, mode) {
+            commit('TOGGLE_MENUMODE', mode)
         },
         toggleFixedSlider({ commit }, isFixed) {
             commit('TOGGLE_FIXEDSLIDER', isFixed)

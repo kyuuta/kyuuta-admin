@@ -2,43 +2,69 @@
     <div>
         <a-layout-header
             class="ky-layout-header"
-            :style="{
-                width: fixedHeader
-                    ? collapsed
-                        ? `calc(100% - 80px)` : `calc(100% - 256px)`
-                    : '100%',
-                position: fixedHeader ? 'fixed' : 'relative',
-            }"
+            :style="[styles, menuMode === 'top' ? headerLayoutStyles : null]"
         >
-            <span
-                class="toggle-icon-wrapper"
-                @click="toggleSlideBar"
+            <div
+                class="ky-layout-header-main"
+                :style="{
+                    maxWidth: menuMode === 'side' ? 'unset' : '1200px',
+                }"
             >
-                <a-icon
-                    class="trigger"
-                    :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+                <span
+                    v-if="menuMode === 'side'"
+                    class="toggle-icon-wrapper"
+                    @click="toggleSlideBar"
+                >
+                    <a-icon
+                        class="trigger"
+                        :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+                    />
+                </span>
+
+                <RouterMenu
+                    v-if="menuMode === 'top'"
+                    style="flex: 0 0 100%"
                 />
-            </span>
+            </div>
         </a-layout-header>
 
         <a-layout-header
             v-if="fixedHeader"
-            style="background-color: #fff"
         />
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import RouterMenu from './routerMenu'
 
 export default {
     name: 'BasicHeader',
+    components: {
+        RouterMenu
+    },
     inject: ['reload'],
     computed: {
         ...mapState({
+            menuMode: state => state.layoutConfig.menuMode,
             collapsed: state => state.layoutConfig.collapsed,
-            fixedHeader: state => state.layoutConfig.fixedHeader
-        })
+            fixedHeader: state => state.layoutConfig.fixedHeader,
+            sliderTheme: state => state.layoutConfig.sliderTheme
+        }),
+        styles() {
+            return {
+                width: this.fixedHeader && this.menuMode === 'side'
+                    ? this.collapsed
+                        ? `calc(100% - 80px)` : `calc(100% - 256px)`
+                    : '100%',
+                position: this.fixedHeader ? 'fixed' : 'relative'
+            }
+        },
+        headerLayoutStyles() {
+            return {
+                backgroundColor: this.sliderTheme === 'dark' ? '#001529' : '#fff'
+            }
+        }
     },
     methods: {
         toggleSlideBar() {
@@ -58,10 +84,16 @@ export default {
         transition: width .2s;
         background-color: #fff;
 
+        &-main {
+            display: flex;
+            margin: 0 auto;
+        }
+
         .toggle-icon-wrapper {
             cursor: pointer;
-            padding: 19px 24px;
+            padding: 0 24px;
             height: 64px;
+            line-height: 64px;
             font-size: 20px;
             box-sizing: border-box;
             transition: all .2s;
