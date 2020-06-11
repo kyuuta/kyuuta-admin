@@ -1,5 +1,6 @@
 import {
     userLogin,
+    userLogout,
     getUserInfo
 } from '@/api/login'
 
@@ -46,6 +47,7 @@ export default {
         // 获取用户信息
         GetUserInfo({ commit }) {
             return new Promise((resolve, reject) => {
+                console.log('network: getUserInfo')
                 getUserInfo()
                     .then(res => {
                         const result = res.result
@@ -79,6 +81,22 @@ export default {
                     }).catch(err => {
                         reject(err)
                     })
+            })
+        },
+        // 登出
+        Logout({ commit, state }) {
+            return new Promise((resolve) => {
+                userLogout({
+                    token: state.token
+                }).then(res => {
+                    resolve(res)
+                }).catch(err => {
+                    resolve(err)
+                }).finally(() => {
+                    commit('SET_TOKEN', '')
+                    commit('SET_ROLES', [])
+                    localStorage.removeItem('token')
+                })
             })
         }
     }

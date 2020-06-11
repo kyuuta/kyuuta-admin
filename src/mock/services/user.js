@@ -10,7 +10,7 @@ const login = () => {
 const info = () => {
     return builder({
         name: 'KYUUTA',
-        avatar: 'testtest',
+        avatar: 'https://tvax3.sinaimg.cn/crop.73.0.672.672.1024/ed0c85c5ly8fzshgce1c9j20of0io14z.jpg?KID=imgbed,tva&Expires=1591907242&ssig=2EkfNYl%2FpC',
         role: {
             'id': 'admin',
             'name': '管理员',
@@ -324,5 +324,10 @@ const info = () => {
     })
 }
 
+const logout = () => {
+    return builder({}, '[测试接口] 注销成功')
+}
+
 Mock.mock(/\/api\/user\/login/, 'get', login)
 Mock.mock(/\/api\/user\/info/, 'post', info)
+Mock.mock(/\/api\/user\/logout/, 'post', logout)

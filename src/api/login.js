@@ -23,3 +23,16 @@ export const getUserInfo = params => {
         }
     })
 }
+
+/**
+ * @description 登出
+ */
+export const userLogout = params => {
+    return request({
+        url: '/user/logout',
+        method: 'post',
+        params: {
+            ...params
+        }
+    })
+}
