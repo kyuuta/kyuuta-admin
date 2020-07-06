@@ -2,7 +2,7 @@
     <a-menu
         :theme="sliderTheme"
         :mode="menuMode === 'side' ? 'inline' : 'horizontal'"
-        :inline-collapsed="collapsed"
+        :inline-collapsed="menuMode === 'side' ? collapsed : null"
         :selected-keys="selectedKeys"
         :open-keys="openKeys"
         :style="{
@@ -64,10 +64,20 @@ export default {
     watch: {
         '$route'(val) {
             this.setMenuActive()
+        },
+        // 左侧菜单模式并收起状态下 清空menu的展开
+        collapsed(val) {
+            if (val) {
+                this.openKeys = []
+            } else {
+                this.initMenuOpen()
+            }
         }
     },
     mounted() {
-        this.initMenuOpen()
+        if (this.menuMode !== 'top' && !this.collapsed) {
+            this.initMenuOpen()
+        }
         this.setMenuActive()
     },
     methods: {

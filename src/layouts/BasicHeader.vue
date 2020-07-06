@@ -209,10 +209,10 @@ export default {
                     .icon-earth {
                         height: 100%;
                         padding: 0 6px;
-                        font-size: 24px;
+                        font-size: 20px;
+                        color: #515a6e;
                         line-height: 67px;
                         transition: all .2s;
-                        color: #515a6e;
                         &:hover {
                             background-color: rgba(0,0,0,.025);
                         }
@@ -234,7 +234,8 @@ export default {
                                 background-color: rgba(0,0,0,.025);
                             }
                             .full-screen {
-                                font-size: 24px;
+                                font-size: 20px;
+                                color: #515a6e;
                             }
                         }
                     }

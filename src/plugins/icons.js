@@ -63,6 +63,12 @@ export {
     default as NotificationOutline
 } from '@ant-design/icons/lib/outline/NotificationOutline'
 
+export {
+    default as DownCircleFill
+} from '@ant-design/icons/lib/fill/DownCircleFill'
+export {
+    default as DownOutline
+} from '@ant-design/icons/lib/outline/DownOutline'
 /**
  * @variable QuestionCircleOutline Modal.confirm
  */

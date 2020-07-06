@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <a-card :bordered="false">
         <p>index.vue</p>
         <p>index.vue</p>
         <p>index.vue</p>
@@ -84,7 +84,7 @@
         <p>index.vue</p>
         <p>index.vue</p>
         <p>index.vue</p>
-    </div>
+    </a-card>
 </template>
 
 <script>

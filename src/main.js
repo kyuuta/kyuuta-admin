@@ -7,6 +7,7 @@ import './plugins/ant-design-vue.js'
 
 import './permission'
 import '@/styles/reset.css'
+import '@/styles/default.less'
 
 import './mock'
 

@@ -8,9 +8,7 @@
                 <BasicHeader />
 
                 <a-layout-content :style="{ margin: '24px 16px 0', overflow: 'initial' }">
-                    <div :style="{ padding: '24px', background: '#fff', textAlign: 'center' }">
-                        <router-view />
-                    </div>
+                    <router-view />
                 </a-layout-content>
 
                 <a-layout-footer :style="{ textAlign: 'center', lineHeight: 1.5 }">

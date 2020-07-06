@@ -43,8 +43,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    @import '~@/styles/default.less';
-
     @keyframes show {
         0% { opacity: 0; }
         100% { opacity: 1; }

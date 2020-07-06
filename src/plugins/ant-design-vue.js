@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import CustomIcon from './customIcons'
 import {
+    Col,
+    Row,
+    Card,
+    Form,
     Icon,
     Menu,
     Input,
@@ -10,6 +14,7 @@ import {
     Drawer,
     Layout,
     Result,
+    Select,
     Switch,
     Divider,
     Tooltip,
@@ -20,6 +25,10 @@ import {
 } from 'ant-design-vue'
 
 const components = {
+    Col,
+    Row,
+    Card,
+    Form,
     Icon,
     Menu,
     Input,
@@ -29,6 +38,7 @@ const components = {
     Drawer,
     Layout,
     Result,
+    Select,
     Switch,
     Divider,
     Tooltip,

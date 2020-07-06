@@ -40,11 +40,6 @@ export default {
                 'ky-layout-slider-fixed': this.fixedSlider
             }
         }
-    },
-    watch: {
-        '$route'(val) {
-            this.setMenuActive()
-        }
     }
 }
 </script>
