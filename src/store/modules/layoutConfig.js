@@ -23,7 +23,8 @@ export default {
         /**
          * @param {'dark', 'light'} sliderTheme 侧边栏皮肤
          */
-        sliderTheme: 'dark'
+        sliderTheme: 'dark',
+        fullScreen: false
     },
 
 	mutations: {
@@ -41,6 +42,9 @@ export default {
         },
         TOGGLE_FIXEDHEADER: (state, isFixed) => {
             state.fixedHeader = isFixed
+        },
+        TOGGLE_FULLSCREEN: (state) => {
+            state.fullScreen = !state.fullScreen
         }
 	},
 
@@ -59,6 +63,9 @@ export default {
         },
         toggleFixedHeader({ commit }, isFixed) {
             commit('TOGGLE_FIXEDHEADER', isFixed)
+        },
+        toggleFullScreen({ commit }) {
+            commit('TOGGLE_FULLSCREEN')
         }
 	}
 }

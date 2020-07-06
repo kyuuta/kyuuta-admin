@@ -30,6 +30,14 @@ export {
     default as CloseOutline
 } from '@ant-design/icons/lib/outline/CloseOutline'
 
+// 全屏
+export {
+    default as FullscreenOutline
+} from '@ant-design/icons/lib/outline/FullscreenOutline'
+export {
+    default as FullscreenExitOutline
+} from '@ant-design/icons/lib/outline/FullscreenExitOutline'
+
 /**
  * @variable InfoCircleFill Message.Info && Notification.Info
  * @variable CheckCircleFill Message.Success && Notification.Success

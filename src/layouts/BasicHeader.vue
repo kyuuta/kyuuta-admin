@@ -17,10 +17,7 @@
                         class="toggle-icon-wrapper"
                         @click="toggleSlideBar"
                     >
-                        <a-icon
-                            class="trigger"
-                            :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-                        />
+                        <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" />
                     </span>
 
                     <RouterMenu
@@ -31,6 +28,21 @@
 
                 <!-- 头部右侧内容 -->
                 <div class="rg-content">
+                    <div class="operation-list">
+                        <span class="item" @click="changeFullScreen">
+                            <a-icon
+                                v-show="!fullScreen"
+                                class="full-screen"
+                                type="fullscreen"
+                            />
+                            <a-icon
+                                v-show="fullScreen"
+                                class="full-screen"
+                                type="fullscreen-exit"
+                            />
+                        </span>
+                    </div>
+
                     <a-dropdown>
                         <div class="user-info">
                             <a-avatar size="large" :src="userAvatar" />
@@ -88,7 +100,8 @@ export default {
             menuMode: state => state.layoutConfig.menuMode,
             collapsed: state => state.layoutConfig.collapsed,
             fixedHeader: state => state.layoutConfig.fixedHeader,
-            sliderTheme: state => state.layoutConfig.sliderTheme
+            sliderTheme: state => state.layoutConfig.sliderTheme,
+            fullScreen: state => state.layoutConfig.fullScreen
         }),
         LayoutHeaderStyles() {
             return {
@@ -114,6 +127,31 @@ export default {
         }
     },
     methods: {
+        changeFullScreen() {
+            if (this.fullScreen) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen()
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen()
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen()
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen()
+                }
+            } else {
+                const element = document.documentElement
+                if (element.requestFullscreen) {
+                    element.requestFullscreen()
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen()
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen()
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullScreen()
+                }
+            }
+            this.$store.dispatch('toggleFullScreen')
+        },
         logout() {
             this.$confirm({
                 title: '退出登录确认',
@@ -177,6 +215,27 @@ export default {
                         color: #515a6e;
                         &:hover {
                             background-color: rgba(0,0,0,.025);
+                        }
+                    }
+                    .operation-list {
+                        height: 100%;
+                        display: flex;
+                        line-height: 1;
+                        .item {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 36px;
+                            height: 100%;
+                            text-align: center;
+                            transition: all .2s;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: rgba(0,0,0,.025);
+                            }
+                            .full-screen {
+                                font-size: 24px;
+                            }
                         }
                     }
                     .user-info {
