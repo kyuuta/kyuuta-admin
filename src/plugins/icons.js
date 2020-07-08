@@ -69,6 +69,12 @@ export {
 export {
     default as DownOutline
 } from '@ant-design/icons/lib/outline/DownOutline'
+export {
+    default as UpCircleFill
+} from '@ant-design/icons/lib/fill/UpCircleFill'
+export {
+    default as UpOutline
+} from '@ant-design/icons/lib/outline/UpOutline'
 /**
  * @variable QuestionCircleOutline Modal.confirm
  */
@@ -77,7 +83,7 @@ export {
 } from '@ant-design/icons/lib/outline/QuestionCircleOutline'
 
 /**
- * @variable routeDashboardIcon
+ * @variable routeDashboardIcon 路由等使
  */
 export {
     default as DashboardOutline
@@ -86,3 +92,19 @@ export {
 export {
     default as LogoutOutline
 } from '@ant-design/icons/lib/outline/LogoutOutline'
+
+/**
+ * @variable Pagination分页
+ */
+export {
+    default as RightOutline
+} from '@ant-design/icons/lib/outline/RightOutline'
+export {
+    default as LeftOutline
+} from '@ant-design/icons/lib/outline/LeftOutline'
+export {
+    default as DoubleRightOutline
+} from '@ant-design/icons/lib/outline/DoubleRightOutline'
+export {
+    default as DoubleLeftOutline
+} from '@ant-design/icons/lib/outline/DoubleLeftOutline'

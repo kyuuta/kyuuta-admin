@@ -3,12 +3,13 @@ import CustomIcon from './customIcons'
 import {
     Col,
     Row,
+    Tag,
     Card,
-    Form,
     Icon,
     Menu,
     Input,
     Modal,
+    Table,
     Avatar,
     Button,
     Drawer,
@@ -20,6 +21,7 @@ import {
     Tooltip,
     Message,
     Dropdown,
+    FormModel,
     Notification,
     ConfigProvider
 } from 'ant-design-vue'
@@ -27,12 +29,13 @@ import {
 const components = {
     Col,
     Row,
+    Tag,
     Card,
-    Form,
     Icon,
     Menu,
     Input,
     Modal,
+    Table,
     Avatar,
     Button,
     Drawer,
@@ -44,6 +47,7 @@ const components = {
     Tooltip,
     Message,
     Dropdown,
+    FormModel,
     Notification,
     ConfigProvider
 }
