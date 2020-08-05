@@ -88,7 +88,15 @@ export {
 export {
     default as DashboardOutline
 } from '@ant-design/icons/lib/outline/DashboardOutline'
-
+export {
+    default as ProfileOutline
+} from '@ant-design/icons/lib/outline/ProfileOutline'
+export {
+    default as TableOutline
+} from '@ant-design/icons/lib/outline/TableOutline'
+export {
+    default as FormOutline
+} from '@ant-design/icons/lib/outline/FormOutline'
 export {
     default as LogoutOutline
 } from '@ant-design/icons/lib/outline/LogoutOutline'
