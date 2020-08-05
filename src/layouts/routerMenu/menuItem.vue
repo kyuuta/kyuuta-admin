@@ -2,7 +2,7 @@
     <a-menu-item :key="props.route.name">
         <router-link class="a-menu-item-router-link" :to="{ path: props.route.path }">
             <a-icon v-if="props.route.meta.icon" :type="props.route.meta.icon" />
-            <span>{{ props.route.meta.title }}</span>
+            <span>{{ props.i18nRender(props.route.meta.title) }}</span>
         </router-link>
     </a-menu-item>
 </template>
@@ -13,6 +13,10 @@ export default {
     props: {
         route: {
             type: Object,
+            required: true
+        },
+        i18nRender: {
+            type: Function,
             required: true
         }
     }

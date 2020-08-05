@@ -10,22 +10,26 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
-    "vuex": "^3.0.1",
-    "axios": "^0.19.0",
     "ant-design-vue": "^1.6.1",
-    "nprogress": "^0.2.0",
+    "axios": "^0.19.0",
+    "core-js": "^2.6.5",
+    "mockjs": "^1.1.0",
+    "umi-mock-middleware": "^1.0.0",
+    "moment": "^2.27.0",
     "normalize.css": "^8.0.1",
-    "mockjs2": "1.0.8"
+    "nprogress": "^0.2.0",
+    "vue": "^2.6.10",
+    "vue-i18n": "^8.20.0",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-import": "^1.11.0",
+    "@vue/eslint-config-standard": "^4.0.0",
     "compression-webpack-plugin": "^4.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
@@ -58,5 +62,18 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "<h2 align=\"center\">KYUUTA-Admin</h2>\r <p align=\"center\">\r \t<a href=\"https://github.com/vuejs/vue\">\r \t\t<img src=\"https://img.shields.io/badge/vue-2.6.10-brightgreen.svg\" alt=\"vue\">\r \t</a>\r     <a href=\"https://github.com/vuejs/vue\">\r \t\t<img src=\"https://img.shields.io/badge/ant--design--vue-1.6.1-brightgreen.svg\" alt=\"vue\">\r \t</a>\r </p>",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyuuta/kyuuta-admin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyuuta/kyuuta-admin/issues"
+  },
+  "homepage": "https://github.com/kyuuta/kyuuta-admin#readme"
 }

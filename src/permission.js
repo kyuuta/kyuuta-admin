@@ -4,14 +4,16 @@ import NProgress from 'nprogress'
 import notification from 'ant-design-vue/es/notification'
 import '@/components/NProgress/nprogress.less' // progress bar custom style
 import confing from '@/config'
+import { setDocumentTitle, domTitle } from '@/utils/domUtil'
 import { pendingRequestList } from '@/utils/request'
+import { i18nRender } from '@/locales'
 
 router.beforeEach((to, from, next) => {
     NProgress.start()
 
-    document.title = to.meta && typeof to.meta.title !== 'undefined'
-        ? to.meta.title
-        : confing.title
+    to.meta && (typeof to.meta.title !== 'undefined' &&
+        setDocumentTitle(`${i18nRender(to.meta.title)} - ${domTitle}`)
+    )
 
     // 跳转取消未完成的http请求
     if (pendingRequestList.length) {

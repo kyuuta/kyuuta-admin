@@ -5,7 +5,7 @@
                 v-if="props.route.meta.icon"
                 :type="props.route.meta.icon"
             />
-            <span>{{ props.route.meta.title }}</span>
+            <span>{{ props.i18nRender(props.route.meta.title) }}</span>
         </span>
         <template v-for="children in props.route.children">
             <MenuItem
@@ -15,12 +15,14 @@
                         : true"
                 :key="children.name"
                 :route="children"
+                :i18n-render="props.i18nRender"
             />
 
             <SubMenu
                 v-else
                 :key="children.name"
                 :route="children"
+                :i18n-render="props.i18nRender"
             />
         </template>
     </a-sub-menu>
@@ -37,6 +39,10 @@ export default {
     props: {
         route: {
             type: Object,
+            required: true
+        },
+        i18nRender: {
+            type: Function,
             required: true
         }
     }

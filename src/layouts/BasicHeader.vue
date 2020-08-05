@@ -60,15 +60,16 @@
 
                     <a-dropdown>
                         <CustomIcon class="icon-earth" type="iconearth2" />
-                        <a-menu slot="overlay">
-                            <a-menu-item>
+                        <a-menu
+                            slot="overlay"
+                            :selectedKeys="[currentLang]"
+                            @click="changeLang">
+                            <a-menu-item
+                                v-for="(lang, index) in languageList"
+                                :key="index">
                                 <a href="javascript:;">
-                                    <span>简体中文</span>
-                                </a>
-                            </a-menu-item>
-                            <a-menu-item>
-                                <a href="javascript:;">
-                                    <span>English</span>
+                                    <span style="margin-left: 4px">{{ lang.icon }}</span>
+                                    <span>{{ lang.label }}</span>
                                 </a>
                             </a-menu-item>
                         </a-menu>
@@ -93,6 +94,20 @@ export default {
     components: {
         RouterMenu
     },
+    data() {
+        return {
+            languageList: {
+                'zh-CN': {
+                    icon: '🇨🇳',
+                    label: '简体中文'
+                },
+                'en-US': {
+                    icon: '🇺🇸',
+                    label: 'English'
+                }
+            }
+        }
+    },
     computed: {
         ...mapState({
             userName: state => state.user.name,
@@ -101,7 +116,8 @@ export default {
             collapsed: state => state.layoutConfig.collapsed,
             fixedHeader: state => state.layoutConfig.fixedHeader,
             sliderTheme: state => state.layoutConfig.sliderTheme,
-            fullScreen: state => state.layoutConfig.fullScreen
+            fullScreen: state => state.layoutConfig.fullScreen,
+            currentLang: state => state.layoutConfig.lang
         }),
         LayoutHeaderStyles() {
             return {
@@ -164,12 +180,15 @@ export default {
                                 this.$router.push('/login')
                                 resolve()
                             })
-                            .catch(() => {
-                                reject()
+                            .catch(e => {
+                                reject(e)
                             })
                     })
                 }
             })
+        },
+        changeLang({ key }) {
+            this.$store.dispatch('setLang', key)
         },
         toggleSlideBar() {
             this.$store.dispatch('toggleSideBar')
