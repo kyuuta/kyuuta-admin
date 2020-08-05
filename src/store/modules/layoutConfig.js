@@ -1,3 +1,7 @@
+import {
+    loadLanguageAsync
+} from '@/locales'
+
 export default {
     state: {
         /**
@@ -24,15 +28,16 @@ export default {
          * @param {'dark', 'light'} sliderTheme 侧边栏皮肤
          */
         sliderTheme: 'dark',
-        fullScreen: false
+        fullScreen: false,
+        lang: 'zh-CN'
     },
 
-	mutations: {
-		TOGGLE_SLIDEBAR: (state) => {
-			state.collapsed = !state.collapsed
-		},
-		TOGGLE_MENUTHEME: (state, theme) => {
-			state.sliderTheme = theme
+    mutations: {
+        TOGGLE_SLIDEBAR: state => {
+            state.collapsed = !state.collapsed
+        },
+        TOGGLE_MENUTHEME: (state, theme) => {
+            state.sliderTheme = theme
         },
         TOGGLE_MENUMODE: (state, mode) => {
             state.menuMode = mode
@@ -43,17 +48,21 @@ export default {
         TOGGLE_FIXEDHEADER: (state, isFixed) => {
             state.fixedHeader = isFixed
         },
-        TOGGLE_FULLSCREEN: (state) => {
+        TOGGLE_FULLSCREEN: state => {
             state.fullScreen = !state.fullScreen
+        },
+        APP_LANGUAGE: (state, lang, antd = {}) => {
+            state.lang = lang
+            state._antLocale = antd
         }
-	},
+    },
 
-	actions: {
-		toggleSideBar({ commit }) {
-			commit('TOGGLE_SLIDEBAR')
-		},
-		toggleMenuTheme({ commit }, theme) {
-			commit('TOGGLE_MENUTHEME', theme)
+    actions: {
+        toggleSideBar({ commit }) {
+            commit('TOGGLE_SLIDEBAR')
+        },
+        toggleMenuTheme({ commit }, theme) {
+            commit('TOGGLE_MENUTHEME', theme)
         },
         toggleMenuMode({ commit }, mode) {
             commit('TOGGLE_MENUMODE', mode)
@@ -66,6 +75,16 @@ export default {
         },
         toggleFullScreen({ commit }) {
             commit('TOGGLE_FULLSCREEN')
+        },
+        setLang({ commit }, lang) {
+            return new Promise((resolve, reject) => {
+                commit('APP_LANGUAGE', lang)
+                loadLanguageAsync(lang).then(() => {
+                    resolve()
+                }).catch(e => {
+                    reject(e)
+                })
+            })
         }
-	}
+    }
 }

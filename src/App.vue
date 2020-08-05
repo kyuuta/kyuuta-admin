@@ -1,5 +1,5 @@
 <template>
-    <a-config-provider :locale="zhCN">
+    <a-config-provider :locale="locale">
         <div id="app">
             <transition :name="transitionName">
                 <router-view v-if="isRouterAlive" />
@@ -10,6 +10,8 @@
 
 <script>
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import { domTitle, setDocumentTitle } from '@/utils/domUtil'
+import { i18nRender } from '@/locales'
 
 export default {
     name: 'App',
@@ -23,6 +25,18 @@ export default {
             zhCN,
             transitionName: '',
             isRouterAlive: true
+        }
+    },
+    computed: {
+        locale() {
+            // 只是为了切换语言时，更新标题
+            const route = this.$route
+
+            if (route.meta && typeof route.meta.title !== 'undefined') {
+                setDocumentTitle(`${i18nRender(route.meta.title)} - ${domTitle}`)
+            }
+
+            return this.$i18n.getLocaleMessage(this.$store.getters.lang).antLocale
         }
     },
     watch: {

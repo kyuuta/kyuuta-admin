@@ -15,12 +15,14 @@
                 v-if="hasShowChildren(route.children)"
                 :key="route.name"
                 :route="route"
+                :i18n-render="i18nRender"
             />
 
             <SubMenu
                 v-else
                 :key="route.name"
                 :route="route"
+                :i18n-render="i18nRender"
             />
         </template>
     </a-menu>
@@ -28,6 +30,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { i18nRender } from '@/locales'
 
 import MenuItem from './menuItem'
 import SubMenu from './subMenu'
@@ -81,6 +84,7 @@ export default {
         this.setMenuActive()
     },
     methods: {
+        i18nRender,
         // 默认展开所处的路由菜单
         initMenuOpen() {
             const routeMatched = this.$route.matched

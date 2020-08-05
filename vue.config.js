@@ -1,5 +1,6 @@
 const path = require('path')
 const { IgnorePlugin } = require('webpack')
+const { createMockMiddleware } = require('umi-mock-middleware')
 const CompressionPlugin = require('compression-webpack-plugin')
 const isAnalyz = process.env.IS_ANALYZ === 'true'
 
@@ -31,7 +32,13 @@ module.exports = {
     productionSourceMap: false,
 
     devServer: {
-        port: 2333
+        port: 2333,
+        // mock serve
+        before: app => {
+            if (process.env.MOCK !== 'none' && process.env.HTTP_MOCK !== 'none') {
+                app.use(createMockMiddleware())
+            }
+        }
         // proxy: {
         //     '/api': {
         //         target: '',
