@@ -47,10 +47,13 @@ export default {
 <style lang="less" scoped>
     .ky-layout-slider {
         &-fixed {
-            overflow: auto;
+            overflow-y: auto;
             position: fixed;
             left:0;
-            height: 100vh;
+            height: 100%;
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
         .logo {
             height: 32px;
