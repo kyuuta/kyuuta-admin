@@ -66,6 +66,7 @@ export default {
     },
     watch: {
         '$route'(val) {
+            this.initMenuOpen()
             this.setMenuActive()
         },
         // 左侧菜单模式并收起状态下 清空menu的展开
