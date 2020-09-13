@@ -76,6 +76,8 @@
                     </a-dropdown>
                 </div>
             </div>
+
+            <TagsView />
         </a-layout-header>
 
         <a-layout-header
@@ -87,11 +89,13 @@
 <script>
 import { mapState } from 'vuex'
 import RouterMenu from './routerMenu'
+import TagsView from './components/tagsView'
 
 export default {
     name: 'BasicHeader',
     inject: ['reload'],
     components: {
+        TagsView,
         RouterMenu
     },
     data() {
@@ -199,6 +203,9 @@ export default {
 
 <style lang="less" scoped>
     .basic-header {
+        .ant-layout-header {
+            line-height: unset;
+        }
         .ky-layout-header {
             z-index: 9;
             top: 0;
