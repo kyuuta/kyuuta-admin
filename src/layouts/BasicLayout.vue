@@ -9,7 +9,7 @@
 
                 <TagsView />
 
-                <a-layout-content :style="{ margin: '24px 16px 0', overflow: 'initial' }">
+                <a-layout-content :style="{ margin: '44px 16px 0', overflow: 'initial' }">
                     <router-view />
                 </a-layout-content>
 
