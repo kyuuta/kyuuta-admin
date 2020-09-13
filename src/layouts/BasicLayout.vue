@@ -7,8 +7,6 @@
             <a-layout :style="styles">
                 <BasicHeader />
 
-                <TagsView />
-
                 <a-layout-content :style="{ margin: '44px 16px 0', overflow: 'initial' }">
                     <router-view />
                 </a-layout-content>
@@ -27,13 +25,11 @@ import { mapState } from 'vuex'
 import Setting from './Setting'
 import BasicHeader from './BasicHeader'
 import SliderMenu from './SliderMenu'
-import TagsView from './components/tagsView'
 
 export default {
     name: 'BasicLayout',
     components: {
         Setting,
-        TagsView,
         BasicHeader,
         SliderMenu
     },

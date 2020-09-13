@@ -331,6 +331,8 @@ module.exports = {
     },
 
     'POST /api/user/logout': (req, res) => {
-        res.send({})
+        res.send({
+            'message': '退出登录'
+        })
     }
 }

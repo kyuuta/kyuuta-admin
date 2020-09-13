@@ -65,6 +65,7 @@ export default {
         $route() {
             this.addTags()
             this.initElWidth()
+            this.moveCurrentTag()
         },
         outerWidth(newval, oldval) {
             if ((oldval + this.tagBodyLeft) === this.bodyWidth) {
@@ -74,6 +75,7 @@ export default {
     },
     mounted() {
         this.initElWidth()
+
         window.addEventListener('resize', () => {
             this.initElWidth()
             if (this.bodyWidth < this.outerWidth) {
@@ -125,9 +127,6 @@ export default {
                     .then(exists => {
                         if (exists) {
                             this.setMoveBtnState()
-                            this.$nextTick(() => {
-                                this.moveTag(name)
-                            })
                         } else {
                             this.$nextTick(() => {
                                 this.bodyWidth = this.$refs.scrollBody.offsetWidth
@@ -153,32 +152,45 @@ export default {
                 })
         },
         handleClickTag(name) {
-            this.moveTag(name)
-
             if (name !== this.$route.name) {
                 this.$router.push({
                     name: name
                 })
             }
         },
-        moveTag(name) {
-            const elOffsetLeft = this.$refs[name][0].offsetLeft
-            const elOffsetWidth = this.$refs[name][0].offsetWidth
-            const targetOffsetLeft = elOffsetLeft + elOffsetWidth
-            const passedArea = this.tagBodyLeft + this.outerWidth
+        moveCurrentTag() {
+            this.$nextTick(() => {
+                const routeName = this.$route.name
+                const elOffsetLeft = this.$refs[`${routeName}`][0].offsetLeft
+                const elOffsetWidth = this.$refs[`${routeName}`][0].offsetWidth
+                const targetOffsetLeft = elOffsetLeft + elOffsetWidth
+                const passedArea = this.tagBodyLeft + this.outerWidth
+                let firstTag = null
+                let lastTag = null
 
-            // 标签在可视区域
-            if ((elOffsetLeft > this.tagBodyLeft) &&
-                (targetOffsetLeft < passedArea)) {
-                return false
-            }
+                if (this.visitedViews.length) {
+                    firstTag = this.visitedViews[0]
+                    lastTag = this.visitedViews[this.visitedViews.length - 1]
+                }
 
-            // 标签移动到可视范围内最后一个或最前一个
-            if (this.tagBodyLeft > elOffsetLeft) {
-                this.tagBodyLeft = elOffsetLeft
-            } else if (targetOffsetLeft > passedArea) {
-                this.tagBodyLeft = Math.abs(passedArea - targetOffsetLeft) + this.tagBodyLeft
-            }
+                if (firstTag.name === routeName) {
+                    this.tagBodyLeft = 0
+                } else if (lastTag.name === routeName) {
+                    this.tagBodyLeft = Math.max(0, this.bodyWidth - this.outerWidth)
+                } else {
+                    // 标签在可视区域
+                    if ((elOffsetLeft > this.tagBodyLeft) &&
+                        (targetOffsetLeft < passedArea)) {
+                        return false
+                    }
+                    // 标签移动到可视范围内最后一个或最前一个
+                    if (this.tagBodyLeft > elOffsetLeft) {
+                        this.tagBodyLeft = elOffsetLeft
+                    } else if (targetOffsetLeft > passedArea) {
+                        this.tagBodyLeft = Math.abs(passedArea - targetOffsetLeft) + this.tagBodyLeft
+                    }
+                }
+            })
         }
     }
 }
@@ -186,8 +198,8 @@ export default {
 
 <style lang="less" scoped>
     .tags-main {
-        position: fixed;
-        top: 64px;
+        position: relative;
+        // top: 64px;
         padding: 6px 8px;
         display: flex;
         z-index: 8;
