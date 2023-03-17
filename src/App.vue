@@ -1,26 +1,28 @@
 <template>
-  Life is move
-  <router-view />
-
-  <button @click="linkTo('/a')">a</button>
-  <button @click="linkTo('/b')">b</button>
-
-  {{ userStore.getUserName }}
-  <!-- {{ userStore.state.test }} -->
+  <NConfigProvider
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    :theme-overrides="getThemeOverrides"
+  >
+    <AppProvider>
+      <RouterView />
+    </AppProvider>
+  </NConfigProvider>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
-import { useUserStore } from '@/store/modules/user'
+import { computed } from 'vue'
+import { zhCN, dateZhCN } from 'naive-ui'
+import { AppProvider } from '@/components/AppProvider'
 
-const router = useRouter()
-const userStore = useUserStore()
-
-const linkTo = (pathName: string): void => {
-  router.push(pathName)
-} 
+const getThemeOverrides = computed(() => {
+  return {
+    common: {
+      primaryColor: '#1890ff',
+      primaryColorHover: '#40a9ff',
+      primaryColorPressed: "#096dd9",
+      primaryColorSuppl: "rgba(24, 144, 255, .2)",
+    }
+  }
+})
 </script>
-
-<style lang="scss" scoped>
-
-</style>

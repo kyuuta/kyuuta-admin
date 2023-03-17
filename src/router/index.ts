@@ -3,14 +3,14 @@ import {
   createRouter,
   createWebHashHistory
 } from 'vue-router';
+import ConstantRouteMap from './constantRouteMap'
+import RouteMap from './routeMap'
 
+console.log(RouteMap)
 const router = createRouter({
   history: createWebHashHistory(''),
   strict: true,
-  routes: [
-    { path: '/a', component: () => import('@/views/a.vue') },
-    { path: '/b', component: () => import('@/views/b.vue') }
-  ],
+  routes: [...ConstantRouteMap, ...RouteMap],
   scrollBehavior: () => ({ left: 0, top: 0 })
 })
 

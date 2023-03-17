@@ -1,16 +1,22 @@
-import { createApp } from 'vue';
-import router, { setupRouter } from './router';
-import { setupStore } from './store';
-import App from './App.vue';
+import App from './App.vue'
+import { createApp } from 'vue'
+import { setupStore } from './store'
+import router, { setupRouter } from './router'
+import {
+  setupNaive
+} from '@/plugins'
 
 async function bootstrap() {
-  const app = createApp(App);
+  const app = createApp(App)
+
+  // 注册naive-ui组件
+  setupNaive(app)
 
   // 挂载状态管理
-  setupStore(app);
+  setupStore(app)
 
   // 挂载路由
-  setupRouter(app);
+  setupRouter(app)
 
   // 路由准备就绪后挂载 APP 实例
   await router.isReady()

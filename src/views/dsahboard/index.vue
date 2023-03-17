@@ -1,12 +1,7 @@
-<template>
-  <div>
-    vue3 a
-  </div>
-</template>
+<template>dashboard</template>
 
 <script lang="ts" setup>
 </script>
 
 <style lang="scss" scoped>
-
 </style>
