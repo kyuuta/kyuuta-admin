@@ -9,7 +9,9 @@ export enum PageConfig {
 
   // 首页
   BASE_HOME = '/dashboard',
+  BASE_HOME_NAME = 'Dashboard',
 
   // 错误
+  ERROR = '/errorPage',
   ERROR_PAGE_NAME = '/ErrorPage'
 }

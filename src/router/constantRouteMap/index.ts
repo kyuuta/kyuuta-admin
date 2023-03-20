@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import { PageConfig } from '@/config/pageConfig'
+import { PageConfig } from '@/config/page'
 
 // RootRoute
 export const RootRoute: RouteRecordRaw = {

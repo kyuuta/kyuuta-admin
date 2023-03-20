@@ -4,20 +4,35 @@ import {
   // carete naive ui
   create,
   // components
-  NButton,
   NConfigProvider,
+  NDialogProvider,
   NNotificationProvider,
   NMessageProvider,
-  NDialogProvider
+  NLayout,
+  NLayoutHeader,
+  NLayoutContent,
+  NLayoutFooter,
+  NLayoutSider,
+  NButton,
+  NMenu,
+  NSwitch
 } from 'naive-ui'
 
 const naive = create({
   components: [
-    NButton,
+    create,
     NConfigProvider,
+    NDialogProvider,
     NNotificationProvider,
     NMessageProvider,
-    NDialogProvider
+    NLayout,
+    NLayoutHeader,
+    NLayoutContent,
+    NLayoutFooter,
+    NLayoutSider,
+    NButton,
+    NMenu,
+    NSwitch
   ]
 })
 

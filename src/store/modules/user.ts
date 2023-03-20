@@ -1,5 +1,5 @@
-import { defineStore } from "pinia"
 import { store } from '@/store'
+import { defineStore } from "pinia"
 
 export interface IUserState {
   userName: string

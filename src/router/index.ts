@@ -6,7 +6,6 @@ import {
 import ConstantRouteMap from './constantRouteMap'
 import RouteMap from './routeMap'
 
-console.log(RouteMap)
 const router = createRouter({
   history: createWebHashHistory(''),
   strict: true,
