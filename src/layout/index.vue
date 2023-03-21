@@ -1,7 +1,7 @@
 <template>
   <NLayout position="absolute">
     <NLayout :position="positionStyle.position" has-sider>
-      <NLayout-sider
+      <NLayoutSider
         content-style="padding: 24px;"
         :native-scrollbar="false"
         bordered
@@ -11,7 +11,7 @@
           unchecked-value="content"
           @update:value="handleUpdateValue"
         />
-      </NLayout-sider>
+      </NLayoutSider>
       <NLayout :native-scrollbar="false">
         <PageHeader
           v-if="getHeaderConfig.visible"

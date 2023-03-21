@@ -1,22 +1,20 @@
 <template>
-  <NLayout-footer
+  <NLayoutFooter
     class="page-footer"
     :position="props.position"
     bordered
   >
     城府路
-  </NLayout-footer>
+  </NLayoutFooter>
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
-
-const props = defineProps({
-  height: String,
-  position: {
-    type: String,
-    default: 'absolute'
-  }
+interface Props {
+  height: string;
+  position: 'absolute' | 'static';
+}
+const props = withDefaults(defineProps<Props>(), {
+  position: 'absolute'
 })
 </script>
 
