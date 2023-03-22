@@ -13,6 +13,7 @@ import {
   NDivider,
   NTooltip,
   NDropdown,
+  NColorPicker,
   NDrawerContent,
 
   // Layout
@@ -42,8 +43,8 @@ const naive = create({
     NDivider,
     NTooltip,
     NDropdown,
+    NColorPicker,
     NDrawerContent,
-    
   
     // Layout
     NLayout,

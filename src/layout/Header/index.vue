@@ -31,7 +31,6 @@
         </NTooltip>
       </div>
     </div>
-
   </NLayoutHeader>
 
   <SettingDrawer v-model:visible="settingVisible" />
@@ -47,7 +46,7 @@ import {
   UserOutlined as UserIcon,
   SettingOutlined as SettingIcon
 } from '@vicons/antd'
-import SettingDrawer from './settingDrawer.vue'
+import SettingDrawer from '../SettingDrawer/index.vue'
 
 const props = defineProps<{
   height: string;

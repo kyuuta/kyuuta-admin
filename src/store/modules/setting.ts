@@ -1,4 +1,3 @@
-import { store } from '@/store'
 import { defineStore } from "pinia"
 import { themeConfig } from '@/config/theme'
 
@@ -32,7 +31,3 @@ export const useProjectSettingStore = defineStore({
     }
   }
 })
-
-export function useProjectSettingStoreWithOut() {
-  return useProjectSettingStore(store)
-}

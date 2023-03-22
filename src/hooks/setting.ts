@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { useProjectSettingStore } from '@/store/modules/setting'
+import { useProjectSettingStore } from '@/store'
 
 export function useSetting() {
 
