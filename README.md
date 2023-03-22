@@ -1,6 +1,4 @@
-<p align="center">
-KyuutaAdmin
-</p>
+<h1 align="center">KyuutaAdmin</h1>
 
 ## 📦 Build Setup
 
