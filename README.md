@@ -2,7 +2,7 @@
 KyuutaAdmin
 </p>
 
-##Build Setup
+## 📦 Build Setup
 
 ```bash
 # install dependencies
