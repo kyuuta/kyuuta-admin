@@ -1,15 +1,19 @@
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useProjectSettingStore } from '@/store'
 
 export function useSetting() {
 
   const settingStore = useProjectSettingStore()
+  const {
+    header,
+    footer,
+    scrollMode
+  } = storeToRefs(settingStore)
 
-  const getScrollMode = computed(() => settingStore.scrollMode)
-
-  const getHeaderConfig = settingStore.getHeader
-
-  const getFooterConfig = settingStore.getFooter
+  const getScrollMode = scrollMode
+  const getHeaderConfig = header.value
+  const getFooterConfig = footer.value
 
   return {
     settingStore,

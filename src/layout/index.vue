@@ -6,11 +6,6 @@
         :native-scrollbar="false"
         bordered
       >
-        <NSwitch
-          checked-value="main"
-          unchecked-value="content"
-          @update:value="handleUpdateValue"
-        />
       </NLayoutSider>
       <NLayout :native-scrollbar="false">
         <PageHeader
@@ -52,14 +47,13 @@ import PageFooter from './Footer/index'
 import MainContainer from './Main/index'
 
 const { 
-  settingStore,
   getScrollMode,
   getHeaderConfig,
   getFooterConfig
 } = useSetting()
 
-const headerHeight = `${getHeaderConfig.height}px`
-const footerHeight = `${getFooterConfig.height}px`
+const headerHeight = computed(() => `${getHeaderConfig.height}px`)
+const footerHeight = computed(() => `${getFooterConfig.height}px`)
 
 const positionStyle = computed(() => 
   getScrollMode.value === 'content'
@@ -69,10 +63,6 @@ const positionStyle = computed(() =>
     }
     : { position: 'static' }
 )
-
-const handleUpdateValue = (value: String):void => {
-  settingStore.setScrollMode(value)
-} 
 </script>
 
 <style lang="less" scoped>

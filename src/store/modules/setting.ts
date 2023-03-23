@@ -14,17 +14,6 @@ export const useProjectSettingStore = defineStore({
     header: themeConfig.header,
     footer: themeConfig.footer
   }),
-  getters: {
-    getScrollMode(): string {
-      return this.scrollMode
-    },
-    getHeader(): object {
-      return this.header
-    },
-    getFooter(): object {
-      return this.footer
-    }
-  },
   actions: {
     setScrollMode(value: string): void {
       this.scrollMode = value
