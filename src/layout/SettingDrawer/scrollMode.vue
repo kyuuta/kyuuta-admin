@@ -30,7 +30,7 @@ const switchStyle = ({
   checked: boolean
 }) => {
   const style: CSSProperties = {}
-  if(checked) {
+  if (checked) {
     style.background = "#1890ff"
     style.boxShadow = '0 0 0 2px rgba(24, 144, 255, .2)'
   } else {

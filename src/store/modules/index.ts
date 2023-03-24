@@ -1,2 +1,3 @@
-export * from './user.ts'
-export * from './setting.ts'
+export * from './user'
+export * from './setting'
+export * from './theme'

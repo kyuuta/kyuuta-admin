@@ -14,6 +14,7 @@ import {
   NTooltip,
   NDropdown,
   NColorPicker,
+  NInputNumber,
   NDrawerContent,
 
   // Layout
@@ -44,6 +45,7 @@ const naive = create({
     NTooltip,
     NDropdown,
     NColorPicker,
+    NInputNumber,
     NDrawerContent,
   
     // Layout

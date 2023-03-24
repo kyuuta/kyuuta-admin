@@ -4,15 +4,15 @@
       size="large"
       :modes="['hex']"
       :show-alpha="false"
-      @update:value="handleChangeColor"
+      :value="themeStore.themeColor"
+      @update:value="themeStore.setThemeColor"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
-const handleChangeColor = val => {
-  console.log(val)
-}
+import { useThemeStore } from '@/store'
+const themeStore = useThemeStore()
 </script>
 
 <style lang="less" scoped>
