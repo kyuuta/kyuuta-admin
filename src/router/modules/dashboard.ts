@@ -3,7 +3,7 @@ import Layout from '@/layout/index.vue'
 
 const moduleName = 'dashboard'
 
-const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/dashboard',
     name: 'Dashboard',

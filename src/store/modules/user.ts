@@ -1,5 +1,4 @@
 import { defineStore } from "pinia"
-
 export interface IUserState {
   userName: string
 }                                

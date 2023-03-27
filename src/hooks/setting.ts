@@ -1,4 +1,3 @@
-import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useProjectSettingStore } from '@/store'
 

@@ -1,20 +1,10 @@
-import { RouteRecordRaw } from 'vue-router'
+import { handleModuleRoutes } from '@/utils'
 
-// @ts-ignore
-const modules = import.meta.globEager('./modules/**/*.ts')
+const modules: RouteModule.Modules = import.meta.glob(
+  './modules/**/*.ts',
+  { eager: true }
+)
 
-const routeModuleList: RouteRecordRaw[] = []
+const routes = handleModuleRoutes(modules)
 
-Object.keys(modules).forEach(key => {
-  const module = modules[key].default || {}
-  const moduleList = Array.isArray(module) ? [...module] : [module]
-  routeModuleList.push(...moduleList)
-})
-
-// sortRoute
-function sortRoute(a, b) {
-  return (a.meta.sort || 0) - (b.meta.sort || 0);
-}
-routeModuleList.sort(sortRoute)
-
-export default routeModuleList
+export default routes

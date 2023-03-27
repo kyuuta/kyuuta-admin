@@ -1,14 +1,13 @@
 import { RouteRecordRaw } from 'vue-router'
 import { PageConfig } from '@/config/page'
 
-// RootRoute
 export const RootRoute: RouteRecordRaw = {
   path: '/',
   name: 'Root',
   redirect: PageConfig.BASE_HOME
 }
 
-export const ConstantRoute: Array<RouteRecordRaw> = [
+export const ConstantRoute: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'Login',
