@@ -27,8 +27,9 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.7",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@types/lodash-es": "^4.17.7",
+    "@types/node": "^15.12.2",
     "husky": "^8.0.3",
     "less": "^4.1.1",
     "less-loader": "^9.0.0",
