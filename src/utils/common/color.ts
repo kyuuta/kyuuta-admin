@@ -6,19 +6,19 @@ import type { AnyColor, HsvColor } from 'colord'
 extend([ namesPlugin, mixPlugin ])
 
 /** 色相阶梯 */
-const hueStep = 2;
+const hueStep = 2
 /** 饱和度阶梯，浅色部分 */
-const saturationStep = 16;
+const saturationStep = 16
 /** 饱和度阶梯，深色部分 */
-const saturationStep2 = 5;
+const saturationStep2 = 5
 /** 亮度阶梯，浅色部分 */
-const brightnessStep1 = 5;
+const brightnessStep1 = 5
 /** 亮度阶梯，深色部分 */
-const brightnessStep2 = 15;
+const brightnessStep2 = 15
 /** 浅色数量，主色上 */
-const lightColorCount = 5;
+const lightColorCount = 5
 /** 深色数量，主色下 */
-const darkColorCount = 4;
+const darkColorCount = 4
 /** 
  * 调色板颜色等级索引
  * @description 从左至右颜色从深到浅
@@ -56,7 +56,7 @@ export function getColorPalette(
     v: getValue(hsv, i, isLight)
   }
 
-  return colord(newHsv).toHex();
+  return colord(newHsv).toHex()
 }
 
 /**

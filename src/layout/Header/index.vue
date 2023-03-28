@@ -49,8 +49,8 @@ import {
 import SettingDrawer from '../SettingDrawer/index.vue'
 
 const props = defineProps<{
-  height: string;
-  position: 'absolute' | 'static';
+  height: string
+  position: 'absolute' | 'static'
 }>()
 
 const settingVisible = ref<boolean>(false)

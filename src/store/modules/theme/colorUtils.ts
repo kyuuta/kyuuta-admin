@@ -37,7 +37,7 @@ export function getUIThemeOverrides(
 }
 
 interface ColorAction {
-  scene: ColorScene;
+  scene: ColorScene
   handler: (color: string) => string
 }
 type ColorScene = '' | 'Suppl' | 'Hover' | 'Pressed' | 'Active'

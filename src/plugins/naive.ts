@@ -16,6 +16,7 @@ import {
   NColorPicker,
   NInputNumber,
   NDrawerContent,
+  NLoadingBarProvider,
 
   // Layout
   NLayout,
@@ -47,6 +48,7 @@ const naive = create({
     NColorPicker,
     NInputNumber,
     NDrawerContent,
+    NLoadingBarProvider,
   
     // Layout
     NLayout,

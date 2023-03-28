@@ -7,12 +7,12 @@
 pnpm install
 
 # launch Project
-npm run dev || npm run serve
+npm run serve
 ```
 
 ## Development Plan
 
 - [x] ScrollMode
-- [ ] ThemeColor
+- [x] ThemeColor
 - [ ] Dark & Light Mode
 - [ ] Router Guard & Router Menu

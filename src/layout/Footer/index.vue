@@ -10,8 +10,8 @@
 
 <script lang="ts" setup>
 interface Props {
-  height: string;
-  position: 'absolute' | 'static';
+  height: string
+  position: 'absolute' | 'static'
 }
 const props = withDefaults(defineProps<Props>(), {
   position: 'absolute'
