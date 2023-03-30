@@ -13,12 +13,18 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'console',
         name: `${moduleName}Console`,
-        component: () => import('@/views/dsahboard/console.vue')
+        component: () => import('@/views/dsahboard/console.vue'),
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'workplace',
         name: `${moduleName}Workplace`,
-        component: () => import('@/views/dsahboard/workplace.vue')
+        component: () => import('@/views/dsahboard/workplace.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   }

@@ -1,49 +1,71 @@
-import type {
-  NavigationGuardNext,
-  RouteLocationNormalized
-} from 'vue-router'
-import { useUserStore } from '@/store'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { PageConfig } from '@/config/page'
-import { exeStrategyActions } from '@/utils'
-// import { createDynamicRouteGuard } from './dynamic'
+import { createDynamicRouteGuard } from './dynamic'
+import { exeStrategyActions, localStorage } from '@/utils'
 
-// TODO:根据constantRouteMap 生成白名单
-const LOGIN_PATH = PageConfig.BASE_LOGIN_NAME
-const WhiteList = [LOGIN_PATH]
-/**
- * 跳转逻辑处理
- */
+/** 路由跳转逻辑 */
 export async function createPermissionGuard(
   to: RouteLocationNormalized,
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
+  const permission = await createDynamicRouteGuard(to, from, next)
+  if (!permission) return
 
+  const { 
+    href,
+    requiresAuth = false,
+    permissions = []
+  } = to?.meta
 
-  // TODO:处理外链
+  // 处理外链
+  if (href) {
+    window.open(href as string)
+    next({ path: from.fullPath, replace: true, query: from.query })
+    return
+  }
 
-  // TODO:挂载异步路由
-  // await createDynamicRouteGuard(to, from, next)
-
-  const userStore = useUserStore()
-  const isLogin = userStore.token
+  const { name, fullPath } = to
+  const { ROOT_NAME, BASE_LOGIN_NAME } = PageConfig
+  const needLogin = Boolean(requiresAuth) || Boolean(permissions.length)
+  const isLogin = Boolean(localStorage.get('token'))
 
   const actions: Common.StrategyAction[] = [
-    // 白名单
+    // 已登录状态跳转登录页，跳转至首页
     [
-      WhiteList.includes(to.name as PageConfig),
+      isLogin && name === BASE_LOGIN_NAME,
+      () => {
+        next({ name: ROOT_NAME })
+      }
+    ],
+    // 不需要登录权限的页面直接通行
+    [
+      !needLogin,
       () => {
         next()
       }
     ],
-    // 未登录并且未在白名单中
+    // 未登录状态进入需要登录权限的页面
     [
-      !isLogin && !WhiteList.includes(to.name as PageConfig),
+      !isLogin && needLogin,
       () => {
-        const redirect = to.fullPath
-        next({ name: 'Login', query: { redirect } })
+        next({ name: BASE_LOGIN_NAME, query: { redirect: fullPath } })
       }
-    ]
+    ],
+    // 登录状态进入需要登录权限的页面，有权限直接通行
+    [
+      isLogin && needLogin,
+      () => {
+        next()
+      }
+    ],
+    // 登录状态进入需要登录权限的页面，无权限，重定向到无权限页面
+    // [
+    //   isLogin && needLogin && !hasPermission,
+    //   () => {
+    //     next({ name: '403' });
+    //   }
+    // ]
   ]
 
   exeStrategyActions(actions)

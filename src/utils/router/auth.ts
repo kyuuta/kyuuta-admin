@@ -1,48 +1,11 @@
 import { RouteRecordRaw } from 'vue-router'
 
 /**
- * 权限路由排序
- * @param routes - 权限路由
- */
-export function sortRoutes(
-  routes: RouteRecordRaw[]
-) {
-  return routes
-    .sort((next, pre) => Number(next.meta?.order) - Number(pre.meta?.order))
-    .map(route => {
-      if (route.children) sortRoutes(route.children)
-      return route
-    })
-}
-
-/**
- * 处理全部导入的路由模块
- * @param modules - 路由模块
- */
-export function handleModuleRoutes(
-  modules: RouteModule.Modules
-) {
-  const routes: RouteRecordRaw[] = []
-  
-  Object.keys(modules).forEach(key => {
-    const item = modules[key].default
-
-    if (item) {
-      routes.push(...item)
-    } else {
-      window.console.error(`路由模块解析出错: key = ${key}`)
-    }
-  })
-
-  return sortRoutes(routes)
-}
-
-/**
  * 根据用户权限过滤路由表
  * @param routes - 权限路由
  * @param permission - 权限
  */
-export function filterAsyncRoutes(
+ export function filterAsyncRoutes(
   routes: RouteRecordRaw[],
   permission: string
 ) {

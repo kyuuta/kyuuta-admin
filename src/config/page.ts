@@ -1,4 +1,8 @@
 export enum PageConfig {
+  // 根路由
+  ROOT = '/',
+  ROOT_NAME = 'Root',
+
   // 登录
   BASE_LOGIN = '/login',
   BASE_LOGIN_NAME = 'Login',
@@ -12,6 +16,10 @@ export enum PageConfig {
   BASE_HOME_NAME = 'Dashboard',
 
   // 错误
-  ERROR = '/errorPage',
-  ERROR_PAGE_NAME = '/ErrorPage'
+  ERROR = '/404',
+  ERROR_PAGE_NAME = '404',
+
+  // 404
+  NOT_FOUNT = '/not-fount',
+  NOT_FOUNT_NAME = 'NotFound',
 }

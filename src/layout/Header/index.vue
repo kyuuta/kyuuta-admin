@@ -7,6 +7,7 @@
     <div>
       <NButton @click="router.push('/dashboard/console')">console</NButton>
       <NButton @click="router.push('/dashboard/workplace')">workplace</NButton>
+      <NButton @click="router.push('/dashboard/aaaa')">404test</NButton>
     </div>
 
     <div class="right-controls">
