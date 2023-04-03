@@ -9,11 +9,12 @@
           :height="headerHeight"
         />
 
-        <NLayout 
-          :position="positionStyle.position" 
+        <NLayout
+          :position="positionStyle.position"
           :class="{
             'has-footer': getFooterConfig.visible && getFooterConfig.fixed,
-            'fix-header': getScrollMode === 'content' && getHeaderConfig.visible
+            'fix-header':
+              getScrollMode === 'content' && getHeaderConfig.visible,
           }"
         >
           <MainContainer />
@@ -24,7 +25,7 @@
             :height="footerHeight"
           />
         </NLayout>
-        
+
         <Footer
           v-if="getFooterConfig.visible && getFooterConfig.fixed"
           :height="footerHeight"
@@ -35,30 +36,26 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, unref, computed } from 'vue'
-import { useLayout } from '@/hooks/layout'
-import Header from './Header/index'
-import Footer from './Footer/index'
-import Sider from './Sider/index'
-import MainContainer from './Main/index'
+import { ref, unref, computed } from "vue";
+import { useLayout } from "@/hooks/layout";
+import Header from "./Header/index";
+import Footer from "./Footer/index";
+import Sider from "./Sider/index";
+import MainContainer from "./Main/index";
 
-const { 
-  getScrollMode,
-  getHeaderConfig,
-  getFooterConfig
-} = useLayout()
+const { getScrollMode, getHeaderConfig, getFooterConfig } = useLayout();
 
-const headerHeight = computed(() => `${getHeaderConfig.height}px`)
-const footerHeight = computed(() => `${getFooterConfig.height}px`)
+const headerHeight = computed(() => `${getHeaderConfig.height}px`);
+const footerHeight = computed(() => `${getFooterConfig.height}px`);
 
-const positionStyle = computed(() => 
-  getScrollMode.value === 'content'
-    ? { 
-      position: 'absolute',
-      paddingTop: footerHeight
-    }
-    : { position: 'static' }
-)
+const positionStyle = computed(() =>
+  getScrollMode.value === "content"
+    ? {
+        position: "absolute",
+        paddingTop: footerHeight,
+      }
+    : { position: "static" }
+);
 </script>
 
 <style lang="less" scoped>

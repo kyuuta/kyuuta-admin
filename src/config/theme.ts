@@ -23,7 +23,7 @@ const themeColorConfig: Theme.Setting = {
 
 const MenuConfig: Menu.Setting = {
   collapse: false,
-  collpaseType: 'bar',
+  collpaseType: 'header',
   collapsedWidth: 220
 }
 
