@@ -1,21 +1,20 @@
 import { storeToRefs } from 'pinia'
-import { useProjectSettingStore } from '@/store'
+import { useLayoutStore } from '@/store'
 
-export function useSetting() {
-
-  const settingStore = useProjectSettingStore()
+export function useLayout() {
+  const layoutStore = useLayoutStore()
   const {
     header,
     footer,
     scrollMode
-  } = storeToRefs(settingStore)
+  } = storeToRefs(layoutStore)
 
   const getScrollMode = scrollMode
   const getHeaderConfig = header.value
   const getFooterConfig = footer.value
 
   return {
-    settingStore,
+    layoutStore,
     getScrollMode,
     getHeaderConfig,
     getFooterConfig

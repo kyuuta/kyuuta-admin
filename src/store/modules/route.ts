@@ -1,23 +1,28 @@
 import { defineStore } from 'pinia'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+import type { MenuOption } from 'naive-ui'
 import { useUserStore } from './user'
 import Router from '@/router'
 import RouteMap from '@/router/routeMap'
 import ConstantRouteMap from '@/router/constantRouteMap'
 import { PageConfig } from '@/config/page'
-import { filterAsyncRoutes, getConstantRouteMapNames } from '@/utils'
+import { 
+  filterAsyncRoutes,
+  getConstantRouteMapNames,
+  transformRouteToMenu
+} from '@/utils'
 
 interface IRouteStore {
   isInitAuthRoute: boolean
-  menus: RouteRecordRaw[]
+  menu: MenuOption[]
   routers:  RouteRecordRaw[]
 }
 
 export const useRouteStore = defineStore({
-  id: 'appRoute',
+  id: 'RouteStore',
   state: (): IRouteStore => ({
     isInitAuthRoute: false,
-    menus: [],
+    menu: [],
     routers: []
   }),
   actions: {
@@ -36,10 +41,11 @@ export const useRouteStore = defineStore({
      * @param routes - 权限路由
      */
     async handleAuthRoute(routes: RouteRecordRaw[]) {
+      (this.menu as MenuOption[]) = transformRouteToMenu(routes)
+
       await routes.forEach(route => {
         Router.addRoute(route)
       })
-      console.log(Router.getRoutes())
     },
     /**
      * 判断路由是否ConstantRoute

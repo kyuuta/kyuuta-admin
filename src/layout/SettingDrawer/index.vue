@@ -1,15 +1,18 @@
 <template>
-  <NDrawer v-model:show="modalVisible">
+  <NDrawer v-model:show="modalVisible" :default-width="300">
     <NDrawerContent title="项目配置" :native-scrollbar="false">
       <div class="drawer">
         <!-- <NDivider title-placement="centner">主题</NDivider> -->
-        <!-- Dark/Light Mode --> 
+        <!-- Dark/Light Mode -->
 
         <NDivider title-placement="centner">系统主题</NDivider>
         <ThemeColor />
 
         <NDivider title-placement="centner">界面功能</NDivider>
         <ScrollMode />
+
+        <NDivider title-placement="centner">菜单相关</NDivider>
+        <MenuSetting />
       </div>
     </NDrawerContent>
   </NDrawer>
@@ -19,6 +22,7 @@
 import { computed } from 'vue'
 import ScrollMode from './scrollMode.vue'
 import ThemeColor from './themeColor.vue'
+import MenuSetting from './menuSetting.vue'
 
 const props = defineProps<{ visible: boolean }>()
 const emit = defineEmits<{(e: 'update:visible', visible: boolean): void }>()

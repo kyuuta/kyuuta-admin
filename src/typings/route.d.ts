@@ -6,5 +6,6 @@ declare module 'vue-router' {
     title?: string
     /** 权限信息 */
     permissions?: Array<string>
+    icon?: () => import('vue').VNodeChild
   }
 }

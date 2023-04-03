@@ -1,7 +1,9 @@
 import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
+import { DashboardOutlined } from '@vicons/antd'
+import { renderIcon } from '@/utils'
 
-const moduleName = 'dashboard'
+const moduleName = 'Dashboard'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -9,6 +11,10 @@ const routes: RouteRecordRaw[] = [
     name: 'Dashboard',
     redirect: '/dashboard/console',
     component: Layout,
+    meta: {
+      title: '控制台',
+      icon: renderIcon(DashboardOutlined)
+    },
     children: [
       {
         path: 'console',

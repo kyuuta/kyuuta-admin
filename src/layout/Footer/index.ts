@@ -1,3 +1,3 @@
-import PageFooter from './index.vue'
+import Footer from './index.vue'
 
-export default PageFooter
+export default Footer

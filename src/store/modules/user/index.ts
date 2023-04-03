@@ -12,7 +12,7 @@ export interface IUserState {
 }                                
 
 export const useUserStore = defineStore({
-  id: 'appUser',
+  id: 'UserStore',
   state: (): IUserState => ({
     token: getToken(),
     userName: 'kyuuta',

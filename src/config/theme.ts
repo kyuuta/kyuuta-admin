@@ -21,7 +21,14 @@ const themeColorConfig: Theme.Setting = {
   }
 }
 
+const MenuConfig: Menu.Setting = {
+  collapse: false,
+  collpaseType: 'bar',
+  collapsedWidth: 220
+}
+
 export {
+  MenuConfig,
   layoutConfig,
   themeColorConfig
 }

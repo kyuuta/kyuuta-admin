@@ -4,10 +4,19 @@
     bordered
     :position="props.position"
   >
-    <div>
-      <NButton @click="router.push('/dashboard/console')">console</NButton>
-      <NButton @click="router.push('/dashboard/workplace')">workplace</NButton>
-      <NButton @click="router.push('/dashboard/aaaa')">404test</NButton>
+    <div class="left-controls">
+      <div
+        v-if="collpaseType === 'header'"
+        class="item"
+        @click="setCollapse(!collapse)"
+      >
+        <NIcon v-if="collapse" size="22">
+          <MenuUnfoldOutlined />
+        </NIcon>
+        <NIcon v-else size="22">
+          <MenuFoldOutlined />
+        </NIcon>
+      </div>
     </div>
 
     <div class="right-controls">
@@ -23,7 +32,7 @@
         <NTooltip placement="bottom-end">
           <template #trigger>
             <NIcon
-              size="24"
+              size="22"
               depth="1"
               :component="SettingIcon"
             />
@@ -38,16 +47,17 @@
 </template>
 
 <script lang="ts" setup>
-import { h, ref } from 'vue'
-import { NIcon } from 'naive-ui'
-import type { Component } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import { useMenu } from '@/hooks/menu'
+import { renderIcon } from '@/utils'
+import SettingDrawer from '../SettingDrawer/index.vue'
 import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   ArrowLeftOutlined as ExitIcon,
   UserOutlined as UserIcon,
-  SettingOutlined as SettingIcon
+  SettingOutlined as SettingIcon,
 } from '@vicons/antd'
-import SettingDrawer from '../SettingDrawer/index.vue'
 
 const props = defineProps<{
   height: string
@@ -57,13 +67,6 @@ const props = defineProps<{
 const settingVisible = ref<boolean>(false)
 const openSetting = () => settingVisible.value = true
 
-const renderIcon = (icon: Component) => {
-  return () => {
-    return h(NIcon, null, {
-      default: () => h(icon)
-    })
-  }
-}
 const avatarOptions = [
   {
     key: 'userSetting',
@@ -77,7 +80,11 @@ const avatarOptions = [
   }
 ]
 
-const router = useRouter()
+const {
+  collapse,
+  collpaseType,
+  setCollapse
+} = useMenu()
 </script>
 
 <style lang="less" scoped>
@@ -87,17 +94,19 @@ const router = useRouter()
   justify-content: space-between;
   align-items: center;
   height: v-bind('props.height');
-  padding: 0 20px;
 
-  .right-controls {
+  .left-controls .item:first-child {
+    padding-right: 20px;
+  }
+  .right-controls, .left-controls {
     display: flex;
     height: 100%;
     .item {
       cursor: pointer;
-      padding: 0 5px;
-      margin-right: 8px;
+      padding: 0 10px;
       &:last-child {
         margin-right: 0;
+        padding: 0 20px;
       }
       &:hover {
         transition: background-color .3s;

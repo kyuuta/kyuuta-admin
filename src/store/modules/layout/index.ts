@@ -1,10 +1,10 @@
-import { defineStore } from "pinia"
+import { defineStore } from 'pinia'
 import { layoutConfig } from '@/config/theme'
 
 type LayoutState = Layout.Setting
 
-export const useProjectSettingStore = defineStore({
-  id: 'projectSetting',
+export const useLayoutStore = defineStore({
+  id: 'LayoutStore',
   state: (): LayoutState => layoutConfig,
   actions: {
     setScrollMode(mode: Layout.scrollMode): void {

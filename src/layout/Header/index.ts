@@ -1,3 +1,3 @@
-import PageHeader from './index.vue'
+import Header from './index.vue'
 
-export default PageHeader
+export default Header

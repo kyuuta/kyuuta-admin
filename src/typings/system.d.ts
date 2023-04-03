@@ -53,3 +53,22 @@ declare namespace Theme {
     error: string
   }
 }
+
+/** 菜单相关 */
+declare module Menu {
+  /** 收缩展开按钮的类型 */
+  type MenuCollpaseType = 'false' | 'bar' | 'arrow-circle' | 'header'
+
+  interface Setting {
+    /** 菜单收缩展开 */
+    collapse: boolean
+    /** 收缩展开按钮的类型 */
+    collpaseType: MenuCollpaseType
+    /** 左侧菜单展开宽度 */
+    collapsedWidth: number
+  }
+
+  type Option = import('naive-ui').MenuOption & {
+    icon?: () => import('vue').VNodeChild
+  }
+}

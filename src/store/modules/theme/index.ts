@@ -4,7 +4,7 @@ import { getUIThemeOverrides, initThemeSetting } from './colorUtils'
 type ThemeState = Theme.Setting
 
 export const useThemeStore = defineStore({
-  id: 'theme-store',
+  id: 'ThemeStore',
   state: (): ThemeState => initThemeSetting(),
   getters: {
     uiThemeOverrides(state) {
