@@ -15,4 +15,7 @@ npm run serve
 - [x] ScrollMode
 - [x] ThemeColor
 - [ ] Dark & Light Mode
-- [ ] Router Guard & Router Menu
+- [x] Router Guard & Router Menu
+- [ ] Cache ProjectConfig
+- [ ] FilterForm Component
+- [ ] Axios Request
