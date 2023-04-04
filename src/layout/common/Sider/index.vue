@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import AsideMenu from '../Menu/index'
+import AsideMenu from '../Menu/index.vue'
 import { useMenu } from '@/hooks/menu'
 
 const {

@@ -11,13 +11,13 @@
 
         <NLayout
           :position="positionStyle.position"
-          :class="{
+          :class="['wrapper-layout', {
             'has-footer': getFooterConfig.visible && getFooterConfig.fixed,
             'fix-header':
               getScrollMode === 'content' && getHeaderConfig.visible,
-          }"
+          }]"
         >
-          <MainContainer />
+          <Main />
 
           <Footer
             v-if="getFooterConfig.visible && !getFooterConfig.fixed"
@@ -36,17 +36,19 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, unref, computed } from "vue";
-import { useLayout } from "@/hooks/layout";
-import Header from "./Header/index";
-import Footer from "./Footer/index";
-import Sider from "./Sider/index";
-import MainContainer from "./Main/index";
+import { ref, unref, computed } from "vue"
+import { useLayout } from "@/hooks/layout"
+import {
+  Header,
+  Footer,
+  Sider,
+  Main
+} from '../common'
 
-const { getScrollMode, getHeaderConfig, getFooterConfig } = useLayout();
+const { getScrollMode, getHeaderConfig, getFooterConfig } = useLayout()
 
-const headerHeight = computed(() => `${getHeaderConfig.height}px`);
-const footerHeight = computed(() => `${getFooterConfig.height}px`);
+const headerHeight = computed(() => `${getHeaderConfig.height}px`)
+const footerHeight = computed(() => `${getFooterConfig.height}px`)
 
 const positionStyle = computed(() =>
   getScrollMode.value === "content"
@@ -65,5 +67,12 @@ const positionStyle = computed(() =>
 
 .has-footer {
   padding-bottom: v-bind(footerHeight);
+}
+
+.wrapper-layout {
+  ::v-deep(.n-layout-scroll-container) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

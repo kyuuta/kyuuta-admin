@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import Layout from '@/layout/index.vue'
+import { BasicLayout } from '@/layout'
 import { DashboardOutlined } from '@vicons/antd'
 import { renderIcon } from '@/utils'
 
@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     redirect: '/dashboard/console',
-    component: Layout,
+    component: BasicLayout,
     meta: {
       title: '控制台',
       icon: renderIcon(DashboardOutlined)
@@ -21,7 +21,8 @@ const routes: RouteRecordRaw[] = [
         name: `${moduleName}Console`,
         component: () => import('@/views/dsahboard/console.vue'),
         meta: {
-          requiresAuth: true
+          requiresAuth: true,
+          title: '主控台'
         }
       },
       {
@@ -29,7 +30,8 @@ const routes: RouteRecordRaw[] = [
         name: `${moduleName}Workplace`,
         component: () => import('@/views/dsahboard/workplace.vue'),
         meta: {
-          requiresAuth: true
+          requiresAuth: true,
+          title: '工作台'
         }
       }
     ]

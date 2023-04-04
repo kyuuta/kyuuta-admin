@@ -20,9 +20,11 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import ScrollMode from './scrollMode.vue'
-import ThemeColor from './themeColor.vue'
-import MenuSetting from './menuSetting.vue'
+import {
+  ScrollMode,
+  ThemeColor,
+  MenuSetting
+} from './components/index'
 
 const props = defineProps<{ visible: boolean }>()
 const emit = defineEmits<{(e: 'update:visible', visible: boolean): void }>()
