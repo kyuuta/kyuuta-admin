@@ -17,6 +17,8 @@
           <MenuFoldOutlined />
         </NIcon>
       </div>
+
+      <breadcrumb />
     </div>
 
     <div class="right-controls">
@@ -58,6 +60,7 @@ import {
   UserOutlined as UserIcon,
   SettingOutlined as SettingIcon,
 } from '@vicons/antd'
+import breadcrumb from './components/breadcrumb.vue'
 
 const props = defineProps<{
   height: string
