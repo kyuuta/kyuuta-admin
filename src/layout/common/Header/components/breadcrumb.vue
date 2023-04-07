@@ -1,9 +1,25 @@
 <template>
   <NBreadcrumb>
-    <template v-for="breacrumb in breacrumbs" :key="breacrumb.name">
-      
+    <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.key">
       <NBreadcrumbItem>
-        <span>{{ breacrumb?.meta?.title || breacrumb.name }}</span>
+        <NDropdown 
+          v-if="breadcrumb?.children?.length"
+          placement="bottom-start"
+          :options="breadcrumb.children"
+          @select="key => routerPush({ name: key })"
+        >
+          <span>
+            <component v-if="breadcrumbConfig.showIcon" class="breadcrumb-icon" :is="breadcrumb.icon" />
+            <span>{{ breadcrumb.label }}</span>
+          </span>
+        </NDropdown>
+
+        <template v-else>
+          <span>
+            <component v-if="breadcrumbConfig.showIcon" class="breadcrumb-icon" :is="breadcrumb.icon" />
+            <span>{{ breadcrumb?.meta?.title || breadcrumb.label }}</span>
+          </span>
+        </template>
       </NBreadcrumbItem>
     </template>
   </NBreadcrumb>
@@ -12,11 +28,20 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useRouterPush } from '@/composables'
+import { useThemeStore } from '@/store'
+import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
 
 const route = useRoute()
+const { routerPush } = useRouterPush()
 
-const breacrumbs = computed(() => route.matched)
+const { breadcrumbConfig } = useThemeStore()
 
-console.log(breacrumbs)
-
+const breadcrumbs = computed(() => transformRouteToBreadcrumb(route.matched))
 </script>
+
+<style lang="less" scoped>
+.breadcrumb-icon {
+  margin-right: 4px;
+}
+</style>

@@ -5,25 +5,27 @@
     :native-scrollbar="false"
     collapse-mode="width"
     :collapsed-width="64"
-    :width="collapsedWidth"
-    :collapsed="collapse"
-    :show-trigger="['bar','arrow-circle'].includes(collpaseType) ? collpaseType : false"
+    :width="menuConfig.collapsedWidth"
+    :collapsed="menuConfig.collapse"
+    :show-trigger="
+      ['bar','arrow-circle'].includes(menuConfig.collapseType) 
+        ? menuConfig.collapseType
+        : false
+    "
     @update:collapsed="setCollapse"
   >
-    <AsideMenu :collapsed="collapse"/>
+    <AsideMenu :collapsed="menuConfig.collapse"/>
   </NLayoutSider>
 </template>
 
 <script lang="ts" setup>
 import AsideMenu from '../Menu/index.vue'
-import { useMenu } from '@/hooks/menu'
+import { useThemeStore } from '@/store'
 
 const {
-  collapse,
-  collpaseType,
-  collapsedWidth,
+  menuConfig,
   setCollapse
-} = useMenu()
+} = useThemeStore()
 </script>
 
 <style lang="less" scoped>

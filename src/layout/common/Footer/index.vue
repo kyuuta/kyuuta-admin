@@ -4,7 +4,7 @@
     :position="props.position"
     bordered
   >
-    城府路
+    KYUUTA
   </NLayoutFooter>
 </template>
 
@@ -21,5 +21,6 @@ const props = withDefaults(defineProps<Props>(), {
 <style lang="less" scoped>
 .page-footer {
   height: v-bind('props.height');
+  flex: 0 0 v-bind('props.height');
 }
 </style>

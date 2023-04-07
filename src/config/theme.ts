@@ -1,4 +1,4 @@
-const layoutConfig: Layout.Setting = {
+const ThemeConfig: Theme.Setting =  {
   scrollMode: 'content',
   header: {
     visible: true,
@@ -8,27 +8,25 @@ const layoutConfig: Layout.Setting = {
     visible: false,
     height: 48,
     fixed: true
-  }
-}
-
-const themeColorConfig: Theme.Setting = {
+  },
   themeColor: '#1890ff',
-  otherColor: {
+  themeColorList:  {
     info: '#2080f0',
     success: '#52c41a',
     warning: '#faad14',
     error: '#f5222d'
+  },
+  menu: {
+    collapse: false,
+    collapseType: 'header',
+    collapsedWidth: 220
+  },
+  breadcrumb: {
+    visible: true,
+    showIcon: true
   }
 }
 
-const MenuConfig: Menu.Setting = {
-  collapse: false,
-  collpaseType: 'header',
-  collapsedWidth: 220
-}
-
 export {
-  MenuConfig,
-  layoutConfig,
-  themeColorConfig
+  ThemeConfig
 }

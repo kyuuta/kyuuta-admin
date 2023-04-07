@@ -1,10 +1,22 @@
 <template>
+  <Item title="显示面包屑">
+    <NSwitch
+      :value="breadcrumbConfig.visible"
+      @update:value="setBreadcrumbVisible"
+    />
+  </Item>
+  <Item title="显示面包屑图标">
+    <NSwitch
+      :value="breadcrumbConfig.showIcon"
+      @update:value="setBreadcrumbShowIcon"
+    />
+  </Item>
   <Item title="折叠类型">
     <NSelect
       class="field"
-      :value="collpaseType"
+      :value="menuConfig.collapseType"
       :options="options"
-      @update:value="setCollpaseType"
+      @update:value="setCollapseType"
     />
   </Item>
   <Item title="菜单宽度">
@@ -13,16 +25,16 @@
       style="text-align: center"
       :step="10"
       :max="300"
-      :value="collapsedWidth"
+      :value="menuConfig.collapsedWidth"
       button-placement="both"
-      @update:value="setCollpasedWidth"
+      @update:value="setCollapsedWidth"
     />
   </Item>
 </template>
 
 <script lang="ts" setup>
 import Item from './item.vue'
-import { useMenu } from '@/hooks/menu'
+import { useThemeStore } from '@/store'
 
 const options = [{
   label: '不展示',
@@ -39,11 +51,13 @@ const options = [{
 }]
 
 const {
-  collpaseType,
-  collapsedWidth,
-  setCollpaseType,
-  setCollpasedWidth
-} = useMenu()
+  menuConfig,
+  breadcrumbConfig,
+  setCollapseType,
+  setCollapsedWidth,
+  setBreadcrumbVisible,
+  setBreadcrumbShowIcon
+} = useThemeStore()
 </script>
 
 <style lang="less" scoped>

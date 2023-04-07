@@ -16,11 +16,9 @@
 <script lang="ts" setup>
 import Item from './item.vue'
 import { CSSProperties } from 'vue'
-import { useLayout } from '@/hooks/layout'
-import { useLayoutStore } from '@/store'
+import { useThemeStore } from '@/store'
 
-const { getScrollMode } = useLayout()
-const { setScrollMode } = useLayoutStore()
+const { getScrollMode, setScrollMode } = useThemeStore()
 
 const switchStyle = ({ 
   focused,

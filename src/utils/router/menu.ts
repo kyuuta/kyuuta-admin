@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router'
 import type { MenuOption } from 'naive-ui'
 
 /**
- * 将路由表转换成Naive Menu格式
+ * 将路由表转换成Naive Menu格式&Breadcrumb格式
  * @param routes - 路由
  */
 export function transformRouteToMenu(

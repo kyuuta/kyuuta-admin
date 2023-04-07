@@ -4,7 +4,7 @@
       <Sider />
       <NLayout :native-scrollbar="false">
         <Header
-          v-if="getHeaderConfig.visible"
+          v-if="headerConfig.visible"
           :position="positionStyle.position"
           :height="headerHeight"
         />
@@ -12,22 +12,22 @@
         <NLayout
           :position="positionStyle.position"
           :class="['wrapper-layout', {
-            'has-footer': getFooterConfig.visible && getFooterConfig.fixed,
+            'has-footer': footerConfig.visible && footerConfig.fixed,
             'fix-header':
-              getScrollMode === 'content' && getHeaderConfig.visible,
+              getScrollMode === 'content' && headerConfig.visible,
           }]"
         >
           <Main />
 
           <Footer
-            v-if="getFooterConfig.visible && !getFooterConfig.fixed"
+            v-if="footerConfig.visible && !footerConfig.fixed"
             position="static"
             :height="footerHeight"
           />
         </NLayout>
 
         <Footer
-          v-if="getFooterConfig.visible && getFooterConfig.fixed"
+          v-if="footerConfig.visible && footerConfig.fixed"
           :height="footerHeight"
         />
       </NLayout>
@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import { ref, unref, computed } from "vue"
-import { useLayout } from "@/hooks/layout"
+import { useThemeStore } from "@/store"
 import {
   Header,
   Footer,
@@ -45,10 +45,14 @@ import {
   Main
 } from '../common'
 
-const { getScrollMode, getHeaderConfig, getFooterConfig } = useLayout()
+const {
+  getScrollMode,
+  headerConfig,
+  footerConfig
+} = useThemeStore()
 
-const headerHeight = computed(() => `${getHeaderConfig.height}px`)
-const footerHeight = computed(() => `${getFooterConfig.height}px`)
+const headerHeight = computed(() => `${headerConfig.height}px`)
+const footerHeight = computed(() => `${footerConfig.height}px`)
 
 const positionStyle = computed(() =>
   getScrollMode.value === "content"

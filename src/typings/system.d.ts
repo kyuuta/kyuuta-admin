@@ -1,47 +1,55 @@
-/** 系统布局相关 */
-declare namespace Layout {
-  /** 滚动模式 */
-  type scrollMode = 'content' | 'main'
+/** 系统主题配置 */
+declare module Theme {
+  /**
+   * 滚动模式
+   * @param content - 内容滚动
+   * @param main - 整体滚动
+   */
+  type ScrollMode = 'content' | 'main'
+  /**
+   * Menu展开收起操作模式
+   * @param hide - 不展示
+   * @param bar - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
+   * @param arrow-circle - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
+   * @param header - 头部按钮
+   */
+  type MenuCollpaseType = 'hide' | 'bar' | 'arrow-circle' | 'header'
 
-  /** 系统布局 */
   interface Setting {
     /** 头部配置 */
-    header: HeaderConfig,
+    header: Hedaer
     /** 底部配置 */
-    footer: FooterConfig,
+    footer: Footer
     /** 滚动模式 */
-    scrollMode: scrollMode
+    scrollMode: ScrollMode
+    /** 主题色 */
+    themeColor: string
+    /** 其他主题色 */
+    themeColorList: OtherColor
+    /** 菜单配置 */
+    menu: Menu,
+    /** 面包屑配置 */
+    breadcrumb: Breadcrumb
   }
-
   /** 头部配置 */
-  interface HeaderConfig {
-    /** 是否显示 */
+  interface Hedaer {
+    /** 是否展示 */
     visible: boolean
-    /** 高度 */
+    /** 头部高度 */
     height: number
   }
 
   /** 底部配置 */
-  interface FooterConfig {
-    /** 是否显示 */
+  interface Footer {
+    /** 是否展示 */
     visible: boolean
-    /** 高度 */
+    /** 底部高度 */
     height: number
-    /** 是否固定底部 */
+    /** 是否固定 */
     fixed: boolean
   }
-}
 
-/** 主题相关 */
-declare namespace Theme {
-  /** 主题颜色 */
-  interface Setting {
-    /** primary主题色 */
-    themeColor: string
-    /** 其他状态颜色 */
-    otherColor: OtherColor
-  }
-
+  /** 其他主题颜色 */
   interface OtherColor {
     /** 信息 */
     info: string
@@ -52,23 +60,22 @@ declare namespace Theme {
     /** 错误 */
     error: string
   }
-}
 
-/** 菜单相关 */
-declare module Menu {
-  /** 收缩展开按钮的类型 */
-  type MenuCollpaseType = 'false' | 'bar' | 'arrow-circle' | 'header'
-
-  interface Setting {
-    /** 菜单收缩展开 */
+  /** 菜单配置 */
+  interface Menu {
+    /** 默认展开收起 */
     collapse: boolean
-    /** 收缩展开按钮的类型 */
-    collpaseType: MenuCollpaseType
-    /** 左侧菜单展开宽度 */
+    /** 展开收起操作类型 */
+    collapseType: MenuCollpaseType
+    /** 菜单展开宽度 */
     collapsedWidth: number
   }
 
-  type Option = import('naive-ui').MenuOption & {
-    icon?: () => import('vue').VNodeChild
+  /** 面包屑配置 */
+  interface Breadcrumb {
+    /** 是否展示 */
+    visible: boolean
+    /** 是否展示icon */
+    showIcon: boolean
   }
 }

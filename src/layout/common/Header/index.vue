@@ -4,13 +4,20 @@
     bordered
     :position="props.position"
   >
-    <div class="left-controls">
+    <div
+      class="left-controls"
+      :style="{
+        paddingLeft: menuConfig.collapseType !== 'header'
+          ? '20px'
+          : null
+      }"
+    >
       <div
-        v-if="collpaseType === 'header'"
+        v-if="menuConfig.collapseType === 'header'"
         class="item"
-        @click="setCollapse(!collapse)"
+        @click="setCollapse(!menuConfig.collapse)"
       >
-        <NIcon v-if="collapse" size="22">
+        <NIcon v-if="menuConfig.collapse" size="22">
           <MenuUnfoldOutlined />
         </NIcon>
         <NIcon v-else size="22">
@@ -18,7 +25,9 @@
         </NIcon>
       </div>
 
-      <breadcrumb />
+      <div class="breadcrumb" v-if="breadcrumbConfig.visible">
+        <Breadcrumb />
+      </div>
     </div>
 
     <div class="right-controls">
@@ -50,7 +59,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useMenu } from '@/hooks/menu'
+import { useThemeStore } from '@/store'
 import { renderIcon } from '@/utils'
 import SettingDrawer from '../SettingDrawer/index.vue'
 import {
@@ -60,7 +69,7 @@ import {
   UserOutlined as UserIcon,
   SettingOutlined as SettingIcon,
 } from '@vicons/antd'
-import breadcrumb from './components/breadcrumb.vue'
+import Breadcrumb from './components/breadcrumb.vue'
 
 const props = defineProps<{
   height: string
@@ -84,10 +93,10 @@ const avatarOptions = [
 ]
 
 const {
-  collapse,
-  collpaseType,
+  menuConfig,
+  breadcrumbConfig,
   setCollapse
-} = useMenu()
+} = useThemeStore()
 </script>
 
 <style lang="less" scoped>
@@ -99,7 +108,7 @@ const {
   height: v-bind('props.height');
 
   .left-controls .item:first-child {
-    padding-right: 20px;
+    padding: 0 20px;
   }
   .right-controls, .left-controls {
     display: flex;
@@ -120,6 +129,12 @@ const {
         align-items: center;
         height: 100%;
       }
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
 
     .avatar {

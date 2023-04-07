@@ -1,6 +1,6 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { cloneDeep } from 'lodash-es'
-import { themeColorConfig } from '@/config/theme'
+import { ThemeConfig } from '@/config/theme'
 import { addColorAlpha, getColorPalette } from '@/utils'
 
 type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error'
@@ -9,7 +9,7 @@ type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error'
 export function initThemeSetting() {
   // TODO:cache
   // TODO:customize info color
-  const setting = cloneDeep({ ...themeColorConfig })
+  const setting = cloneDeep({ ...ThemeConfig })
   return setting
 }
 
