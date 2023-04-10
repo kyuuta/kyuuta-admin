@@ -14,7 +14,7 @@ npm run serve
 
 - [x] ScrollMode
 - [x] ThemeColor
-- [ ] Dark & Light Mode
+- [x] Dark & Light Mode
 - [x] Router Guard & Router Menu
 - [x] Breadcrumb
 - [ ] SystemThemeConfig & Cache ProjectConfig
