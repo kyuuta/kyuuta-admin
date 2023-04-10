@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
 import type { MenuOption } from 'naive-ui'
-import { useUserStore } from './user'
+import { useUserStore } from '../user'
 import Router from '@/router'
 import RouteMap from '@/router/routeMap'
 import ConstantRouteMap from '@/router/constantRouteMap'

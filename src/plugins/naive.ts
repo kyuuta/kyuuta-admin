@@ -20,7 +20,6 @@ import {
   NColorPicker,
   NInputNumber,
   NDrawerContent,
-  NLoadingBarProvider,
 
   // Layout
   NLayout,
@@ -32,6 +31,7 @@ import {
   // Prompt
   NConfigProvider,
   NDialogProvider,
+  NLoadingBarProvider,
   NNotificationProvider,
   NMessageProvider,
 } from 'naive-ui'
@@ -56,7 +56,6 @@ const naive = create({
     NColorPicker,
     NInputNumber,
     NDrawerContent,
-    NLoadingBarProvider,
   
     // Layout
     NLayout,
@@ -68,6 +67,7 @@ const naive = create({
     // Prompt
     NConfigProvider,
     NDialogProvider,
+    NLoadingBarProvider,
     NNotificationProvider,
     NMessageProvider,
   ]

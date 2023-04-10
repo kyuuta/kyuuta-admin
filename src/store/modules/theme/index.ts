@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import { defineStore } from "pinia"
-import { getUIThemeOverrides, initThemeSetting } from './colorUtils'
+import { getUIThemeOverrides, initThemeSetting } from './helpers'
 
 type ThemeState = Theme.Setting
 
