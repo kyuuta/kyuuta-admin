@@ -34,6 +34,8 @@ import {
   NLoadingBarProvider,
   NNotificationProvider,
   NMessageProvider,
+
+  NGlobalStyle
 } from 'naive-ui'
 
 const naive = create({
@@ -70,6 +72,8 @@ const naive = create({
     NLoadingBarProvider,
     NNotificationProvider,
     NMessageProvider,
+
+    NGlobalStyle
   ]
 })
 

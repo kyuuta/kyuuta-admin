@@ -1,12 +1,15 @@
 <template>
   <NConfigProvider
     :locale="zhCN"
+    :theme="naiveTheme"
     :date-locale="dateZhCN"
-    :theme-overrides="themeStore.uiThemeOverrides"
+    :theme-overrides="uiThemeOverrides"
   >
     <AppProvider>
       <RouterView />
     </AppProvider>
+
+    <NGlobalStyle />
   </NConfigProvider>
 </template>
 
@@ -16,7 +19,7 @@ import { useThemeStore } from '@/store'
 import { zhCN, dateZhCN } from "naive-ui"
 import { AppProvider } from "@/components/AppProvider"
 
-const themeStore = useThemeStore()
+const { naiveTheme, uiThemeOverrides } = useThemeStore()
 </script>
 
 <style lang="less">

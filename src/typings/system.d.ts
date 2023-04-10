@@ -20,6 +20,8 @@ declare module Theme {
     header: Hedaer
     /** 底部配置 */
     footer: Footer
+    /** 暗黑模式 */
+    darkMode: boolean
     /** 滚动模式 */
     scrollMode: ScrollMode
     /** 主题色 */

@@ -1,6 +1,6 @@
 <template>
   <div class="drawer-item">
-    <div class="drawer-item-title">{{ title }}</div>
+    <div class="drawer-item-title" v-if="props.title">{{ props.title }}</div>
     <div class="drawer-item-content">
       <slot />
     </div>
@@ -8,11 +8,12 @@
 </template>
 
 <script lang="ts" setup>
-interface Props {
-  title: string
-}
-
-defineProps<Props>()
+const props = defineProps({
+  title: {
+    type: String,
+    default: null
+  }
+})
 </script>
 
 <style lang="less" scoped>

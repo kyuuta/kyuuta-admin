@@ -2,8 +2,8 @@
   <NDrawer v-model:show="modalVisible" :default-width="300">
     <NDrawerContent title="项目配置" :native-scrollbar="false">
       <div class="drawer">
-        <!-- <NDivider title-placement="centner">主题</NDivider> -->
-        <!-- Dark/Light Mode -->
+        <NDivider title-placement="centner">主题</NDivider>
+        <Theme />
 
         <NDivider title-placement="centner">系统主题</NDivider>
         <ThemeColor />
@@ -21,6 +21,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import {
+  Theme,
   ScrollMode,
   ThemeColor,
   MenuSetting

@@ -1,8 +1,11 @@
 <template>
-  <NLayout position="absolute">
+  <NLayout
+    position="absolute"
+    :native-scrollbar="false"
+  >
     <NLayout :position="positionStyle.position" has-sider>
       <Sider />
-      <NLayout :native-scrollbar="false">
+      <NLayout>
         <Header
           v-if="headerConfig.visible"
           :position="positionStyle.position"
@@ -10,6 +13,7 @@
         />
 
         <NLayout
+          :native-scrollbar="false"
           :position="positionStyle.position"
           :class="['wrapper-layout', {
             'has-footer': footerConfig.visible && footerConfig.fixed,

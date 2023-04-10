@@ -1,4 +1,5 @@
 const ThemeConfig: Theme.Setting =  {
+  darkMode: false,
   scrollMode: 'content',
   header: {
     visible: true,

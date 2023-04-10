@@ -1,5 +1,6 @@
 import { computed } from 'vue'
-import { defineStore } from "pinia"
+import { defineStore } from 'pinia'
+import { darkTheme } from 'naive-ui'
 import { getUIThemeOverrides, initThemeSetting } from './helpers'
 
 type ThemeState = Theme.Setting
@@ -15,6 +16,14 @@ export const useThemeStore = defineStore({
         ...state.themeColorList
       })
       return overrides
+    },
+    /** naiveUI暗黑模式主题 */
+    naiveTheme(state) {
+      return computed(() => state.darkMode ? darkTheme : undefined)
+    },
+    /** 暗黑模式 */
+    getDarkMode(state) {
+      return computed(() => state.darkMode)
     },
     /** 滚动模式 */
     getScrollMode(state) {
@@ -32,6 +41,7 @@ export const useThemeStore = defineStore({
     menuConfig(state) {
       return state.menu
     },
+    /** 面包屑配置 */
     breadcrumbConfig(state) {
       return state.breadcrumb
     }
@@ -40,6 +50,10 @@ export const useThemeStore = defineStore({
     /** 设置主题色 */
     setThemeColor(themeColor: string) {
       this.themeColor = themeColor
+    },
+    /** 设置开启暗黑模式 */
+    setDarkMode(darkMode: boolean) {
+      this.darkMode = darkMode
     },
     /** 设置滚动模式 */
     setScrollMode(mode: Theme.ScrollMode) {
@@ -51,7 +65,6 @@ export const useThemeStore = defineStore({
     },
     /** 设置展开收起操作模式 */
     setCollapseType(type: Theme.MenuCollpaseType) {
-      console.log(type)
       this.menu.collapseType = type
     },
     /** 设置菜单展开宽度 */
