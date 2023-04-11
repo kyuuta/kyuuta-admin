@@ -3,7 +3,8 @@ import { createApp } from 'vue'
 import { setupStore } from './store'
 import router, { setupRouter } from './router'
 import {
-  setupNaive
+  setupNaive,
+  setupCustomComponents
 } from '@/plugins'
 
 async function bootstrap() {
@@ -11,6 +12,9 @@ async function bootstrap() {
 
   // 注册naive-ui组件
   setupNaive(app)
+
+  // 全局自定义组件
+  setupCustomComponents(app)
 
   // 挂载状态管理
   setupStore(app)

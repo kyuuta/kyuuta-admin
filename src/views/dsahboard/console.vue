@@ -1,5 +1,5 @@
 <template>
-  <div class="test-wrapper" style="padding: 20px">
+  <div class="test-wrapper" style="padding: 15px">
     <NButton type="primary">Primary</NButton>
     <NButton type="info">Info</NButton>
     <NButton type="success">Success</NButton>

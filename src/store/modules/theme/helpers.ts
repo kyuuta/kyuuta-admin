@@ -13,6 +13,7 @@ export function initThemeSetting() {
   if(cacheSettings) {
     return cacheSettings
   }
+
   const { themeColor, isCustomizeInfoColor, themeColorList } = ThemeConfig
   const infoColor = isCustomizeInfoColor
     ? themeColorList.info
@@ -54,6 +55,7 @@ interface ColorAction {
 type ColorScene = '' | 'Suppl' | 'Hover' | 'Pressed' | 'Active'
 type ColorKey = `${ColorType}Color${ColorScene}`
 type ThemeColor = Partial<Record<ColorKey, string>>
+
 /** 获取颜色的衍生场景颜色  */
 function getThemeColors(colors: [ColorType, string][]) {
   const colorActions: ColorAction[] = [

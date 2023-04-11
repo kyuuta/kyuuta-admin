@@ -21,4 +21,4 @@ npm run serve
 - [ ] FilterForm Component
 - [ ] Axios Request
 - [ ] Search Page
-- [ ] Full Screen
+- [x] Full Screen
