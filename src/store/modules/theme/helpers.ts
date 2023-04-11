@@ -1,15 +1,24 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { cloneDeep } from 'lodash-es'
 import { ThemeConfig } from '@/config/theme'
+import { localStorage } from '@/utils'
 import { addColorAlpha, getColorPalette } from '@/utils'
 
 type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error'
 
 /** 初始化主题配置 */
 export function initThemeSetting() {
-  // TODO:cache
-  // TODO:customize info color
-  const setting = cloneDeep({ ...ThemeConfig })
+  const cacheSettings = localStorage.get('themeSettings')
+
+  if(cacheSettings) {
+    return cacheSettings
+  }
+  const { themeColor, isCustomizeInfoColor, themeColorList } = ThemeConfig
+  const infoColor = isCustomizeInfoColor
+    ? themeColorList.info
+    : getColorPalette(themeColor, 7)
+  
+  const setting = cloneDeep({ ...ThemeConfig, themeColor, infoColor })
   return setting
 }
 
@@ -18,7 +27,9 @@ export function getUIThemeOverrides(
   colors: Record<ColorType, string>
 ) : GlobalThemeOverrides {
   const { primary, success, warning, error } = colors
-  const info = getColorPalette(primary, 7)
+  const info = ThemeConfig.isCustomizeInfoColor
+    ? colors.info
+    : getColorPalette(primary, 7)
 
   const themeColors = getThemeColors([
     ['primary', primary],

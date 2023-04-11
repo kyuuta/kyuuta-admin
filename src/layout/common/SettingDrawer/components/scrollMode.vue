@@ -27,6 +27,7 @@ const switchStyle = ({
   focused: boolean,
   checked: boolean
 }) => {
+  
   const style: CSSProperties = {}
   if (checked) {
     style.background = "#1890ff"

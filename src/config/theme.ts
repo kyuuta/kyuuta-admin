@@ -17,6 +17,7 @@ const ThemeConfig: Theme.Setting =  {
     warning: '#faad14',
     error: '#f5222d'
   },
+  isCustomizeInfoColor: false,
   menu: {
     collapse: false,
     collapseType: 'header',

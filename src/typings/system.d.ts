@@ -28,6 +28,8 @@ declare module Theme {
     themeColor: string
     /** 其他主题色 */
     themeColorList: OtherColor
+    /** 自定义InfoColor */
+    isCustomizeInfoColor: boolean,
     /** 菜单配置 */
     menu: Menu,
     /** 面包屑配置 */

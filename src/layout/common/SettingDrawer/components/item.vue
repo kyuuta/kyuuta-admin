@@ -21,6 +21,7 @@ const props = defineProps({
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  width: 100%;
   line-height: 1;
   padding: 12px 0;
   &-title {

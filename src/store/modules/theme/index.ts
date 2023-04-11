@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import { defineStore } from 'pinia'
 import { darkTheme } from 'naive-ui'
+import { localStorage } from '@/utils'
 import { getUIThemeOverrides, initThemeSetting } from './helpers'
 
 type ThemeState = Theme.Setting
@@ -29,19 +30,19 @@ export const useThemeStore = defineStore({
     },
     /** 头部配置 */
     headerConfig(state) {
-      return state.header
+      return computed(() => state.header)
     },
     /** 底部配置 */
     footerConfig(state) {
-      return state.footer
+      return computed(() => state.footer)
     },
     /** 菜单配置 */
     menuConfig(state) {
-      return state.menu
+      return computed(() => state.menu)
     },
     /** 面包屑配置 */
     breadcrumbConfig(state) {
-      return state.breadcrumb
+      return computed(() => state.breadcrumb)
     }
   },
   actions: {
@@ -76,6 +77,15 @@ export const useThemeStore = defineStore({
     /** 设置是否显示面包屑icon */
     setBreadcrumbShowIcon(show: boolean) {
       this.breadcrumb.showIcon = show
+    },
+    /** 缓存主题相关配置 */
+    cacheThemeSettings() {
+      localStorage.set('themeSettings', this.$state)
+    },
+    /** 清除缓存 重置store状态 */
+    resetThemeStore() {
+      localStorage.remove('themeSettings')
+      this.$reset()
     }
   }
 })

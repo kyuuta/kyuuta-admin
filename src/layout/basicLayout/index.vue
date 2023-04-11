@@ -55,8 +55,8 @@ const {
   footerConfig
 } = useThemeStore()
 
-const headerHeight = computed(() => `${headerConfig.height}px`)
-const footerHeight = computed(() => `${footerConfig.height}px`)
+const headerHeight = computed(() => `${headerConfig.value.height}px`)
+const footerHeight = computed(() => `${footerConfig.value.height}px`)
 
 const positionStyle = computed(() =>
   getScrollMode.value === "content"

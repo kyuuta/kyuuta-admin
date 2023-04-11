@@ -17,7 +17,7 @@ npm run serve
 - [x] Dark & Light Mode
 - [x] Router Guard & Router Menu
 - [x] Breadcrumb
-- [ ] SystemThemeConfig & Cache ProjectConfig
+- [x] SystemThemeConfig & Cache ProjectConfig
 - [ ] FilterForm Component
 - [ ] Axios Request
 - [ ] Search Page

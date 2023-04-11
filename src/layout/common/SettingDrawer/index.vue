@@ -13,6 +13,9 @@
 
         <NDivider title-placement="centner">菜单相关</NDivider>
         <MenuSetting />
+
+        <NDivider title-placement="centner">主题配置</NDivider>
+        <Operations />
       </div>
     </NDrawerContent>
   </NDrawer>
@@ -22,9 +25,10 @@
 import { computed } from 'vue'
 import {
   Theme,
-  ScrollMode,
   ThemeColor,
-  MenuSetting
+  ScrollMode,
+  MenuSetting,
+  Operations
 } from './components/index'
 
 const props = defineProps<{ visible: boolean }>()

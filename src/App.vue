@@ -17,9 +17,12 @@
 import { computed } from "vue"
 import { useThemeStore } from '@/store'
 import { zhCN, dateZhCN } from "naive-ui"
+import { useGlobalEvents } from '@/composables'
 import { AppProvider } from "@/components/AppProvider"
 
 const { naiveTheme, uiThemeOverrides } = useThemeStore()
+
+useGlobalEvents()
 </script>
 
 <style lang="less">
