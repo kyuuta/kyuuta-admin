@@ -6,8 +6,7 @@
   >
     <NIcon
       size="22"
-      color="rgb(171,175,178)"
-      :component="Settings20Filled"
+      :component="Settings32Regular"
     />
   </TooltipContainer>
 
@@ -16,7 +15,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Settings20Filled } from '@vicons/fluent'
+import { Settings32Regular } from '@vicons/fluent'
 import SettingDrawer from '@/layout/common/SettingDrawer/index.vue'
 
 const settingVisible = ref<boolean>(false)

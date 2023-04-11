@@ -33,12 +33,13 @@ const showTooltip = computed(() => Boolean(props.tooltip))
 
 <style lang="less" scoped>
 .item {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   padding: 0 10px;
-  min-width: 30px;
+  min-width: 26px;
   &:hover {
     transition: background-color .3s;
     background-color: rgba(0, 0, 0, .03);
