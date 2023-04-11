@@ -17,12 +17,16 @@
         class="item"
         @click="setCollapse(!menuConfig.collapse)"
       >
-        <NIcon v-if="menuConfig.collapse" size="22">
-          <MenuUnfoldOutlined />
-        </NIcon>
-        <NIcon v-else size="22">
-          <MenuFoldOutlined />
-        </NIcon>
+        <NIcon
+          v-if="menuConfig.collapse"
+          size="22"
+          :component="MenuUnfoldOutlined"
+        />
+        <NIcon
+          v-else
+          size="22"
+          :component="MenuFoldOutlined"
+        />
       </div>
 
       <div class="breadcrumb" v-if="breadcrumbConfig.visible">
@@ -31,6 +35,21 @@
     </div>
 
     <div class="right-controls">
+      <div class="item" @click="setDarkMode(!getDarkMode)">
+        <NIcon
+          v-if="getDarkMode"
+          size="22"
+          color="rgb(255, 217, 59)"
+          :component="WeatherMoon24Filled"
+        />
+        <NIcon
+          v-else
+          size="22"
+          color="rgb(250,140,53)"
+          :component="WeatherSunny24Filled"
+        />
+      </div>
+
       <div class="item">
         <NDropdown trigger="hover" :options="avatarOptions">
           <div class="avatar">
@@ -44,8 +63,8 @@
           <template #trigger>
             <NIcon
               size="22"
-              depth="1"
-              :component="SettingIcon"
+              color="rgb(171,175,178)"
+              :component="Settings20Filled"
             />
           </template>
           <span>项目配置</span>
@@ -62,14 +81,18 @@ import { ref } from 'vue'
 import { useThemeStore } from '@/store'
 import { renderIcon } from '@/utils'
 import SettingDrawer from '../SettingDrawer/index.vue'
+import Breadcrumb from './components/breadcrumb.vue'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ArrowLeftOutlined as ExitIcon,
-  UserOutlined as UserIcon,
-  SettingOutlined as SettingIcon,
+  UserOutlined as UserIcon
 } from '@vicons/antd'
-import Breadcrumb from './components/breadcrumb.vue'
+import {
+  Settings20Filled,
+  WeatherSunny24Filled,
+  WeatherMoon24Filled
+} from '@vicons/fluent'
 
 const props = defineProps<{
   height: string
@@ -93,9 +116,11 @@ const avatarOptions = [
 ]
 
 const {
+  getDarkMode,
   menuConfig,
   breadcrumbConfig,
-  setCollapse
+  setCollapse,
+  setDarkMode
 } = useThemeStore()
 </script>
 
@@ -107,18 +132,21 @@ const {
   align-items: center;
   height: v-bind('props.height');
 
-  .left-controls .item:first-child {
-    padding: 0 20px;
-  }
+  // .left-controls .item:first-child {
+    // padding-left: 15px;
+  // }
   .right-controls, .left-controls {
     display: flex;
     height: 100%;
     .item {
+      display: flex;
+      justify-content: center;
       cursor: pointer;
       padding: 0 10px;
+      min-width: 30px;
       &:last-child {
         margin-right: 0;
-        padding: 0 20px;
+        // padding-right: 15px;
       }
       &:hover {
         transition: background-color .3s;

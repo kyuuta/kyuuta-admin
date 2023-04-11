@@ -2,7 +2,7 @@
   <Item class="dark-mode">
     <NSwitch
       size="large"
-      :value="themeStore.getDarkMode"
+      :value="themeStore.darkMode"
       :railStyle="switchStyle"
       :checked-value="false"
       :unchecked-value="true"
@@ -29,11 +29,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import Item from './item.vue'
-import {
-  WeatherSunny24Filled,
-  WeatherMoon24Filled
-} from '@vicons/fluent'
 import { useThemeStore } from '@/store'
+import { WeatherSunny24Filled, WeatherMoon24Filled } from '@vicons/fluent'
 
 const themeStore = useThemeStore()
 
