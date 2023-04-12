@@ -10,6 +10,7 @@
     </div>
 
     <div class="right-controls">
+      <Search />
       <FullScreen />
       <DarkMode />
       <Avatar />
@@ -26,6 +27,7 @@ import {
   Collapse,
   DarkMode,
   FullScreen,
+  Search,
   Setting
 } from './components'
 

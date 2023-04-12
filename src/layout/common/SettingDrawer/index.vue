@@ -23,6 +23,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
+import { useModalState } from '@/composables'
 import {
   Theme,
   ThemeColor,
@@ -33,11 +34,7 @@ import {
 
 const props = defineProps<{ visible: boolean }>()
 const emit = defineEmits<{(e: 'update:visible', visible: boolean): void }>()
-
-const modalVisible = computed<boolean>({
-  get() { return props.visible },
-  set(visible) { emit('update:visible', visible) }
-})
+const { modalVisible } = useModalState(props, emit)
 </script>
 
 <style lang="less" scoped>
