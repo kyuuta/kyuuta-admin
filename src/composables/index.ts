@@ -1,3 +1,3 @@
 export * from './router'
 export * from './events'
-export * from './useModal'
+export * from './useModalState'
