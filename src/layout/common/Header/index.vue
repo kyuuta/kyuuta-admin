@@ -1,9 +1,5 @@
 <template>
-  <NLayoutHeader
-    class="page-header"
-    bordered
-    :position="props.position"
-  >
+  <NLayoutHeader class="page-header" bordered :position="props.position">
     <div class="left-controls">
       <Collapse />
       <Breadcrumb />
@@ -20,16 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore } from '@/store'
-import {
-  Avatar,
-  Breadcrumb,
-  Collapse,
-  DarkMode,
-  FullScreen,
-  Search,
-  Setting
-} from './components'
+import { Avatar, Breadcrumb, Collapse, DarkMode, FullScreen, Search, Setting } from './components'
 
 const props = defineProps<{
   height: string
@@ -48,7 +35,8 @@ const props = defineProps<{
   .right-controls {
     padding-right: 10px;
   }
-  .right-controls, .left-controls {
+  .right-controls,
+  .left-controls {
     display: flex;
     height: 100%;
   }

@@ -10,10 +10,7 @@ export function useRouterPush(inSetup = true) {
   const router = inSetup ? useRouter() : globalRouter
   const route = globalRouter.currentRoute
 
-  function routerPush(
-    to: RouteLocationRaw,
-    newTab: boolean = false
-  ) {
+  function routerPush(to: RouteLocationRaw, newTab: boolean = false) {
     if (newTab) {
       const routerData = router.resolve(to)
       window.open(routerData.href, '_blank')

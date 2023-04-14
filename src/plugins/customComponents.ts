@@ -13,8 +13,8 @@ const components: Components = {
  * 全局注册自定义组件
  * @param app
  */
-export function setupCustomComponents(app: App) {
-  Object.keys(components).forEach(key => {
+export default function setupCustomComponents(app: App) {
+  Object.keys(components).forEach((key) => {
     app.component(`${key}`, components[key])
   })
 }

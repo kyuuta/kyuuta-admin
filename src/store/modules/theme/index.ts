@@ -12,14 +12,14 @@ export const useThemeStore = defineStore({
   getters: {
     /** naiveUI的主题配置 */
     uiThemeOverrides(state) {
-      return computed(() => getUIThemeOverrides({
+      return getUIThemeOverrides({
         primary: state.themeColor,
         ...state.themeColorList
-      }))
+      })
     },
     /** naiveUI暗黑模式主题 */
     naiveTheme(state) {
-      return computed(() => state.darkMode ? darkTheme : undefined)
+      return state.darkMode ? darkTheme : undefined
     },
     getDarkMode(state) {
       return computed(() => state.darkMode)
@@ -89,4 +89,3 @@ export const useThemeStore = defineStore({
     }
   }
 })
-

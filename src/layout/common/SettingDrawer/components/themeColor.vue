@@ -3,7 +3,7 @@
     <NColorPicker
       size="large"
       :modes="['hex']"
-      :show-alpha="false"
+      :showAlpha="false"
       :value="themeStore.themeColor"
       @update:value="themeStore.setThemeColor"
     />

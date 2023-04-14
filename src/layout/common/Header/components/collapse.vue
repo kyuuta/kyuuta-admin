@@ -1,25 +1,15 @@
 <template>
-  <div 
+  <div
     :style="{
-      paddingLeft: menuConfig.collapseType !== 'header'
-        ? '20px'
-        : null
+      paddingLeft: menuConfig.collapseType !== 'header' ? '20px' : null
     }"
   >
     <TooltipContainer
       v-if="menuConfig.collapseType === 'header'"
       @click="setCollapse(!menuConfig.collapse)"
     >
-      <NIcon
-        v-if="menuConfig.collapse"
-        size="22"
-        :component="MenuUnfoldOutlined"
-      />
-      <NIcon
-        v-else
-        size="22"
-        :component="MenuFoldOutlined"
-      />
+      <NIcon v-if="menuConfig.collapse" size="22" :component="MenuUnfoldOutlined" />
+      <NIcon v-else size="22" :component="MenuFoldOutlined" />
     </TooltipContainer>
   </div>
 </template>

@@ -34,7 +34,4 @@ export const ConstantRoute: RouteRecordRaw[] = [
   }
 ]
 
-export default [
-  RootRoute,
-  ...ConstantRoute
-]
+export default [RootRoute, ...ConstantRoute]

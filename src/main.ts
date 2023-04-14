@@ -2,12 +2,12 @@ import App from './App.vue'
 import { createApp } from 'vue'
 import { setupStore } from './store'
 import router, { setupRouter } from './router'
-import {
-  setupNaive,
-  setupCustomComponents
-} from '@/plugins'
+import { setupNaive, setupAssets, setupCustomComponents } from '@/plugins'
 
 async function bootstrap() {
+  // import assets: js、css
+  setupAssets()
+
   const app = createApp(App)
 
   // 注册naive-ui组件

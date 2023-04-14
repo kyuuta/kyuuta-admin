@@ -6,12 +6,4 @@ import FullScreen from './fullScreen.vue'
 import Search from './search/index.vue'
 import Setting from './setting.vue'
 
-export {
-  Avatar,
-  Breadcrumb,
-  Collapse,
-  DarkMode,
-  FullScreen,
-  Search,
-  Setting
-}
+export { Avatar, Breadcrumb, Collapse, DarkMode, FullScreen, Search, Setting }

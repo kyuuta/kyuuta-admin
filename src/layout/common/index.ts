@@ -5,11 +5,4 @@ import Sider from './Sider/index.vue'
 import Main from './Main/index.vue'
 import SettingDrawer from './SettingDrawer/index.vue'
 
-export {
-  Header,
-  Footer,
-  Menu,
-  Sider,
-  Main,
-  SettingDrawer
-}
+export { Header, Footer, Menu, Sider, Main, SettingDrawer }

@@ -3,7 +3,7 @@ import namesPlugin from 'colord/plugins/names'
 import mixPlugin from 'colord/plugins/mix'
 import type { AnyColor, HsvColor } from 'colord'
 
-extend([ namesPlugin, mixPlugin ])
+extend([namesPlugin, mixPlugin])
 
 /** 色相阶梯 */
 const hueStep = 2
@@ -19,12 +19,11 @@ const brightnessStep2 = 15
 const lightColorCount = 5
 /** 深色数量，主色下 */
 const darkColorCount = 4
-/** 
+/**
  * 调色板颜色等级索引
  * @description 从左至右颜色从深到浅
  */
 type ColorIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-
 
 /**
  * 根据颜色获取调色板颜色(从左至右从深到浅，6为主色号)
@@ -32,10 +31,7 @@ type ColorIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
  * @param index - 调色板的对应色号
  * @returns 返回hex格式的颜色
  */
-export function getColorPalette(
-  color: AnyColor,
-  index: ColorIndex
-): string {
+export function getColorPalette(color: AnyColor, index: ColorIndex): string {
   const transformColor = colord(color)
 
   if (!transformColor.isValid()) {
@@ -59,17 +55,17 @@ export function getColorPalette(
   return colord(newHsv).toHex()
 }
 
+// export function getColorPalettes() {
+
+// }
+
 /**
  * 获取色相渐变
  * @param hsv - hsv格式颜色值
  * @param i - 与6的相对距离
  * @param isLight - 是否亮色系
  */
-function getHue(
-  hsv: HsvColor,
-  i: number,
-  isLight: boolean
-) {
+function getHue(hsv: HsvColor, i: number, isLight: boolean) {
   let hue: number
   const hsvH = Math.round(hsv.h)
 
@@ -85,8 +81,12 @@ function getHue(
     hue = isLight ? hsvH + hueStep * i : hsvH - hueStep * 1
   }
 
-  if (hue < 0) { hue += 360 }
-  if (hue >= 360) { hue -= 360 }
+  if (hue < 0) {
+    hue += 360
+  }
+  if (hue >= 360) {
+    hue -= 360
+  }
 
   return hue
 }
@@ -97,11 +97,7 @@ function getHue(
  * @param i - 与6的相对距离
  * @param isLight - 是否亮色系
  */
-function getSaturation(
-  hsv: HsvColor,
-  i: number,
-  isLight: boolean
-) {
+function getSaturation(hsv: HsvColor, i: number, isLight: boolean) {
   if (hsv.h === 0 && hsv.s === 0) {
     return hsv.s
   }
@@ -116,13 +112,17 @@ function getSaturation(
     saturation = hsv.s + saturationStep2 * i
   }
 
-  if (saturation > 100) { saturation = 100 }
+  if (saturation > 100) {
+    saturation = 100
+  }
 
   if (isLight && i === lightColorCount && saturation > 10) {
     saturation = 10
   }
 
-  if (saturation < 6) { saturation = 6}
+  if (saturation < 6) {
+    saturation = 6
+  }
 
   return saturation
 }
@@ -133,22 +133,17 @@ function getSaturation(
  * @param i - 与6的相对距离
  * @param isLight - 是否是亮颜色
  */
-function getValue(
-  hsv: HsvColor,
-  i: number,
-  isLight: boolean
-) {
+function getValue(hsv: HsvColor, i: number, isLight: boolean) {
   let value: number
 
-  value = isLight
-    ? hsv.v + brightnessStep1 * i
-    : hsv.v - brightnessStep2 * i
+  value = isLight ? hsv.v + brightnessStep1 * i : hsv.v - brightnessStep2 * i
 
-  if (value > 100) { value = 100}
+  if (value > 100) {
+    value = 100
+  }
 
   return value
 }
-
 
 /**
  * 给颜色加透明度

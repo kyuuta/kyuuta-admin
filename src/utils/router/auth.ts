@@ -5,13 +5,8 @@ import { RouteRecordRaw } from 'vue-router'
  * @param routes - 权限路由
  * @param permission - 权限
  */
- export function filterAsyncRoutes(
-  routes: RouteRecordRaw[],
-  permission: string
-) {
-  return routes.map(
-    route => filterRoutePermisson(route, permission)
-  ).flat(1)
+export function filterAsyncRoutes(routes: RouteRecordRaw[], permission: string) {
+  return routes.map((route) => filterRoutePermisson(route, permission)).flat(1)
 }
 
 /**
@@ -19,13 +14,12 @@ import { RouteRecordRaw } from 'vue-router'
  * @param route - 路由
  * @param permission - 权限
  */
-export function getPermission(
-  route: RouteRecordRaw,
-  permission: string
-): boolean {
-  return !route?.meta?.permissions
-    || permission === 'super'
-    || route.meta.permissions.includes(permission)
+export function getPermission(route: RouteRecordRaw, permission: string): boolean {
+  return (
+    !route?.meta?.permissions ||
+    permission === 'super' ||
+    route.meta.permissions.includes(permission)
+  )
 }
 
 /**
@@ -33,17 +27,14 @@ export function getPermission(
  * @param route - 路由
  * @param permission - 权限
  */
-export function filterRoutePermisson(
-  route: RouteRecordRaw,
-  permission: string
-) {
+export function filterRoutePermisson(route: RouteRecordRaw, permission: string) {
   const filterRoute = { ...route }
   const hasPermission = getPermission(route, permission)
-  
+
   if (filterRoute.children) {
-    const filterChildren = filterRoute.children.map(
-      item => filterRoutePermisson(item, permission)
-    ).flat(1)
+    const filterChildren = filterRoute.children
+      .map((item) => filterRoutePermisson(item, permission))
+      .flat(1)
     Object.assign(filterRoute, { children: filterChildren })
   }
 

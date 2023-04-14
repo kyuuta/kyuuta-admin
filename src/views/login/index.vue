@@ -1,8 +1,8 @@
 <template>
-登录
+  登录
 
-<NButton @click="submit">登录</NButton>
-<NButton @click="test">test</NButton>
+  <NButton @click="submit">登录</NButton>
+  <NButton @click="test">test</NButton>
 </template>
 
 <script lang="ts" setup>
@@ -12,7 +12,7 @@ import { useUserStore } from '@/store'
 const userStore = useUserStore()
 
 const test = () => {
-console.log(router.getRoutes())
+  console.log(router.getRoutes())
 }
 
 const submit = () => {
@@ -20,5 +20,4 @@ const submit = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

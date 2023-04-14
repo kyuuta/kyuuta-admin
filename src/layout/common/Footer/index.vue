@@ -1,11 +1,5 @@
 <template>
-  <NLayoutFooter
-    class="page-footer"
-    :position="props.position"
-    bordered
-  >
-    KYUUTA
-  </NLayoutFooter>
+  <NLayoutFooter class="page-footer" :position="props.position" bordered> KYUUTA </NLayoutFooter>
 </template>
 
 <script lang="ts" setup>

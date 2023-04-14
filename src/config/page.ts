@@ -21,5 +21,5 @@ export enum PageConfig {
 
   // 404
   NOT_FOUNT = '/not-fount',
-  NOT_FOUNT_NAME = 'NotFound',
+  NOT_FOUNT_NAME = 'NotFound'
 }

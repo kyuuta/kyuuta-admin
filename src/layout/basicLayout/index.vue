@@ -1,8 +1,5 @@
 <template>
-  <NLayout
-    position="absolute"
-    :native-scrollbar="false"
-  >
+  <NLayout position="absolute">
     <NLayout :position="positionStyle.position" has-sider>
       <Sider />
       <NLayout>
@@ -15,11 +12,13 @@
         <NLayout
           :native-scrollbar="false"
           :position="positionStyle.position"
-          :class="['wrapper-layout', {
-            'has-footer': footerConfig.visible && footerConfig.fixed,
-            'fix-header':
-              getScrollMode === 'content' && headerConfig.visible,
-          }]"
+          :class="[
+            'wrapper-layout',
+            {
+              'has-footer': footerConfig.visible && footerConfig.fixed,
+              'fix-header': getScrollMode === 'content' && headerConfig.visible
+            }
+          ]"
         >
           <Main />
 
@@ -30,42 +29,29 @@
           />
         </NLayout>
 
-        <Footer
-          v-if="footerConfig.visible && footerConfig.fixed"
-          :height="footerHeight"
-        />
+        <Footer v-if="footerConfig.visible && footerConfig.fixed" :height="footerHeight" />
       </NLayout>
     </NLayout>
   </NLayout>
 </template>
 
 <script lang="ts" setup>
-import { ref, unref, computed } from "vue"
-import { useThemeStore } from "@/store"
-import {
-  Header,
-  Footer,
-  Sider,
-  Main
-} from '../common'
-
-const {
-  getScrollMode,
-  headerConfig,
-  footerConfig
-} = useThemeStore()
+import { computed } from 'vue'
+import { useThemeStore } from '@/store'
+import { Header, Footer, Sider, Main } from '../common'
+const { getScrollMode, headerConfig, footerConfig } = useThemeStore()
 
 const headerHeight = computed(() => `${headerConfig.value.height}px`)
 const footerHeight = computed(() => `${footerConfig.value.height}px`)
 
 const positionStyle = computed(() =>
-  getScrollMode.value === "content"
+  getScrollMode.value === 'content'
     ? {
-        position: "absolute",
-        paddingTop: footerHeight,
+        position: 'absolute',
+        paddingTop: footerHeight
       }
-    : { position: "static" }
-);
+    : { position: 'static' }
+)
 </script>
 
 <style lang="less" scoped>

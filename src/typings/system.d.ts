@@ -29,9 +29,9 @@ declare module Theme {
     /** 其他主题色 */
     themeColorList: OtherColor
     /** 自定义InfoColor */
-    isCustomizeInfoColor: boolean,
+    isCustomizeInfoColor: boolean
     /** 菜单配置 */
-    menu: Menu,
+    menu: Menu
     /** 面包屑配置 */
     breadcrumb: Breadcrumb
   }
@@ -81,5 +81,17 @@ declare module Theme {
     visible: boolean
     /** 是否展示icon */
     showIcon: boolean
+  }
+}
+
+declare namespace App {
+  /** 菜单项配置 */
+  type GlobalMenuOption = import('naive-ui').MenuOption & {
+    key: string
+    label: string
+    routeName: string
+    routePath: string
+    icon?: () => import('vue').VNodeChild
+    children?: GlobalMenuOption[]
   }
 }

@@ -4,7 +4,7 @@
     preset="card"
     :closable="false"
     :style="modalStyle.body"
-    :footer-style="{ padding: '10px 25px' }"
+    :footerStyle="{ padding: '10px 25px' }"
     :segmented="{ footer: true }"
     @after-leave="clear"
   >
@@ -23,21 +23,26 @@
       <NScrollbar v-if="resultOptions.length">
         <div
           v-for="(menu, index) in resultOptions"
-          :key="menu.routeName"
-          :class="['item', {
-            'item-active': activeIndex === index
-          }]"
+          :key="menu.key"
+          :class="[
+            'item',
+            'bg-#e5e7eb',
+            'dark:bg-dark',
+            {
+              'item-active': activeIndex === index
+            }
+          ]"
           @click="handleEnter"
           @mouseenter="activeIndex = index"
         >
           <div class="info">
             <component v-if="menu.icon" :is="menu.icon" size="22" />
-            <span>{{ menu.label }} -{{ index }}</span>
+            <span>{{ menu.label }}</span>
           </div>
-          <NIcon size="20" color="#fff" :component="ArrowEnterLeft20Regular" />
+          <NIcon size="20" :component="ArrowEnterLeft20Regular" />
         </div>
       </NScrollbar>
-      <NEmpty v-else description="没找到你想要的页面捏"></NEmpty>
+      <NEmpty v-else description="没找到你想要的页面捏" />
     </div>
     <template #footer>
       <div class="operations">
@@ -60,25 +65,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, shallowRef, computed } from "vue"
-import { RouteRecordRaw, useRoute } from "vue-router"
-import { useRouteStore } from "@/store"
+import { ref, shallowRef } from 'vue'
+import { useRouteStore } from '@/store'
 import { useRouterPush, useModalState } from '@/composables'
-import { onKeyStroke, useDebounceFn } from "@vueuse/core"
-import { Search20Filled, ArrowEnterLeft20Regular } from "@vicons/fluent"
+import { onKeyStroke, useDebounceFn } from '@vueuse/core'
+import { Search20Filled, ArrowEnterLeft20Regular } from '@vicons/fluent'
 
-
-const { name } = useRoute()
-const searchKey = ref("")
+const searchKey = ref('')
 const routeStore = useRouteStore()
-const resultOptions = shallowRef<RouteRecordRaw[]>([])
-const activeIndex = ref(null)
+const resultOptions = shallowRef<App.GlobalMenuOption[]>([])
+const activeIndex = ref<number>()
 const { routerPush } = useRouterPush()
 
-const flattenArray = arr => {
-  const result = []
-
-  const processChildren = item => {
+const flattenArray = (arr: App.GlobalMenuOption[]): App.GlobalMenuOption[] => {
+  const result: App.GlobalMenuOption[] = []
+  const processChildren = (item: App.GlobalMenuOption) => {
     if (item.children && item.children.length > 0) {
       result.push({ ...item, children: [] })
       item.children.forEach(processChildren)
@@ -86,31 +87,29 @@ const flattenArray = arr => {
       result.push(item)
     }
   }
-
   arr.forEach(processChildren)
-
   return result
 }
+
 const searchPage = () => {
+  // @ts-ignore
   resultOptions.value = flattenArray(routeStore.menu).filter(
     (menu) =>
       searchKey.value &&
-        menu.label
-          .toLocaleLowerCase()
-          .includes(searchKey.value.toLocaleLowerCase().trim())
+      menu.label.toLocaleLowerCase().includes(searchKey.value.toLocaleLowerCase().trim())
   )
 
-  if(resultOptions.value.length) {
+  if (resultOptions.value.length) {
     activeIndex.value = 0
   } else {
-    activeIndex.value = null
+    activeIndex.value = undefined
   }
 }
 const handleDown = () => {
   const { length } = resultOptions.value
-  if(length === 0) return
+  if (length === 0 || activeIndex.value === undefined) return
 
-  if(activeIndex.value + 1 === length) {
+  if (activeIndex.value + 1 === length) {
     activeIndex.value = 0
   } else {
     activeIndex.value++
@@ -118,15 +117,16 @@ const handleDown = () => {
 }
 const handleUp = () => {
   const { length } = resultOptions.value
-  if(length === 0) return
+  if (length === 0 || activeIndex.value === undefined) return
 
-  if(activeIndex.value === 0) {
+  if (activeIndex.value === 0) {
     activeIndex.value = length - 1
   } else {
     activeIndex.value--
   }
 }
 const handleEnter = () => {
+  if (activeIndex.value === undefined) return
   const { routeName } = resultOptions.value[activeIndex.value]
   routerPush({ name: routeName })
   handleClose()
@@ -134,7 +134,7 @@ const handleEnter = () => {
 const handleSearch = useDebounceFn(searchPage, 300)
 
 const props = defineProps<{ visible: boolean }>()
-const emit = defineEmits<{ (e: "update:value", visible: boolean): void }>()
+const emit = defineEmits<{ (e: 'update:visible', visible: boolean): void }>()
 const { modalVisible } = useModalState(props, emit)
 const handleClose = () => {
   modalVisible.value = false
@@ -147,11 +147,11 @@ const clear = () => {
 
 const modalStyle = {
   body: {
-    width: "600px",
-    position: "fixed",
-    top: "100px",
+    width: '600px',
+    position: 'fixed',
+    top: '100px',
     left: 0,
-    right: 0,
+    right: 0
   }
 }
 onKeyStroke('Enter', handleEnter)
@@ -171,12 +171,11 @@ onKeyStroke('ArrowDown', handleDown)
     line-height: 50px;
     margin-bottom: 10px;
     padding: 0 14px;
-    color: var(--n-text-color);
     border-radius: var(--n-border-radius);
-    background-color: var(--n-color);
-    &-active, &:hover {
-      transition: background-color .3s;
-      background-color: var(--color-test);
+    &-active {
+      color: #fff;
+      transition: background-color 0.3s;
+      background-color: rgb(var(--primary-color));
     }
     .info {
       display: flex;

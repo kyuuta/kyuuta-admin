@@ -1,7 +1,4 @@
-import type {
-  NavigationGuardNext,
-  RouteLocationNormalized
-} from 'vue-router'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { localStorage } from '@/utils'
 import { useRouteStore } from '@/store'
 import { PageConfig } from '@/config/page'
@@ -14,23 +11,15 @@ export async function createDynamicRouteGuard(
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
-  const {
-    initAuthRoute,
-    isInitAuthRoute,
-    validConstantRoute
-  } = useRouteStore()
-  const {
-    ROOT_NAME,
-    BASE_LOGIN_NAME,
-    NOT_FOUNT_NAME
-  } = PageConfig
+  const { initAuthRoute, isInitAuthRoute, validConstantRoute } = useRouteStore()
+  const { ROOT_NAME, BASE_LOGIN_NAME, NOT_FOUNT_NAME } = PageConfig
   const isLogin = Boolean(localStorage.get('token'))
 
   /** 初始化路由权限 */
   if (!isInitAuthRoute) {
     /** 未登录情况下回到登录页 登录成功后再加载权限路由 */
     if (!isLogin) {
-      if(validConstantRoute(to.name as string) && !to?.meta?.requiresAuth) {
+      if (validConstantRoute(to.name as string) && !to?.meta?.requiresAuth) {
         next()
       } else {
         next({
@@ -46,9 +35,9 @@ export async function createDynamicRouteGuard(
 
     /** 触发新的导航以显示addRoute添加的路由 */
     /** https://router.vuejs.org/zh/api/#addroute-1 */
-    if(to.name === NOT_FOUNT_NAME) {
+    if (to.name === NOT_FOUNT_NAME) {
       const path = to.redirectedFrom?.name === ROOT_NAME ? '/' : to.fullPath
-      next({ path, replace: true, query: to.query, hash: to.hash})
+      next({ path, replace: true, query: to.query, hash: to.hash })
       return false
     }
   }

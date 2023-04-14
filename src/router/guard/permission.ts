@@ -12,11 +12,7 @@ export async function createPermissionGuard(
   const permission = await createDynamicRouteGuard(to, from, next)
   if (!permission) return
 
-  const { 
-    href,
-    requiresAuth = false,
-    permissions = []
-  } = to?.meta
+  const { href, requiresAuth = false, permissions = [] } = to?.meta
 
   // 处理外链
   if (href) {
@@ -58,7 +54,7 @@ export async function createPermissionGuard(
       () => {
         next()
       }
-    ],
+    ]
     // 登录状态进入需要登录权限的页面，无权限，重定向到无权限页面
     // [
     //   isLogin && needLogin && !hasPermission,

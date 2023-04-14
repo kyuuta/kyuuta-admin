@@ -1,9 +1,9 @@
 <template>
   <NConfigProvider
     :locale="zhCN"
-    :theme="naiveTheme"
-    :date-locale="dateZhCN"
-    :theme-overrides="uiThemeOverrides"
+    :theme="theme.naiveTheme"
+    :dateLocale="dateZhCN"
+    :themeOverrides="theme.uiThemeOverrides"
   >
     <AppProvider>
       <RouterView />
@@ -14,18 +14,18 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue"
-import { useThemeStore } from '@/store'
-import { zhCN, dateZhCN } from "naive-ui"
+import { useThemeStore, subscribeStore } from '@/store'
+import { zhCN, dateZhCN } from 'naive-ui'
 import { useGlobalEvents } from '@/composables'
-import { AppProvider } from "@/components/AppProvider"
+import { AppProvider } from '@/components/AppProvider'
 
-const { naiveTheme, uiThemeOverrides } = useThemeStore()
+const theme = useThemeStore()
 
 useGlobalEvents()
+subscribeStore()
 </script>
 
 <style lang="less">
-@import "styles/common.less";
-@import "styles/anime.less";
+@import 'styles/common.less';
+@import 'styles/anime.less';
 </style>

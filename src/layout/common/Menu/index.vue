@@ -6,7 +6,7 @@
     :root-indent="16"
     :value="activeKey"
     :options="routeStore.menu"
-    @update:value="name => routerPush({ name })"
+    @update:value="(name) => routerPush({ name })"
   />
 </template>
 

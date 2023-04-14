@@ -1,13 +1,6 @@
 <template>
-  <TooltipContainer
-    tooltip="项目配置"
-    placement="bottom-end"
-    @click="openSetting"
-  >
-    <NIcon
-      size="22"
-      :component="Settings32Regular"
-    />
+  <TooltipContainer tooltip="项目配置" placement="bottom-end" @click="openSetting">
+    <NIcon size="22" :component="Settings32Regular" />
   </TooltipContainer>
 
   <SettingDrawer v-model:visible="settingVisible" />
@@ -19,5 +12,5 @@ import { Settings32Regular } from '@vicons/fluent'
 import SettingDrawer from '@/layout/common/SettingDrawer/index.vue'
 
 const settingVisible = ref<boolean>(false)
-const openSetting = () => settingVisible.value = true
+const openSetting = () => (settingVisible.value = true)
 </script>

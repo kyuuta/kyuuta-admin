@@ -2,11 +2,11 @@
   <NBreadcrumb class="breadcrumb" v-if="breadcrumbConfig.visible">
     <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.key">
       <NBreadcrumbItem>
-        <NDropdown 
+        <NDropdown
           v-if="breadcrumb?.children?.length"
           placement="bottom-start"
           :options="breadcrumb.children"
-          @select="key => routerPush({ name: key })"
+          @select="(key) => routerPush({ name: key })"
         >
           <span>
             <component

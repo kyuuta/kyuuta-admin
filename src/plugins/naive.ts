@@ -38,7 +38,6 @@ import {
   NLoadingBarProvider,
   NNotificationProvider,
   NMessageProvider,
-
   NGlobalStyle
 } from 'naive-ui'
 
@@ -66,14 +65,14 @@ const naive = create({
     NColorPicker,
     NInputNumber,
     NDrawerContent,
-  
+
     // Layout
     NLayout,
     NLayoutHeader,
     NLayoutContent,
     NLayoutFooter,
     NLayoutSider,
-  
+
     // Prompt
     NConfigProvider,
     NDialogProvider,
@@ -85,6 +84,6 @@ const naive = create({
   ]
 })
 
-export function setupNaive(app: App<Element>) {
+export default function setupNaive(app: App<Element>) {
   app.use(naive)
 }

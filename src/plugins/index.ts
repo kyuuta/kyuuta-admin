@@ -1,2 +1,5 @@
-export { setupNaive } from './naive'
-export { setupCustomComponents } from './customComponents'
+import setupNaive from './naive'
+import setupCustomComponents from './customComponents'
+import setupAssets from './assets'
+
+export { setupNaive, setupAssets, setupCustomComponents }

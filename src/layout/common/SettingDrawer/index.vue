@@ -1,20 +1,20 @@
 <template>
-  <NDrawer v-model:show="modalVisible" :default-width="300">
-    <NDrawerContent title="项目配置" :native-scrollbar="false">
+  <NDrawer v-model:show="modalVisible" :defaultWidth="300">
+    <NDrawerContent title="项目配置" :nativeScrollbar="false">
       <div class="drawer">
-        <NDivider title-placement="centner">主题</NDivider>
+        <NDivider titlePlacement="center">主题</NDivider>
         <Theme />
 
-        <NDivider title-placement="centner">系统主题</NDivider>
+        <NDivider titlePlacement="center">系统主题</NDivider>
         <ThemeColor />
 
-        <NDivider title-placement="centner">界面功能</NDivider>
+        <NDivider titlePlacement="center">界面功能</NDivider>
         <ScrollMode />
 
-        <NDivider title-placement="centner">菜单相关</NDivider>
+        <NDivider titlePlacement="center">菜单相关</NDivider>
         <MenuSetting />
 
-        <NDivider title-placement="centner">主题配置</NDivider>
+        <NDivider titlePlacement="center">主题配置</NDivider>
         <Operations />
       </div>
     </NDrawerContent>
@@ -22,18 +22,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { useModalState } from '@/composables'
-import {
-  Theme,
-  ThemeColor,
-  ScrollMode,
-  MenuSetting,
-  Operations
-} from './components/index'
+import { Theme, ThemeColor, ScrollMode, MenuSetting, Operations } from './components/index'
 
 const props = defineProps<{ visible: boolean }>()
-const emit = defineEmits<{(e: 'update:visible', visible: boolean): void }>()
+const emit = defineEmits<{ (e: 'update:visible', visible: boolean): void }>()
 const { modalVisible } = useModalState(props, emit)
 </script>
 

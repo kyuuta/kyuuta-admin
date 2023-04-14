@@ -2,7 +2,7 @@
   <TooltipContainer>
     <NDropdown trigger="hover" :options="avatarOptions">
       <div class="avatar">
-        <NAvatar round>KYUUTA</Navatar>
+        <NAvatar round>KYUUTA</NAvatar>
       </div>
     </NDropdown>
   </TooltipContainer>

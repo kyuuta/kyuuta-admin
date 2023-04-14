@@ -20,21 +20,14 @@ import { useThemeStore } from '@/store'
 
 const { getScrollMode, setScrollMode } = useThemeStore()
 
-const switchStyle = ({ 
-  focused,
-  checked 
-}: { 
-  focused: boolean,
-  checked: boolean
-}) => {
-  
+const switchStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
   const style: CSSProperties = {}
   if (checked) {
-    style.background = "#1890ff"
+    style.background = '#1890ff'
     style.boxShadow = '0 0 0 2px rgba(24, 144, 255, .2)'
   } else {
-    style.background = "#8a2be2"
-    style.boxShadow = "0 0 0 2px rgba(138, 43, 226, .2)"
+    style.background = '#8a2be2'
+    style.boxShadow = '0 0 0 2px rgba(138, 43, 226, .2)'
   }
   return style
 }

@@ -1,4 +1,4 @@
-const ThemeConfig: Theme.Setting =  {
+const ThemeConfig: Theme.Setting = {
   darkMode: false,
   scrollMode: 'content',
   header: {
@@ -11,7 +11,7 @@ const ThemeConfig: Theme.Setting =  {
     fixed: true
   },
   themeColor: '#1890ff',
-  themeColorList:  {
+  themeColorList: {
     info: '#2080f0',
     success: '#52c41a',
     warning: '#faad14',
@@ -29,6 +29,4 @@ const ThemeConfig: Theme.Setting =  {
   }
 }
 
-export {
-  ThemeConfig
-}
+export { ThemeConfig }

@@ -1,27 +1,24 @@
 import { RouteRecordRaw } from 'vue-router'
-import type { MenuOption } from 'naive-ui'
 
 /**
  * 将路由表转换成Naive Menu格式&Breadcrumb格式
  * @param routes - 路由
  */
-export function transformRouteToMenu(
-  routes: RouteRecordRaw[]
-) {
-  const menu: MenuOption[] = []
+export function transformRouteToMenu(routes: RouteRecordRaw[]) {
+  const menu: App.GlobalMenuOption[] = []
 
-  routes.forEach(route => {
+  routes.forEach((route) => {
     const { name, path, meta } = route
     const routeName = name as string
-    let menuChildren: MenuOption[] | undefined
+    let menuChildren: App.GlobalMenuOption[] | undefined
 
     if (route.children && route.children.length) {
       menuChildren = transformRouteToMenu(route.children)
     }
 
-    const menuItem: MenuOption = {
+    const menuItem: App.GlobalMenuOption = {
       key: routeName,
-      label: meta?.title || routeName,
+      label: (meta?.title || routeName) as string,
       routeName,
       routePath: path,
       icon: meta?.icon,

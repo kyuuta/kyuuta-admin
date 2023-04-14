@@ -1,6 +1,6 @@
 <template>
   <div v-if="showTooltip">
-    <NTooltip :placement="placement" trigger="hover" arrow-point-to-center>
+    <NTooltip :placement="placement" trigger="hover" arrowPointToCenter>
       <template #trigger>
         <div class="item">
           <slot />
@@ -41,8 +41,8 @@ const showTooltip = computed(() => Boolean(props.tooltip))
   padding: 0 10px;
   min-width: 26px;
   &:hover {
-    transition: background-color .3s;
-    background-color: rgba(0, 0, 0, .03);
+    transition: background-color 0.3s;
+    background-color: rgba(0, 0, 0, 0.03);
   }
 }
 </style>

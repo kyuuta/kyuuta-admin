@@ -4,49 +4,32 @@
       size="large"
       :value="themeStore.darkMode"
       :railStyle="switchStyle"
-      :checked-value="false"
-      :unchecked-value="true"
+      :checkedValue="false"
+      :uncheckedValue="true"
       @update:value="themeStore.setDarkMode"
     >
       <template #checked>
-        <NIcon
-          size="20"
-          color="rgb(250,140,53)"
-          :component="WeatherSunny24Filled"
-        />
+        <NIcon size="20" color="rgb(250,140,53)" :component="WeatherSunny24Filled" />
       </template>
       <template #unchecked>
-        <NIcon
-          size="20"
-          color="rgb(255, 217, 59)"
-          :component="WeatherMoon24Filled"
-        />
-      </template>  
+        <NIcon size="20" color="rgb(255, 217, 59)" :component="WeatherMoon24Filled" />
+      </template>
     </NSwitch>
   </Item>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import Item from './item.vue'
 import { useThemeStore } from '@/store'
 import { WeatherSunny24Filled, WeatherMoon24Filled } from '@vicons/fluent'
 
 const themeStore = useThemeStore()
 
-const switchStyle = ({ 
-  focused,
-  checked 
-}: { 
-  focused: boolean,
-  checked: boolean
-}) => {
+const switchStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
   return {
-    background: checked ? "#e8f2fc" : "#000e1c"
+    background: checked ? '#e8f2fc' : '#000e1c'
   }
 }
-
-const mode = ref(false)
 </script>
 
 <style lang="less" scoped>
@@ -55,4 +38,3 @@ const mode = ref(false)
   justify-content: center;
 }
 </style>
-

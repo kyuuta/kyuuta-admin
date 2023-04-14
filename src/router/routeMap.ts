@@ -1,9 +1,6 @@
 import { handleModuleRoutes } from '@/utils'
 
-const modules: RouteModule.Modules = import.meta.glob(
-  './modules/**/*.ts',
-  { eager: true }
-)
+const modules: RouteModule.Modules = import.meta.glob('./modules/**/*.ts', { eager: true })
 
 const routes = handleModuleRoutes(modules)
 

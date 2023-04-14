@@ -8,13 +8,11 @@
     :width="menuConfig.collapsedWidth"
     :collapsed="menuConfig.collapse"
     :show-trigger="
-      ['bar','arrow-circle'].includes(menuConfig.collapseType) 
-        ? menuConfig.collapseType
-        : false
+      ['bar', 'arrow-circle'].includes(menuConfig.collapseType) ? menuConfig.collapseType : false
     "
     @update:collapsed="setCollapse"
   >
-    <AsideMenu :collapsed="menuConfig.collapse"/>
+    <AsideMenu :collapsed="menuConfig.collapse" />
   </NLayoutSider>
 </template>
 
@@ -22,10 +20,7 @@
 import AsideMenu from '../Menu/index.vue'
 import { useThemeStore } from '@/store'
 
-const {
-  menuConfig,
-  setCollapse
-} = useThemeStore()
+const { menuConfig, setCollapse } = useThemeStore()
 </script>
 
 <style lang="less" scoped>
