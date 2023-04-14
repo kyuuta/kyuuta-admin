@@ -25,7 +25,7 @@
               class="breadcrumb-icon"
               :is="breadcrumb.icon"
             />
-            <span>{{ breadcrumb?.meta?.title || breadcrumb.label }}</span>
+            <span>{{ breadcrumb.label }}</span>
           </span>
         </template>
       </NBreadcrumbItem>

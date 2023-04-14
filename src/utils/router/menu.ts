@@ -18,7 +18,7 @@ export function transformRouteToMenu(routes: RouteRecordRaw[]) {
 
     const menuItem: App.GlobalMenuOption = {
       key: routeName,
-      label: (meta?.title || routeName) as string,
+      label: meta?.title || routeName,
       routeName,
       routePath: path,
       icon: meta?.icon,
