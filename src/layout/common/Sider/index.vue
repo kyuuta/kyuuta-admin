@@ -2,13 +2,15 @@
   <NLayoutSider
     class="sider"
     bordered
-    :native-scrollbar="false"
-    collapse-mode="width"
-    :collapsed-width="64"
+    :nativeScrollbar="false"
+    collapseMode="width"
+    :collapsedWidth="64"
     :width="menuConfig.collapsedWidth"
     :collapsed="menuConfig.collapse"
-    :show-trigger="
-      ['bar', 'arrow-circle'].includes(menuConfig.collapseType) ? menuConfig.collapseType : false
+    :showTrigger="
+      ['bar', 'arrow-circle'].includes(menuConfig.collapseType)
+        ? menuConfig.collapseType
+        : undefined
     "
     @update:collapsed="setCollapse"
   >

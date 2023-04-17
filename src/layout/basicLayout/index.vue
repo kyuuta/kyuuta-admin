@@ -1,17 +1,13 @@
 <template>
   <NLayout position="absolute">
-    <NLayout :position="positionStyle.position" has-sider>
+    <NLayout hasSider :position="position">
       <Sider />
       <NLayout>
-        <Header
-          v-if="headerConfig.visible"
-          :position="positionStyle.position"
-          :height="headerHeight"
-        />
+        <Header v-if="headerConfig.visible" :position="position" :height="headerHeight" />
 
         <NLayout
-          :native-scrollbar="false"
-          :position="positionStyle.position"
+          :nativeScrollbar="false"
+          :position="position"
           :class="[
             'wrapper-layout',
             {
@@ -44,13 +40,8 @@ const { getScrollMode, headerConfig, footerConfig } = useThemeStore()
 const headerHeight = computed(() => `${headerConfig.value.height}px`)
 const footerHeight = computed(() => `${footerConfig.value.height}px`)
 
-const positionStyle = computed(() =>
-  getScrollMode.value === 'content'
-    ? {
-        position: 'absolute',
-        paddingTop: footerHeight
-      }
-    : { position: 'static' }
+const position = computed<'absolute' | 'static'>(() =>
+  getScrollMode.value === 'content' ? 'absolute' : 'static'
 )
 </script>
 

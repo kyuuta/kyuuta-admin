@@ -1,7 +1,7 @@
 <template>
   <div
     :style="{
-      paddingLeft: menuConfig.collapseType !== 'header' ? '20px' : null
+      paddingLeft: menuConfig.collapseType !== 'header' ? '20px' : undefined
     }"
   >
     <TooltipContainer

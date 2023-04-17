@@ -1,9 +1,9 @@
 <template>
   <NMenu
-    :collpased="props.collapsed"
-    :collapsed-width="60"
-    :collapsed-icon-size="22"
-    :root-indent="16"
+    :collapsed="props.collapsed"
+    :collapsedWidth="60"
+    :collapsedIconSize="22"
+    :rootIndent="16"
     :value="activeKey"
     :options="routeStore.menu"
     @update:value="(name) => routerPush({ name })"
@@ -19,7 +19,7 @@ import { useRouterPush } from '@/composables'
 const route = useRoute()
 const routeStore = useRouteStore()
 const { routerPush } = useRouterPush()
-const props = defineProps(['collapsed'])
+const props = defineProps<{ collapsed: boolean }>()
 
 const activeKey = computed(() => route.name)
 </script>
