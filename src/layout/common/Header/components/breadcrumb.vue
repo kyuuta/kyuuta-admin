@@ -36,6 +36,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
 import { useRouterPush } from '@/composables'
 import { useThemeStore } from '@/store'
 import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
@@ -43,7 +44,8 @@ import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
 const route = useRoute()
 const { routerPush } = useRouterPush()
 
-const { breadcrumbConfig } = useThemeStore()
+const theme = useThemeStore()
+const { breadcrumbConfig } = storeToRefs(theme)
 
 const breadcrumbs = computed(() => transformRouteToBreadcrumb(route.matched))
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <TooltipContainer tooltip="暗黑模式" @click="setDarkMode(!getDarkMode)">
+  <TooltipContainer tooltip="暗黑模式" @click="setDarkMode(!theme.getDarkMode)">
     <NIcon
-      v-if="getDarkMode"
+      v-if="theme.getDarkMode"
       size="22"
       color="rgb(255, 217, 59)"
       :component="WeatherMoon24Filled"
@@ -14,5 +14,6 @@
 import { useThemeStore } from '@/store'
 import { WeatherSunny24Filled, WeatherMoon24Filled } from '@vicons/fluent'
 
-const { getDarkMode, setDarkMode } = useThemeStore()
+const theme = useThemeStore()
+const { setDarkMode } = theme
 </script>

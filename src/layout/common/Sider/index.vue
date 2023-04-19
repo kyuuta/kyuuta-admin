@@ -9,8 +9,8 @@
     :collapsed="menuConfig.collapse"
     :showTrigger="
       ['bar', 'arrow-circle'].includes(menuConfig.collapseType)
-        ? menuConfig.collapseType
-        : undefined
+        ? menuConfig.collapseType as 'bar' | 'arrow-circle'
+        : false
     "
     @update:collapsed="setCollapse"
   >
@@ -19,10 +19,13 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import AsideMenu from '../Menu/index.vue'
 import { useThemeStore } from '@/store'
 
-const { menuConfig, setCollapse } = useThemeStore()
+const theme = useThemeStore()
+const { menuConfig } = storeToRefs(theme)
+const { setCollapse } = useThemeStore()
 </script>
 
 <style lang="less" scoped>

@@ -22,27 +22,27 @@ export const useThemeStore = defineStore({
       return state.darkMode ? darkTheme : undefined
     },
     getDarkMode(state) {
-      return computed(() => state.darkMode)
+      return state.darkMode
     },
     /** 滚动模式 */
     getScrollMode(state) {
-      return computed(() => state.scrollMode)
+      return state.scrollMode
     },
     /** 头部配置 */
     headerConfig(state) {
-      return computed(() => state.header)
+      return state.header
     },
     /** 底部配置 */
     footerConfig(state) {
-      return computed(() => state.footer)
+      return state.footer
     },
     /** 菜单配置 */
     menuConfig(state) {
-      return computed(() => state.menu)
+      return state.menu
     },
     /** 面包屑配置 */
     breadcrumbConfig(state) {
-      return computed(() => state.breadcrumb)
+      return state.breadcrumb
     }
   },
   actions: {
@@ -57,6 +57,26 @@ export const useThemeStore = defineStore({
     /** 设置滚动模式 */
     setScrollMode(mode: Theme.ScrollMode) {
       this.scrollMode = mode
+      if (mode === 'main') {
+        this.setFooterFixed(false)
+      }
+    },
+    /** 头部设置 */
+    setHeaderVisible(visible: boolean) {
+      this.header.visible = visible
+    },
+    setHeaderHeight(height: number) {
+      this.header.height = height
+    },
+    /** 底部设置 */
+    setFooterVisible(visible: boolean) {
+      this.footer.visible = visible
+    },
+    setFooterHeight(height: number) {
+      this.footer.height = height
+    },
+    setFooterFixed(isFixed: boolean) {
+      this.footer.fixed = isFixed
     },
     /** 设置展开菜单状态 */
     setCollapse(collapse: boolean) {

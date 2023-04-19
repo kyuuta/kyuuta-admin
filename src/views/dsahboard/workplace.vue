@@ -1,7 +1,5 @@
 <template>
-  <div>
-    workplace
-
+  <div class="dark:bg-#101014">
     <p>01</p>
     <p>02</p>
     <p>03</p>

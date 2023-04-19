@@ -2,14 +2,14 @@
   <div v-if="showTooltip">
     <NTooltip :placement="placement" trigger="hover" arrowPointToCenter>
       <template #trigger>
-        <div class="item">
+        <div class="item hover:bg-#ececed hover:dark-bg-#2d2d30">
           <slot />
         </div>
       </template>
       <span>{{ tooltip }}</span>
     </NTooltip>
   </div>
-  <div v-else class="item">
+  <div v-else class="item hover:bg-#ececed hover:dark-bg-#2d2d30">
     <slot />
   </div>
 </template>
@@ -40,9 +40,10 @@ const showTooltip = computed(() => Boolean(props.tooltip))
   height: 100%;
   padding: 0 10px;
   min-width: 26px;
-  &:hover {
-    transition: background-color 0.3s;
-    background-color: rgba(0, 0, 0, 0.03);
-  }
+  transition: background-color 0.3s;
+  // &:hover {
+  //   transition: background-color 0.3s;
+  // background-color: rgba(0, 0, 0, 0.03);
+  // }
 }
 </style>

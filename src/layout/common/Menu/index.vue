@@ -21,5 +21,5 @@ const routeStore = useRouteStore()
 const { routerPush } = useRouterPush()
 const props = defineProps<{ collapsed: boolean }>()
 
-const activeKey = computed(() => route.name)
+const activeKey = computed(() => route.name as string)
 </script>

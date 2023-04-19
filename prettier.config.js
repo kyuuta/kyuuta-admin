@@ -1,5 +1,5 @@
 module.exports = {
-  printWidth: 100,
+  printWidth: 80,
   tabWidth: 2,
   useTabs: false,
   semi: false,
@@ -16,5 +16,5 @@ module.exports = {
   proseWrap: 'never',
   htmlWhitespaceSensitivity: 'strict',
   endOfLine: 'lf',
-  rangeStart: 0
+  rangeStart: 0,
 }
