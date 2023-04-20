@@ -34,6 +34,7 @@
     "@unocss/transformer-directives": "^0.50.4",
     "@unocss/vite": "^0.50.4",
     "@vitejs/plugin-vue": "^4.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vueuse/core": "^9.13.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",

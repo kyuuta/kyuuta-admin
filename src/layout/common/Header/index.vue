@@ -2,6 +2,7 @@
   <NLayoutHeader class="page-header" bordered :position="props.position">
     <div class="left-controls">
       <Collapse />
+      <Reload />
       <Breadcrumb />
     </div>
 
@@ -16,7 +17,16 @@
 </template>
 
 <script lang="ts" setup>
-import { Avatar, Breadcrumb, Collapse, DarkMode, FullScreen, Search, Setting } from './components'
+import {
+  Avatar,
+  Breadcrumb,
+  Collapse,
+  DarkMode,
+  FullScreen,
+  Reload,
+  Search,
+  Setting
+} from './components'
 
 const props = defineProps<{
   height: string

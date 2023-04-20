@@ -22,6 +22,6 @@ npm run serve
 - [ ] Axios Request
 - [x] Search Page
 - [x] Full Screen
-- [ ] Refresh Page
+- [x] Reload Page
 - [ ] Tab
 - [ ] Page jump animation config

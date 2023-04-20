@@ -47,7 +47,9 @@ const { routerPush } = useRouterPush()
 const theme = useThemeStore()
 const { breadcrumbConfig } = storeToRefs(theme)
 
-const breadcrumbs = computed(() => transformRouteToBreadcrumb(route.matched))
+const breadcrumbs = computed(() =>
+  transformRouteToBreadcrumb(route.matched)
+)
 </script>
 
 <style lang="less" scoped>

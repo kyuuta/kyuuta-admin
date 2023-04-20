@@ -2,7 +2,10 @@ import type { GlobalThemeOverrides } from 'naive-ui'
 import { getRgbOfColor } from '@/utils'
 import { kebabCase } from 'lodash-es'
 
-/** add css dark class to document */
+/**
+ * 添加dark类名至document
+ * Add css dark class to document
+ */
 export function handleCssDarkModeClass() {
   const DARK_CLASS = 'dark'
 
@@ -24,7 +27,6 @@ export function handleCssDarkModeClass() {
  * 添加css变量至HTML
  * Add css variables to HTML
  */
-
 type ThemeVars = Exclude<GlobalThemeOverrides['common'], undefined>
 type ThemeVarsKeys = keyof ThemeVars
 

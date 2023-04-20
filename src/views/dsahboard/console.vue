@@ -14,6 +14,12 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log('mount')
+})
+
 const columns = [
   {
     title: 'name',
