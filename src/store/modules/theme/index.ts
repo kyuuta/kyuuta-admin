@@ -2,7 +2,10 @@ import { computed } from 'vue'
 import { defineStore } from 'pinia'
 import { darkTheme } from 'naive-ui'
 import { localStorage } from '@/utils'
-import { getUIThemeOverrides, initThemeSetting } from './helpers'
+import {
+  getUIThemeOverrides,
+  initThemeSetting
+} from './helpers'
 
 type ThemeState = Theme.Setting
 

@@ -2,13 +2,23 @@ function createStorage() {
   /** 默认缓存期限为7天 */
   const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7 * 1000
 
-  function set(key: string, value: any, expire: number | null = DEFAULT_CACHE_TIME) {
+  function set(
+    key: string,
+    value: any,
+    expire: number | null = DEFAULT_CACHE_TIME
+  ) {
     const storageData = {
       value,
-      expire: expire !== null ? new Date().getTime() + expire : null
+      expire:
+        expire !== null
+          ? new Date().getTime() + expire
+          : null
     }
 
-    window.localStorage.setItem(key, JSON.stringify(storageData))
+    window.localStorage.setItem(
+      key,
+      JSON.stringify(storageData)
+    )
   }
 
   function get(key: string) {

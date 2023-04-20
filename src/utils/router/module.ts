@@ -6,7 +6,10 @@ import { RouteRecordRaw } from 'vue-router'
  */
 export function sortRoutes(routes: RouteRecordRaw[]) {
   return routes
-    .sort((next, pre) => Number(next.meta?.order) - Number(pre.meta?.order))
+    .sort(
+      (next, pre) =>
+        Number(next.meta?.order) - Number(pre.meta?.order)
+    )
     .map((route) => {
       if (route.children) sortRoutes(route.children)
       return route
@@ -17,7 +20,9 @@ export function sortRoutes(routes: RouteRecordRaw[]) {
  * 处理全部导入的路由模块
  * @param modules - 路由模块
  */
-export function handleModuleRoutes(modules: RouteModule.Modules) {
+export function handleModuleRoutes(
+  modules: RouteModule.Modules
+) {
   const routes: RouteRecordRaw[] = []
 
   Object.keys(modules).forEach((key) => {
@@ -37,7 +42,9 @@ export function handleModuleRoutes(modules: RouteModule.Modules) {
  * 获取所有ConstantRouteMap的路由Name集合
  * @param routes - 固定路由表
  */
-export function getConstantRouteMapNames(routes: RouteRecordRaw[]) {
+export function getConstantRouteMapNames(
+  routes: RouteRecordRaw[]
+) {
   const names = []
   const stack = [...routes]
   while (stack.length) {

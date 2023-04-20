@@ -9,9 +9,9 @@
     @after-leave="clear"
   >
     <NInput
+      v-model:value="searchKey"
       clearable
       placeholder="请输入关键词搜索"
-      v-model:value="searchKey"
       @input="handleSearch"
     >
       <template #prefix>
@@ -36,10 +36,17 @@
           @mouseenter="activeIndex = index"
         >
           <div class="info">
-            <component v-if="menu.icon" :is="menu.icon" size="22" />
+            <component
+              :is="menu.icon"
+              v-if="menu.icon"
+              size="22"
+            />
             <span>{{ menu.label }}</span>
           </div>
-          <NIcon size="20" :component="ArrowEnterLeft20Regular" />
+          <NIcon
+            size="20"
+            :component="ArrowEnterLeft20Regular"
+          />
         </div>
       </NScrollbar>
       <NEmpty v-else description="没找到你想要的页面捏" />
@@ -47,16 +54,29 @@
     <template #footer>
       <div class="operations">
         <div class="item">
-          <img src="~@/assets/images/enter.png" alt="keyboard enter" />
+          <img
+            src="~@/assets/images/enter.png"
+            alt="keyboard enter"
+          />
           <span>确定</span>
         </div>
         <div class="item">
-          <img src="~@/assets/images/up.png" style="margin-right: 0" alt="keyboard up" />
-          <img src="~@/assets/images/down.png" alt="keyboard down" />
+          <img
+            src="~@/assets/images/up.png"
+            style="margin-right: 0"
+            alt="keyboard up"
+          />
+          <img
+            src="~@/assets/images/down.png"
+            alt="keyboard down"
+          />
           <span>切换</span>
         </div>
         <div class="item">
-          <img src="~@/assets/images/esc.png" alt="keyboard esc" />
+          <img
+            src="~@/assets/images/esc.png"
+            alt="keyboard esc"
+          />
           <span>关闭</span>
         </div>
       </div>
@@ -69,7 +89,10 @@ import { ref, shallowRef } from 'vue'
 import { useRouteStore } from '@/store'
 import { useRouterPush, useModalState } from '@/composables'
 import { onKeyStroke, useDebounceFn } from '@vueuse/core'
-import { Search20Filled, ArrowEnterLeft20Regular } from '@vicons/fluent'
+import {
+  Search20Filled,
+  ArrowEnterLeft20Regular
+} from '@vicons/fluent'
 
 const searchKey = ref('')
 const routeStore = useRouteStore()
@@ -77,7 +100,9 @@ const resultOptions = shallowRef<App.GlobalMenuOption[]>([])
 const activeIndex = ref<number>()
 const { routerPush } = useRouterPush()
 
-const flattenArray = (arr: App.GlobalMenuOption[]): App.GlobalMenuOption[] => {
+const flattenArray = (
+  arr: App.GlobalMenuOption[]
+): App.GlobalMenuOption[] => {
   const result: App.GlobalMenuOption[] = []
   const processChildren = (item: App.GlobalMenuOption) => {
     if (item.children && item.children.length > 0) {
@@ -93,10 +118,16 @@ const flattenArray = (arr: App.GlobalMenuOption[]): App.GlobalMenuOption[] => {
 
 const searchPage = () => {
   // @ts-ignore
-  resultOptions.value = flattenArray(routeStore.menu).filter(
+  resultOptions.value = flattenArray(
+    routeStore.menu
+  ).filter(
     (menu) =>
       searchKey.value &&
-      menu.label.toLocaleLowerCase().includes(searchKey.value.toLocaleLowerCase().trim())
+      menu.label
+        .toLocaleLowerCase()
+        .includes(
+          searchKey.value.toLocaleLowerCase().trim()
+        )
   )
 
   if (resultOptions.value.length) {
@@ -107,7 +138,8 @@ const searchPage = () => {
 }
 const handleDown = () => {
   const { length } = resultOptions.value
-  if (length === 0 || activeIndex.value === undefined) return
+  if (length === 0 || activeIndex.value === undefined)
+    return
 
   if (activeIndex.value + 1 === length) {
     activeIndex.value = 0
@@ -117,7 +149,8 @@ const handleDown = () => {
 }
 const handleUp = () => {
   const { length } = resultOptions.value
-  if (length === 0 || activeIndex.value === undefined) return
+  if (length === 0 || activeIndex.value === undefined)
+    return
 
   if (activeIndex.value === 0) {
     activeIndex.value = length - 1
@@ -127,14 +160,17 @@ const handleUp = () => {
 }
 const handleEnter = () => {
   if (activeIndex.value === undefined) return
-  const { routeName } = resultOptions.value[activeIndex.value]
+  const { routeName } =
+    resultOptions.value[activeIndex.value]
   routerPush({ name: routeName })
   handleClose()
 }
 const handleSearch = useDebounceFn(searchPage, 300)
 
 const props = defineProps<{ visible: boolean }>()
-const emit = defineEmits<{ (e: 'update:visible', visible: boolean): void }>()
+const emit = defineEmits<{
+  (e: 'update:visible', visible: boolean): void
+}>()
 const { modalVisible } = useModalState(props, emit)
 const handleClose = () => {
   modalVisible.value = false

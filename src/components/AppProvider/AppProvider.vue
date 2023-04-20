@@ -13,7 +13,12 @@
 
 <script lang="ts" setup>
 import { defineComponent, h } from 'vue'
-import { useDialog, useLoadingBar, useMessage, useNotification } from 'naive-ui'
+import {
+  useDialog,
+  useLoadingBar,
+  useMessage,
+  useNotification
+} from 'naive-ui'
 
 function registerNaiveTools() {
   window.$loadingBar = useLoadingBar()

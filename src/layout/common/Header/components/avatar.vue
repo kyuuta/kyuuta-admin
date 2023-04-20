@@ -10,7 +10,10 @@
 
 <script lang="ts" setup>
 import { renderIcon } from '@/utils'
-import { ArrowLeftOutlined, UserOutlined } from '@vicons/antd'
+import {
+  ArrowLeftOutlined,
+  UserOutlined
+} from '@vicons/antd'
 
 const avatarOptions = [
   {

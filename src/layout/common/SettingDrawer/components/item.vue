@@ -1,6 +1,8 @@
 <template>
   <div class="drawer-item">
-    <div class="drawer-item-title" v-if="props.title">{{ props.title }}</div>
+    <div v-if="props.title" class="drawer-item-title">
+      {{ props.title }}
+    </div>
     <div class="drawer-item-content">
       <slot />
     </div>

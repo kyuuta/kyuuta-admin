@@ -19,7 +19,8 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'console',
         name: `${moduleName}Console`,
-        component: () => import('@/views/dsahboard/console.vue'),
+        component: () =>
+          import('@/views/dsahboard/console.vue'),
         meta: {
           requiresAuth: true,
           title: '主控台'
@@ -28,7 +29,8 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'workplace',
         name: `${moduleName}Workplace`,
-        component: () => import('@/views/dsahboard/workplace.vue'),
+        component: () =>
+          import('@/views/dsahboard/workplace.vue'),
         meta: {
           requiresAuth: true,
           title: '工作台'

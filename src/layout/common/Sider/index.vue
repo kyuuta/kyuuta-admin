@@ -8,8 +8,10 @@
     :width="menuConfig.collapsedWidth"
     :collapsed="menuConfig.collapse"
     :showTrigger="
-      ['bar', 'arrow-circle'].includes(menuConfig.collapseType)
-        ? menuConfig.collapseType as 'bar' | 'arrow-circle'
+      ['bar', 'arrow-circle'].includes(
+        menuConfig.collapseType
+      )
+        ? menuConfig.collapseType
         : false
     "
     @update:collapsed="setCollapse"

@@ -1,5 +1,9 @@
 <template>
-  <TooltipContainer tooltip="项目配置" placement="bottom-end" @click="openSetting">
+  <TooltipContainer
+    tooltip="项目配置"
+    placement="bottom-end"
+    @click="openSetting"
+  >
     <NIcon size="22" :component="Settings32Regular" />
   </TooltipContainer>
 

@@ -1,5 +1,9 @@
 <template>
-  <NLayoutHeader class="page-header" bordered :position="props.position">
+  <NLayoutHeader
+    class="page-header"
+    bordered
+    :position="props.position"
+  >
     <div class="left-controls">
       <Collapse />
       <Reload />

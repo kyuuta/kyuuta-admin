@@ -5,8 +5,13 @@ import { RouteRecordRaw } from 'vue-router'
  * @param routes - 权限路由
  * @param permission - 权限
  */
-export function filterAsyncRoutes(routes: RouteRecordRaw[], permission: string) {
-  return routes.map((route) => filterRoutePermisson(route, permission)).flat(1)
+export function filterAsyncRoutes(
+  routes: RouteRecordRaw[],
+  permission: string
+) {
+  return routes
+    .map((route) => filterRoutePermisson(route, permission))
+    .flat(1)
 }
 
 /**
@@ -14,7 +19,10 @@ export function filterAsyncRoutes(routes: RouteRecordRaw[], permission: string) 
  * @param route - 路由
  * @param permission - 权限
  */
-export function getPermission(route: RouteRecordRaw, permission: string): boolean {
+export function getPermission(
+  route: RouteRecordRaw,
+  permission: string
+): boolean {
   return (
     !route?.meta?.permissions ||
     permission === 'super' ||
@@ -27,7 +35,10 @@ export function getPermission(route: RouteRecordRaw, permission: string): boolea
  * @param route - 路由
  * @param permission - 权限
  */
-export function filterRoutePermisson(route: RouteRecordRaw, permission: string) {
+export function filterRoutePermisson(
+  route: RouteRecordRaw,
+  permission: string
+) {
   const filterRoute = { ...route }
   const hasPermission = getPermission(route, permission)
 

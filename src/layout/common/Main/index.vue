@@ -4,8 +4,8 @@
       <transition name="fade" mode="out-in" appear>
         <keep-alive :include="[]">
           <component
-            v-if="app.reload"
             :is="Component"
+            v-if="app.reload"
             :key="route.fullPath"
           />
         </keep-alive>

@@ -1,13 +1,17 @@
 import { effectScope, onScopeDispose, watch } from 'vue'
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { useThemeStore } from '../modules'
-import { handleCssDarkModeClass, addThemeCssVarsToHtml } from '@/utils'
+import {
+  handleCssDarkModeClass,
+  addThemeCssVarsToHtml
+} from '@/utils'
 
 /** 订阅ThemeStore */
 export default function subscribeThemeStore() {
   const scope = effectScope()
   const theme = useThemeStore()
-  const { addDarkClass, removeDarkClass } = handleCssDarkModeClass()
+  const { addDarkClass, removeDarkClass } =
+    handleCssDarkModeClass()
 
   scope.run(() => {
     // 监听暗黑模式

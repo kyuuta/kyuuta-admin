@@ -2,7 +2,11 @@ import App from './App.vue'
 import { createApp } from 'vue'
 import { setupStore } from './store'
 import router, { setupRouter } from './router'
-import { setupNaive, setupAssets, setupCustomComponents } from '@/plugins'
+import {
+  setupNaive,
+  setupAssets,
+  setupCustomComponents
+} from '@/plugins'
 
 async function bootstrap() {
   // import assets: js、css

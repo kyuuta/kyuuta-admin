@@ -12,7 +12,10 @@
     </NSwitch>
   </Item>
   <Item title="显示头部">
-    <NSwitch :value="headerConfig.visible" @update:value="setHeaderVisible" />
+    <NSwitch
+      :value="headerConfig.visible"
+      @update:value="setHeaderVisible"
+    />
   </Item>
   <Item title="头部高度">
     <NInputNumber
@@ -25,7 +28,10 @@
     />
   </Item>
   <Item title="显示底部">
-    <NSwitch :value="footerConfig.visible" @update:value="setFooterVisible" />
+    <NSwitch
+      :value="footerConfig.visible"
+      @update:value="setFooterVisible"
+    />
   </Item>
   <Item title="底部高度">
     <NInputNumber

@@ -1,6 +1,12 @@
 <template>
-  <NBreadcrumb class="breadcrumb" v-if="breadcrumbConfig.visible">
-    <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.key">
+  <NBreadcrumb
+    v-if="breadcrumbConfig.visible"
+    class="breadcrumb"
+  >
+    <template
+      v-for="breadcrumb in breadcrumbs"
+      :key="breadcrumb.key"
+    >
       <NBreadcrumbItem>
         <NDropdown
           v-if="breadcrumb?.children?.length"
@@ -10,9 +16,9 @@
         >
           <span>
             <component
+              :is="breadcrumb.icon"
               v-if="breadcrumbConfig.showIcon"
               class="breadcrumb-icon"
-              :is="breadcrumb.icon"
             />
             <span>{{ breadcrumb.label }}</span>
           </span>
@@ -21,9 +27,9 @@
         <template v-else>
           <span>
             <component
+              :is="breadcrumb.icon"
               v-if="breadcrumbConfig.showIcon"
               class="breadcrumb-icon"
-              :is="breadcrumb.icon"
             />
             <span>{{ breadcrumb.label }}</span>
           </span>

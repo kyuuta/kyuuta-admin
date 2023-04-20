@@ -27,10 +27,15 @@ export function handleCssDarkModeClass() {
  * 添加css变量至HTML
  * Add css variables to HTML
  */
-type ThemeVars = Exclude<GlobalThemeOverrides['common'], undefined>
+type ThemeVars = Exclude<
+  GlobalThemeOverrides['common'],
+  undefined
+>
 type ThemeVarsKeys = keyof ThemeVars
 
-export function addThemeCssVarsToHtml(themeVars: ThemeVars) {
+export function addThemeCssVarsToHtml(
+  themeVars: ThemeVars
+) {
   const keys = Object.keys(themeVars) as ThemeVarsKeys[]
   const style: string[] = []
 

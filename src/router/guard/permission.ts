@@ -1,4 +1,7 @@
-import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
+import type {
+  NavigationGuardNext,
+  RouteLocationNormalized
+} from 'vue-router'
 import { PageConfig } from '@/config/page'
 import { createDynamicRouteGuard } from './dynamic'
 import { exeStrategyActions, localStorage } from '@/utils'
@@ -9,21 +12,34 @@ export async function createPermissionGuard(
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
-  const permission = await createDynamicRouteGuard(to, from, next)
+  const permission = await createDynamicRouteGuard(
+    to,
+    from,
+    next
+  )
   if (!permission) return
 
-  const { href, requiresAuth = false, permissions = [] } = to?.meta
+  const {
+    href,
+    requiresAuth = false,
+    permissions = []
+  } = to?.meta
 
   // 处理外链
   if (href) {
     window.open(href as string)
-    next({ path: from.fullPath, replace: true, query: from.query })
+    next({
+      path: from.fullPath,
+      replace: true,
+      query: from.query
+    })
     return
   }
 
   const { name, fullPath } = to
   const { ROOT_NAME, BASE_LOGIN_NAME } = PageConfig
-  const needLogin = Boolean(requiresAuth) || Boolean(permissions.length)
+  const needLogin =
+    Boolean(requiresAuth) || Boolean(permissions.length)
   const isLogin = Boolean(localStorage.get('token'))
 
   const actions: Common.StrategyAction[] = [
@@ -45,7 +61,10 @@ export async function createPermissionGuard(
     [
       !isLogin && needLogin,
       () => {
-        next({ name: BASE_LOGIN_NAME, query: { redirect: fullPath } })
+        next({
+          name: BASE_LOGIN_NAME,
+          query: { redirect: fullPath }
+        })
       }
     ],
     // 登录状态进入需要登录权限的页面，有权限直接通行

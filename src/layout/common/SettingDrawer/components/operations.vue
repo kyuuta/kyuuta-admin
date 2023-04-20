@@ -1,6 +1,8 @@
 <template>
   <Item class="operations">
-    <NButton type="warning" @click="resetThemeStore">重置主题配置</NButton>
+    <NButton type="warning" @click="resetThemeStore">
+      重置主题配置
+    </NButton>
   </Item>
 </template>
 

@@ -1,5 +1,8 @@
 import { App } from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHashHistory
+} from 'vue-router'
 import ConstantRouteMap from './constantRouteMap'
 import { createRouterGuard } from './guard'
 

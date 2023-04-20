@@ -15,16 +15,20 @@
             'flex-layout',
             'bg-#f6f9f8 dark:bg-dark',
             {
-              'has-footer': footerConfig.visible && footerConfig.fixed,
+              'has-footer':
+                footerConfig.visible && footerConfig.fixed,
               'fix-header':
-                theme.getScrollMode === 'content' && headerConfig.visible
+                theme.getScrollMode === 'content' &&
+                headerConfig.visible
             }
           ]"
         >
           <Main />
 
           <Footer
-            v-if="footerConfig.visible && !footerConfig.fixed"
+            v-if="
+              footerConfig.visible && !footerConfig.fixed
+            "
             position="static"
             :height="footerHeight"
           />
@@ -48,8 +52,12 @@ import { Header, Footer, Sider, Main } from '../common'
 const theme = useThemeStore()
 const { headerConfig, footerConfig } = storeToRefs(theme)
 
-const headerHeight = computed(() => `${headerConfig.value.height}px`)
-const footerHeight = computed(() => `${footerConfig.value.height}px`)
+const headerHeight = computed(
+  () => `${headerConfig.value.height}px`
+)
+const footerHeight = computed(
+  () => `${footerConfig.value.height}px`
+)
 
 const position = computed<'absolute' | 'static'>(() =>
   theme.getScrollMode === 'content' ? 'absolute' : 'static'

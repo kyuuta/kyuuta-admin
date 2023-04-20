@@ -1,5 +1,5 @@
 /** 系统主题配置 */
-declare module Theme {
+declare namespace Theme {
   /**
    * 滚动模式
    * @param content - 内容滚动
@@ -13,7 +13,11 @@ declare module Theme {
    * @param arrow-circle - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
    * @param header - 头部按钮
    */
-  type MenuCollpaseType = 'hide' | 'bar' | 'arrow-circle' | 'header'
+  type MenuCollpaseType =
+    | 'hide'
+    | 'bar'
+    | 'arrow-circle'
+    | 'header'
 
   interface Setting {
     /** 头部配置 */

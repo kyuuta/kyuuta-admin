@@ -9,10 +9,18 @@
       @update:value="themeStore.setDarkMode"
     >
       <template #checked>
-        <NIcon size="20" color="rgb(250,140,53)" :component="WeatherSunny24Filled" />
+        <NIcon
+          size="20"
+          color="rgb(250,140,53)"
+          :component="WeatherSunny24Filled"
+        />
       </template>
       <template #unchecked>
-        <NIcon size="20" color="rgb(255, 217, 59)" :component="WeatherMoon24Filled" />
+        <NIcon
+          size="20"
+          color="rgb(255, 217, 59)"
+          :component="WeatherMoon24Filled"
+        />
       </template>
     </NSwitch>
   </Item>
@@ -21,11 +29,20 @@
 <script lang="ts" setup>
 import Item from './item.vue'
 import { useThemeStore } from '@/store'
-import { WeatherSunny24Filled, WeatherMoon24Filled } from '@vicons/fluent'
+import {
+  WeatherSunny24Filled,
+  WeatherMoon24Filled
+} from '@vicons/fluent'
 
 const themeStore = useThemeStore()
 
-const switchStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
+const switchStyle = ({
+  focused,
+  checked
+}: {
+  focused: boolean
+  checked: boolean
+}) => {
   return {
     background: checked ? '#e8f2fc' : '#000e1c'
   }

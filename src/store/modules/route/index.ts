@@ -5,7 +5,11 @@ import Router from '@/router'
 import RouteMap from '@/router/routeMap'
 import ConstantRouteMap from '@/router/constantRouteMap'
 import { PageConfig } from '@/config/page'
-import { filterAsyncRoutes, getConstantRouteMapNames, transformRouteToMenu } from '@/utils'
+import {
+  filterAsyncRoutes,
+  getConstantRouteMapNames,
+  transformRouteToMenu
+} from '@/utils'
 
 interface IRouteStore {
   isInitAuthRoute: boolean
@@ -27,7 +31,10 @@ export const useRouteStore = defineStore({
     },
     async initStaticRoute() {
       const userStore = useUserStore()
-      const routes = filterAsyncRoutes(RouteMap, userStore.role)
+      const routes = filterAsyncRoutes(
+        RouteMap,
+        userStore.role
+      )
       this.handleAuthRoute(routes)
       this.isInitAuthRoute = true
     },
@@ -36,7 +43,8 @@ export const useRouteStore = defineStore({
      * @param routes - 权限路由
      */
     async handleAuthRoute(routes: RouteRecordRaw[]) {
-      ;(this.menu as App.GlobalMenuOption[]) = transformRouteToMenu(routes)
+      ;(this.menu as App.GlobalMenuOption[]) =
+        transformRouteToMenu(routes)
 
       await routes.forEach((route) => {
         Router.addRoute(route)
@@ -48,8 +56,9 @@ export const useRouteStore = defineStore({
      */
     validConstantRoute(routeName: string) {
       return (
-        getConstantRouteMapNames(ConstantRouteMap).includes(routeName) &&
-        routeName !== PageConfig.NOT_FOUNT_NAME
+        getConstantRouteMapNames(ConstantRouteMap).includes(
+          routeName
+        ) && routeName !== PageConfig.NOT_FOUNT_NAME
       )
     }
   }

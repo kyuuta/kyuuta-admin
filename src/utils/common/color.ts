@@ -31,7 +31,10 @@ type ColorIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
  * @param index - 调色板的对应色号
  * @returns 返回hex格式的颜色
  */
-export function getColorPalette(color: AnyColor, index: ColorIndex): string {
+export function getColorPalette(
+  color: AnyColor,
+  index: ColorIndex
+): string {
   const transformColor = colord(color)
 
   if (!transformColor.isValid()) {
@@ -44,7 +47,9 @@ export function getColorPalette(color: AnyColor, index: ColorIndex): string {
 
   const isLight = index < 6
   const hsv = transformColor.toHsv()
-  const i = isLight ? lightColorCount + 1 - index : index - lightColorCount - 1
+  const i = isLight
+    ? lightColorCount + 1 - index
+    : index - lightColorCount - 1
 
   const newHsv: HsvColor = {
     h: getHue(hsv, i, isLight),
@@ -65,7 +70,11 @@ export function getColorPalette(color: AnyColor, index: ColorIndex): string {
  * @param i - 与6的相对距离
  * @param isLight - 是否亮色系
  */
-function getHue(hsv: HsvColor, i: number, isLight: boolean) {
+function getHue(
+  hsv: HsvColor,
+  i: number,
+  isLight: boolean
+) {
   let hue: number
   const hsvH = Math.round(hsv.h)
 
@@ -97,7 +106,11 @@ function getHue(hsv: HsvColor, i: number, isLight: boolean) {
  * @param i - 与6的相对距离
  * @param isLight - 是否亮色系
  */
-function getSaturation(hsv: HsvColor, i: number, isLight: boolean) {
+function getSaturation(
+  hsv: HsvColor,
+  i: number,
+  isLight: boolean
+) {
   if (hsv.h === 0 && hsv.s === 0) {
     return hsv.s
   }
@@ -133,10 +146,16 @@ function getSaturation(hsv: HsvColor, i: number, isLight: boolean) {
  * @param i - 与6的相对距离
  * @param isLight - 是否是亮颜色
  */
-function getValue(hsv: HsvColor, i: number, isLight: boolean) {
+function getValue(
+  hsv: HsvColor,
+  i: number,
+  isLight: boolean
+) {
   let value: number
 
-  value = isLight ? hsv.v + brightnessStep1 * i : hsv.v - brightnessStep2 * i
+  value = isLight
+    ? hsv.v + brightnessStep1 * i
+    : hsv.v - brightnessStep2 * i
 
   if (value > 100) {
     value = 100
@@ -150,7 +169,10 @@ function getValue(hsv: HsvColor, i: number, isLight: boolean) {
  * @param color - 颜色
  * @param alpha - 透明度(0 - 1)
  */
-export function addColorAlpha(color: string, alpha: number) {
+export function addColorAlpha(
+  color: string,
+  alpha: number
+) {
   return colord(color).alpha(alpha).toHex()
 }
 
@@ -160,7 +182,11 @@ export function addColorAlpha(color: string, alpha: number) {
  * @param secondColor - 第二个颜色
  * @param ratio - 第二个颜色占比
  */
-export function mixColor(firstColor: string, secondColor: string, ratio: number) {
+export function mixColor(
+  firstColor: string,
+  secondColor: string,
+  ratio: number
+) {
   return colord(firstColor).mix(secondColor, ratio).toHex()
 }
 
