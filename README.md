@@ -53,6 +53,7 @@ npm run serve
 - [x] Reload Page
 - [ ] Tab
 - [x] Page jump animation config
+- [ ] Layout Mode
 
 ## 维护者
 
