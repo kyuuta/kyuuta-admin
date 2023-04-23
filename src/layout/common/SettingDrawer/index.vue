@@ -16,7 +16,7 @@
         <NDivider titlePlacement="center">
           界面功能
         </NDivider>
-        <ScrollMode />
+        <InterfaceConfig />
 
         <NDivider titlePlacement="center">
           菜单相关
@@ -37,7 +37,7 @@ import { useModalState } from '@/composables'
 import {
   Theme,
   ThemeColor,
-  ScrollMode,
+  InterfaceConfig,
   MenuSetting,
   Operations
 } from './components/index'

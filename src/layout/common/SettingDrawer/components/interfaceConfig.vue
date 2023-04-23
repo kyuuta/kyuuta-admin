@@ -1,4 +1,10 @@
 <template>
+  <Item title="跟随系统主题">
+    <NSwitch
+      :value="theme.followOSTheme"
+      @update:value="setAutoFollowThemeMode"
+    />
+  </Item>
   <Item title="滚动模式">
     <NSwitch
       :value="theme.getScrollMode"
@@ -65,7 +71,8 @@ const {
   setHeaderHeight,
   setFooterVisible,
   setFooterHeight,
-  setFooterFixed
+  setFooterFixed,
+  setAutoFollowThemeMode
 } = theme
 const { headerConfig, footerConfig } = storeToRefs(theme)
 

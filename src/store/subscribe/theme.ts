@@ -1,4 +1,5 @@
 import { effectScope, onScopeDispose, watch } from 'vue'
+import { useOsTheme } from 'naive-ui'
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { useThemeStore } from '../modules'
 import {
@@ -10,6 +11,7 @@ import {
 export default function subscribeThemeStore() {
   const scope = effectScope()
   const theme = useThemeStore()
+  const osTheme = useOsTheme()
   const { addDarkClass, removeDarkClass } =
     handleCssDarkModeClass()
 
@@ -30,6 +32,16 @@ export default function subscribeThemeStore() {
         if (newValue.common) {
           addThemeCssVarsToHtml(newValue.common)
         }
+      },
+      { immediate: true }
+    )
+
+    // 监听系统主题
+    watch(
+      osTheme,
+      (newValue) => {
+        const isDark = newValue === 'dark'
+        theme.setAutoFollowOSTheme(isDark)
       },
       { immediate: true }
     )

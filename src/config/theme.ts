@@ -1,5 +1,6 @@
 const ThemeConfig: Theme.Setting = {
   darkMode: false,
+  followOSTheme: true,
   scrollMode: 'content',
   header: {
     visible: true,

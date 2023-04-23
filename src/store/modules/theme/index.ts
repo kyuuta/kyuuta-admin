@@ -57,6 +57,16 @@ export const useThemeStore = defineStore({
     setDarkMode(darkMode: boolean) {
       this.darkMode = darkMode
     },
+    /** 是否自动跟随主题 */
+    setAutoFollowThemeMode(visible: boolean) {
+      this.followOSTheme = visible
+    },
+    /** 自动跟随系统主题 */
+    setAutoFollowOSTheme(darkMode: boolean) {
+      if (this.followOSTheme) {
+        this.darkMode = darkMode
+      }
+    },
     /** 设置滚动模式 */
     setScrollMode(mode: Theme.ScrollMode) {
       this.scrollMode = mode

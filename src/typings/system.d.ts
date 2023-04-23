@@ -26,6 +26,8 @@ declare namespace Theme {
     footer: Footer
     /** 暗黑模式 */
     darkMode: boolean
+    /** 跟随系统主题 */
+    followOSTheme: boolean
     /** 滚动模式 */
     scrollMode: ScrollMode
     /** 主题色 */

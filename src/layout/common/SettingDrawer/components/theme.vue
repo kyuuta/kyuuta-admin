@@ -36,13 +36,7 @@ import {
 
 const themeStore = useThemeStore()
 
-const switchStyle = ({
-  focused,
-  checked
-}: {
-  focused: boolean
-  checked: boolean
-}) => {
+const switchStyle = ({ checked }: { checked: boolean }) => {
   return {
     background: checked ? '#e8f2fc' : '#000e1c'
   }
