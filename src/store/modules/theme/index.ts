@@ -99,6 +99,14 @@ export const useThemeStore = defineStore({
     setCollapse(collapse: boolean) {
       this.menu.collapse = collapse
     },
+    /** 设置显示头部折叠图标 */
+    setHeaderCollapseVisible(visible: boolean) {
+      this.menu.showHeaderCollapse = visible
+    },
+    /** 设置显示侧边栏折叠图标 */
+    setSiderCollapseVisible(visible: boolean) {
+      this.menu.showSiderCollapse = visible
+    },
     /** 设置展开收起操作模式 */
     setCollapseType(type: Theme.MenuCollpaseType) {
       this.menu.collapseType = type

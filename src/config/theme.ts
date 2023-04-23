@@ -21,7 +21,19 @@ const ThemeConfig: Theme.Setting = {
   isCustomizeInfoColor: false,
   menu: {
     collapse: false,
-    collapseType: 'header',
+    showHeaderCollapse: true,
+    showSiderCollapse: true,
+    collapseType: 'Bar',
+    collapseTypeList: [
+      {
+        label: 'Bar',
+        value: 'bar'
+      },
+      {
+        label: 'ArrowCircle',
+        value: 'arrow-circle'
+      }
+    ],
     collapsedWidth: 220
   },
   breadcrumb: {

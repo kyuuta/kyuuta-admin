@@ -1,5 +1,5 @@
 <template>
-  <Item title="禁用动画">
+  <Item title="动画">
     <NSwitch
       :value="animationConfig.visible"
       @update:value="setAnimationStatus"

@@ -1,14 +1,7 @@
 <template>
-  <div
-    :style="{
-      paddingLeft:
-        menuConfig.collapseType !== 'header'
-          ? '20px'
-          : undefined
-    }"
-  >
+  <div>
     <TooltipContainer
-      v-if="menuConfig.collapseType === 'header'"
+      v-if="menuConfig.showHeaderCollapse"
       @click="theme.setCollapse(!menuConfig.collapse)"
     >
       <NIcon

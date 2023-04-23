@@ -12,13 +12,8 @@ declare namespace Theme {
    * - hide - 不展示
    * - bar - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
    * - arrow-circle - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
-   * - header - 头部按钮
    */
-  type MenuCollpaseType =
-    | 'hide'
-    | 'bar'
-    | 'arrow-circle'
-    | 'header'
+  type MenuCollpaseType = 'bar' | 'arrow-circle'
 
   /**
    * 过渡动画类型
@@ -95,8 +90,14 @@ declare namespace Theme {
   interface Menu {
     /** 默认展开收起 */
     collapse: boolean
+    /** 显示头部折叠图标 */
+    showHeaderCollapse: boolean
+    /** 是否展示Sider展开收起操作按钮 */
+    showSiderCollapse: boolean
     /** 展开收起操作类型 */
     collapseType: MenuCollpaseType
+    /** 展开收起操作类型表 */
+    collapseTypeList: Common.OptionWithKey<MenuCollpaseType>[]
     /** 菜单展开宽度 */
     collapsedWidth: number
   }

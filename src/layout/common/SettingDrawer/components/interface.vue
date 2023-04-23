@@ -17,7 +17,7 @@
       <template #unchecked>整体滚动</template>
     </NSwitch>
   </Item>
-  <Item title="显示头部">
+  <Item title="头部">
     <NSwitch
       :value="headerConfig.visible"
       @update:value="setHeaderVisible"
@@ -33,7 +33,7 @@
       @update:value="height => setHeaderHeight(height as number)"
     />
   </Item>
-  <Item title="显示底部">
+  <Item title="底部">
     <NSwitch
       :value="footerConfig.visible"
       @update:value="setFooterVisible"
@@ -76,13 +76,7 @@ const {
 } = theme
 const { headerConfig, footerConfig } = storeToRefs(theme)
 
-const switchStyle = ({
-  focused,
-  checked
-}: {
-  focused: boolean
-  checked: boolean
-}) => {
+const switchStyle = ({ checked }: { checked: boolean }) => {
   const style: CSSProperties = {}
   if (checked) {
     style.background = '#1890ff'
