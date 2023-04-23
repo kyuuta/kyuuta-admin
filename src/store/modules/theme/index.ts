@@ -46,6 +46,10 @@ export const useThemeStore = defineStore({
     /** 面包屑配置 */
     breadcrumbConfig(state) {
       return state.breadcrumb
+    },
+    /** 动画配置 */
+    animationConfig(state) {
+      return state.animation
     }
   },
   actions: {
@@ -110,6 +114,14 @@ export const useThemeStore = defineStore({
     /** 设置是否显示面包屑icon */
     setBreadcrumbShowIcon(show: boolean) {
       this.breadcrumb.showIcon = show
+    },
+    /** 是否启用动画 */
+    setAnimationStatus(animate: boolean) {
+      this.animation.visible = animate
+    },
+    /** 设置过度动画类型 */
+    setAnimationMode(mode: Theme.ThemeAnimateMode) {
+      this.animation.mode = mode
     },
     /** 缓存主题相关配置 */
     cacheThemeSettings() {

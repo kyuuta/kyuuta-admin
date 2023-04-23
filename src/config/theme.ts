@@ -27,6 +27,36 @@ const ThemeConfig: Theme.Setting = {
   breadcrumb: {
     visible: true,
     showIcon: true
+  },
+  animation: {
+    visible: true,
+    mode: 'fade',
+    modeList: [
+      {
+        value: 'zoom-fade',
+        label: '渐变'
+      },
+      {
+        value: 'zoom-out',
+        label: '闪动'
+      },
+      {
+        value: 'fade-slide',
+        label: '滑动'
+      },
+      {
+        value: 'fade',
+        label: '消退'
+      },
+      {
+        value: 'fade-bottom',
+        label: '底部消退'
+      },
+      {
+        value: 'fade-scale',
+        label: '缩放消退'
+      }
+    ]
   }
 }
 

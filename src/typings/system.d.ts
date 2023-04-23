@@ -2,22 +2,40 @@
 declare namespace Theme {
   /**
    * 滚动模式
-   * @param content - 内容滚动
-   * @param main - 整体滚动
+   * - content - 内容滚动
+   * - main - 整体滚动
    */
   type ScrollMode = 'content' | 'main'
+
   /**
    * Menu展开收起操作模式
-   * @param hide - 不展示
-   * @param bar - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
-   * @param arrow-circle - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
-   * @param header - 头部按钮
+   * - hide - 不展示
+   * - bar - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
+   * - arrow-circle - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
+   * - header - 头部按钮
    */
   type MenuCollpaseType =
     | 'hide'
     | 'bar'
     | 'arrow-circle'
     | 'header'
+
+  /**
+   * 过渡动画类型
+   * - zoom-fade - 渐变
+   * - zoom-out - 闪现
+   * - fade-slide - 滑动
+   * - fade - 消退
+   * - fade-bottom - 底部消退
+   * - fade-scale - 缩放消退
+   */
+  type ThemeAnimateMode =
+    | 'zoom-fade'
+    | 'zoom-out'
+    | 'fade-slide'
+    | 'fade'
+    | 'fade-bottom'
+    | 'fade-scale'
 
   interface Setting {
     /** 头部配置 */
@@ -40,6 +58,8 @@ declare namespace Theme {
     menu: Menu
     /** 面包屑配置 */
     breadcrumb: Breadcrumb
+    /** 动画配置 */
+    animation: Animation
   }
   /** 头部配置 */
   interface Hedaer {
@@ -87,6 +107,16 @@ declare namespace Theme {
     visible: boolean
     /** 是否展示icon */
     showIcon: boolean
+  }
+
+  /** 动画配置 */
+  interface Animation {
+    /** 是否使用动画 */
+    visible: boolean
+    /** 动画类型 */
+    mode: ThemeAnimateMode
+    /** 动画类型列表 */
+    modeList: Common.OptionWithKey<ThemeAnimateMode>[]
   }
 }
 

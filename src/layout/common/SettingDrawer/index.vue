@@ -16,12 +16,15 @@
         <NDivider titlePlacement="center">
           界面功能
         </NDivider>
-        <InterfaceConfig />
+        <Interface />
 
         <NDivider titlePlacement="center">
           菜单相关
         </NDivider>
         <MenuSetting />
+
+        <NDivider titlePlacement="center">动画</NDivider>
+        <Animation />
 
         <NDivider titlePlacement="center">
           主题配置
@@ -35,9 +38,10 @@
 <script lang="ts" setup>
 import { useModalState } from '@/composables'
 import {
+  Animation,
+  Interface,
   Theme,
   ThemeColor,
-  InterfaceConfig,
   MenuSetting,
   Operations
 } from './components/index'

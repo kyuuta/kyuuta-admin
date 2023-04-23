@@ -11,4 +11,10 @@ declare namespace Common {
    * [状态, 状态为true回调函数]
    */
   type StrategyAction = [boolean, () => void]
+
+  /**
+   * 选项数据
+   * Select Option List
+   */
+  type OptionWithKey<K> = { value: K; label: string }
 }

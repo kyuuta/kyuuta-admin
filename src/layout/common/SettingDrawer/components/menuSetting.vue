@@ -62,7 +62,7 @@ const {
   setCollapsedWidth,
   setBreadcrumbVisible,
   setBreadcrumbShowIcon
-} = useThemeStore()
+} = theme
 </script>
 
 <style lang="less" scoped>
