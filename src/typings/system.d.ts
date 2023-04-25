@@ -2,27 +2,40 @@
 declare namespace Theme {
   /**
    * 滚动模式
-   * - content - 内容滚动
-   * - main - 整体滚动
+   * - content: 内容滚动
+   * - main: 整体滚动
    */
   type ScrollMode = 'content' | 'main'
 
   /**
    * Menu展开收起操作模式
-   * - hide - 不展示
-   * - bar - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
-   * - arrow-circle - 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
+   * - hide: 不展示
+   * - bar: 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
+   * - arrow-circle: 参考naiveui layoutSide show-trigger属性 https://www.naiveui.com/zh-CN/light/components/layout
    */
   type MenuCollpaseType = 'bar' | 'arrow-circle'
 
   /**
+   * 布局模式
+   * - vertical: 左侧菜单模式
+   * - horizontal: 顶部菜单模式
+   * - vertical-mix: 左侧菜单混合模式
+   * - horizontal-mix: 顶部菜单混合模式
+   */
+  type LayoutMode =
+    | 'vertical'
+    | 'horizontal'
+    | 'vertical-mix'
+    | 'horizontal-mix'
+
+  /**
    * 过渡动画类型
-   * - zoom-fade - 渐变
-   * - zoom-out - 闪现
-   * - fade-slide - 滑动
-   * - fade - 消退
-   * - fade-bottom - 底部消退
-   * - fade-scale - 缩放消退
+   * - zoom-fade: 渐变
+   * - zoom-out: 闪现
+   * - fade-slide: 滑动
+   * - fade: 消退
+   * - fade-bottom: 底部消退
+   * - fade-scale: 缩放消退
    */
   type ThemeAnimateMode =
     | 'zoom-fade'
@@ -43,6 +56,8 @@ declare namespace Theme {
     followOSTheme: boolean
     /** 滚动模式 */
     scrollMode: ScrollMode
+    /** 布局模式 */
+    layoutMode: LayoutMode
     /** 主题色 */
     themeColor: string
     /** 其他主题色 */

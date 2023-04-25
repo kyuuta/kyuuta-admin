@@ -1,5 +1,6 @@
 <template>
   <NMenu
+    :mode="theme.layoutMode"
     :collapsed="props.collapsed"
     :collapsedWidth="60"
     :collapsedIconSize="22"
@@ -13,10 +14,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useRouteStore } from '@/store'
+import { useRouteStore, useThemeStore } from '@/store'
 import { useRouterPush } from '@/composables'
 
 const route = useRoute()
+const theme = useThemeStore()
 const routeStore = useRouteStore()
 const { routerPush } = useRouterPush()
 const props = defineProps<{ collapsed: boolean }>()

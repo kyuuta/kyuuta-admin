@@ -78,6 +78,10 @@ export const useThemeStore = defineStore({
         this.setFooterFixed(false)
       }
     },
+    /** 设置布局模式 */
+    setLayoutMode(mode: Theme.LayoutMode) {
+      this.layoutMode = mode
+    },
     /** 头部设置 */
     setHeaderVisible(visible: boolean) {
       this.header.visible = visible

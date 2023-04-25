@@ -2,6 +2,7 @@ const ThemeConfig: Theme.Setting = {
   darkMode: false,
   followOSTheme: true,
   scrollMode: 'content',
+  layoutMode: 'vertical',
   header: {
     visible: true,
     height: 60

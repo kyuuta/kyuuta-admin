@@ -1,7 +1,7 @@
 <template>
   <NLayout position="absolute">
     <NLayout hasSider :position="position">
-      <Sider />
+      <Sider v-if="theme.layoutMode.includes('vertical')" />
       <NLayout class="flex-layout">
         <Header
           v-if="headerConfig.visible"

@@ -1,9 +1,9 @@
 <template>
   <NLayoutFooter
-    class="page-footer bg-white dark:bg-dark"
+    class="page-footer bg-white dark:bg-dark text-center"
     :position="props.position"
   >
-    KYUUTA
+    Copyright ©2023 Kyuuta Admin
   </NLayoutFooter>
 </template>
 
@@ -21,5 +21,6 @@ const props = withDefaults(defineProps<Props>(), {
 .page-footer {
   height: v-bind('props.height');
   flex: 0 0 v-bind('props.height');
+  line-height: v-bind('props.height');
 }
 </style>

@@ -14,6 +14,11 @@
         <ThemeColor />
 
         <NDivider titlePlacement="center">
+          布局模式
+        </NDivider>
+        <LayoutMode />
+
+        <NDivider titlePlacement="center">
           界面功能
         </NDivider>
         <Interface />
@@ -40,6 +45,7 @@ import { useModalState } from '@/composables'
 import {
   Animation,
   Interface,
+  LayoutMode,
   Theme,
   ThemeColor,
   MenuSetting,
