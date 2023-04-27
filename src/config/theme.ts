@@ -2,13 +2,13 @@ const ThemeConfig: Theme.Setting = {
   darkMode: false,
   followOSTheme: true,
   scrollMode: 'content',
-  layoutMode: 'vertical',
+  layoutMode: 'vertical-mix',
   header: {
     visible: true,
     height: 60
   },
   footer: {
-    visible: false,
+    visible: true,
     height: 48,
     fixed: true
   },
@@ -24,7 +24,7 @@ const ThemeConfig: Theme.Setting = {
     collapse: false,
     showHeaderCollapse: true,
     showSiderCollapse: true,
-    collapseType: 'Bar',
+    collapseType: 'bar',
     collapseTypeList: [
       {
         label: 'Bar',

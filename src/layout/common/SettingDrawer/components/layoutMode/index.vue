@@ -28,15 +28,19 @@
       </template>
       <template v-else-if="mode.value === 'vertical-mix'">
         <div class="w-8px h-full bg-primary rd-4px" />
-        <div class="w-14px h-full bg-primary rd-4px" />
+        <div class="w-12px h-full bg-primary rd-4px" />
         <div class="flex flex-1 flex-col gap-6px">
           <div class="h-16px bg-primary:70 rd-4px" />
           <div class="flex-1 bg-primary:25 rd-4px" />
         </div>
       </template>
-      <div v-else-if="mode.value === 'horizontal-mix'"
-        >顶部菜单混合模式</div
-      >
+      <template v-else-if="mode.value === 'horizontal-mix'">
+        <div class="w-8px h-full bg-primary rd-4px" />
+        <div class="flex flex-1 flex-col gap-6px">
+          <div class="h-16px bg-primary rd-4px" />
+          <div class="flex-1 bg-primary:25 rd-4px" />
+        </div>
+      </template>
     </Item>
   </n-space>
 </template>

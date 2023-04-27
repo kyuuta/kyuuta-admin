@@ -1,11 +1,13 @@
 import { App, Component } from 'vue'
-import TooltipContainer from '@/components/tooltipContainer'
+import DarkModeContainer from '@/components/DarkModeContainer'
+import TooltipContainer from '@/components/TooltipContainer'
 
 interface Components {
   [key: string]: Component
 }
 
 const components: Components = {
+  DarkModeContainer,
   TooltipContainer
 }
 

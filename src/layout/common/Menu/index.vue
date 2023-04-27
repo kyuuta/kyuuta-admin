@@ -1,6 +1,10 @@
 <template>
   <NMenu
-    :mode="theme.layoutMode"
+    :mode="
+      theme.layoutMode.includes('vertical')
+        ? 'vertical'
+        : 'horizontal'
+    "
     :collapsed="props.collapsed"
     :collapsedWidth="60"
     :collapsedIconSize="22"

@@ -8,12 +8,15 @@
       v-if="theme.layoutMode !== 'horizontal'"
       class="left-controls"
     >
-      <Collapse />
+      <Collapse v-if="theme.layoutMode === 'vertical'" />
       <Reload />
       <Breadcrumb />
     </div>
 
-    <div v-else class="menu">
+    <div v-else class="flex-y-center flex-auto">
+      <div class="flex-center w-80px h-60px">
+        <Logo />
+      </div>
       <n-scrollbar x-scrollable>
         <Menu :collapsed="false" />
       </n-scrollbar>
@@ -40,6 +43,7 @@ import {
   Search,
   Setting
 } from './components'
+import Logo from '../Logo/index.vue'
 import Menu from '../Menu/index.vue'
 import { useThemeStore } from '@/store'
 
@@ -57,6 +61,7 @@ const props = defineProps<{
   justify-content: space-between;
   align-items: center;
   height: v-bind('props.height');
+  flex: 0 0 v-bind('props.height');
 
   .right-controls {
     padding-right: 10px;
@@ -69,7 +74,6 @@ const props = defineProps<{
 
   .menu {
     flex: auto;
-    // background-color: skyblue;
   }
 }
 </style>

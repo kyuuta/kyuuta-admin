@@ -1,21 +1,15 @@
 <template>
-  <div>
-    <TooltipContainer
-      v-if="menuConfig.showHeaderCollapse"
-      @click="theme.setCollapse(!menuConfig.collapse)"
-    >
-      <NIcon
-        v-if="menuConfig.collapse"
-        size="22"
-        :component="MenuUnfoldOutlined"
-      />
-      <NIcon
-        v-else
-        size="22"
-        :component="MenuFoldOutlined"
-      />
-    </TooltipContainer>
-  </div>
+  <TooltipContainer
+    v-if="menuConfig.showHeaderCollapse"
+    @click="theme.setCollapse(!menuConfig.collapse)"
+  >
+    <NIcon
+      v-if="menuConfig.collapse"
+      size="22"
+      :component="MenuUnfoldOutlined"
+    />
+    <NIcon v-else size="22" :component="MenuFoldOutlined" />
+  </TooltipContainer>
 </template>
 
 <script lang="ts" setup>

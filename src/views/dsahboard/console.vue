@@ -1,5 +1,8 @@
 <template>
-  <div class="test-wrapper" style="padding: 15px">
+  <div
+    class="test-wrapper bg-white dark:bg-black"
+    style="padding: 15px"
+  >
     <div class="header">header</div>
     <div class="content">
       <n-data-table

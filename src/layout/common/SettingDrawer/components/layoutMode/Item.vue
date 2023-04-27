@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-2px rounded-6px cursor-pointer hover:border-primary"
+    class="border-2px rounded-6px cursor-pointer hover:border-primary box-shadow"
     :class="[
       checked ? 'border-primary' : 'border-transparent'
     ]"
@@ -36,3 +36,9 @@ interface Props {
 
 const props = defineProps<Props>()
 </script>
+
+<style lang="less" scoped>
+.box-shadow {
+  box-shadow: 0 1px 2.5px #0000002e;
+}
+</style>

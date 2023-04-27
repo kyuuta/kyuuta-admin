@@ -2,7 +2,7 @@
   <TooltipContainer>
     <NDropdown trigger="hover" :options="avatarOptions">
       <div class="avatar">
-        <NAvatar round>KYUUTA</NAvatar>
+        <Logo />
       </div>
     </NDropdown>
   </TooltipContainer>
@@ -10,6 +10,7 @@
 
 <script lang="ts" setup>
 import { renderIcon } from '@/utils'
+import { Logo } from '@/layout/common'
 import {
   ArrowLeftOutlined,
   UserOutlined
