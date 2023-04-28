@@ -1,7 +1,7 @@
 <template>
   <DarkModeContainer
     class="flex z-100 min-h-100vh"
-    @mouseleave="hideDrawer"
+    @mouseleave="reset"
   >
     <div
       :class="[
@@ -113,6 +113,11 @@ const handleClickMenu = (
   } else {
     routerPush({ name: routeName })
   }
+}
+
+const reset = () => {
+  hideDrawer()
+  setActiveParentRouteName()
 }
 
 watch(

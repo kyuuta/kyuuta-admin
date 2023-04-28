@@ -1,5 +1,7 @@
 <template>
-  <div class="h-full">
-    <iframe class="wh-full" src="https://cn.vitejs.dev/" />
-  </div>
+  <IframeContainer src="https://cn.vitejs.dev/" />
 </template>
+
+<script lang="ts" setup>
+import IframeContainer from '@/components/IframeContainer/index.vue'
+</script>

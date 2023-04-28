@@ -1,8 +1,7 @@
 <template>
-  <div class="h-full">
-    <iframe
-      class="wh-full"
-      src="https://v3.cn.vuejs.org/"
-    />
-  </div>
+  <IframeContainer src="https://v3.cn.vuejs.org/" />
 </template>
+
+<script lang="ts" setup>
+import IframeContainer from '@/components/IframeContainer/index.vue'
+</script>

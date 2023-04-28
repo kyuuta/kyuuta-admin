@@ -6,6 +6,7 @@ import {
   // components
   NIcon,
   NMenu,
+  NSpin,
   NEmpty,
   NInput,
   NModal,
@@ -48,6 +49,7 @@ const naive = create({
     // components
     NIcon,
     NMenu,
+    NSpin,
     NEmpty,
     NInput,
     NModal,

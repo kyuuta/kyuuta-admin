@@ -20,7 +20,10 @@
     </NInput>
 
     <div class="page-list">
-      <NScrollbar v-if="resultOptions.length">
+      <NScrollbar
+        v-if="resultOptions.length"
+        class="max-h-300px"
+      >
         <div
           v-for="(menu, index) in resultOptions"
           :key="menu.key"
@@ -212,6 +215,9 @@ onKeyStroke('ArrowDown', handleDown)
       color: #fff;
       transition: background-color 0.3s;
       background-color: rgb(var(--primary-color));
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
     .info {
       display: flex;
