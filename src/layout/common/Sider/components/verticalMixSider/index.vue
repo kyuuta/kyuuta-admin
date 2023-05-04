@@ -20,7 +20,7 @@
       </div>
       <NScrollbar class="flex-1 overflow-hidden">
         <MenuItem
-          v-for="menu in firstDegreeMenus"
+          v-for="menu in routeStore.firstDegreeMenus"
           :key="menu.routeName"
           :label="menu.label"
           :icon="menu.icon"
@@ -29,7 +29,7 @@
           @click="
             handleClickMenu(
               menu.routeName,
-              menu.hasChildren
+              menu.hasChildren as boolean
             )
           "
         />
@@ -38,13 +38,15 @@
 
     <Drawer
       :visible="drawerVisible"
-      :menus="childrenMenus"
+      :menus="
+        getActiveMenuChild(activeRouteName, routeStore.menu)
+      "
     />
   </DarkModeContainer>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useRouteStore } from '@/store'
 import { useBoolean } from '@/hooks'
@@ -52,29 +54,23 @@ import { useRouterPush } from '@/composables'
 import Drawer from './drawer.vue'
 import MenuItem from './menuItem.vue'
 import { Logo } from '@/layout/common'
+import { getActiveMenuChild } from '@/utils'
+
+withDefaults(
+  defineProps<{
+    hasDrawer?: boolean
+  }>(),
+  {
+    hasDrawer: true
+  }
+)
 
 const route = useRoute()
 const routeStore = useRouteStore()
 
-const firstDegreeMenus = computed(() =>
-  routeStore.menu.map((item) => {
-    const { routeName, label } = item
-    const icon = item?.icon
-    const hasChildren = Boolean(
-      item.children && item.children.length
-    )
-    return {
-      routeName,
-      label,
-      icon,
-      hasChildren
-    }
-  })
-)
-
 const activeRouteName = ref('')
 const setActiveParentRouteName = () => {
-  firstDegreeMenus.value.some((item) => {
+  routeStore.firstDegreeMenus.some((item) => {
     const activeName = route.name as string
     const flag = activeName.includes(item.routeName)
     if (flag) {
@@ -83,20 +79,6 @@ const setActiveParentRouteName = () => {
     return flag
   })
 }
-const childrenMenus = computed(() => {
-  const menus: App.GlobalMenuOption[] = []
-  routeStore.menu.some((item) => {
-    const flag =
-      item.routeName === activeRouteName.value &&
-      Boolean(item.children?.length)
-    if (flag) {
-      menus.push(...(item.children || []))
-    }
-    return flag
-  })
-  return menus
-})
-
 const {
   bool: drawerVisible,
   setTrue: openDrawer,

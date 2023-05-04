@@ -1,5 +1,5 @@
 <template>
-  <n-space
+  <NSpace
     justify="space-around"
     :wrap="true"
     :size="24"
@@ -42,7 +42,7 @@
         </div>
       </template>
     </Item>
-  </n-space>
+  </NSpace>
 </template>
 
 <script lang="ts" setup>

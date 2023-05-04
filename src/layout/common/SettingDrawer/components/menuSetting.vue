@@ -17,6 +17,12 @@
       @update:value="setHeaderCollapseVisible"
     />
   </Item>
+  <Item title="侧边栏手风琴">
+    <NSwitch
+      :value="menuConfig.accordion"
+      @update:value="setSiderAccordion"
+    />
+  </Item>
   <Item title="侧边栏折叠按钮">
     <NSwitch
       :value="menuConfig.showSiderCollapse"
@@ -55,6 +61,7 @@ const {
   setCollapsedWidth,
   setBreadcrumbVisible,
   setBreadcrumbShowIcon,
+  setSiderAccordion,
   setSiderCollapseVisible,
   setHeaderCollapseVisible
 } = theme

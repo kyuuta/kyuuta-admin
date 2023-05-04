@@ -3,13 +3,18 @@
     :class="[
       'cursor-pointer',
       'flex-y-center flex-col justify-between',
-      'h-55px',
-      'py-6px mx-4px mb-4px',
+      'py-6px mx-4px',
       'rd',
-      'hover:bg-#ececed hover:dark-bg-#343438',
       'transition-colors duration-300 ease-in-out',
       { 'text-primary !bg-primary_active': isActive },
-      { 'text-primary': isHover }
+      { 'text-primary': isHover },
+      {
+        'hover:bg-#ececed hover:dark-bg-#343438 h-55px mb-4px':
+          mode === 'vertical'
+      },
+      {
+        'w-45px': mode === 'horizontal'
+      }
     ]"
     @mouseenter="setTrue"
     @mouseleave="setFalse"
@@ -38,9 +43,12 @@ const props = withDefaults(
     activeRouteName: string
     /** 路由图标 */
     icon?: () => VNodeChild
+    /** 布局模式 */
+    mode?: 'horizontal' | 'vertical'
   }>(),
   {
-    icon: undefined
+    icon: undefined,
+    mode: 'vertical'
   }
 )
 

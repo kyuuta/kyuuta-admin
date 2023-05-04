@@ -1,6 +1,7 @@
 <template>
   <VerticalMixSider
     v-if="theme.layoutMode === 'vertical-mix'"
+    :hasDrawer="false"
   />
   <VerticalSider v-else />
 </template>

@@ -4,23 +4,50 @@
     bordered
     :position="props.position"
   >
-    <div
-      v-if="theme.layoutMode !== 'horizontal'"
-      class="left-controls"
-    >
-      <Collapse v-if="theme.layoutMode === 'vertical'" />
-      <Reload />
-      <Breadcrumb />
-    </div>
-
-    <div v-else class="flex-y-center flex-auto">
-      <div class="flex-center w-80px h-60px">
+    <div class="left-controls">
+      <div
+        v-if="theme.layoutMode === 'horizontal'"
+        class="flex-center w-80px h-60px"
+      >
         <Logo />
       </div>
-      <n-scrollbar x-scrollable>
-        <Menu :collapsed="false" />
-      </n-scrollbar>
+      <Collapse
+        v-if="
+          ['vertical', 'horizontal-mix'].includes(
+            theme.layoutMode
+          )
+        "
+      />
+      <Reload />
+      <Breadcrumb
+        v-if="
+          ['vertical', 'vertical-mix'].includes(
+            theme.layoutMode
+          )
+        "
+      />
     </div>
+
+    <NScrollbar
+      v-if="
+        ['horizontal', 'horizontal-mix'].includes(
+          theme.layoutMode
+        )
+      "
+      class="flex-1 overflow-hidden flex-y-center h-full menu-wrapper"
+      x-scrollable
+    >
+      <div class="h-full flex-y-center">
+        <Menu
+          v-if="theme.layoutMode === 'horizontal'"
+          :collapsed="false"
+          mode="horizontal"
+        />
+        <HorizontalMix
+          v-if="theme.layoutMode === 'horizontal-mix'"
+        />
+      </div>
+    </NScrollbar>
 
     <div class="right-controls">
       <Search />
@@ -33,6 +60,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useThemeStore } from '@/store'
 import {
   Avatar,
   Breadcrumb,
@@ -45,7 +73,7 @@ import {
 } from './components'
 import Logo from '../Logo/index.vue'
 import Menu from '../Menu/index.vue'
-import { useThemeStore } from '@/store'
+import HorizontalMix from '../Menu/horizontalMix.vue'
 
 const theme = useThemeStore()
 const props = defineProps<{
@@ -72,8 +100,19 @@ const props = defineProps<{
     height: 100%;
   }
 
-  .menu {
-    flex: auto;
+  ::v-deep(.menu-wrapper) {
+    margin-left: 10px;
+    .n-scrollbar-content {
+      height: 100%;
+      .n-menu-item-content {
+        padding-left: 0;
+        padding-right: 18px;
+      }
+      .n-menu-item-content-header {
+        overflow: unset;
+        text-overflow: unset;
+      }
+    }
   }
 }
 </style>

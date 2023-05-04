@@ -17,7 +17,11 @@
     <div class="flex-center h-60px">
       <Logo />
     </div>
-    <AsideMenu :collapsed="menuConfig.collapse" />
+
+    <AsideMenu
+      :collapsed="menuConfig.collapse"
+      mode="vertical"
+    />
   </NLayoutSider>
 </template>
 

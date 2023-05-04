@@ -107,6 +107,10 @@ export const useThemeStore = defineStore({
     setHeaderCollapseVisible(visible: boolean) {
       this.menu.showHeaderCollapse = visible
     },
+    /** 设置侧边栏手风琴 */
+    setSiderAccordion(visible: boolean) {
+      this.menu.accordion = visible
+    },
     /** 设置显示侧边栏折叠图标 */
     setSiderCollapseVisible(visible: boolean) {
       this.menu.showSiderCollapse = visible

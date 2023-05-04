@@ -103,6 +103,8 @@ declare namespace Theme {
 
   /** 菜单配置 */
   interface Menu {
+    /** 手风琴模式 true开启 false关闭 */
+    accordion: boolean
     /** 默认展开收起 */
     collapse: boolean
     /** 显示头部折叠图标 */
@@ -138,12 +140,15 @@ declare namespace Theme {
 
 declare namespace App {
   /** 菜单项配置 */
-  type GlobalMenuOption = import('naive-ui').MenuOption & {
+  // import('naive-ui').MenuOption &
+  type GlobalMenuOption = {
     key: string
     label: string
     routeName: string
     routePath: string
+    redirect?: string
     icon?: () => import('vue').VNodeChild
     children?: GlobalMenuOption[]
+    hasChildren?: boolean
   }
 }

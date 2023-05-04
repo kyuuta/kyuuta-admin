@@ -8,12 +8,14 @@ import { PageConfig } from '@/config/page'
 import {
   filterAsyncRoutes,
   getConstantRouteMapNames,
-  transformRouteToMenu
+  transformRouteToMenu,
+  transformFirstDegreeMenu
 } from '@/utils'
 
 interface IRouteStore {
   isInitAuthRoute: boolean
   menu: App.GlobalMenuOption[]
+  firstDegreeMenus: App.GlobalMenuOption[]
   routers: RouteRecordRaw[]
 }
 
@@ -22,6 +24,7 @@ export const useRouteStore = defineStore({
   state: (): IRouteStore => ({
     isInitAuthRoute: false,
     menu: [],
+    firstDegreeMenus: [],
     routers: []
   }),
   actions: {
@@ -43,8 +46,9 @@ export const useRouteStore = defineStore({
      * @param routes - 权限路由
      */
     async handleAuthRoute(routes: RouteRecordRaw[]) {
-      ;(this.menu as App.GlobalMenuOption[]) =
-        transformRouteToMenu(routes)
+      this.menu = transformRouteToMenu(routes)
+      this.firstDegreeMenus =
+        transformFirstDegreeMenu(routes)
 
       await routes.forEach((route) => {
         Router.addRoute(route)

@@ -120,7 +120,6 @@ const flattenArray = (
 }
 
 const searchPage = () => {
-  // @ts-ignore
   resultOptions.value = flattenArray(
     routeStore.menu
   ).filter(
