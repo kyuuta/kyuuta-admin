@@ -42,7 +42,7 @@
             <component
               :is="menu.icon"
               v-if="menu.icon"
-              size="22"
+              class="mr-6px"
             />
             <span>{{ menu.label }}</span>
           </div>

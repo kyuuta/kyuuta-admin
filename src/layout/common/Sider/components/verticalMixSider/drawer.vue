@@ -35,6 +35,7 @@
       </div>
       <NScrollbar class="flex-1 overflow-hidden">
         <NMenu
+          class="menu"
           :value="activeKey"
           :options="menus"
           @update:value="handleUpdateMenu"
@@ -70,3 +71,11 @@ const handleUpdateMenu = (key: string) => {
   routerPush({ name: key })
 }
 </script>
+
+<style lang="less" scoped>
+.menu {
+  ::v-deep(.n-menu-item-content) {
+    padding-left: 22px !important;
+  }
+}
+</style>
