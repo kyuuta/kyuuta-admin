@@ -1,7 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
 import { BasicLayout } from '@/layout'
-import { DashboardOutlined } from '@vicons/antd'
-import { renderIcon } from '@/utils'
 
 const moduleName = 'Dashboard'
 
@@ -13,7 +11,7 @@ const routes: RouteRecordRaw[] = [
     component: BasicLayout,
     meta: {
       title: '控制台',
-      icon: renderIcon(DashboardOutlined)
+      icon: 'mdi-light:console'
     },
     children: [
       {
@@ -23,7 +21,8 @@ const routes: RouteRecordRaw[] = [
           import('@/views/dsahboard/console.vue'),
         meta: {
           requiresAuth: true,
-          title: '主控台'
+          title: '主控台',
+          icon: 'material-symbols:control-camera'
         }
       },
       {
@@ -33,7 +32,8 @@ const routes: RouteRecordRaw[] = [
           import('@/views/dsahboard/workplace.vue'),
         meta: {
           requiresAuth: true,
-          title: '工作台'
+          title: '工作台',
+          icon: 'material-symbols:work-outline'
         }
       }
     ]

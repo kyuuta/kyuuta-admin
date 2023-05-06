@@ -1,28 +1,30 @@
 <template>
   <NLayoutFooter
-    class="flex-center page-footer bg-white dark:bg-dark text-center text-#999"
+    class="flex-center page-footer bg-white dark:bg-dark text-center text-#999 select-none"
     :position="props.position"
   >
-    <NIcon
-      size="26"
-      :component="GithubFilled"
-      class="mr-10px cursor-pointer"
+    <SvgIcon
+      class="mr-10px cursor-pointer text-26px"
+      icon="line-md:github-loop"
       @click="openGithub"
     />
-    <span> Copyright ©2023 Kyuuta Admin </span>
+
+    <span class="select-none">
+      Copyright ©2023 Kyuuta Admin
+    </span>
   </NLayoutFooter>
 </template>
 
 <script lang="ts" setup>
-import { GithubFilled } from '@vicons/antd'
-
-interface Props {
-  height: string
-  position?: 'absolute' | 'static'
-}
-const props = withDefaults(defineProps<Props>(), {
-  position: 'absolute'
-})
+const props = withDefaults(
+  defineProps<{
+    height: string
+    position?: 'absolute' | 'static'
+  }>(),
+  {
+    position: 'absolute'
+  }
+)
 
 const openGithub = () => {
   window.open('https://github.com/kyuuta', '_blank')

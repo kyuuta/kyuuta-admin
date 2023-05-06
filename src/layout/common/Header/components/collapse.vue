@@ -3,22 +3,23 @@
     v-if="menuConfig.showHeaderCollapse"
     @click="theme.setCollapse(!menuConfig.collapse)"
   >
-    <NIcon
+    <SvgIcon
       v-if="menuConfig.collapse"
-      size="22"
-      :component="MenuUnfoldOutlined"
+      class="text-24px"
+      icon="line-md:menu-fold-left"
     />
-    <NIcon v-else size="22" :component="MenuFoldOutlined" />
+
+    <SvgIcon
+      v-else
+      class="text-24px"
+      icon="line-md:menu-fold-right"
+    />
   </TooltipContainer>
 </template>
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { useThemeStore } from '@/store'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined
-} from '@vicons/antd'
 
 const theme = useThemeStore()
 const { menuConfig } = storeToRefs(theme)

@@ -3,7 +3,9 @@
     class="test-wrapper bg-white dark:bg-black"
     style="padding: 15px"
   >
-    <div class="header">header</div>
+    <div class="header">
+      <icon-local-vite style="font-size: 30px" />
+    </div>
     <div class="content">
       <n-data-table
         :style="{ height: '100%' }"
@@ -93,7 +95,7 @@ const data = [
   flex: auto;
   .header {
     height: 200px;
-    background-color: skyblue;
+    // background-color: skyblue;
   }
   .content {
     flex: auto;

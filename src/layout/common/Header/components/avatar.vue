@@ -9,23 +9,26 @@
 </template>
 
 <script lang="ts" setup>
-import { renderIcon } from '@/utils'
+import { useIconRender } from '@/composables'
 import { Logo } from '@/layout/common'
-import {
-  ArrowLeftOutlined,
-  UserOutlined
-} from '@vicons/antd'
 
+const { iconRender } = useIconRender()
 const avatarOptions = [
   {
     key: 'userSetting',
     label: '个人设置',
-    icon: renderIcon(UserOutlined)
+    icon: iconRender({
+      icon: 'line-md:account',
+      fontSize: 20
+    })
   },
   {
     key: 'logout',
     label: '退出登陆',
-    icon: renderIcon(ArrowLeftOutlined)
+    icon: iconRender({
+      icon: 'line-md:arrow-left-circle',
+      fontSize: 20
+    })
   }
 ]
 </script>

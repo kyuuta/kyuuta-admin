@@ -4,7 +4,7 @@
     placement="bottom-end"
     @click="openSetting"
   >
-    <NIcon size="22" :component="Settings32Regular" />
+    <SvgIcon class="text-22px" icon="lucide:settings" />
   </TooltipContainer>
 
   <SettingDrawer v-model:visible="settingVisible" />
@@ -12,7 +12,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Settings32Regular } from '@vicons/fluent'
 import SettingDrawer from '@/layout/common/SettingDrawer/index.vue'
 
 const settingVisible = ref<boolean>(false)

@@ -21,17 +21,15 @@
           class="cursor-pointer mt-7px"
           @click="fixed = !fixed"
         >
-          <NIcon
+          <SvgIcon
             v-if="fixed"
-            size="22"
-            class="text-primary"
-            :component="PinOff20Filled"
+            class="text-primary text-22px"
+            icon="ph:push-pin-slash-fill"
           />
-          <NIcon
+          <SvgIcon
             v-else
-            size="22"
-            class="text-primary"
-            :component="Pin20Regular"
+            class="text-primary text-22px"
+            icon="ph:push-pin-bold"
           />
         </div>
       </div>
@@ -50,10 +48,6 @@
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useRouterPush } from '@/composables'
-import {
-  Pin20Regular,
-  PinOff20Filled
-} from '@vicons/fluent'
 
 defineProps<{
   visible: boolean

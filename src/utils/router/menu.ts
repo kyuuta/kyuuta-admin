@@ -1,3 +1,4 @@
+import { useIconRender } from '@/composables'
 import { RouteRecordRaw } from 'vue-router'
 
 /**
@@ -18,14 +19,15 @@ export function transformRouteToMenu(
       menuChildren = transformRouteToMenu(route.children)
     }
 
-    const menuItem: App.GlobalMenuOption = {
+    const menuItem: App.GlobalMenuOption = addPartialProps({
       key: routeName,
       label: meta?.title || routeName,
       routeName,
       routePath: path,
       icon: meta?.icon,
+      localIcon: meta?.localIcon,
       children: menuChildren
-    }
+    })
 
     if (!meta?.hide) {
       menu.push(menuItem)
@@ -48,13 +50,17 @@ export function transformFirstDegreeMenu(
     const hasChildren = Boolean(
       route.children && route.children.length
     )
-    return {
+
+    const menuItem = addPartialProps({
       routeName: name,
       label: meta?.title || name,
-      icon: meta?.icon,
       redirect,
+      icon: meta?.icon,
+      localIcon: meta?.localIcon,
       hasChildren
-    }
+    })
+
+    return menuItem
   })
 }
 
@@ -120,4 +126,27 @@ export function getActiveMenuChild(
     return flag
   })
   return menus
+}
+
+/** 给菜单添加可选属性 */
+function addPartialProps(config: {
+  menu: App.GlobalMenuOption
+  icon?: string
+  localIcon?: string
+}) {
+  const { iconRender } = useIconRender()
+
+  const item = { ...config }
+
+  const { icon, localIcon } = config
+
+  if (localIcon) {
+    Object.assign(item, { icon: iconRender({ localIcon }) })
+  }
+
+  if (icon) {
+    Object.assign(item, { icon: iconRender({ icon }) })
+  }
+
+  return item
 }

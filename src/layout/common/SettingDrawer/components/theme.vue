@@ -9,17 +9,17 @@
       @update:value="themeStore.setDarkMode"
     >
       <template #checked>
-        <NIcon
-          size="20"
+        <SvgIcon
+          class="text-20px"
           color="rgb(250,140,53)"
-          :component="WeatherSunny24Filled"
+          icon="line-md:moon-filled-alt-to-sunny-filled-loop-transition"
         />
       </template>
       <template #unchecked>
-        <NIcon
-          size="20"
+        <SvgIcon
+          class="text-20px"
           color="rgb(255, 217, 59)"
-          :component="WeatherMoon24Filled"
+          icon="line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition"
         />
       </template>
     </NSwitch>
@@ -29,11 +29,6 @@
 <script lang="ts" setup>
 import Item from './item.vue'
 import { useThemeStore } from '@/store'
-import {
-  WeatherSunny24Filled,
-  WeatherMoon24Filled
-} from '@vicons/fluent'
-
 const themeStore = useThemeStore()
 
 const switchStyle = ({ checked }: { checked: boolean }) => {

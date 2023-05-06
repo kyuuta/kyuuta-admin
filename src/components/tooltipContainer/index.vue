@@ -6,19 +6,14 @@
       arrowPointToCenter
     >
       <template #trigger>
-        <div
-          class="item hover:bg-#ececed hover:dark-bg-#2d2d30"
-        >
+        <div :class="itemClass">
           <slot />
         </div>
       </template>
       <span>{{ tooltip }}</span>
     </NTooltip>
   </div>
-  <div
-    v-else
-    class="item hover:bg-#ececed hover:dark-bg-#2d2d30"
-  >
+  <div v-else :class="itemClass">
     <slot />
   </div>
 </template>
@@ -27,32 +22,27 @@
 import { computed } from 'vue'
 import { PopoverPlacement } from 'naive-ui'
 
-interface Props {
-  tooltip?: string
-  placement?: PopoverPlacement
-}
+defineOptions({ name: 'TooltipContainer' })
 
-const props = withDefaults(defineProps<Props>(), {
-  tooltip: '',
-  placement: 'bottom'
-})
+const itemClass = [
+  'cursor-pointer',
+  'flex-center',
+  'min-w-26px',
+  'h-full',
+  'px-10px',
+  'hover:bg-#ececed hover:dark-bg-#2d2d30'
+]
+
+const props = withDefaults(
+  defineProps<{
+    tooltip?: string
+    placement?: PopoverPlacement
+  }>(),
+  {
+    tooltip: '',
+    placement: 'bottom'
+  }
+)
 
 const showTooltip = computed(() => Boolean(props.tooltip))
 </script>
-
-<style lang="less" scoped>
-.item {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0 10px;
-  min-width: 26px;
-  transition: background-color 0.3s;
-  // &:hover {
-  //   transition: background-color 0.3s;
-  // background-color: rgba(0, 0, 0, 0.03);
-  // }
-}
-</style>

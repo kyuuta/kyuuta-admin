@@ -15,6 +15,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
+defineOptions({ name: 'IframeContainer' })
+
 const loaded = ref(false)
 
 withDefaults(

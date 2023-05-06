@@ -12,3 +12,5 @@ dist
 .local
 /bin
 Dockerfile
+components.d.ts
+*.svg

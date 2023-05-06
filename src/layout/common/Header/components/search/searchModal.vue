@@ -15,7 +15,7 @@
       @input="handleSearch"
     >
       <template #prefix>
-        <NIcon :component="Search20Filled" />
+        <SvgIcon icon="line-md:search" class="text-21px" />
       </template>
     </NInput>
 
@@ -46,9 +46,9 @@
             />
             <span>{{ menu.label }}</span>
           </div>
-          <NIcon
-            size="20"
-            :component="ArrowEnterLeft20Regular"
+          <SvgIcon
+            icon="fluent:arrow-enter-left-20-filled"
+            class="text-20px"
           />
         </div>
       </NScrollbar>
@@ -57,28 +57,27 @@
     <template #footer>
       <div class="operations">
         <div class="item">
-          <img
-            src="~@/assets/images/enter.png"
-            alt="keyboard enter"
+          <SvgIcon
+            class="text-22px mr-6px"
+            icon="streamline:computer-keyboard-return-3-enter-return-keyboard"
           />
           <span>确定</span>
         </div>
         <div class="item">
-          <img
-            src="~@/assets/images/up.png"
-            style="margin-right: 0"
-            alt="keyboard up"
+          <SvgIcon
+            class="text-20px"
+            icon="streamline:interface-arrows-up-arrow-up-keyboard"
           />
-          <img
-            src="~@/assets/images/down.png"
-            alt="keyboard down"
+          <SvgIcon
+            class="text-20px mr-4px"
+            icon="streamline:interface-arrows-down-arrow-down-keyboard"
           />
           <span>切换</span>
         </div>
         <div class="item">
-          <img
-            src="~@/assets/images/esc.png"
-            alt="keyboard esc"
+          <SvgIcon
+            class="text-22px mr-6px"
+            icon="mdi:keyboard-esc"
           />
           <span>关闭</span>
         </div>
@@ -92,10 +91,6 @@ import { ref, shallowRef } from 'vue'
 import { useRouteStore } from '@/store'
 import { useRouterPush, useModalState } from '@/composables'
 import { onKeyStroke, useDebounceFn } from '@vueuse/core'
-import {
-  Search20Filled,
-  ArrowEnterLeft20Regular
-} from '@vicons/fluent'
 
 const searchKey = ref('')
 const routeStore = useRouteStore()

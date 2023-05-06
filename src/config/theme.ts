@@ -22,7 +22,7 @@ const ThemeConfig: Theme.Setting = {
   isCustomizeInfoColor: false,
   menu: {
     collapse: false,
-    accordion: true,
+    accordion: false,
     showHeaderCollapse: true,
     showSiderCollapse: true,
     collapseType: 'bar',

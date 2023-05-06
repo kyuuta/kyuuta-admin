@@ -14,22 +14,22 @@
           :options="breadcrumb.children"
           @select="(key) => routerPush({ name: key })"
         >
-          <span>
+          <span class="flex-y-center">
             <component
               :is="breadcrumb.icon"
-              v-if="breadcrumbConfig.showIcon"
-              class="breadcrumb-icon"
+              v-if="breadcrumb.icon"
+              class="mr-4px"
             />
             <span>{{ breadcrumb.label }}</span>
           </span>
         </NDropdown>
 
         <template v-else>
-          <span>
+          <span class="flex-y-center">
             <component
               :is="breadcrumb.icon"
-              v-if="breadcrumbConfig.showIcon"
-              class="breadcrumb-icon"
+              v-if="breadcrumb.icon"
+              class="mr-4px"
             />
             <span>{{ breadcrumb.label }}</span>
           </span>
@@ -63,6 +63,10 @@ const breadcrumbs = computed(() =>
   display: flex;
   align-items: center;
   height: 100%;
+  ::v-deep(ul) {
+    display: flex;
+    align-items: center;
+  }
 }
 .breadcrumb-icon {
   margin-right: 4px;

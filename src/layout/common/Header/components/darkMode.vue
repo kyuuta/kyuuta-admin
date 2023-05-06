@@ -3,27 +3,24 @@
     tooltip="暗黑模式"
     @click="setDarkMode(!theme.getDarkMode)"
   >
-    <NIcon
+    <SvgIcon
       v-if="theme.getDarkMode"
-      size="22"
+      class="text-24px"
       color="rgb(255, 217, 59)"
-      :component="WeatherMoon24Filled"
+      icon="line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition"
     />
-    <NIcon
+
+    <SvgIcon
       v-else
-      size="22"
+      class="text-24px"
       color="rgb(250,140,53)"
-      :component="WeatherSunny24Filled"
+      icon="line-md:moon-filled-alt-to-sunny-filled-loop-transition"
     />
   </TooltipContainer>
 </template>
 
 <script lang="ts" setup>
 import { useThemeStore } from '@/store'
-import {
-  WeatherSunny24Filled,
-  WeatherMoon24Filled
-} from '@vicons/fluent'
 
 const theme = useThemeStore()
 const { setDarkMode } = theme
