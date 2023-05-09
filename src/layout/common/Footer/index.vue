@@ -1,7 +1,6 @@
 <template>
   <NLayoutFooter
     class="flex-center page-footer bg-white dark:bg-dark text-center text-#999 select-none"
-    :position="props.position"
   >
     <SvgIcon
       class="mr-10px cursor-pointer text-26px"
@@ -16,15 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-const props = withDefaults(
-  defineProps<{
-    height: string
-    position?: 'absolute' | 'static'
-  }>(),
-  {
-    position: 'absolute'
-  }
-)
+const props = defineProps<{
+  height: string
+}>()
 
 const openGithub = () => {
   window.open('https://github.com/kyuuta', '_blank')

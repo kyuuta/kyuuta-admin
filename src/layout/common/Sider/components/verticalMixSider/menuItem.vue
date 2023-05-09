@@ -19,7 +19,7 @@
     @mouseenter="setTrue"
     @mouseleave="setFalse"
   >
-    <component :is="icon" />
+    <component :is="icon" v-if="icon" />
     <span
       class="text-12px overflow-hidden transition-height duration-300 ease-in-out"
     >

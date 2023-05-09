@@ -34,7 +34,7 @@ export const useUserStore = defineStore({
       const route = useRouteStore()
       const { toLoginRedirect } = useRouterPush(false)
 
-      await route.initAuthRoute()
+      // await route.initAuthRoute()
 
       toLoginRedirect()
 

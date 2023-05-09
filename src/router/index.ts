@@ -5,12 +5,13 @@ import {
 } from 'vue-router'
 import ConstantRouteMap from './constantRouteMap'
 import { createRouterGuard } from './guard'
+import { scrollBehavior } from './helpers'
 
 const router = createRouter({
   history: createWebHashHistory(''),
   strict: true,
   routes: ConstantRouteMap,
-  scrollBehavior: () => ({ left: 0, top: 0 })
+  scrollBehavior
 })
 
 export async function setupRouter(app: App) {

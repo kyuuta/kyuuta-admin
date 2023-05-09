@@ -5,6 +5,7 @@ import Main from './Main/index.vue'
 import Menu from './Menu/index.vue'
 import Sider from './Sider/index.vue'
 import SettingDrawer from './SettingDrawer/index.vue'
+import Tab from './Tab/index.vue'
 
 export {
   Logo,
@@ -13,5 +14,6 @@ export {
   Main,
   Menu,
   Sider,
-  SettingDrawer
+  SettingDrawer,
+  Tab
 }

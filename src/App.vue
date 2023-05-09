@@ -1,5 +1,6 @@
 <template>
   <NConfigProvider
+    class="min-h-100vh flex"
     :locale="zhCN"
     :theme="theme.naiveTheme"
     :dateLocale="dateZhCN"

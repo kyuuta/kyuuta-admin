@@ -1,9 +1,5 @@
 <template>
-  <NLayoutHeader
-    class="page-header"
-    bordered
-    :position="props.position"
-  >
+  <NLayoutHeader class="page-header" bordered>
     <div class="left-controls">
       <div
         v-if="theme.layoutMode === 'horizontal'"
@@ -78,7 +74,7 @@ import HorizontalMix from '../Menu/horizontalMix.vue'
 const theme = useThemeStore()
 const props = defineProps<{
   height: string
-  position: 'absolute' | 'static'
+  // position: 'absolute' | 'static'
 }>()
 </script>
 

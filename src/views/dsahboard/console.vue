@@ -1,10 +1,29 @@
 <template>
-  <div
-    class="test-wrapper bg-white dark:bg-black"
-    style="padding: 15px"
-  >
+  <div class="test-wrapper" style="padding: 15px">
     <div class="header">
       <icon-local-vite style="font-size: 30px" />
+
+      <n-button
+        type="primary"
+        class="mr-10px"
+        @click="
+          routerPush({
+            path: '/dashboard/detail/1'
+          })
+        "
+      >
+        goDetail1
+      </n-button>
+      <n-button
+        type="primary"
+        @click="
+          routerPush({
+            path: '/dashboard/detail/2'
+          })
+        "
+      >
+        goDetail2
+      </n-button>
     </div>
     <div class="content">
       <n-data-table
@@ -20,9 +39,12 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
+import { useRouterPush } from '@/composables'
+
+const { routerPush } = useRouterPush()
 
 onMounted(() => {
-  console.log('mount')
+  console.log('console mount')
 })
 
 const columns = [
@@ -93,6 +115,7 @@ const data = [
   display: flex;
   flex-direction: column;
   flex: auto;
+  // min-height: 100%;
   .header {
     height: 200px;
     // background-color: skyblue;

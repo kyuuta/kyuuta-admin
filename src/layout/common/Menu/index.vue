@@ -42,7 +42,12 @@ const routeStore = useRouteStore()
 const { routerPush } = useRouterPush()
 
 const expandedKeys = ref<string[]>([])
-const activeRouteName = computed(() => route.name as string)
+const activeRouteName = computed(
+  () =>
+    (route.meta?.activeMenu
+      ? route.meta.activeMenu
+      : route.name) as string
+)
 
 watch(
   () => route.name,

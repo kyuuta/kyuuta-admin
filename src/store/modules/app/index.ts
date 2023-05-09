@@ -2,15 +2,22 @@ import { defineStore } from 'pinia'
 import { nextTick } from 'vue'
 
 interface IAppStore {
+  /** 页面主体内容全屏 */
+  contentFull: boolean
   /** 重载页面 */
   reload: boolean
 }
 
 export const useAppStore = defineStore('AppStore', {
   state: (): IAppStore => ({
+    contentFull: false,
     reload: true
   }),
   actions: {
+    /** 设置主体内容全屏 */
+    setContentFull(full: boolean) {
+      this.contentFull = full
+    },
     /**
      * 重载页面
      * @param duration - 重载delay时间(ms)
@@ -25,6 +32,13 @@ export const useAppStore = defineStore('AppStore', {
       } else {
         this.reload = true
       }
+
+      setTimeout(() => {
+        document.documentElement.scrollTo({
+          left: 0,
+          top: 0
+        })
+      }, 100)
     }
   }
 })

@@ -19,5 +19,3 @@ const submit = () => {
   userStore.login('KYUUTA', 'password1')
 }
 </script>
-
-<style lang="scss" scoped></style>

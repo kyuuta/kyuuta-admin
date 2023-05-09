@@ -13,5 +13,3 @@ import { useThemeStore } from '@/store'
 
 const theme = useThemeStore()
 </script>
-
-<style lang="scss" scoped></style>

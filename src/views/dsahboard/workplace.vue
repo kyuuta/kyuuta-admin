@@ -103,6 +103,12 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log('workplace monted')
+})
+</script>
 
 <style lang="less" scoped></style>

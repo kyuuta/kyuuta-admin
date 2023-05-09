@@ -35,6 +35,20 @@ const routes: RouteRecordRaw[] = [
           title: '工作台',
           icon: 'material-symbols:work-outline'
         }
+      },
+      {
+        path: 'detail/:id',
+        name: `${moduleName}ConsoleDetail`,
+        component: () =>
+          import('@/views/dsahboard/detail.vue'),
+        meta: {
+          title: '测试详情',
+          multiTab: true,
+          hide: true,
+          keepAlive: true,
+          activeMenu: `${moduleName}`,
+          icon: 'material-symbols:work-outline'
+        }
       }
     ]
   }

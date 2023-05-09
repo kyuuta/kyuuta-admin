@@ -1,11 +1,13 @@
-import { defineStore } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
-import { useUserStore } from '../user'
+import { defineStore } from 'pinia'
 import Router from '@/router'
 import RouteMap from '@/router/routeMap'
-import ConstantRouteMap from '@/router/constantRouteMap'
+import { useUserStore } from '../user'
+import { useTabStore } from '../tab'
 import { PageConfig } from '@/config/page'
+import ConstantRouteMap from '@/router/constantRouteMap'
 import {
+  getCacheRoutes,
   filterAsyncRoutes,
   getConstantRouteMapNames,
   transformRouteToMenu,
@@ -13,19 +15,26 @@ import {
 } from '@/utils'
 
 interface IRouteStore {
+  /** 是否初始化了权限路由 */
   isInitAuthRoute: boolean
+  /** 路由首页name */
+  routeHomeName: string
+  /** 菜单 */
   menu: App.GlobalMenuOption[]
+  /** 一级菜单 */
   firstDegreeMenus: App.GlobalMenuOption[]
-  routers: RouteRecordRaw[]
+  /** 缓存的路由名称 */
+  cacheRoutes: string[]
 }
 
 export const useRouteStore = defineStore({
   id: 'RouteStore',
   state: (): IRouteStore => ({
     isInitAuthRoute: false,
+    routeHomeName: 'DashboardConsole',
     menu: [],
     firstDegreeMenus: [],
-    routers: []
+    cacheRoutes: []
   }),
   actions: {
     /** 初始化动态路由 */
@@ -33,26 +42,33 @@ export const useRouteStore = defineStore({
       this.initStaticRoute()
     },
     async initStaticRoute() {
+      const { initHomeTab } = useTabStore()
+
       const userStore = useUserStore()
       const routes = filterAsyncRoutes(
         RouteMap,
         userStore.role
       )
       this.handleAuthRoute(routes)
+
+      initHomeTab(this.routeHomeName, Router)
+
       this.isInitAuthRoute = true
     },
     /**
      * 处理权限路由
      * @param routes - 权限路由
      */
-    async handleAuthRoute(routes: RouteRecordRaw[]) {
+    handleAuthRoute(routes: RouteRecordRaw[]) {
       this.menu = transformRouteToMenu(routes)
       this.firstDegreeMenus =
         transformFirstDegreeMenu(routes)
 
-      await routes.forEach((route) => {
+      routes.forEach((route) => {
         Router.addRoute(route)
       })
+
+      this.cacheRoutes = getCacheRoutes(routes)
     },
     /**
      * 判断路由是否ConstantRoute

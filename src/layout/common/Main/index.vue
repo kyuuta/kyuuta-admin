@@ -7,11 +7,12 @@
       mode="out-in"
       appear
     >
-      <keep-alive :include="[]">
+      <keep-alive :include="routeStore.cacheRoutes">
         <component
           :is="Component"
           v-if="app.reload"
           :key="route.fullPath"
+          class="flex-auto bg-#f6f9f8 dark:bg-#101014"
         />
       </keep-alive>
     </transition>
@@ -19,8 +20,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useAppStore, useThemeStore } from '@/store'
+import {
+  useAppStore,
+  useThemeStore,
+  useRouteStore
+} from '@/store'
 
 const app = useAppStore()
 const theme = useThemeStore()
+const routeStore = useRouteStore()
 </script>

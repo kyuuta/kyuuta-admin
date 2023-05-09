@@ -1,54 +1,42 @@
 <template>
-  <NLayout position="absolute">
-    <NLayout hasSider :position="position">
+  <NLayout hasSider :position="position">
+    <template v-if="!app.contentFull">
       <Sider v-if="theme.layoutMode !== 'horizontal'" />
       <NLayout class="flex-layout">
         <Header
           v-if="headerConfig.visible"
-          :position="position"
           :height="headerHeight"
         />
 
-        <NLayout
-          :position="position"
-          :class="[
-            'flex-layout',
-            'bg-#f6f9f8 dark:bg-dark',
-            {
-              'has-footer':
-                footerConfig.visible && footerConfig.fixed,
-              'fix-header':
-                theme.getScrollMode === 'content' &&
-                headerConfig.visible
-            }
-          ]"
-        >
-          <Main />
+        <Tab />
 
+        <NLayout>
+          <Main />
           <Footer
             v-if="
               footerConfig.visible && !footerConfig.fixed
             "
-            position="static"
             :height="footerHeight"
           />
         </NLayout>
-
         <Footer
           v-if="footerConfig.visible && footerConfig.fixed"
           :height="footerHeight"
         />
       </NLayout>
-    </NLayout>
+    </template>
+
+    <Main v-else />
   </NLayout>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useThemeStore } from '@/store'
-import { Header, Footer, Sider, Main } from '../common'
+import { useAppStore, useThemeStore } from '@/store'
+import { Header, Footer, Sider, Main, Tab } from '../common'
 
+const app = useAppStore()
 const theme = useThemeStore()
 const { headerConfig, footerConfig } = storeToRefs(theme)
 
@@ -65,14 +53,6 @@ const position = computed<'absolute' | 'static'>(() =>
 </script>
 
 <style lang="less" scoped>
-.fix-header {
-  padding-top: v-bind(headerHeight);
-}
-
-.has-footer {
-  padding-bottom: v-bind(footerHeight);
-}
-
 .flex-layout {
   ::v-deep(.n-layout-scroll-container) {
     display: flex;
