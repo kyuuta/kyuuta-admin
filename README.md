@@ -51,7 +51,7 @@ npm run serve
 - [x] Search Page
 - [x] Full Screen
 - [x] Reload Page
-- [ ] Tab
+- [x] Tab
 - [x] Page jump animation config
 - [x] Layout Mode
 
