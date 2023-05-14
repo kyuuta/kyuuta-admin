@@ -8,7 +8,7 @@
           :height="headerHeight"
         />
 
-        <Tab />
+        <Tab v-if="tabConfig.visible" />
 
         <NLayout>
           <Main />
@@ -38,7 +38,8 @@ import { Header, Footer, Sider, Main, Tab } from '../common'
 
 const app = useAppStore()
 const theme = useThemeStore()
-const { headerConfig, footerConfig } = storeToRefs(theme)
+const { headerConfig, footerConfig, tabConfig } =
+  storeToRefs(theme)
 
 const headerHeight = computed(
   () => `${headerConfig.value.height}px`

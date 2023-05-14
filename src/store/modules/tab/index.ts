@@ -3,7 +3,13 @@ import type {
   RouteLocationNormalizedLoaded
 } from 'vue-router'
 import { defineStore } from 'pinia'
+import { useThemeStore } from '../theme'
 import { useRouterPush } from '@/composables'
+import {
+  setTabCache,
+  getTabCache,
+  clearTabCache
+} from '@/utils'
 import {
   isInTabRoutes,
   getIndex,
@@ -50,7 +56,10 @@ export const useTabStore = defineStore('TabStore', {
     initTabStore(
       currentRoute: RouteLocationNormalizedLoaded
     ) {
-      const tabs: GlobalTabRoute[] = []
+      const theme = useThemeStore()
+      const tabs: GlobalTabRoute[] = theme.tab.isCache
+        ? getTabCache()
+        : []
 
       const hasHome =
         getIndexByName(tabs, this.homeTab.name) > -1
@@ -99,6 +108,14 @@ export const useTabStore = defineStore('TabStore', {
       if (findHome) {
         this.homeTab = getRouteByTab(findHome)
       }
+    },
+    /** 缓存标签页数据 */
+    cacheTabs() {
+      console.log(this.tabs, 123)
+      setTabCache(this.tabs)
+    },
+    clearCacheTabs() {
+      clearTabCache()
     },
     /**
      * 添加多页签

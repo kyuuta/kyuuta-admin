@@ -43,6 +43,10 @@ export const useThemeStore = defineStore({
     menuConfig(state) {
       return state.menu
     },
+    /** 标签页配置 */
+    tabConfig(state) {
+      return state.tab
+    },
     /** 面包屑配置 */
     breadcrumbConfig(state) {
       return state.breadcrumb
@@ -118,6 +122,13 @@ export const useThemeStore = defineStore({
     /** 设置展开收起操作模式 */
     setCollapseType(type: Theme.MenuCollpaseType) {
       this.menu.collapseType = type
+    },
+    /** 设置标签页 */
+    setTabVisible(visible: Theme.Tab.visible) {
+      this.tab.visible = visible
+    },
+    setTabCache(isCache: Theme.Tab.isCache) {
+      this.tab.isCache = isCache
     },
     /** 设置菜单展开宽度 */
     setCollapsedWidth(width: number) {

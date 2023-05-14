@@ -1,4 +1,16 @@
 <template>
+  <Item title="标签页">
+    <NSwitch
+      :value="tabConfig.visible"
+      @update:value="setTabVisible"
+    />
+  </Item>
+  <Item title="标签页缓存">
+    <NSwitch
+      :value="tabConfig.isCache"
+      @update:value="setTabCache"
+    />
+  </Item>
   <Item title="面包屑">
     <NSwitch
       :value="breadcrumbConfig.visible"
@@ -55,7 +67,8 @@ import { storeToRefs } from 'pinia'
 import { useThemeStore } from '@/store'
 
 const theme = useThemeStore()
-const { menuConfig, breadcrumbConfig } = storeToRefs(theme)
+const { menuConfig, tabConfig, breadcrumbConfig } =
+  storeToRefs(theme)
 const {
   setCollapseType,
   setCollapsedWidth,
@@ -63,6 +76,8 @@ const {
   setBreadcrumbShowIcon,
   setSiderAccordion,
   setSiderCollapseVisible,
+  setTabCache,
+  setTabVisible,
   setHeaderCollapseVisible
 } = theme
 </script>

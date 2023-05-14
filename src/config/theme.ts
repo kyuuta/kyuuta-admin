@@ -20,6 +20,10 @@ const ThemeConfig: Theme.Setting = {
     error: '#f5222d'
   },
   isCustomizeInfoColor: false,
+  tab: {
+    visible: true,
+    isCache: true
+  },
   menu: {
     collapse: false,
     accordion: false,

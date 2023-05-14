@@ -64,6 +64,8 @@ declare namespace Theme {
     themeColorList: OtherColor
     /** 自定义InfoColor */
     isCustomizeInfoColor: boolean
+    /** 标签页配置 */
+    tab: Tab
     /** 菜单配置 */
     menu: Menu
     /** 面包屑配置 */
@@ -99,6 +101,14 @@ declare namespace Theme {
     warning: string
     /** 错误 */
     error: string
+  }
+
+  /** 标签页配置 */
+  interface Tab {
+    /** 是否展示 */
+    visible: boolean
+    /** 是否缓存标签页 */
+    isCache: boolean
   }
 
   /** 菜单配置 */
