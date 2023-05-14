@@ -6,13 +6,13 @@
     <SvgIcon
       v-if="menuConfig.collapse"
       class="text-24px"
-      icon="line-md:menu-fold-left"
+      icon="line-md:menu-fold-right"
     />
 
     <SvgIcon
       v-else
       class="text-24px"
-      icon="line-md:menu-fold-right"
+      icon="line-md:menu-fold-left"
     />
   </TooltipContainer>
 </template>
