@@ -41,7 +41,7 @@ const { setCollapse } = useThemeStore()
   min-height: 100vh;
   ::v-deep(.n-layout-toggle-bar) {
     position: fixed;
-    margin-right: -28px;
+    margin-right: -23px;
     right: unset;
   }
   ::v-deep(.n-layout-toggle-button) {
