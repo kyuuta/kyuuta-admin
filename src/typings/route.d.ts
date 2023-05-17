@@ -18,9 +18,3 @@ declare module 'vue-router' {
     keepAlive: boolean
   }
 }
-
-
-1.新增了Tab标签页组件
-2.增加了betterscroll插件依赖
-3.优化整体布局
-4.增加了页面缓存 由路由表源信息的keepAlive控制
