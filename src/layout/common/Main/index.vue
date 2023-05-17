@@ -1,22 +1,28 @@
 <template>
-  <RouterView v-slot="{ Component, route }">
-    <transition
-      :name="
-        theme.animation.visible ? theme.animation.mode : ''
-      "
-      mode="out-in"
-      appear
-    >
-      <keep-alive :include="routeStore.cacheRoutes">
-        <component
-          :is="Component"
-          v-if="app.reload"
-          :key="route.fullPath"
-          class="flex-auto bg-#f6f9f8 dark:bg-#101014"
-        />
-      </keep-alive>
-    </transition>
-  </RouterView>
+  <div
+    class="flex flex-col-stretch flex-auto p-14px transition duration-300 ease-in-out"
+  >
+    <RouterView v-slot="{ Component, route }">
+      <transition
+        :name="
+          theme.animation.visible
+            ? theme.animation.mode
+            : ''
+        "
+        mode="out-in"
+        :appear="true"
+      >
+        <keep-alive :include="routeStore.cacheRoutes">
+          <component
+            :is="Component"
+            v-if="app.reload"
+            :key="route.fullPath"
+            class="rounded-16px"
+          />
+        </keep-alive>
+      </transition>
+    </RouterView>
+  </div>
 </template>
 
 <script lang="ts" setup>
