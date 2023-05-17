@@ -24,6 +24,14 @@ export const useUserStore = defineStore({
     }
   },
   actions: {
+    resetUserStore() {
+      const { toLogin } = useRouterPush(false)
+
+      this.$reset()
+      localStorage.remove('token')
+
+      toLogin()
+    },
     async login(userName: string, password: string) {
       const data = await pwdLogin()
       this.token = data as string
