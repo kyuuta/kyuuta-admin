@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col-stretch flex-auto p-14px transition duration-300 ease-in-out"
+    class="flex flex-col-stretch flex-auto transition duration-300 ease-in-out"
   >
     <RouterView v-slot="{ Component, route }">
       <transition

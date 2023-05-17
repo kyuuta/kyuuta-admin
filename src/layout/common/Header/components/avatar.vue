@@ -53,6 +53,7 @@
         type="primary"
         round
         ghost
+        @click="handleLogout"
       >
         Logout
       </n-button>
@@ -63,7 +64,9 @@
 <script lang="ts" setup>
 import { useIconRender } from '@/composables'
 import { Logo } from '@/layout/common'
+import { useUserStore } from '@/store'
 
+const userStore = useUserStore()
 const { iconRender } = useIconRender()
 
 const avatarOptions = [
@@ -92,6 +95,18 @@ const avatarOptions = [
     })
   }
 ]
+
+const handleLogout = () => {
+  window.$dialog?.info({
+    title: '提示',
+    content: '您确定要退出登陆吗?',
+    positiveText: '确定',
+    negativeText: '取消',
+    onPositiveClick: () => {
+      userStore.resetUserStore()
+    }
+  })
+}
 </script>
 
 <style lang="less" scoped>
