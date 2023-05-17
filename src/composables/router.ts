@@ -1,6 +1,7 @@
 import { useRouter } from 'vue-router'
 import type { RouteLocationRaw } from 'vue-router'
 import globalRouter from '@/router'
+import { PageConfig } from '@/config/page'
 
 /**
  * 路由跳转
@@ -30,6 +31,24 @@ export function useRouterPush(inSetup = true) {
     routerPush({ name: 'Root' }, newTab)
   }
 
+  function toLogin(
+    loginRouteName?: string,
+    redirectUrl?: string
+  ) {
+    const module =
+      loginRouteName || PageConfig.BASE_LOGIN_NAME
+    const redirect = redirectUrl || route.value.fullPath
+
+    const routeLocation: RouteLocationRaw = {
+      name: module,
+      query: {
+        redirect
+      }
+    }
+
+    routerPush(routeLocation)
+  }
+
   function toLoginRedirect() {
     const { query } = route.value
     if (query?.redirect) {
@@ -41,6 +60,7 @@ export function useRouterPush(inSetup = true) {
 
   return {
     toHome,
+    toLogin,
     routerBack,
     routerPush,
     toLoginRedirect
