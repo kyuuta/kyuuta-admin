@@ -9,8 +9,6 @@
     <AppProvider>
       <RouterView />
     </AppProvider>
-
-    <NGlobalStyle />
   </NConfigProvider>
 </template>
 

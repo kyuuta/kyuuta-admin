@@ -10,7 +10,7 @@
 
         <Tab v-if="tabConfig.visible" />
 
-        <NLayout>
+        <NLayout embedded>
           <Main />
           <Footer
             v-if="

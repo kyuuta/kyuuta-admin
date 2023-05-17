@@ -4,9 +4,11 @@ import {
   // carete naive ui
   create,
   // components
+  NCard,
   NIcon,
   NMenu,
   NSpin,
+  NAffix,
   NEmpty,
   NInput,
   NModal,
@@ -39,17 +41,19 @@ import {
   NDialogProvider,
   NLoadingBarProvider,
   NNotificationProvider,
-  NMessageProvider,
-  NGlobalStyle
+  NMessageProvider
+  // NGlobalStyle
 } from 'naive-ui'
 
 const naive = create({
   components: [
     create,
     // components
+    NCard,
     NIcon,
     NMenu,
     NSpin,
+    NAffix,
     NEmpty,
     NInput,
     NModal,
@@ -82,9 +86,9 @@ const naive = create({
     NDialogProvider,
     NLoadingBarProvider,
     NNotificationProvider,
-    NMessageProvider,
+    NMessageProvider
 
-    NGlobalStyle
+    // NGlobalStyle
   ]
 })
 
