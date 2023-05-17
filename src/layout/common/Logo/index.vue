@@ -1,7 +1,7 @@
 <template>
   <NAvatar
     round
-    :size="36"
+    :size="size"
     :src="theme.darkMode ? AvatarDark : AvatarLight"
   />
 </template>
@@ -12,4 +12,12 @@ import AvatarLight from '@/assets/images/avatar_light.jpg'
 import { useThemeStore } from '@/store'
 
 const theme = useThemeStore()
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  {
+    size: 36
+  }
+)
 </script>
