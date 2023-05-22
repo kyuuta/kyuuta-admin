@@ -1,5 +1,6 @@
-import App from './App.vue'
 import { createApp } from 'vue'
+import App from './App.vue'
+import AppLoading from './components/AppLoading/index.vue'
 import { setupStore } from './store'
 import router, { setupRouter } from './router'
 import { setupNaive, setupAssets } from '@/plugins'
@@ -7,6 +8,10 @@ import { setupNaive, setupAssets } from '@/plugins'
 async function bootstrap() {
   // import assets: js、css
   setupAssets()
+
+  // app loading
+  const appLoading = createApp(AppLoading)
+  appLoading.mount('#appLoading')
 
   const app = createApp(App)
 
