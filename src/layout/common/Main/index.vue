@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col-stretch flex-auto transition duration-300 ease-in-out"
+    class="flex flex-col-stretch flex-auto transition duration-300 ease-in-out p-14px"
   >
     <RouterView v-slot="{ Component, route }">
       <transition
@@ -17,7 +17,6 @@
             :is="Component"
             v-if="app.reload"
             :key="route.fullPath"
-            class="rounded-16px"
           />
         </keep-alive>
       </transition>
