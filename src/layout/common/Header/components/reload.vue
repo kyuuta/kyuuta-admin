@@ -5,7 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import { useAppStore } from '@/store'
-
 const { reloadPage } = useAppStore()
 </script>

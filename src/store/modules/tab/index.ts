@@ -4,7 +4,6 @@ import type {
 } from 'vue-router'
 import { defineStore } from 'pinia'
 import { useThemeStore } from '../theme'
-import { useRouterPush } from '@/composables'
 import {
   setTabCache,
   getTabCache,

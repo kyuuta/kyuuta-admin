@@ -1,4 +1,3 @@
-import { effectScope, onScopeDispose, watch } from 'vue'
 import { useOsTheme } from 'naive-ui'
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { useThemeStore } from '../modules'

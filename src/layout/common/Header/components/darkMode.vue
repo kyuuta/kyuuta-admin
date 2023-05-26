@@ -20,8 +20,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore } from '@/store'
-
 const theme = useThemeStore()
 const { setDarkMode } = theme
 </script>

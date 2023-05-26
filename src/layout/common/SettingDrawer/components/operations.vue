@@ -8,7 +8,6 @@
 
 <script lang="ts" setup>
 import Item from './item.vue'
-import { useThemeStore } from '@/store'
 
 const { resetThemeStore } = useThemeStore()
 </script>

@@ -38,9 +38,6 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-import { useRouterPush } from '@/composables'
-
 const { routerPush } = useRouterPush()
 
 onMounted(() => {

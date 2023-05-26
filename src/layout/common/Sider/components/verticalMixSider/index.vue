@@ -46,11 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouteStore } from '@/store'
 import { useBoolean } from '@/hooks'
-import { useRouterPush } from '@/composables'
 import Drawer from './drawer.vue'
 import MenuItem from './menuItem.vue'
 import { Logo } from '@/layout/common'

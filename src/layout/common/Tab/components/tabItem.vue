@@ -79,7 +79,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useBoolean } from '@/hooks'
 import { mixColor } from '@/utils'
 

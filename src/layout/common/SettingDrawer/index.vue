@@ -41,7 +41,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useModalState } from '@/composables'
 import {
   Animation,
   Interface,

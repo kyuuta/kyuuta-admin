@@ -27,7 +27,6 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { useThemeStore } from '@/store'
 import { Logo } from '@/layout/common'
 import AsideMenu from '@/layout/common/Menu/index.vue'
 

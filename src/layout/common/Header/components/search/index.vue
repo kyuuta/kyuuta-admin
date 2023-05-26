@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import SearchModal from './searchModal.vue'
 
 const searchVisible = ref<boolean>(false)

@@ -87,11 +87,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, shallowRef } from 'vue'
-import { useRouteStore } from '@/store'
-import { useRouterPush, useModalState } from '@/composables'
-import { onKeyStroke, useDebounceFn } from '@vueuse/core'
-
 const searchKey = ref('')
 const routeStore = useRouteStore()
 const resultOptions = shallowRef<App.GlobalMenuOption[]>([])

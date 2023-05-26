@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { nextTick } from 'vue'
 
 interface IAppStore {
   /** 页面主体内容全屏 */

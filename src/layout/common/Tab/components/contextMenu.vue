@@ -11,10 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { useAppStore, useTabStore } from '@/store'
 import { DropdownOption } from 'naive-ui'
-import { useModalState, useIconRender } from '@/composables'
 
 const { iconRender } = useIconRender()
 

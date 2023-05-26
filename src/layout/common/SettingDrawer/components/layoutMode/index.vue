@@ -47,7 +47,6 @@
 
 <script lang="ts" setup>
 import Item from './Item.vue'
-import { useThemeStore } from '@/store'
 import type { PopoverPlacement } from 'naive-ui'
 
 const theme = useThemeStore()

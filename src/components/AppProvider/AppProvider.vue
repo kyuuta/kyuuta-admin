@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, h } from 'vue'
 import {
   useDialog,
   useLoadingBar,

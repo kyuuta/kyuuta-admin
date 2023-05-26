@@ -40,11 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useRouterPush } from '@/composables'
-import { useThemeStore } from '@/store'
 import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
 
 const route = useRoute()

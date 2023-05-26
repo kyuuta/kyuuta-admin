@@ -28,7 +28,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import type { VNodeChild } from 'vue'
 import { useBoolean } from '@/hooks'
 

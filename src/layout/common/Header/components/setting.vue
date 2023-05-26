@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import SettingDrawer from '@/layout/common/SettingDrawer/index.vue'
 
 const settingVisible = ref<boolean>(false)

@@ -7,7 +7,6 @@
 
 <script lang="ts" setup>
 import router from '@/router'
-import { useUserStore } from '@/store'
 
 const userStore = useUserStore()
 

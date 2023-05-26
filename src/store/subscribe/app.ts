@@ -1,10 +1,3 @@
-import {
-  effect,
-  effectScope,
-  onScopeDispose,
-  watch
-} from 'vue'
-import { useFullscreen } from '@vueuse/core'
 import { useAppStore } from '../modules'
 
 export default function subscribeAppStore() {

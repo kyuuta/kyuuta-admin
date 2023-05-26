@@ -37,8 +37,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, watch, nextTick } from 'vue'
-import { useTabStore, useThemeStore } from '@/store'
 import TabItem from './tabItem.vue'
 import ContextMenu from './contextMenu.vue'
 

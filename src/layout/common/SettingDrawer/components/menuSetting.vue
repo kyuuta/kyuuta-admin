@@ -64,7 +64,6 @@
 <script lang="ts" setup>
 import Item from './item.vue'
 import { storeToRefs } from 'pinia'
-import { useThemeStore } from '@/store'
 
 const theme = useThemeStore()
 const { menuConfig, tabConfig, breadcrumbConfig } =

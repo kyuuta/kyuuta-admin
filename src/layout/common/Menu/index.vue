@@ -22,10 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouteStore, useThemeStore } from '@/store'
-import { useRouterPush } from '@/composables'
 import {
   getActiveKeyPathsOfMenus,
   getActiveMenuChild

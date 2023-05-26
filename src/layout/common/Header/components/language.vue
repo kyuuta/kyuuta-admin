@@ -33,7 +33,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useIconRender } from '@/composables'
 import { useI18n } from 'vue-i18n'
 import {
   availableLocales,

@@ -60,9 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useIconRender } from '@/composables'
 import { Logo } from '@/layout/common'
-import { useUserStore } from '@/store'
 
 const userStore = useUserStore()
 const { iconRender } = useIconRender()

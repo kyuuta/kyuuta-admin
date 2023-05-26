@@ -11,8 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, onMounted } from 'vue'
-import { useElementSize } from '@vueuse/core'
 import BScroll from '@better-scroll/core'
 import type { Options } from '@better-scroll/core'
 

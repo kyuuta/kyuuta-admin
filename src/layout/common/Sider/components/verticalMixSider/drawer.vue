@@ -46,10 +46,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouterPush } from '@/composables'
-
 defineProps<{
   visible: boolean
   menus: App.GlobalMenuOption[]

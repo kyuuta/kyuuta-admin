@@ -1,4 +1,3 @@
-import { RouteRecordRaw } from 'vue-router'
 import { BasicLayout } from '@/layout'
 
 const routeName = 'Document'
