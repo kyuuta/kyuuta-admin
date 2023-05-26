@@ -54,6 +54,7 @@ npm run serve
 - [x] Tab
 - [x] Page jump animation config
 - [x] Layout Mode
+- [x] I18n
 
 ## 维护者
 
