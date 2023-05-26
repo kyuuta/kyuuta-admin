@@ -56,7 +56,7 @@ export const useTabStore = defineStore('TabStore', {
       currentRoute: RouteLocationNormalizedLoaded
     ) {
       const theme = useThemeStore()
-      const tabs: GlobalTabRoute[] = theme.tab.isCache
+      const tabs: GlobalTabRoute[] = theme.tabConfig.isCache
         ? getTabCache()
         : []
 

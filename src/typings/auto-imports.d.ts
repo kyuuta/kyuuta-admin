@@ -303,7 +303,6 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly app: UnwrapRef<typeof import('../store/subscribe/app')['default']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly clearUserStorage: UnwrapRef<typeof import('../store/modules/user/helpers')['clearUserStorage']>
@@ -595,7 +594,6 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly app: UnwrapRef<typeof import('../store/subscribe/app')['default']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly clearUserStorage: UnwrapRef<typeof import('../store/modules/user/helpers')['clearUserStorage']>
