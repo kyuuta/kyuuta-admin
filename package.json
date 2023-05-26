@@ -25,12 +25,14 @@
     "pinia": "^2.0.35",
     "vfonts": "^0.0.3",
     "vue": "^3.2.47",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@better-scroll/core": "^2.4.2",
     "@iconify/json": "^2.2.60",
     "@iconify/vue": "^4.1.1",
+    "@intlify/unplugin-vue-i18n": "^0.10.0",
     "@types/lodash-es": "^4.17.7",
     "@types/node": "^15.14.9",
     "@typescript-eslint/eslint-plugin": "^5.59.2",

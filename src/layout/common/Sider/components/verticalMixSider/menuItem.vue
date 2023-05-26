@@ -9,8 +9,7 @@
       { 'text-primary !bg-primary_active': isActive },
       { 'text-primary': isHover },
       {
-        'hover:bg-#ececed hover:dark-bg-#343438 h-55px mb-4px':
-          mode === 'vertical'
+        'defaultHoverBg h-55px mb-4px': mode === 'vertical'
       },
       {
         'w-45px': mode === 'horizontal'

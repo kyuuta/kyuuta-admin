@@ -48,6 +48,7 @@
     <div class="right-controls">
       <Search />
       <FullScreen />
+      <Language />
       <DarkMode />
       <Avatar />
       <Setting />
@@ -63,6 +64,7 @@ import {
   Collapse,
   DarkMode,
   FullScreen,
+  Language,
   Reload,
   Search,
   Setting

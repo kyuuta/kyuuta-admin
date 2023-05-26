@@ -1,6 +1,6 @@
 <template>
   <NPopover
-    trigger="click"
+    trigger="hover"
     style="padding: 0; border-radius: 6px"
   >
     <template #trigger>
@@ -10,9 +10,7 @@
         </div>
       </TooltipContainer>
     </template>
-    <DarkModeContainer
-      class="p-24px dark:bg-#282e3e rd-6px"
-    >
+    <DarkModeContainer class="p-24px rd-6px">
       <div class="min-w-280px text-1.125rem">
         <div class="flex flex-y-center">
           <Logo :size="90" />

@@ -3,6 +3,7 @@ const ThemeConfig: Theme.Setting = {
   followOSTheme: true,
   scrollMode: 'content',
   layoutMode: 'vertical-mix',
+  defaultLanguage: 'en',
   header: {
     visible: true,
     height: 60

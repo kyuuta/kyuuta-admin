@@ -14,6 +14,9 @@ export function setupVitePlugins(
     vueJsx(),
     html(viteEnv),
     ...unplugin(viteEnv),
+
+    // https://github.com/antfu/unocss
+    // see uno.config.ts for config
     unocss()
   ]
   return plugins

@@ -1,3 +1,4 @@
+import path from 'node:path'
 import VueMacros from 'unplugin-vue-macros/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -6,6 +7,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { getSrcPath } from '../utils'
+import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 
 export default function unplugin(viteEnv: ImportMetaEnv) {
   const { VITE_ICON_PREFFIX, VITE_ICON_LOCAL_PREFFIX } =
@@ -36,6 +38,8 @@ export default function unplugin(viteEnv: ImportMetaEnv) {
       scale: 1,
       defaultClass: 'inline-block'
     }),
+
+    // https://github.com/antfu/unplugin-vue-components
     Components({
       dts: 'src/typings/components.d.ts',
       types: [
@@ -52,11 +56,21 @@ export default function unplugin(viteEnv: ImportMetaEnv) {
         })
       ]
     }),
+
+    // https://github.com/vbenjs/vite-plugin-svg-icons
     createSvgIconsPlugin({
       iconDirs: [localIconPath],
       symbolId: `${VITE_ICON_LOCAL_PREFFIX}-[dir]-[name]`,
       inject: 'body-first',
       customDomId: '__SVG_ICON_LOCAL__'
+    }),
+
+    // https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      fullInstall: true,
+      include: [path.resolve(__dirname, '../../locales/**')]
     })
   ]
 }
