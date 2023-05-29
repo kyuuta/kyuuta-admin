@@ -3,6 +3,7 @@ const ThemeConfig: Theme.Setting = {
   followOSTheme: true,
   scrollMode: 'content',
   layoutMode: 'vertical-mix',
+  language: 'zh-cn',
   header: {
     visible: true,
     height: 60
@@ -48,33 +49,7 @@ const ThemeConfig: Theme.Setting = {
   },
   animation: {
     visible: true,
-    mode: 'fade',
-    modeList: [
-      {
-        value: 'zoom-fade',
-        label: '渐变'
-      },
-      {
-        value: 'zoom-out',
-        label: '闪动'
-      },
-      {
-        value: 'fade-slide',
-        label: '滑动'
-      },
-      {
-        value: 'fade',
-        label: '消退'
-      },
-      {
-        value: 'fade-bottom',
-        label: '底部消退'
-      },
-      {
-        value: 'fade-scale',
-        label: '缩放消退'
-      }
-    ]
+    mode: 'fade'
   }
 }
 

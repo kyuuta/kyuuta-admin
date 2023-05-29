@@ -1,6 +1,3 @@
-import { useEventListener } from '@vueuse/core'
-import { useThemeStore, useTabStore } from '@/store'
-
 /** 全局事件 */
 export function useGlobalEvents() {
   const theme = useThemeStore()

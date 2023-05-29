@@ -1,6 +1,6 @@
 <template>
   <TooltipContainer
-    tooltip="暗黑模式"
+    :tooltip="t('system.darkmode')"
     @click="setDarkMode(!theme.getDarkMode)"
   >
     <SvgIcon
@@ -20,8 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore } from '@/store'
-
+const { t } = useI18n()
 const theme = useThemeStore()
 const { setDarkMode } = theme
 </script>

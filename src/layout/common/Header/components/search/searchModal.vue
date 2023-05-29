@@ -11,7 +11,7 @@
     <NInput
       v-model:value="searchKey"
       clearable
-      placeholder="请输入关键词搜索"
+      :placeholder="t('system.searchPlaceholder')"
       @input="handleSearch"
     >
       <template #prefix>
@@ -61,7 +61,7 @@
             class="text-22px mr-6px"
             icon="streamline:computer-keyboard-return-3-enter-return-keyboard"
           />
-          <span>确定</span>
+          <span>{{ t('system.confirm') }}</span>
         </div>
         <div class="item">
           <SvgIcon
@@ -72,14 +72,14 @@
             class="text-20px mr-4px"
             icon="streamline:interface-arrows-down-arrow-down-keyboard"
           />
-          <span>切换</span>
+          <span>{{ t('system.toggle') }}</span>
         </div>
         <div class="item">
           <SvgIcon
             class="text-22px mr-6px"
             icon="mdi:keyboard-esc"
           />
-          <span>关闭</span>
+          <span>{{ t('system.close') }}</span>
         </div>
       </div>
     </template>
@@ -87,15 +87,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, shallowRef } from 'vue'
-import { useRouteStore } from '@/store'
-import { useRouterPush, useModalState } from '@/composables'
-import { onKeyStroke, useDebounceFn } from '@vueuse/core'
-
 const searchKey = ref('')
 const routeStore = useRouteStore()
 const resultOptions = shallowRef<App.GlobalMenuOption[]>([])
 const activeIndex = ref<number>()
+const { t } = useI18n()
 const { routerPush } = useRouterPush()
 
 const flattenArray = (

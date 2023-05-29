@@ -13,9 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore, subscribeStore } from '@/store'
 import { zhCN, dateZhCN } from 'naive-ui'
-import { useGlobalEvents } from '@/composables'
 import { AppProvider } from '@/components/AppProvider'
 
 const theme = useThemeStore()

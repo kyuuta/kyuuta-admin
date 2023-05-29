@@ -28,7 +28,6 @@
 
 <script lang="ts" setup>
 import Item from './item.vue'
-import { useThemeStore } from '@/store'
 const themeStore = useThemeStore()
 
 const switchStyle = ({ checked }: { checked: boolean }) => {

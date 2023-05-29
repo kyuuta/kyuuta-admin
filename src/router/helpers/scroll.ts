@@ -1,5 +1,4 @@
 import type { RouterScrollBehavior } from 'vue-router'
-import { useTabStore } from '@/store'
 
 export const scrollBehavior: RouterScrollBehavior = (
   to,

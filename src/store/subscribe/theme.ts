@@ -1,7 +1,7 @@
-import { effectScope, onScopeDispose, watch } from 'vue'
 import { useOsTheme } from 'naive-ui'
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { useThemeStore } from '../modules'
+import { loadLanguageAsync } from '@/plugins/i18n'
 import {
   handleCssDarkModeClass,
   addThemeCssVarsToHtml
@@ -43,6 +43,13 @@ export default function subscribeThemeStore() {
         const isDark = newValue === 'dark'
         theme.setAutoFollowOSTheme(isDark)
       },
+      { immediate: true }
+    )
+
+    // i18n
+    watch(
+      () => theme.language,
+      (val) => loadLanguageAsync(val),
       { immediate: true }
     )
   })

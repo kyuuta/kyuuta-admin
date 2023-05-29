@@ -16,16 +16,13 @@
           )
         : routeStore.menu
     "
+    :renderLabel="(val) => t(val.label as string)"
     @update:value="(name) => routerPush({ name })"
     @update:expanded-keys="(keys) => (expandedKeys = keys)"
   />
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouteStore, useThemeStore } from '@/store'
-import { useRouterPush } from '@/composables'
 import {
   getActiveKeyPathsOfMenus,
   getActiveMenuChild
@@ -36,6 +33,7 @@ defineProps<{
   mode: 'vertical' | 'horizontal'
 }>()
 
+const { t } = useI18n()
 const route = useRoute()
 const theme = useThemeStore()
 const routeStore = useRouteStore()

@@ -22,7 +22,8 @@ export default defineConfig({
     'flex-x-center': 'flex justify-center',
     'flex-y-center': 'flex items-center',
     'flex-col-stretch': 'flex-col items-stretch',
-    'nowrap-hidden': 'whitespace-nowrap overflow-hidden'
+    'nowrap-hidden': 'whitespace-nowrap overflow-hidden',
+    defaultHoverBg: 'hover:bg-#ececed hover:dark:bg-#2d2d30'
   },
   theme: {
     colors: {
