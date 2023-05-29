@@ -23,7 +23,7 @@
           :icon="item.meta?.icon"
           :localIcon="item.meta?.localIcon"
         />
-        <span>{{ item.meta.title }}</span>
+        <span>{{ t(item.meta.title as string) }}</span>
       </div>
     </component>
   </div>
@@ -40,6 +40,7 @@
 import TabItem from './tabItem.vue'
 import ContextMenu from './contextMenu.vue'
 
+const { t } = useI18n()
 const theme = useThemeStore()
 const tabStore = useTabStore()
 

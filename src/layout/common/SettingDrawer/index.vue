@@ -1,38 +1,42 @@
 <template>
-  <NDrawer v-model:show="modalVisible" :defaultWidth="300">
+  <NDrawer v-model:show="modalVisible" :defaultWidth="350">
     <NDrawerContent
-      title="项目配置"
+      :title="t('system.projectConfiguration')"
       :nativeScrollbar="false"
     >
       <div class="drawer">
-        <NDivider titlePlacement="center">主题</NDivider>
+        <NDivider titlePlacement="center">{{
+          t('system.theme')
+        }}</NDivider>
         <Theme />
 
         <NDivider titlePlacement="center">
-          系统主题
+          {{ t('system.systemTheme') }}
         </NDivider>
         <ThemeColor />
 
         <NDivider titlePlacement="center">
-          布局模式
+          {{ t('system.layoutMode') }}
         </NDivider>
         <LayoutMode />
 
         <NDivider titlePlacement="center">
-          界面功能
+          {{ t('system.interfaceFeatures') }}
         </NDivider>
         <Interface />
 
         <NDivider titlePlacement="center">
-          菜单相关
+          {{ t('system.menuRelated') }}
         </NDivider>
         <MenuSetting />
 
-        <NDivider titlePlacement="center">动画</NDivider>
+        <NDivider titlePlacement="center">
+          {{ t('system.animation') }}
+        </NDivider>
         <Animation />
 
         <NDivider titlePlacement="center">
-          主题配置
+          {{ t('system.themeConfiguration') }}
         </NDivider>
         <Operations />
       </div>
@@ -51,6 +55,7 @@ import {
   Operations
 } from './components/index'
 
+const { t } = useI18n()
 const props = defineProps<{ visible: boolean }>()
 const emit = defineEmits<{
   (e: 'update:visible', visible: boolean): void

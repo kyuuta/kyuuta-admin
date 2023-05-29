@@ -21,7 +21,7 @@
             '!bg-primary_active': locale === lang
           }
         ]"
-        @click="loadLanguageAsync(lang)"
+        @click="setLanguage(lang)"
       >
         <component :is="dict[lang].icon" class="mr-10px" />
         <span class="text-14px">{{
@@ -34,13 +34,11 @@
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import {
-  availableLocales,
-  loadLanguageAsync
-} from '@/plugins/i18n'
+import { availableLocales } from '@/plugins/i18n'
 
 const { locale } = useI18n()
 const { iconRender } = useIconRender()
+const { setLanguage } = useThemeStore()
 
 interface Dict {
   [key: string]: {

@@ -1,6 +1,6 @@
 <template>
   <TooltipContainer
-    tooltip="搜索"
+    :tooltip="t('system.search')"
     @click="searchVisible = true"
   >
     <SvgIcon icon="line-md:search" class="text-21px" />
@@ -11,5 +11,6 @@
 <script lang="ts" setup>
 import SearchModal from './searchModal.vue'
 
+const { t } = useI18n()
 const searchVisible = ref<boolean>(false)
 </script>

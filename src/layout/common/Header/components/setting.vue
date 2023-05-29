@@ -1,6 +1,6 @@
 <template>
   <TooltipContainer
-    tooltip="项目配置"
+    :tooltip="t('system.projectConfiguration')"
     placement="bottom-end"
     @click="openSetting"
   >
@@ -13,6 +13,7 @@
 <script lang="ts" setup>
 import SettingDrawer from '@/layout/common/SettingDrawer/index.vue'
 
+const { t } = useI18n()
 const settingVisible = ref<boolean>(false)
 const openSetting = () => (settingVisible.value = true)
 </script>

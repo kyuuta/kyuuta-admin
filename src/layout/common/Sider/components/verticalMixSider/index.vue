@@ -18,7 +18,7 @@
       <div class="flex-center w-70px h-60px">
         <Logo />
       </div>
-      <NScrollbar class="flex-1 overflow-hidden">
+      <NScrollbar class="flex-1 px-4px w-70px">
         <MenuItem
           v-for="menu in routeStore.firstDegreeMenus"
           :key="menu.routeName"

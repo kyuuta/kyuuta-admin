@@ -153,6 +153,10 @@ export const useThemeStore = defineStore({
     cacheThemeSettings() {
       localStorage.set('themeSettings', this.$state)
     },
+    /** 语言相关 */
+    setLanguage(lang: string) {
+      this.language = lang
+    },
     /** 清除缓存 重置store状态 */
     resetThemeStore() {
       localStorage.remove('themeSettings')

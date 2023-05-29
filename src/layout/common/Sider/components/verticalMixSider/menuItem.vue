@@ -3,7 +3,7 @@
     :class="[
       'cursor-pointer',
       'flex-y-center flex-col justify-between',
-      'py-6px mx-4px',
+      'py-6px',
       'rd',
       'transition-colors duration-300 ease-in-out',
       { 'text-primary !bg-primary_active': isActive },
@@ -12,7 +12,8 @@
         'defaultHoverBg h-55px mb-4px': mode === 'vertical'
       },
       {
-        'w-45px': mode === 'horizontal'
+        'w-55px mx-4px': mode === 'horizontal',
+        'flex-1': mode === 'vertical'
       }
     ]"
     @mouseenter="setTrue"
@@ -20,9 +21,9 @@
   >
     <component :is="icon" v-if="icon" />
     <span
-      class="text-12px overflow-hidden transition-height duration-300 ease-in-out"
+      class="text-12px w-full text-center px-4px text-ellipsis overflow-hidden transition-height duration-300 ease-in-out"
     >
-      {{ label }}
+      {{ t(label) }}
     </span>
   </div>
 </template>
@@ -31,6 +32,7 @@
 import type { VNodeChild } from 'vue'
 import { useBoolean } from '@/hooks'
 
+const { t } = useI18n()
 const props = withDefaults(
   defineProps<{
     /** 路由名称 */

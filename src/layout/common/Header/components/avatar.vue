@@ -53,7 +53,7 @@
         ghost
         @click="handleLogout"
       >
-        Logout
+        {{ t('system.logout') }}
       </n-button>
     </DarkModeContainer>
   </NPopover>
@@ -62,6 +62,7 @@
 <script lang="ts" setup>
 import { Logo } from '@/layout/common'
 
+const { t } = useI18n()
 const userStore = useUserStore()
 const { iconRender } = useIconRender()
 
@@ -94,10 +95,10 @@ const avatarOptions = [
 
 const handleLogout = () => {
   window.$dialog?.info({
-    title: '提示',
-    content: '您确定要退出登陆吗?',
-    positiveText: '确定',
-    negativeText: '取消',
+    title: t('system.prompt'),
+    content: t('system.promptText'),
+    positiveText: t('system.confirm'),
+    negativeText: t('system.cancel'),
     onPositiveClick: () => {
       userStore.resetUserStore()
     }

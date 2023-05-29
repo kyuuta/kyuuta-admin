@@ -1,7 +1,7 @@
 <template>
   <Item class="operations">
     <NButton type="warning" @click="resetThemeStore">
-      重置主题配置
+      {{ t('system.resetTheme') }}
     </NButton>
   </Item>
 </template>
@@ -9,6 +9,7 @@
 <script lang="ts" setup>
 import Item from './item.vue'
 
+const { t } = useI18n()
 const { resetThemeStore } = useThemeStore()
 </script>
 

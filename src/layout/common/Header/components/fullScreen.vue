@@ -1,5 +1,8 @@
 <template>
-  <TooltipContainer tooltip="全屏" @click="toggle">
+  <TooltipContainer
+    :tooltip="t('system.fullscreen')"
+    @click="toggle"
+  >
     <SvgIcon
       v-if="isFullscreen"
       class="text-22px"
@@ -15,5 +18,6 @@
 </template>
 
 <script lang="ts" setup>
+const { t } = useI18n()
 const { isFullscreen, toggle } = useFullscreen()
 </script>

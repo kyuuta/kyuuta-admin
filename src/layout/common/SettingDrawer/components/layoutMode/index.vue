@@ -49,6 +49,7 @@
 import Item from './Item.vue'
 import type { PopoverPlacement } from 'naive-ui'
 
+const { t } = useI18n()
 const theme = useThemeStore()
 const { setLayoutMode } = theme
 
@@ -62,22 +63,22 @@ const layoutModeList: Array<layoutMode> = [
   {
     placement: 'top-start',
     value: 'vertical',
-    label: '左侧菜单模式'
+    label: t('system.layout.topStart')
   },
   {
     placement: 'top-end',
     value: 'horizontal',
-    label: '顶部菜单模式'
+    label: t('system.layout.topEnd')
   },
   {
     placement: 'bottom-start',
     value: 'vertical-mix',
-    label: '左侧菜单混合模式'
+    label: t('system.layout.bottomStart')
   },
   {
     placement: 'bottom-end',
     value: 'horizontal-mix',
-    label: '顶部菜单混合模式'
+    label: t('system.layout.bottomEnd')
   }
 ]
 </script>

@@ -58,5 +58,7 @@ const init = () => {
   tabStore.initTabStore(route)
 }
 
-init()
+onMounted(() => {
+  init()
+})
 </script>

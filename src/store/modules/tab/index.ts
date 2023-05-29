@@ -110,7 +110,6 @@ export const useTabStore = defineStore('TabStore', {
     },
     /** 缓存标签页数据 */
     cacheTabs() {
-      console.log(this.tabs, 123)
       setTabCache(this.tabs)
     },
     clearCacheTabs() {

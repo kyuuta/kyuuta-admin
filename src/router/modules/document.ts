@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
     redirect: '/document/vue',
     component: BasicLayout,
     meta: {
-      title: '文档',
+      title: 'routes.document.index',
       icon: 'line-md:document-list'
     },
     children: [
@@ -20,7 +20,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/document/vue/index.vue'),
         meta: {
           requiresAuth: true,
-          title: 'Vue文档',
+          title: 'routes.document.vue',
           icon: 'vscode-icons:file-type-vue'
         }
       },
@@ -31,7 +31,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/document/vite/index.vue'),
         meta: {
           requiresAuth: true,
-          title: 'Vite文档',
+          title: 'routes.document.vite',
           icon: 'vscode-icons:file-type-vite'
         }
       },
@@ -42,7 +42,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/document/naive/index.vue'),
         meta: {
           requiresAuth: true,
-          title: 'NaiveUI文档',
+          title: 'routes.document.naive',
           icon: 'logos:naiveui'
         }
       }

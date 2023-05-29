@@ -16,6 +16,7 @@
           )
         : routeStore.menu
     "
+    :renderLabel="(val) => t(val.label as string)"
     @update:value="(name) => routerPush({ name })"
     @update:expanded-keys="(keys) => (expandedKeys = keys)"
   />
@@ -32,6 +33,7 @@ defineProps<{
   mode: 'vertical' | 'horizontal'
 }>()
 
+const { t } = useI18n()
 const route = useRoute()
 const theme = useThemeStore()
 const routeStore = useRouteStore()

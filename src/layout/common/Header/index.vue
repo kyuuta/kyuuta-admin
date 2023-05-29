@@ -75,7 +75,6 @@ import HorizontalMix from '../Menu/horizontalMix.vue'
 const theme = useThemeStore()
 const props = defineProps<{
   height: string
-  // position: 'absolute' | 'static'
 }>()
 </script>
 

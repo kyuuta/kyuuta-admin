@@ -53,5 +53,4 @@ export async function loadLanguageAsync(
 
 export function setupI18n(app: App) {
   app.use(i18n)
-  loadLanguageAsync(ThemeConfig.defaultLanguage)
 }

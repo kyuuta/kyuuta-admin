@@ -20,7 +20,7 @@
               v-if="breadcrumb.icon"
               class="mr-4px"
             />
-            <span>{{ breadcrumb.label }}</span>
+            <span>{{ t(breadcrumb.label) }}</span>
           </span>
         </NDropdown>
 
@@ -31,7 +31,7 @@
               v-if="breadcrumb.icon"
               class="mr-4px"
             />
-            <span>{{ breadcrumb.label }}</span>
+            <span>{{ t(breadcrumb.label) }}</span>
           </span>
         </template>
       </NBreadcrumbItem>
@@ -43,6 +43,7 @@
 import { storeToRefs } from 'pinia'
 import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
 
+const { t } = useI18n()
 const route = useRoute()
 const { routerPush } = useRouterPush()
 

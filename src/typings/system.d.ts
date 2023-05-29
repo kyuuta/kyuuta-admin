@@ -143,8 +143,6 @@ declare namespace Theme {
     visible: boolean
     /** 动画类型 */
     mode: ThemeAnimateMode
-    /** 动画类型列表 */
-    modeList: Common.OptionWithKey<ThemeAnimateMode>[]
   }
 }
 

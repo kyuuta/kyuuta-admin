@@ -38,6 +38,7 @@
           class="menu"
           :value="activeKey"
           :options="menus"
+          :renderLabel="val => t(val.label as string)"
           @update:value="handleUpdateMenu"
         />
       </NScrollbar>
@@ -53,6 +54,7 @@ defineProps<{
 
 const fixed = ref(false)
 
+const { t } = useI18n()
 const route = useRoute()
 const { routerPush } = useRouterPush()
 

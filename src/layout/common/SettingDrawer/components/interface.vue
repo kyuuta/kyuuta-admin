@@ -1,11 +1,12 @@
 <template>
-  <Item title="跟随系统主题">
+  <Item :title="t('system.followSystemTheme')">
+    <!-- 跟随系统主题 -->
     <NSwitch
       :value="theme.followOSTheme"
       @update:value="setAutoFollowThemeMode"
     />
   </Item>
-  <Item title="滚动模式">
+  <Item :title="t('system.scrollMode')">
     <NSwitch
       :value="theme.getScrollMode"
       :railStyle="switchStyle"
@@ -13,17 +14,21 @@
       uncheckedValue="main"
       @update:value="setScrollMode"
     >
-      <template #checked>内容滚动</template>
-      <template #unchecked>整体滚动</template>
+      <template #checked>{{
+        t('system.scrollModeContent')
+      }}</template>
+      <template #unchecked>{{
+        t('system.scrollModeGlobal')
+      }}</template>
     </NSwitch>
   </Item>
-  <Item title="头部">
+  <Item :title="t('system.header')">
     <NSwitch
       :value="headerConfig.visible"
       @update:value="setHeaderVisible"
     />
   </Item>
-  <Item title="头部高度">
+  <Item :title="t('system.headerHeight')">
     <NInputNumber
       class="w120px text-center"
       :step="10"
@@ -33,13 +38,13 @@
       @update:value="height => setHeaderHeight(height as number)"
     />
   </Item>
-  <Item title="底部">
+  <Item :title="t('system.footer')">
     <NSwitch
       :value="footerConfig.visible"
       @update:value="setFooterVisible"
     />
   </Item>
-  <Item title="底部高度">
+  <Item :title="t('system.footerHeight')">
     <NInputNumber
       class="w120px text-center"
       :step="10"
@@ -49,7 +54,7 @@
       @update:value="height => setFooterHeight(height as number)"
     />
   </Item>
-  <Item title="固定底部">
+  <Item :title="t('system.fixedFooter')">
     <NSwitch
       :value="footerConfig.fixed"
       :disabled="theme.getScrollMode === 'main'"
@@ -63,6 +68,7 @@ import Item from './item.vue'
 import { storeToRefs } from 'pinia'
 import type { CSSProperties } from 'vue'
 
+const { t } = useI18n()
 const theme = useThemeStore()
 const {
   setScrollMode,
