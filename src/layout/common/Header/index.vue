@@ -48,6 +48,7 @@
     <div class="right-controls">
       <Search />
       <FullScreen />
+      <Language />
       <DarkMode />
       <Avatar />
       <Setting />
@@ -56,13 +57,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore } from '@/store'
 import {
   Avatar,
   Breadcrumb,
   Collapse,
   DarkMode,
   FullScreen,
+  Language,
   Reload,
   Search,
   Setting
@@ -74,7 +75,6 @@ import HorizontalMix from '../Menu/horizontalMix.vue'
 const theme = useThemeStore()
 const props = defineProps<{
   height: string
-  // position: 'absolute' | 'static'
 }>()
 </script>
 

@@ -31,9 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useAppStore, useThemeStore } from '@/store'
 import { Header, Footer, Sider, Main, Tab } from '../common'
 
 const app = useAppStore()

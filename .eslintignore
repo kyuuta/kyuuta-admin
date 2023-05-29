@@ -12,5 +12,6 @@ dist
 .local
 /bin
 Dockerfile
+auto-imports.d.ts
 components.d.ts
 *.svg

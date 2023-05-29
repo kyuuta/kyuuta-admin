@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore } from '@/store'
 import {
   VerticalSider,
   VerticalMixSider

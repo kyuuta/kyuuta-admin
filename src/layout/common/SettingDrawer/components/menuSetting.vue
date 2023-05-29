@@ -1,47 +1,47 @@
 <template>
-  <Item title="标签页">
+  <Item :title="t('system.tabs')">
     <NSwitch
       :value="tabConfig.visible"
       @update:value="setTabVisible"
     />
   </Item>
-  <Item title="标签页缓存">
+  <Item :title="t('system.tabsCache')">
     <NSwitch
       :value="tabConfig.isCache"
       @update:value="setTabCache"
     />
   </Item>
-  <Item title="面包屑">
+  <Item :title="t('system.breadcrumbs')">
     <NSwitch
       :value="breadcrumbConfig.visible"
       @update:value="setBreadcrumbVisible"
     />
   </Item>
-  <Item title="面包屑图标">
+  <Item :title="t('system.breadcrumbsIcon')">
     <NSwitch
       :value="breadcrumbConfig.showIcon"
       @update:value="setBreadcrumbShowIcon"
     />
   </Item>
-  <Item title="头部折叠图标">
+  <Item :title="t('system.headerFoldIcon')">
     <NSwitch
       :value="menuConfig.showHeaderCollapse"
       @update:value="setHeaderCollapseVisible"
     />
   </Item>
-  <Item title="侧边栏手风琴">
+  <Item :title="t('system.sidebarAccordionMode')">
     <NSwitch
       :value="menuConfig.accordion"
       @update:value="setSiderAccordion"
     />
   </Item>
-  <Item title="侧边栏折叠按钮">
+  <Item :title="t('system.sidebarCollapseButton')">
     <NSwitch
       :value="menuConfig.showSiderCollapse"
       @update:value="setSiderCollapseVisible"
     />
   </Item>
-  <Item title="侧边栏折叠类型">
+  <Item :title="t('system.sidebarCollapseType')">
     <NSelect
       class="w120px"
       :value="menuConfig.collapseType"
@@ -49,7 +49,7 @@
       @update:value="setCollapseType"
     />
   </Item>
-  <Item title="菜单宽度">
+  <Item :title="t('system.menuWidth')">
     <NInputNumber
       class="w120px text-center"
       :step="10"
@@ -64,8 +64,8 @@
 <script lang="ts" setup>
 import Item from './item.vue'
 import { storeToRefs } from 'pinia'
-import { useThemeStore } from '@/store'
 
+const { t } = useI18n()
 const theme = useThemeStore()
 const { menuConfig, tabConfig, breadcrumbConfig } =
   storeToRefs(theme)

@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import { PageConfig } from '@/config/page'
 import { BasicLayout } from '@/layout'
 

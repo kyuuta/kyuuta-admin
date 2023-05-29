@@ -23,7 +23,7 @@
           :icon="item.meta?.icon"
           :localIcon="item.meta?.localIcon"
         />
-        <span>{{ item.meta.title }}</span>
+        <span>{{ t(item.meta.title as string) }}</span>
       </div>
     </component>
   </div>
@@ -37,11 +37,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, watch, nextTick } from 'vue'
-import { useTabStore, useThemeStore } from '@/store'
 import TabItem from './tabItem.vue'
 import ContextMenu from './contextMenu.vue'
 
+const { t } = useI18n()
 const theme = useThemeStore()
 const tabStore = useTabStore()
 

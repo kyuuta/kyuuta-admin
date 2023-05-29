@@ -19,7 +19,6 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { useThemeStore } from '@/store'
 
 const theme = useThemeStore()
 const { menuConfig } = storeToRefs(theme)

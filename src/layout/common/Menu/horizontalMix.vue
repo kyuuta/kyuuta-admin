@@ -14,11 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouteStore } from '@/store'
-import { useRouterPush } from '@/composables'
-
 import MenuItem from '../Sider/components/verticalMixSider/menuItem.vue'
 
 const route = useRoute()

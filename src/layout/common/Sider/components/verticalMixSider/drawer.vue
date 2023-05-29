@@ -38,6 +38,7 @@
           class="menu"
           :value="activeKey"
           :options="menus"
+          :renderLabel="val => t(val.label as string)"
           @update:value="handleUpdateMenu"
         />
       </NScrollbar>
@@ -46,10 +47,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouterPush } from '@/composables'
-
 defineProps<{
   visible: boolean
   menus: App.GlobalMenuOption[]
@@ -57,6 +54,7 @@ defineProps<{
 
 const fixed = ref(false)
 
+const { t } = useI18n()
 const route = useRoute()
 const { routerPush } = useRouterPush()
 

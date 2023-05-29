@@ -19,7 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { PopoverPlacement } from 'naive-ui'
 
 defineOptions({ name: 'TooltipContainer' })
@@ -30,7 +29,7 @@ const itemClass = [
   'min-w-26px',
   'h-full',
   'px-10px',
-  'hover:bg-#ececed hover:dark-bg-#2d2d30'
+  'defaultHoverBg'
 ]
 
 const props = withDefaults(

@@ -1,0 +1,62 @@
+system:
+  logout: 退出
+  search: 搜索
+  searchPlaceholder: 请输入关键词
+  confirm: 确认
+  toggle: 切换
+  close: 关闭
+  prompt: 提示
+  promptText: 您确定退出登陆吗？
+  cancel: 取消
+  darkmode: 暗黑模式
+  fullscreen: 全屏
+  projectConfiguration: 项目配置
+  theme: 主题
+  systemTheme: 系统主题
+  interfaceFeatures: 界面功能
+  layoutMode: 布局模式
+  menuRelated: 菜单相关
+  animation: 动画
+  themeConfiguration: 主题配置
+  layout:
+    topStart: 左侧菜单模式
+    topEnd: 顶部菜单模式
+    bottomStart: 左侧菜单混合模式
+    bottomEnd: 顶部菜单混合模式
+  animationMode: 动画模式
+  followSystemTheme: 跟随系统主题
+  scrollMode: 滚动模式
+  header: 头部
+  headerHeight: 头部高度
+  footer: 底部
+  footerHeight: 底部高度
+  fixedFooter: 固定底部
+  scrollModeContent: 内容滚动
+  scrollModeGlobal: 主题滚动
+  tabs: 标签页
+  tabsCache: 标签页缓存
+  breadcrumbs: 面包屑
+  breadcrumbsIcon: 面包屑图标
+  headerFoldIcon: 头部折叠图标
+  sidebarAccordionMode: 侧边栏手风琴模式
+  sidebarCollapseButton: 侧边栏折叠按钮
+  sidebarCollapseType: 侧边栏折叠类型
+  menuWidth: 菜单宽度
+  resetTheme: 重置系统主题
+  animationList:
+    fade: 渐变
+    flashing: 闪现
+    sliding: 滑动
+    subside: 消退
+    bottomFading: 底部消退
+    zoomFade: 缩放消退
+routes:
+  dashboard: 
+    index: 仪表盘
+    console: 主控台
+    workplace: 工作台
+  document:
+    index: 文档
+    vue: Vue
+    vite: Vite
+    naive: NaiveUI

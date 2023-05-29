@@ -1,4 +1,3 @@
-import { computed } from 'vue'
 import { defineStore } from 'pinia'
 import { darkTheme } from 'naive-ui'
 import { localStorage } from '@/utils'
@@ -153,6 +152,10 @@ export const useThemeStore = defineStore({
     /** 缓存主题相关配置 */
     cacheThemeSettings() {
       localStorage.set('themeSettings', this.$state)
+    },
+    /** 语言相关 */
+    setLanguage(lang: string) {
+      this.language = lang
     },
     /** 清除缓存 重置store状态 */
     resetThemeStore() {

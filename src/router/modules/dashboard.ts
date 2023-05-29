@@ -1,4 +1,3 @@
-import { RouteRecordRaw } from 'vue-router'
 import { BasicLayout } from '@/layout'
 
 const moduleName = 'Dashboard'
@@ -10,7 +9,7 @@ const routes: RouteRecordRaw[] = [
     redirect: '/dashboard/console',
     component: BasicLayout,
     meta: {
-      title: '控制台',
+      title: 'routes.dashboard.index',
       icon: 'mdi-light:console'
     },
     children: [
@@ -21,7 +20,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/dsahboard/console.vue'),
         meta: {
           requiresAuth: true,
-          title: '主控台',
+          title: 'routes.dashboard.console',
           icon: 'material-symbols:control-camera'
         }
       },
@@ -32,7 +31,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/dsahboard/workplace.vue'),
         meta: {
           requiresAuth: true,
-          title: '工作台',
+          title: 'routes.dashboard.workplace',
           icon: 'material-symbols:work-outline'
         }
       },

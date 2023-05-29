@@ -1,5 +1,4 @@
-import { useIconRender } from '@/composables'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 /**
  * 将路由表转换成Naive Menu格式&Breadcrumb格式

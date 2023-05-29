@@ -3,7 +3,6 @@ import type {
   RouteLocationNormalized
 } from 'vue-router'
 import { localStorage } from '@/utils'
-import { useRouteStore } from '@/store'
 import { PageConfig } from '@/config/page'
 
 /**

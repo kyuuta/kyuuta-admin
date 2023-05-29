@@ -18,7 +18,7 @@
       <div class="flex-center w-70px h-60px">
         <Logo />
       </div>
-      <NScrollbar class="flex-1 overflow-hidden">
+      <NScrollbar class="flex-1 px-4px w-70px">
         <MenuItem
           v-for="menu in routeStore.firstDegreeMenus"
           :key="menu.routeName"
@@ -46,11 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouteStore } from '@/store'
 import { useBoolean } from '@/hooks'
-import { useRouterPush } from '@/composables'
 import Drawer from './drawer.vue'
 import MenuItem from './menuItem.vue'
 import { Logo } from '@/layout/common'

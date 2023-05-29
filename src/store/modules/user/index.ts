@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia'
-import { useRouteStore } from '@/store'
-import { useRouterPush } from '@/composables'
 import { getToken } from './helpers'
 import { localStorage } from '@/utils'
 import { pwdLogin } from '@/service/api/user'

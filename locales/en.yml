@@ -1,0 +1,62 @@
+system:
+  logout: logout
+  search: Search
+  searchPlaceholder: Please enter keywords
+  confirm: Confirm
+  toggle: Toggle
+  close: Close
+  prompt: Prompt
+  promptText: Are you sure you want to log out?
+  cancel: Cancel
+  darkmode: Dark Mode
+  fullscreen: Full Screen
+  projectConfiguration: Project Configuration
+  theme: Theme
+  systemTheme: System Theme
+  interfaceFeatures: Interface Features
+  layoutMode: Layout Mode
+  menuRelated: Menu Related
+  animation: Animation
+  themeConfiguration: Theme Configuration
+  layout:
+    topStart: Left side menu mode
+    topEnd: Top menu mode
+    bottomStart: Left menu blend mode
+    bottomEnd: Top menu blend mode
+  animationMode: Animation Mode
+  followSystemTheme: FollowSystemTheme
+  scrollMode: ScrollMode
+  header: Header
+  headerHeight: HeaderHeight
+  footer: Footer
+  footerHeight: FooterHeight
+  fixedFooter: FixedFooter
+  scrollModeContent: ContentScroll
+  scrollModeGlobal: OverallScroll
+  tabs: Tabs
+  tabsCache: TabsCache
+  breadcrumbs: Breadcrumbs
+  breadcrumbsIcon: BreadcrumbsIcon
+  headerFoldIcon: HeaderFoldIcon
+  sidebarAccordionMode: SidebarAccordionMode
+  sidebarCollapseButton: SidebarCollapseButton
+  sidebarCollapseType: SidebarCollapseType
+  menuWidth: MenuWidth
+  resetTheme: ResetThemeConfiguration
+  animationList:
+    fade: Fade
+    flashing: Flashing
+    sliding: Sliding
+    subside: Subside
+    bottomFading: BottomFading
+    zoomFade: ZoomFade
+routes:
+  dashboard: 
+    index: Dashborad
+    console: Console
+    workplace: Workplace
+  document:
+    index: Document
+    vue: Vue
+    vite: Vite
+    naive: NaiveUI

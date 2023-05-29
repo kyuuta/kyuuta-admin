@@ -21,10 +21,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useTabStore } from '@/store'
-import { useElementBounding } from '@vueuse/core'
 import { BetterScroll, Tab } from './components'
 
 const route = useRoute()
@@ -62,5 +58,7 @@ const init = () => {
   tabStore.initTabStore(route)
 }
 
-init()
+onMounted(() => {
+  init()
+})
 </script>

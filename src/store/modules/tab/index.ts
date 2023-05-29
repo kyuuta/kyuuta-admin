@@ -4,7 +4,6 @@ import type {
 } from 'vue-router'
 import { defineStore } from 'pinia'
 import { useThemeStore } from '../theme'
-import { useRouterPush } from '@/composables'
 import {
   setTabCache,
   getTabCache,
@@ -57,7 +56,7 @@ export const useTabStore = defineStore('TabStore', {
       currentRoute: RouteLocationNormalizedLoaded
     ) {
       const theme = useThemeStore()
-      const tabs: GlobalTabRoute[] = theme.tab.isCache
+      const tabs: GlobalTabRoute[] = theme.tabConfig.isCache
         ? getTabCache()
         : []
 
@@ -111,7 +110,6 @@ export const useTabStore = defineStore('TabStore', {
     },
     /** 缓存标签页数据 */
     cacheTabs() {
-      console.log(this.tabs, 123)
       setTabCache(this.tabs)
     },
     clearCacheTabs() {

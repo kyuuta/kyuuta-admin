@@ -5,8 +5,8 @@
     <RouterView v-slot="{ Component, route }">
       <transition
         :name="
-          theme.animation.visible
-            ? theme.animation.mode
+          theme.animationConfig.visible
+            ? theme.animationConfig.mode
             : ''
         "
         mode="out-in"
@@ -25,12 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  useAppStore,
-  useThemeStore,
-  useRouteStore
-} from '@/store'
-
 const app = useAppStore()
 const theme = useThemeStore()
 const routeStore = useRouteStore()
