@@ -50,8 +50,9 @@ system:
     subside: 消退
     bottomFading: 底部消退
     zoomFade: 缩放消退
+  reload: 刷新
 routes:
-  dashboard: 
+  dashboard:
     index: 仪表盘
     console: 主控台
     workplace: 工作台

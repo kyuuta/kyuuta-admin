@@ -1,8 +1,6 @@
 <template>
   <div class="test-wrapper" style="padding: 15px">
     <div class="header">
-      <icon-local-vite style="font-size: 30px" />
-
       <n-button
         type="primary"
         class="mr-10px"

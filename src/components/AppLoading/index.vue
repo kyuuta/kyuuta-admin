@@ -1,7 +1,10 @@
 <template>
   <div
-    class="fixed flex-col left-0 top-0 wh-full flex-center"
+    class="fixed flex-col left-0 top-30vh wh-full flex-y-center"
   >
+    <icon-local-logo-full
+      style="width: 400px; height: 200px"
+    />
     <div class="loading color-primary">
       <div />
       <div />

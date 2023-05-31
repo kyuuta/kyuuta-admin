@@ -18,11 +18,11 @@ async function setupApp() {
   // 挂载状态管理
   setupStore(app)
 
-  // 挂载路由
-  await setupRouter(app)
-
   // 国际化
   setupI18n(app)
+
+  // 挂载路由
+  await setupRouter(app)
 
   app.mount('#app', true)
 }
