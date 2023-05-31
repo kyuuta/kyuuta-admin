@@ -49,8 +49,7 @@ export default function subscribeThemeStore() {
     // i18n
     watch(
       () => theme.language,
-      (val) => loadLanguageAsync(val),
-      { immediate: true }
+      (val) => loadLanguageAsync(val)
     )
   })
 
