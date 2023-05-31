@@ -6,14 +6,22 @@
     <template #trigger>
       <TooltipContainer>
         <div class="avatar">
-          <Logo />
+          <NAvatar
+            round
+            :size="36"
+            :src="theme.darkMode ? AvatarDark : AvatarLight"
+          />
         </div>
       </TooltipContainer>
     </template>
     <DarkModeContainer class="p-24px rd-6px">
       <div class="min-w-280px text-1.125rem">
         <div class="flex flex-y-center">
-          <Logo :size="90" />
+          <NAvatar
+            round
+            :size="90"
+            :src="theme.darkMode ? AvatarDark : AvatarLight"
+          />
           <div
             class="flex flex-col ml-20px text-0.825rem color-#2a3547 dark:color-#fff"
           >
@@ -60,9 +68,11 @@
 </template>
 
 <script lang="ts" setup>
-import { Logo } from '@/layout/common'
+import AvatarDark from '@/assets/images/avatar_dark.jpg'
+import AvatarLight from '@/assets/images/avatar_light.jpg'
 
 const { t } = useI18n()
+const theme = useThemeStore()
 const userStore = useUserStore()
 const { iconRender } = useIconRender()
 

@@ -50,8 +50,9 @@ system:
     subside: Subside
     bottomFading: BottomFading
     zoomFade: ZoomFade
+  reload: Reload
 routes:
-  dashboard: 
+  dashboard:
     index: Dashborad
     console: Console
     workplace: Workplace

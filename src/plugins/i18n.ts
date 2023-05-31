@@ -2,7 +2,7 @@ import type { App } from 'vue'
 import { createI18n } from 'vue-i18n'
 import { ThemeConfig } from '@/config/theme'
 
-const i18n = createI18n({
+export const i18n = createI18n({
   legacy: false,
   locale: '',
   messages: {}
@@ -52,5 +52,7 @@ export async function loadLanguageAsync(
 }
 
 export function setupI18n(app: App) {
+  const theme = useThemeStore()
   app.use(i18n)
+  loadLanguageAsync(theme.language)
 }

@@ -3,9 +3,9 @@
     <div class="left-controls">
       <div
         v-if="theme.layoutMode === 'horizontal'"
-        class="flex-center w-80px h-60px"
+        class="flex-center mx-10px"
       >
-        <Logo />
+        <Logo :full-size="110" />
       </div>
       <Collapse
         v-if="
@@ -14,7 +14,6 @@
           )
         "
       />
-      <Reload />
       <Breadcrumb
         v-if="
           ['vertical', 'vertical-mix'].includes(
@@ -47,6 +46,7 @@
 
     <div class="right-controls">
       <Search />
+      <Reload />
       <FullScreen />
       <Language />
       <DarkMode />

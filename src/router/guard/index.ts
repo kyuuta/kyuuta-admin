@@ -1,5 +1,6 @@
 import type { Router } from 'vue-router'
 import { createPermissionGuard } from './permission'
+import { i18n } from '@/plugins/i18n'
 
 /**
  * 路由守卫
@@ -12,7 +13,7 @@ export function createRouterGuard(router: Router) {
   })
 
   router.afterEach((to) => {
-    useTitle(to.meta.title)
+    useTitle(i18n.global.t(to.meta.title))
     window.$loadingBar?.finish()
   })
 
