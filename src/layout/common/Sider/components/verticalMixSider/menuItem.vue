@@ -21,7 +21,7 @@
   >
     <component :is="icon" v-if="icon" />
     <span
-      class="text-12px w-full text-center px-4px text-ellipsis overflow-hidden transition-height duration-300 ease-in-out"
+      class="text-12px w-full text-center px-4px text-ellipsis text-nowrap w-60px overflow-hidden transition-height duration-300 ease-in-out"
     >
       {{ t(label) }}
     </span>

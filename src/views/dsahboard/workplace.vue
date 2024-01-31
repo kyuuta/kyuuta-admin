@@ -1,112 +1,127 @@
 <template>
-  <div class="dark:bg-#101014">
-    <p>01</p>
-    <p>02</p>
-    <p>03</p>
-    <p>04</p>
-    <p>05</p>
-    <p>06</p>
-    <p>07</p>
-    <p>08</p>
-    <p>09</p>
-    <p>10</p>
-    <p>11</p>
-    <p>12</p>
-    <p>13</p>
-    <p>14</p>
-    <p>15</p>
-    <p>16</p>
-    <p>17</p>
-    <p>18</p>
-    <p>19</p>
-    <p>20</p>
-    <p>21</p>
-    <p>22</p>
-    <p>23</p>
-    <p>24</p>
-    <p>25</p>
-    <p>26</p>
-    <p>27</p>
-    <p>28</p>
-    <p>29</p>
-    <p>30</p>
-    <p>31</p>
-    <p>32</p>
-    <p>33</p>
-    <p>34</p>
-    <p>35</p>
-    <p>36</p>
-    <p>37</p>
-    <p>38</p>
-    <p>39</p>
-    <p>40</p>
-    <p>41</p>
-    <p>42</p>
-    <p>43</p>
-    <p>44</p>
-    <p>45</p>
-    <p>46</p>
-    <p>47</p>
-    <p>48</p>
-    <p>49</p>
-    <p>50</p>
-    <p>51</p>
-    <p>52</p>
-    <p>53</p>
-    <p>54</p>
-    <p>55</p>
-    <p>56</p>
-    <p>57</p>
-    <p>58</p>
-    <p>59</p>
-    <p>60</p>
-    <p>61</p>
-    <p>62</p>
-    <p>63</p>
-    <p>64</p>
-    <p>65</p>
-    <p>66</p>
-    <p>67</p>
-    <p>68</p>
-    <p>69</p>
-    <p>70</p>
-    <p>71</p>
-    <p>72</p>
-    <p>73</p>
-    <p>74</p>
-    <p>75</p>
-    <p>76</p>
-    <p>77</p>
-    <p>78</p>
-    <p>79</p>
-    <p>80</p>
-    <p>81</p>
-    <p>82</p>
-    <p>83</p>
-    <p>84</p>
-    <p>85</p>
-    <p>86</p>
-    <p>87</p>
-    <p>88</p>
-    <p>89</p>
-    <p>90</p>
-    <p>91</p>
-    <p>92</p>
-    <p>93</p>
-    <p>94</p>
-    <p>95</p>
-    <p>96</p>
-    <p>97</p>
-    <p>98</p>
-    <p>99</p>
-    <p>100</p>
-  </div>
+  <NSpace
+    class="flex-auto"
+    vertical
+    :size="12"
+    :wrap-item="false"
+  >
+    <NCard
+      class="rounded-6px shadow-sm"
+      :bordered="false"
+    >
+      <SearchForm
+        v-model="formData"
+        :dict="dict"
+        :loading="loading || dictLoading"
+        :formItems="formItems"
+        @load="loadData"
+        @reset="loadData"
+      />
+    </NCard>
+    <NCard
+      class="rounded-6px shadow-sm flex-auto"
+      :bordered="false"
+    >
+      <template #header>
+        <NSpace align="center">
+          <NButton type="primary">一些功能按钮</NButton>
+        </NSpace>
+      </template>
+
+      <template #header-extra>
+        <NSpace>
+          <NButton type="primary">导出</NButton>
+        </NSpace>
+      </template>
+
+      <NDataTable
+        :style="{ height: '100%' }"
+        :row-key="(rowData) => rowData.id"
+        :loading="loading"
+        :columns="columns"
+        :data="tableData"
+        flexHeight
+      />
+
+      <template #footer>
+        <Pagination v-model="pagination" @load="loadData" />
+      </template>
+    </NCard>
+  </NSpace>
 </template>
 
 <script lang="ts" setup>
-onMounted(() => {
-  console.log('workplace monted')
-})
-</script>
+import type { DataTableColumns } from 'naive-ui'
+import { getStaffList } from '@/service/api/dashboard'
 
-<style lang="less" scoped></style>
+const { dict, dictLoading, formatDict } = useDict([
+  'sex',
+  'grade'
+])
+const loading = shallowRef<boolean>(false)
+const formData = shallowRef({})
+const formItems: SearchForm.FormItems = [
+  { label: '姓名', value: 'name', type: 'input' },
+  { label: '年龄', value: 'age', type: 'input' },
+  {
+    label: '性别',
+    value: 'sex',
+    type: 'select',
+    dictKey: 'sex'
+  },
+  {
+    label: '职位',
+    value: 'grade',
+    type: 'select',
+    dictKey: 'grade'
+  },
+  {
+    label: '创建时间',
+    value: 'createTime',
+    type: 'date',
+    pickerType: 'datetimerange'
+  }
+]
+
+const tableData = shallowRef([])
+const pagination = shallowReactive({
+  page: 1,
+  pageSize: 10,
+  total: 0
+})
+const columns: DataTableColumns = [
+  { title: 'id', key: 'id' },
+  { title: '姓名', key: 'name' },
+  { title: '年龄', key: 'age' },
+  {
+    title: '性别',
+    key: 'sex',
+    render: (row) => formatDict(row.sex, 'sex')
+  },
+  {
+    title: '职位',
+    key: 'grade',
+    render: (row) => formatDict(row.grade, 'grade')
+  }
+]
+
+onMounted(() => loadData())
+
+const loadData = () => {
+  loading.value = true
+  getStaffList({
+    ...formData.value,
+    pageParams: {
+      page: pagination.page,
+      pageSize: pagination.pageSize
+    }
+  })
+    .then((res: any) => {
+      tableData.value = res.data
+      pagination.total = res.total
+    })
+    .finally(() => {
+      loading.value = false
+    })
+}
+</script>

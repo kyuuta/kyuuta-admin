@@ -5,7 +5,7 @@
     <icon-local-logo-full
       style="width: 400px; height: 200px"
     />
-    <div class="loading color-primary">
+    <div class="loading color-#1890ff">
       <div />
       <div />
       <div />
@@ -14,22 +14,22 @@
 </template>
 
 <script lang="ts" setup>
-import { ThemeConfig } from '@/config/theme'
-import { localStorage, getRgbOfColor } from '@/utils'
+// import { ThemeConfig } from '@/config/theme'
+// import { localStorage, getRgbOfColor } from '@/utils'
 
-function addThemeColorCssVars() {
-  const defaultColor = ThemeConfig.themeColor
-  const themeColor =
-    localStorage.get('themeSettings').themeColor ||
-    defaultColor
+// function addThemeColorCssVars() {
+//   const defaultColor = ThemeConfig.themeColor
+//   const themeColor =
+//     localStorage.get('themeSettings').themeColor ||
+//     defaultColor
 
-  const { r, g, b } = getRgbOfColor(themeColor)
+//   const { r, g, b } = getRgbOfColor(themeColor)
 
-  const cssVars = `--primary-color: ${r},${g},${b}`
-  document.documentElement.style.cssText = cssVars
-}
+//   const cssVars = `--primary-color: ${r},${g},${b}`
+//   document.documentElement.style.cssText = cssVars
+// }
 
-addThemeColorCssVars()
+// addThemeColorCssVars()
 </script>
 
 <style lang="less" scoped>

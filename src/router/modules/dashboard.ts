@@ -41,7 +41,7 @@ const routes: RouteRecordRaw[] = [
         component: () =>
           import('@/views/dsahboard/detail.vue'),
         meta: {
-          title: '测试详情',
+          title: 'routes.dashboard.test',
           multiTab: true,
           hide: true,
           keepAlive: true,

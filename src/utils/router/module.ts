@@ -1,3 +1,4 @@
+import { orderBy } from 'lodash-es'
 import type { RouteRecordRaw } from 'vue-router'
 
 /**
@@ -5,15 +6,10 @@ import type { RouteRecordRaw } from 'vue-router'
  * @param routes - 权限路由
  */
 export function sortRoutes(routes: RouteRecordRaw[]) {
-  return routes
-    .sort(
-      (next, pre) =>
-        Number(next.meta?.order) - Number(pre.meta?.order)
-    )
-    .map((route) => {
-      if (route.children) sortRoutes(route.children)
-      return route
-    })
+  return orderBy(routes, ['meta.order']).map((i) => {
+    if (i.children) sortRoutes(i.children)
+    return i
+  })
 }
 
 /**

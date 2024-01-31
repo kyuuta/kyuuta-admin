@@ -1,7 +1,7 @@
 <template>
   <NBreadcrumb
     v-if="breadcrumbConfig.visible"
-    class="breadcrumb"
+    class="breadcrumb ml-10px"
   >
     <template
       v-for="breadcrumb in breadcrumbs"
@@ -12,6 +12,7 @@
           v-if="breadcrumb?.children?.length"
           placement="bottom-start"
           :options="breadcrumb.children"
+          :render-label="renderDropdownLabel"
           @select="(key) => routerPush({ name: key })"
         >
           <span class="flex-y-center">
@@ -40,6 +41,7 @@
 </template>
 
 <script lang="ts" setup>
+import type { DropdownOption } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
 
@@ -53,6 +55,10 @@ const { breadcrumbConfig } = storeToRefs(theme)
 const breadcrumbs = computed(() =>
   transformRouteToBreadcrumb(route.matched)
 )
+
+const renderDropdownLabel = (option: DropdownOption) => {
+  return t(option.label as string)
+}
 </script>
 
 <style lang="less" scoped>
