@@ -1,10 +1,7 @@
 <template>
   <NLayout hasSider :position="position">
     <template v-if="!app.contentFull">
-      <Sider
-        v-if="theme.layoutMode !== 'horizontal'"
-        class="aaaa"
-      />
+      <Sider v-if="theme.layoutMode !== 'horizontal'" />
       <NLayout class="flex-layout">
         <Header
           v-if="headerConfig.visible"

@@ -14,7 +14,11 @@ export function transformRouteToMenu(
     const routeName = name as string
     let menuChildren: App.GlobalMenuOption[] | undefined
 
-    if (route.children && route.children.length) {
+    if (
+      route.children &&
+      route.children.length &&
+      !route.children?.every((item) => item.meta.hide)
+    ) {
       menuChildren = transformRouteToMenu(route.children)
     }
 
@@ -47,7 +51,9 @@ export function transformFirstDegreeMenu(
     const { name, label, meta, redirect } = route
     const icon = route?.icon
     const hasChildren = Boolean(
-      route.children && route.children.length
+      route.children &&
+        route.children.length &&
+        !route.children?.every((item) => item.meta.hide)
     )
 
     const menuItem = addPartialProps({

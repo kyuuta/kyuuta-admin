@@ -44,7 +44,7 @@
               v-if="menu.icon"
               class="mr-6px"
             />
-            <span>{{ menu.label }}</span>
+            <span>{{ t(menu.label) }}</span>
           </div>
           <SvgIcon
             icon="fluent:arrow-enter-left-20-filled"

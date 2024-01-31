@@ -56,6 +56,7 @@ routes:
     index: 仪表盘
     console: 主控台
     workplace: 工作台
+    test: 测试详情
   document:
     index: 文档
     vue: Vue

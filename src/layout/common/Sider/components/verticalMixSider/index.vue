@@ -90,6 +90,7 @@ const handleClickMenu = (
     openDrawer()
   } else {
     routerPush({ name: routeName })
+    hideDrawer()
   }
 }
 
