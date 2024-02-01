@@ -80,6 +80,12 @@ const formItems: SearchForm.FormItems = [
     value: 'createTime',
     type: 'date',
     pickerType: 'datetimerange'
+  },
+  {
+    label: '单选',
+    value: 'radioVal',
+    type: 'radio',
+    dictKey: 'sex'
   }
 ]
 
