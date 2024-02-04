@@ -1,4 +1,7 @@
-import * as NaiveUI from 'naive-ui'
+import {
+  createDiscreteApi,
+  ConfigProviderProps
+} from 'naive-ui'
 
 /**
  * 挂载 Naive-ui 脱离上下文的 API
@@ -6,14 +9,20 @@ import * as NaiveUI from 'naive-ui'
  * https://www.naiveui.com/zh-CN/dark/components/discrete
  */
 
-export function setupNaiveDiscreteApi() {
+export function setupNaiveDiscreateApi() {
+  const theme = useThemeStore()
+  const configProviderPropsRef =
+    computed<ConfigProviderProps>(() => ({
+      theme: theme.naiveTheme
+    }))
+
   const { message, dialog, notification, loadingBar } =
-    NaiveUI.createDiscreteApi([
-      'message',
-      'dialog',
-      'notification',
-      'loadingBar'
-    ])
+    createDiscreteApi(
+      ['message', 'dialog', 'notification', 'loadingBar'],
+      {
+        configProviderProps: configProviderPropsRef
+      }
+    )
 
   window['$message'] = message
   window['$dialog'] = dialog

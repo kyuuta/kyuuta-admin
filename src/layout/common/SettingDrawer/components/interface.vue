@@ -64,9 +64,9 @@
 </template>
 
 <script lang="ts" setup>
+import type { CSSProperties } from 'vue'
 import Item from './item.vue'
 import { storeToRefs } from 'pinia'
-import type { CSSProperties } from 'vue'
 
 const { t } = useI18n()
 const theme = useThemeStore()

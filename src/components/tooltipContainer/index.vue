@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { PopoverPlacement } from 'naive-ui'
+import type { PopoverPlacement } from 'naive-ui'
 
 defineOptions({ name: 'TooltipContainer' })
 

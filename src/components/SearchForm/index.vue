@@ -1,6 +1,6 @@
 <template>
   <NSpace :wrapItem="false">
-    <div class="flex-1 mr-20px">
+    <div class="flex-1 mr-[20px]">
       <NForm
         :showFeedback="false"
         label-placement="left"
@@ -106,7 +106,7 @@
         :vertical="formRows > 1"
       >
         <NButton
-          class="w-80px"
+          class="w-[80px]"
           type="primary"
           :loading="loading"
           @click="emit('load')"
@@ -114,7 +114,7 @@
           查询
         </NButton>
         <NButton
-          class="w-80px"
+          class="w-[80px]"
           :loading="loading"
           @click="reset"
         >
@@ -123,7 +123,7 @@
 
         <div
           v-if="formRows > 3"
-          class="flex-center cursor-pointer select-none h-34px"
+          class="flex justify-center items-center cursor-pointer select-none h-[34px]"
         >
           <NButton
             text
@@ -149,7 +149,7 @@
 <script lang="ts" setup>
 import type { SelectOption } from 'naive-ui'
 import { isNumber, isNull, isUndefined } from 'lodash-es'
-import { VNodeChild } from 'vue'
+import type { VNodeChild } from 'vue'
 const expand = shallowRef<boolean>(true)
 const formRows = shallowRef<number>(0)
 
@@ -158,12 +158,12 @@ const props = withDefaults(
     modelValue: Record<string, any>
     formItems: SearchForm.FormItems
     dict?: SearchForm.dict
-    labelWidth?: number | string | 'auto'
+    labelWidth?: number | string | 'auto' | undefined
     loading?: boolean
     cols?: number
   }>(),
   {
-    labelWidth: 'auto',
+    labelWidth: undefined,
     loading: false,
     cols: 4,
     dict: undefined

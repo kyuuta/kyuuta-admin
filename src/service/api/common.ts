@@ -19,16 +19,17 @@ const sleep = (data: any) => {
 export const getDictionary = (data) =>
   sleep([
     {
-      type: 'grade',
-      items: new Array(4).fill().map((item, index) => {
-        return { name: `P${index + 6}`, value: index + 1 }
-      })
-    },
-    {
-      type: 'sex',
+      type: 'property',
       items: [
-        { name: '男', value: 1 },
-        { name: '女', value: 0 }
+        { name: '无属性', value: 0 },
+        { name: '火属性', value: 1 },
+        { name: '水属性', value: 2 },
+        { name: '电属性', value: 3 },
+        { name: '草属性', value: 4 },
+        { name: '暗属性', value: 5 },
+        { name: '龙属性', value: 6 },
+        { name: '地属性', value: 7 },
+        { name: '冰属性', value: 8 }
       ]
     }
   ])

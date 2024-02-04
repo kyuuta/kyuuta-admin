@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import BScroll from '@better-scroll/core'
 import type { Options } from '@better-scroll/core'
+import BScroll from '@better-scroll/core'
 
 const props = defineProps<{
   options: Options

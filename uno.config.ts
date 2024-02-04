@@ -1,8 +1,6 @@
-import {
-  defineConfig,
-  presetUno,
-  transformerDirectives
-} from '@unocss'
+import { defineConfig } from '@unocss/vite'
+import presetUno from '@unocss/preset-uno'
+import transformerDirectives from '@unocss/transformer-directives'
 
 export default defineConfig({
   exclude: [
@@ -16,9 +14,7 @@ export default defineConfig({
     'mock',
     './stats.html'
   ],
-  presets: [
-    presetUno({ dark: 'class' })
-  ],
+  presets: [presetUno({ dark: 'class' })],
   shortcuts: {
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
@@ -56,7 +52,5 @@ export default defineConfig({
       dark: '#18181c'
     }
   },
-  transformers: [
-    transformerDirectives()
-  ]
+  transformers: [transformerDirectives()]
 })

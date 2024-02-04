@@ -51,12 +51,23 @@ system:
     bottomFading: 底部消退
     zoomFade: 缩放消退
   reload: 刷新
+prompt:
+  enter: 请输入
+  select: 请选择
 routes:
+  login:
+    index: 登录
+    username: 用户名
+    password: 密码
+    captcha: 验证码
   dashboard:
     index: 仪表盘
     console: 主控台
     workplace: 工作台
     test: 测试详情
+  table:
+    index: 表格
+    basic: 基础表格
   document:
     index: 文档
     vue: Vue

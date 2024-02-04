@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { NButton } from 'naive-ui'
 import { isBoolean, isFunction } from 'lodash-es'
 import { Table } from '~/src/typings/tableActions'
 

@@ -10,7 +10,8 @@ const routes: RouteRecordRaw[] = [
     component: BasicLayout,
     meta: {
       title: 'routes.dashboard.index',
-      icon: 'mdi-light:console'
+      icon: 'mdi-light:console',
+      order: 0
     },
     children: [
       {

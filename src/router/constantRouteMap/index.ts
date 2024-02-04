@@ -24,7 +24,7 @@ export const ConstantRoute: RouteRecordRaw[] = [
     name: PageConfig.BASE_LOGIN_NAME,
     component: () => import('@/views/login/index.vue'),
     meta: {
-      title: '登录'
+      title: 'routes.login.index'
     }
   },
   {
