@@ -10,8 +10,9 @@ const routes: RouteRecordRaw[] = [
     redirect: '/product/index',
     component: BasicLayout,
     meta: {
-      title: '商品',
-      icon: 'icon-park-outline:ad-product'
+      title: 'routes.product.index',
+      icon: 'icon-park-outline:ad-product',
+      order: 2
     },
     children: [
       {
@@ -21,7 +22,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/product/index.vue'),
         meta: {
           requiresAuth: true,
-          title: '商品列表',
+          title: 'routes.product.list',
           icon: 'streamline:shopping-bag-hand-bag-1-shopping-bag-purse-goods-item-products'
         }
       },
@@ -32,7 +33,7 @@ const routes: RouteRecordRaw[] = [
           import('@/views/product/detail/index.vue'),
         meta: {
           requiresAuth: true,
-          title: '商品详情',
+          title: 'routes.product.detail',
           icon: 'icon-park-outline:ad-product'
         }
       }
