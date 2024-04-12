@@ -4,7 +4,8 @@ import {
   createViteProxy,
   getSrcPath,
   getRootPath,
-  setupVitePlugins
+  setupVitePlugins,
+  viteDefine
 } from './build'
 
 export default defineConfig((configEnv) => {
@@ -25,6 +26,7 @@ export default defineConfig((configEnv) => {
         '@': srcPath
       }
     },
+    define: viteDefine,
     plugins: setupVitePlugins(viteEnv),
     server: {
       open: false,

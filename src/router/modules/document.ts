@@ -10,7 +10,8 @@ const routes: RouteRecordRaw[] = [
     component: BasicLayout,
     meta: {
       title: 'routes.document.index',
-      icon: 'line-md:document-list'
+      icon: 'line-md:document-list',
+      order: 3
     },
     children: [
       {
