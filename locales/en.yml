@@ -66,10 +66,16 @@ routes:
     workplace: Workplace
     test: testDetail
   table:
-    index: table
-    basic: basic
+    index: Table
+    basic: BasicTable
+  product:
+    index: Product
+    list: ProductList
+    detail: ProductDetail
   document:
     index: Document
     vue: Vue
     vite: Vite
     naive: NaiveUI
+  about:
+    index: About

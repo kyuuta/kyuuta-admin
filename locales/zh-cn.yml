@@ -68,8 +68,14 @@ routes:
   table:
     index: 表格
     basic: 基础表格
+  product:
+    index: 商品
+    list: 商品列表
+    detail: 商品详情
   document:
     index: 文档
     vue: Vue
     vite: Vite
     naive: NaiveUI
+  about:
+    index: 关于
