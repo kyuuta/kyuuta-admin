@@ -116,7 +116,7 @@ const searchPage = () => {
   ).filter(
     (menu) =>
       searchKey.value &&
-      menu.label
+      t(menu.label)
         .toLocaleLowerCase()
         .includes(
           searchKey.value.toLocaleLowerCase().trim()

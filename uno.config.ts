@@ -15,7 +15,6 @@ export default defineConfig({
     './stats.html'
   ],
   presets: [presetUno({ dark: 'class' })],
-  transformers: [transformerDirectives()],
   shortcuts: {
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
@@ -52,5 +51,6 @@ export default defineConfig({
       error_active: 'rgb(var(--error-color-active),0.1)',
       dark: '#18181c'
     }
-  }
+  },
+  transformers: [transformerDirectives()]
 })

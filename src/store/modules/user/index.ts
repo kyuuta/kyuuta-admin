@@ -30,7 +30,11 @@ export const useUserStore = defineStore({
 
       toLogin()
     },
-    async login(userName: string, password: string) {
+    async login(loginForm: {
+      username: string
+      password: string
+      code: string
+    }) {
       const data = await pwdLogin()
       this.token = data as string
       localStorage.set('token', data)

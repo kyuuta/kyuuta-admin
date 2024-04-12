@@ -51,12 +51,23 @@ system:
     bottomFading: BottomFading
     zoomFade: ZoomFade
   reload: Reload
+prompt:
+  enter: Please enter
+  select: Please select
 routes:
+  login:
+    index: Login
+    username: Username
+    password: Password
+    captcha: Captcha
   dashboard:
     index: Dashborad
     console: Console
     workplace: Workplace
     test: testDetail
+  table:
+    index: table
+    basic: basic
   document:
     index: Document
     vue: Vue

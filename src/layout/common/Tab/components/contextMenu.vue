@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { DropdownOption } from 'naive-ui'
+import type { DropdownOption } from 'naive-ui'
 
 const { iconRender } = useIconRender()
 

@@ -1,4 +1,3 @@
-import { hasIn, update } from 'lodash-es'
 import type { App, Directive } from 'vue'
 
 export default function setupPermissionDirective(app: App) {

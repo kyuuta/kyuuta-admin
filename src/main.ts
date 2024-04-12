@@ -6,7 +6,7 @@ import { setupRouter } from './router'
 import {
   setupAssets,
   setupI18n,
-  setupNaiveDiscreteApi
+  setupNaiveDiscreateApi
 } from '@/plugins'
 
 async function setupApp() {
@@ -26,7 +26,7 @@ async function setupApp() {
   setupI18n(app)
 
   // 挂载 naive-ui 脱离上下文的 Api
-  setupNaiveDiscreteApi()
+  setupNaiveDiscreateApi()
 
   // 挂载路由
   await setupRouter(app)
