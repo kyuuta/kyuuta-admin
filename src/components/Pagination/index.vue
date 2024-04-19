@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end">
-    <n-pagination
+    <NPagination
       showSizePicker
       :page="modelValue.page"
       :page-size="modelValue.pageSize"
@@ -14,6 +14,8 @@
 </template>
 
 <script lang="ts" setup>
+import { NPagination } from 'naive-ui'
+
 type PaginationType = {
   page: number
   pageSize: number

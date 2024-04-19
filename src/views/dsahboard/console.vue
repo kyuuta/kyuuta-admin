@@ -1,7 +1,7 @@
 <template>
   <div class="test-wrapper" style="padding: 15px">
     <div class="header">
-      <n-button
+      <NButton
         type="primary"
         class="mr-10px"
         @click="
@@ -11,8 +11,8 @@
         "
       >
         goDetail1
-      </n-button>
-      <n-button
+      </NButton>
+      <NButton
         type="primary"
         @click="
           routerPush({
@@ -21,10 +21,10 @@
         "
       >
         goDetail2
-      </n-button>
+      </NButton>
     </div>
     <div class="content">
-      <n-data-table
+      <NData-table
         :style="{ height: '100%' }"
         :columns="columns"
         :data="data"

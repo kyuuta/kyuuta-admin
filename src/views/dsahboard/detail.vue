@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ route.params.id }}
-    <n-input
+    <n-icon
       v-model:value="value"
       type="text"
       placeholder="基本的 Input"

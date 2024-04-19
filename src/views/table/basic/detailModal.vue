@@ -19,7 +19,7 @@
           <NInput v-model:value="form.name" />
         </NFormItem>
         <NFormItem label="属性" path="property">
-          <n-select
+          <NSelect
             v-model:value="form.property"
             multiple
             :options="dict"
