@@ -42,7 +42,7 @@ export function useDict(dictKeys?: Array = []) {
 
     if (targetDict && targetDict.length) {
       const target = targetDict.find(
-        (item) => item[valueField] === +value
+        (item) => item[valueField] === value
       )
       return target ? target[labelField] : value
     } else {
