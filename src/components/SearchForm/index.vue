@@ -6,7 +6,7 @@
         label-placement="left"
         :label-width="labelWidth"
       >
-        <n-grid
+        <NGrid
           x-gap="18"
           y-gap="10"
           :cols="cols"
@@ -97,7 +97,7 @@
               </NRadioGroup>
             </NFormItem>
           </NGi>
-        </n-grid>
+        </NGrid>
       </NForm>
     </div>
     <div class="operations">

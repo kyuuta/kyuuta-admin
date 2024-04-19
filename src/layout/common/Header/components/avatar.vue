@@ -53,7 +53,7 @@
           <div class="c-bluegray">{{ item.desc }}</div>
         </div>
       </div>
-      <n-button
+      <NButton
         class="w-100% mt-20px rd-8px"
         size="large"
         type="primary"
@@ -62,7 +62,7 @@
         @click="handleLogout"
       >
         {{ t('system.logout') }}
-      </n-button>
+      </NButton>
     </DarkModeContainer>
   </NPopover>
 </template>

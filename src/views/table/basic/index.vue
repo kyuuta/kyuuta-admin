@@ -34,14 +34,14 @@
 
       <template #header-extra>
         <NSpace>
-          <n-button-group>
-            <n-button type="primary">导出</n-button>
-            <n-dropdown
+          <NButton-group>
+            <NButton type="primary">导出</NButton>
+            <NDropdown
               trigger="hover"
               :options="exportBtnList"
               @select="handleExport"
             >
-              <n-button
+              <NButton
                 type="primary"
                 class="w-[40px]"
                 ghost
@@ -52,9 +52,9 @@
                     class="text-[16px]"
                   />
                 </template>
-              </n-button>
-            </n-dropdown>
-          </n-button-group>
+              </NButton>
+            </NDropdown>
+          </NButton-group>
         </NSpace>
       </template>
 
