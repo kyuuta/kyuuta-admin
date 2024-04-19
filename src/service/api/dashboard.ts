@@ -21,7 +21,16 @@ const filterParam = (data: [], params = {}) => {
       if (isNull(params[key]) || isUndefined(params[key])) {
         return true
       }
-      return item[key].includes(params[key])
+
+      if (key === 'fallDown') {
+        return item[key].split(',').includes(params[key])
+      } else if (['property', 'adaptive'].includes(key)) {
+        return params[key].every((fieldKey) =>
+          item[key].split(',').includes(fieldKey)
+        )
+      } else {
+        return item[key] === params[key]
+      }
     })
   })
 }
@@ -35,6 +44,6 @@ export const getStaffList: Promise = (params) => {
       (page - 1) * pageSize,
       page * pageSize
     ),
-    total: mockData.length
+    total: result.length
   })
 }

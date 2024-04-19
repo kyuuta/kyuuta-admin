@@ -63,7 +63,7 @@
         :style="{ height: '100%' }"
         :row-key="(rowData) => rowData.id"
         :loading="loading"
-        :columns="columns"
+        :columns="mergeTableColumn(columns)"
         :data="tableData"
         flexHeight
       />
@@ -86,6 +86,7 @@ import type {
   DataTableInst
 } from 'naive-ui'
 import DetailModal from './detailModal.vue'
+import { mergeTableColumn } from '@/utils/table'
 import { getStaffList } from '@/service/api/dashboard'
 
 type rowType = {
@@ -93,7 +94,8 @@ type rowType = {
 }
 
 const { dict, dictLoading, formatDict } = useDict([
-  'property'
+  'property',
+  'adaptive'
 ])
 
 const loading = shallowRef<boolean>(false)
@@ -105,14 +107,29 @@ const formItems: SearchForm.FormItems = [
     label: '属性',
     value: 'property',
     type: 'select',
-    dictKey: 'property'
+    dictKey: 'property',
+    props: {
+      multiple: true
+    }
   },
   {
     label: '进食量',
     value: 'quantityFood',
-    type: 'input'
+    type: 'inputNumber',
+    props: {
+      showButton: false,
+      precision: 0
+    }
   },
-  { label: '工作适应性', value: 'adaptive', type: 'input' },
+  {
+    label: '工作适应性',
+    value: 'adaptive',
+    type: 'select',
+    dictKey: 'adaptive',
+    props: {
+      multiple: true
+    }
+  },
   { label: '掉落物', value: 'fallDown', type: 'input' },
   {
     label: '创建时间',
@@ -141,7 +158,16 @@ const columns: DataTableColumns = [
     }
   },
   { title: '进食量', key: 'quantityFood' },
-  { title: '工作适应性', key: 'adaptive' },
+  {
+    title: '工作适应性',
+    key: 'adaptive',
+    render: (row) => {
+      return (row as rowType).adaptive
+        .split(',')
+        .map((item) => formatDict(item, 'adaptive'))
+        .toString()
+    }
+  },
   { title: '掉落物', key: 'fallDown' }
   // {
   //   title: '年龄',
@@ -198,6 +224,7 @@ const loadData = () => {
     }
   })
     .then((res: any) => {
+      console.log(res)
       tableData.value = res.data
       pagination.total = res.total
     })

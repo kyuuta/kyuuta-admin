@@ -72,10 +72,16 @@ type formType = {
   fallDown?: string
 }
 
-const props = defineProps<{
-  visible: boolean
-  dict: SearchForm.dictItem[]
-}>()
+const props = withDefaults(
+  defineProps<{
+    visible: boolean
+    dict?: SearchForm.dictItem[]
+  }>(),
+  {
+    dict: () => []
+  }
+)
+
 const emit = defineEmits<{
   (e: 'update:visible', visible: boolean): void
   (e: 'success'): void

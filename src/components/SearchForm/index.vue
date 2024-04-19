@@ -31,8 +31,20 @@
             >
               <NInput
                 v-if="item.type === 'input'"
-                :value="getValue(item.value)"
+                v-bind="item.props"
                 clearable
+                :value="getValue(item.value)"
+                @update:value="
+                  updateModel(item.value, $event)
+                "
+              />
+
+              <NInputNumber
+                v-if="item.type === 'inputNumber'"
+                v-bind="item.props"
+                class="flex-1"
+                clearable
+                :value="getValue(item.value)"
                 @update:value="
                   updateModel(item.value, $event)
                 "
@@ -44,6 +56,7 @@
                   dict &&
                   item.dictKey
                 "
+                v-bind="item.props"
                 filterable
                 clearable
                 :value="getValue(item.value)"
@@ -66,11 +79,12 @@
 
               <NDatePicker
                 v-if="item.type === 'date'"
+                v-bind="item.props"
+                class="flex-1"
+                clearable
+                value-format="yyyy-MM-dd HH:mm:ss"
                 :formatted-value="getValue(item.value)"
                 :type="item.pickerType"
-                value-format="yyyy-MM-dd HH:mm:ss"
-                clearable
-                class="flex-1"
                 @update:formatted-value="
                   updateModel(item.value, $event)
                 "
@@ -78,6 +92,7 @@
 
               <NRadioGroup
                 v-if="item.type === 'radio'"
+                v-bind="item.props"
                 :value="getValue(item.value)"
                 @update:value="
                   updateModel(item.value, $event)
