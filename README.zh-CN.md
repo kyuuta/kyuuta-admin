@@ -21,6 +21,8 @@
 
 <p align="center"><a href="README.md">English</a> | 中文</p>
 
+<p align="center"><a href="https://kyuuta.github.io/kyuuta-admin">在线预览</a></p>
+
 ## 特性
 
 ### 简单易用

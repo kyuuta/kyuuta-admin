@@ -20,6 +20,8 @@
 
 <p align="center">English | <a href="README.zh-CN.md">中文</a></p>
 
+<p align="center"><a href="https://kyuuta.github.io/kyuuta-admin">Online Preview</a></p>
+
 ## Features
 
 ### Easy to use
