@@ -60,7 +60,3 @@ Under construction...
 - [x] Layout Mode switching
 - [x] I18n
 - [x] Multilevel Keepalive
-
-## 维护者
-
-[@KYUUTA](https://github.com/kyuuta)

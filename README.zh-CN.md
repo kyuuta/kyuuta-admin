@@ -61,7 +61,3 @@ npm run serve
 - [x] 布局模式切换
 - [x] 国际化i18n支持
 - [x] 多层级缓存
-
-## 维护者
-
-[@KYUUTA](https://github.com/kyuuta)
