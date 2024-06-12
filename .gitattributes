@@ -1,4 +1,4 @@
-"*.vue"    eol=lf
+"*.vue"    linguist-language=Vue eol=lf
 "*.js"     eol=lf
 "*.ts"     eol=lf
 "*.jsx"    eol=lf
