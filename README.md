@@ -3,6 +3,21 @@
 <p align="center"><b>Easy to use，Flexible Configuration.</b></p>
 <p align="center">For learning as well as infrastructure.</p>
 
+<p align="center">
+	<a href="https://github.com/vuejs/core">
+		<img src="https://img.shields.io/badge/vue-3.3.8-brightgreen.svg" alt="vue">
+	</a>
+  <a href="https://github.com/tusen-ai/naive-ui">
+		<img src="https://img.shields.io/badge/naiveui-2.38.1-brightgreen.svg" alt="vue">
+	</a>
+  <a href="https://github.com/microsoft/TypeScript">
+		<img src="https://img.shields.io/badge/typescript-4.9.5-brightgreen.svg" alt="vue">
+	</a>
+	<a href="https://github.com/unocss/unocss">
+		<img src="https://img.shields.io/badge/unocss-0.56.5-brightgreen.svg" alt="element-ui">
+	</a>
+</p>
+
 <p align="center">English | <a href="README.zh-CN.md">中文</a></p>
 
 ## Features
