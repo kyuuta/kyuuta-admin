@@ -1,1 +1,0 @@
-import{I as e}from"./index-cad10ba6.js";import{d as t,o,I as r}from"./index-154e0154.js";import"./index.vue_vue_type_script_setup_true_lang-d2f60829.js";import"./Spin-b2da5869.js";import"./use-compitable-a1465a98.js";const f=t({__name:"index",setup(n){return(a,p)=>(o(),r(e,{src:"https://cn.vitejs.dev/"}))}});export{f as default};
