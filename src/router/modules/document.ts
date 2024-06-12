@@ -17,7 +17,8 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'vue',
         name: `${routeName}Vue`,
-        component: () => import('@/views/document/vue/index.vue'),
+        component: () =>
+          import('@/views/document/vue/index.vue'),
         meta: {
           requiresAuth: true,
           title: 'routes.document.vue',
@@ -27,7 +28,8 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'vite',
         name: `${routeName}Vite`,
-        component: () => import('@/views/document/vite/index.vue'),
+        component: () =>
+          import('@/views/document/vite/index.vue'),
         meta: {
           requiresAuth: true,
           title: 'routes.document.vite',
@@ -37,11 +39,23 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'naive',
         name: `${routeName}Naive`,
-        component: () => import('@/views/document/naive/index.vue'),
+        component: () =>
+          import('@/views/document/naive/index.vue'),
         meta: {
           requiresAuth: true,
           title: 'routes.document.naive',
           icon: 'logos:naiveui'
+        }
+      },
+      {
+        path: 'iconify',
+        name: `${routeName}Iconify`,
+        component: () =>
+          import('@/views/document/iconify/index.vue'),
+        meta: {
+          requiresAuth: true,
+          title: 'Iconify',
+          icon: 'line-md:iconify1'
         }
       }
     ]

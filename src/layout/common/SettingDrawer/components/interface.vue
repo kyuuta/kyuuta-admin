@@ -1,6 +1,5 @@
 <template>
   <Item :title="t('system.followSystemTheme')">
-    <!-- 跟随系统主题 -->
     <NSwitch
       :value="theme.followOSTheme"
       @update:value="setAutoFollowThemeMode"

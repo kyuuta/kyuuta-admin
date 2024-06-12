@@ -1,8 +1,5 @@
 <template>
   <NCard size="small" class="wrapper">
-    <!-- <button @click="() => (loading = !loading)"
-      >loading</button
-    > -->
     <div class="info">
       <div class="preview">
         <div
