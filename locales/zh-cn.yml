@@ -68,6 +68,7 @@ routes:
   table:
     index: 表格
     basic: 基础表格
+    product: 商品列表
   product:
     index: 商品
     list: 商品列表

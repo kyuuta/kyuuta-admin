@@ -13,7 +13,8 @@ export function setupNaiveDiscreateApi() {
   const theme = useThemeStore()
   const configProviderPropsRef =
     computed<ConfigProviderProps>(() => ({
-      theme: theme.naiveTheme
+      theme: theme.naiveTheme,
+      themeOverrides: theme.uiThemeOverrides
     }))
 
   const { message, dialog, notification, loadingBar } =
@@ -27,5 +28,5 @@ export function setupNaiveDiscreateApi() {
   window['$message'] = message
   window['$dialog'] = dialog
   window['$notification'] = notification
-  window['$loading'] = loadingBar
+  window['$loadingBar'] = loadingBar
 }

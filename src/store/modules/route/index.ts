@@ -7,7 +7,6 @@ import { useTabStore } from '../tab'
 import { PageConfig } from '@/config/page'
 import ConstantRouteMap from '@/router/constantRouteMap'
 import {
-  getCacheRoutes,
   filterAsyncRoutes,
   getConstantRouteMapNames,
   transformRouteToMenu,
@@ -23,8 +22,6 @@ interface IRouteStore {
   menu: App.GlobalMenuOption[]
   /** 一级菜单 */
   firstDegreeMenus: App.GlobalMenuOption[]
-  /** 缓存的路由名称 */
-  cacheRoutes: string[]
 }
 
 export const useRouteStore = defineStore({
@@ -33,8 +30,7 @@ export const useRouteStore = defineStore({
     isInitAuthRoute: false,
     routeHomeName: 'DashboardConsole',
     menu: [],
-    firstDegreeMenus: [],
-    cacheRoutes: []
+    firstDegreeMenus: []
   }),
   actions: {
     /** 初始化动态路由 */
@@ -67,8 +63,6 @@ export const useRouteStore = defineStore({
       routes.forEach((route) => {
         Router.addRoute(route)
       })
-
-      this.cacheRoutes = getCacheRoutes(routes)
     },
     /**
      * 判断路由是否ConstantRoute

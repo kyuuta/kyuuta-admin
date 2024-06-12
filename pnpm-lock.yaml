@@ -17,6 +17,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^7.0.0
   '@vueuse/core': ^9.13.0
   axios: ^1.6.0
+  bignumber.js: ^9.1.2
   colord: ^2.9.3
   date-fns: ^2.30.0
   esbuild: ^0.19.11
@@ -53,6 +54,7 @@ specifiers:
 
 dependencies:
   axios: 1.6.7
+  bignumber.js: 9.1.2
   colord: 2.9.3
   date-fns: 2.30.0
   lodash-es: 4.17.21
@@ -2541,6 +2543,10 @@ packages:
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
     dev: true
+
+  /bignumber.js/9.1.2:
+    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
+    dev: false
 
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}

@@ -1,31 +1,14 @@
 <template>
   <div
-    class="flex flex-col-stretch flex-auto transition duration-300 ease-in-out p-14px"
+    v-if="app.reload"
+    class="flex flex-col-stretch flex-auto p-[14px]"
   >
-    <RouterView v-slot="{ Component, route }">
-      <transition
-        :name="
-          theme.animationConfig.visible
-            ? theme.animationConfig.mode
-            : ''
-        "
-        mode="out-in"
-        :appear="true"
-      >
-        <keep-alive :include="routeStore.cacheRoutes">
-          <component
-            :is="Component"
-            v-if="app.reload"
-            :key="route.fullPath"
-          />
-        </keep-alive>
-      </transition>
-    </RouterView>
+    <KeepAliveLayout />
   </div>
 </template>
 
 <script lang="ts" setup>
+import KeepAliveLayout from '@/layout/keepAliveLayout/index.vue'
+
 const app = useAppStore()
-const theme = useThemeStore()
-const routeStore = useRouteStore()
 </script>

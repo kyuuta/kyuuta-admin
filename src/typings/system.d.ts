@@ -158,7 +158,7 @@ declare namespace App {
     icon?: () => import('vue').VNodeChild
     children?: GlobalMenuOption[]
     hasChildren?: boolean
-    meta?: RouteMeta
+    meta?: import('vue-router').RouteMeta
   }
 }
 

@@ -124,7 +124,7 @@
           class="w-[80px]"
           type="primary"
           :loading="loading"
-          @click="emit('load')"
+          @click="emit('load', 'search')"
         >
           查询
         </NButton>
@@ -187,8 +187,8 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: object): void
-  (e: 'load'): void
-  (e: 'reset'): void
+  (e: 'load', trigger: string): void
+  (e: 'reset', trigger: string): void
 }>()
 
 onMounted(() => {
@@ -257,6 +257,6 @@ const updateModel = (key: string, value: any) => {
 
 const reset = () => {
   emit('update:modelValue', {})
-  emit('reset')
+  emit('reset', 'search')
 }
 </script>

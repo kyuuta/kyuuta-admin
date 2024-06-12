@@ -68,6 +68,7 @@ routes:
   table:
     index: Table
     basic: BasicTable
+    product: ProductList
   product:
     index: Product
     list: ProductList

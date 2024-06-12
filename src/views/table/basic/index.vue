@@ -87,7 +87,7 @@ import type {
 } from 'naive-ui'
 import DetailModal from './detailModal.vue'
 import { mergeTableColumn } from '@/utils/table'
-import { getStaffList } from '@/service/api/dashboard'
+import { getBasicTableData } from '@/service/api/table'
 
 type rowType = {
   property: string
@@ -169,36 +169,6 @@ const columns: DataTableColumns = [
     }
   },
   { title: '掉落物', key: 'fallDown' }
-  // {
-  //   title: '年龄',
-  //   key: 'age',
-  //   sorter: (prevRow, nextRow) =>
-  //     (prevRow as rowType).age - (nextRow as rowType).age
-  // },
-  // {
-  //   title: '性别',
-  //   key: 'sex',
-  //   filterMode: 'or',
-  //   filterOptions: [
-  //     {
-  //       label: '男',
-  //       value: 1
-  //     },
-  //     {
-  //       label: '女',
-  //       value: 0
-  //     }
-  //   ],
-  //   render: (row) => formatDict(row.sex, 'sex'),
-  //   filter: (value: string | number, row: object) => {
-  //     return (row as rowType).sex === value
-  //   }
-  // },
-  // {
-  //   title: '职位',
-  //   key: 'grade',
-  //   render: (row) => formatDict(row.grade, 'grade')
-  // }
 ]
 
 const exportBtnList = [
@@ -214,9 +184,13 @@ const exportBtnList = [
 
 onMounted(() => loadData())
 
-const loadData = () => {
+const loadData = (trigger: string | undefined) => {
+  if (trigger === 'search') {
+    pagination.page = 1
+  }
+
   loading.value = true
-  getStaffList({
+  getBasicTableData({
     ...formData.value,
     pageParams: {
       page: pagination.page,
@@ -224,9 +198,12 @@ const loadData = () => {
     }
   })
     .then((res: any) => {
-      console.log(res)
       tableData.value = res.data
       pagination.total = res.total
+    })
+    .catch(() => {
+      tableData.value = []
+      pagination.total = 0
     })
     .finally(() => {
       loading.value = false
@@ -237,8 +214,6 @@ const detailVisible = shallowRef<boolean>(false)
 
 const tableRef = ref<DataTableInst>()
 const handleExport = (key: string) => {
-  console.log(key)
-
   if (key === 'show') {
     tableRef.value?.downloadCsv({
       fileName: '基础表格展示数据',

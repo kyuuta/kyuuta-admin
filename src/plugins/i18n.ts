@@ -5,7 +5,12 @@ import { ThemeConfig } from '@/config/theme'
 export const i18n = createI18n({
   legacy: false,
   locale: '',
-  messages: {}
+  messages: {},
+  // i18n warn config
+  silentTranslationWarn: true,
+  missingWarn: false,
+  silentFallbackWarn: true,
+  fallbackWarn: false
 })
 
 const localesMap = Object.fromEntries(

@@ -1,5 +1,6 @@
 import type {
   Router,
+  RouteMeta,
   RouteLocationNormalizedLoaded
 } from 'vue-router'
 import { defineStore } from 'pinia'
@@ -23,6 +24,8 @@ interface ITabStore {
   homeTab: GlobalTabRoute
   /** 当前激活状态的页签(路由path) */
   activeTab: string
+  /** 缓存的路由fullPath */
+  keepAliveFullPaths: string[]
 }
 
 export const useTabStore = defineStore('TabStore', {
@@ -39,7 +42,8 @@ export const useTabStore = defineStore('TabStore', {
         top: 0
       }
     },
-    activeTab: ''
+    activeTab: '',
+    keepAliveFullPaths: []
   }),
   getters: {
     /** 当前所在页签索引 */
@@ -142,12 +146,12 @@ export const useTabStore = defineStore('TabStore', {
       this.tabs.push(tab)
     },
     /**
-     * 删除多页签
+     * 删除标页签
      * @param fullPath - 路由fullPath
      */
     async removeTab(fullPath: string) {
       const { routerPush } = useRouterPush(false)
-
+      this.removeKeepAliveFullPaths([fullPath])
       const isActive = this.activeTab === fullPath
       const updateTabs = this.tabs.filter(
         (tab) => tab.fullPath !== fullPath
@@ -180,6 +184,8 @@ export const useTabStore = defineStore('TabStore', {
       const updateTabs = this.tabs.filter((tab) =>
         remain.includes(tab.fullPath)
       )
+      this.removeKeepAliveFullPaths(remain)
+
       if (hasActive) this.tabs = updateTabs
       if (!hasActive && updateTabs.length) {
         const activePath =
@@ -275,6 +281,70 @@ export const useTabStore = defineStore('TabStore', {
      */
     setActiveTab(fullPath: string) {
       this.activeTab = fullPath
+    },
+    /**
+     * 修改tab的meta
+     * @description 修改tab的meta 覆盖式
+     * @param fullPath {string} 路由路径
+     * @param meta {RouteMeta} 路由meta
+     * @example
+     *  origin: [
+     *    {
+     *      fullPath: '/table/product/12',
+     *      meta: {
+     *        multiTab: true,
+     *        title: '商品详情'
+     *      }
+     *    }
+     *  ]
+     *  modifyTabMeta('/table/product/12', { title: 'ProductDetail 12' })
+     *  => meta: { multiTab: true, title: 'ProductDetail 12' }
+     */
+    modifyTabMeta(fullPath: string, meta: RouteMeta) {
+      const index = this.tabs.findIndex(
+        (item) => item.fullPath === fullPath
+      )
+
+      if (index < -1) {
+        console.error(
+          '请确认传入的FullPath存在于tabs.Make</br>Sure that the passed-in fullPath exists in tabs.'
+        )
+        return
+      } else {
+        this.tabs[index].meta = {
+          ...this.tabs[index].meta,
+          ...meta
+        }
+      }
+    },
+    /**
+     * 覆盖缓存数组
+     * @param routePaths 需要覆盖的Paths
+     */
+    setKeepAliveFullPaths(routePaths: string[] = []) {
+      this.keepAliveFullPaths = routePaths
+    },
+    /**
+     * 向缓存中添加path
+     * @param path {string} 需要添加的path
+     */
+    addKeepAliveFullPath(path: string) {
+      if (this.keepAliveFullPaths.includes(path)) {
+        return
+      } else {
+        this.keepAliveFullPaths.push(path)
+      }
+    },
+    /**
+     * 向缓存中删除path
+     * @param include {string[]} 需要删除的paths
+     */
+    removeKeepAliveFullPaths(include: string[] = []) {
+      this.setKeepAliveFullPaths(
+        this.keepAliveFullPaths.filter(
+          (item) => !include.includes(item)
+        )
+      )
     }
   }
 })

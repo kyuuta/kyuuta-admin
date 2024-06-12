@@ -23,7 +23,7 @@ type PaginationType = {
 }
 
 const emit = defineEmits<{
-  (e: 'load'): void
+  (e: 'load', trigger: string): void
 }>()
 
 const props = withDefaults(
@@ -40,7 +40,7 @@ const handleChangePage = (page: number) => {
   const { page: propsPage } = toRefs(props.modelValue)
   propsPage.value = page
 
-  emit('load')
+  emit('load', 'pagination')
 }
 
 const handleChangePageSize = (pageSize: number) => {
@@ -50,6 +50,6 @@ const handleChangePageSize = (pageSize: number) => {
   page.value = 1
   propsPageSize.value = pageSize
 
-  emit('load')
+  emit('load', 'pagination')
 }
 </script>

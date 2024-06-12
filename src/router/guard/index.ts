@@ -1,5 +1,6 @@
 import type { Router } from 'vue-router'
 import { createPermissionGuard } from './permission'
+import { createCacheComponents } from './cache'
 import { i18n } from '@/plugins/i18n'
 
 /**
@@ -12,8 +13,9 @@ export function createRouterGuard(router: Router) {
     await createPermissionGuard(to, from, next)
   })
 
-  router.afterEach((to) => {
+  router.afterEach((to, from) => {
     useTitle(i18n.global.t(to.meta.title))
+    createCacheComponents(to, from)
     window.$loadingBar?.finish()
   })
 

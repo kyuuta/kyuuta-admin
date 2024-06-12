@@ -35,20 +35,6 @@ const routes: RouteRecordRaw[] = [
           title: 'routes.dashboard.workplace',
           icon: 'material-symbols:work-outline'
         }
-      },
-      {
-        path: 'detail/:id',
-        name: `${moduleName}ConsoleDetail`,
-        component: () =>
-          import('@/views/dsahboard/detail.vue'),
-        meta: {
-          title: 'routes.dashboard.test',
-          multiTab: true,
-          hide: true,
-          keepAlive: true,
-          activeMenu: `${moduleName}`,
-          icon: 'material-symbols:work-outline'
-        }
       }
     ]
   }

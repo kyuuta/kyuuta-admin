@@ -60,10 +60,6 @@ export function getColorPalette(
   return colord(newHsv).toHex()
 }
 
-// export function getColorPalettes() {
-
-// }
-
 /**
  * 获取色相渐变
  * @param hsv - hsv格式颜色值
