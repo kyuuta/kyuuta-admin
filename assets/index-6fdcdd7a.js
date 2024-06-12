@@ -1,0 +1,1 @@
+import{I as o}from"./index-cec66e9d.js";import{d as e,o as t,I as r}from"./index-021c14f1.js";import"./index.vue_vue_type_script_setup_true_lang-e6eb84df.js";import"./Spin-363fbdc7.js";import"./use-compitable-436b0816.js";const f=e({__name:"index",setup(n){return(s,i)=>(t(),r(o,{src:"https://icon-sets.iconify.design/"}))}});export{f as default};
