@@ -34,6 +34,9 @@ export default defineConfig((configEnv) => {
       host: true,
       proxy: createViteProxy(isOpenProxy, envConfig)
     },
+    optimizeDeps: {
+      include: ['@better-scroll/core']
+    },
     build: {
       reportCompressedSize: false,
       sourcemap: false,
