@@ -21,6 +21,7 @@
 </template>
 
 <script lang="ts" setup>
+import { PageConfig } from '@/config/page'
 import { BetterScroll, Tab } from './components'
 
 const route = useRoute()
@@ -49,6 +50,9 @@ const handleScroll = (clintX: number) => {
 watch(
   () => route.fullPath,
   () => {
+    if (route.name === PageConfig.ERROR_PAGE_NAME) {
+      return
+    }
     tabStore.addTab(route)
     tabStore.setActiveTab(route.path)
   }

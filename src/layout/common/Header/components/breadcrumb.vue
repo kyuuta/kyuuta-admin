@@ -1,6 +1,9 @@
 <template>
   <NBreadcrumb
-    v-if="breadcrumbConfig.visible"
+    v-if="
+      breadcrumbConfig.visible &&
+      !route?.meta?.hideBreadcrumb
+    "
     class="breadcrumb ml-10px"
   >
     <template

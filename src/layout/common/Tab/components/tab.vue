@@ -72,7 +72,7 @@ const emit = defineEmits<{
 const tabRef = ref<HTMLElement>()
 const getActiveTabClientX = async () => {
   await nextTick()
-  if (tabRef.value) {
+  if (tabRef.value && tabStore.activeTabIndex >= 0) {
     const activeTabElement =
       tabRef.value.children[tabStore.activeTabIndex]
     const { x, width } =

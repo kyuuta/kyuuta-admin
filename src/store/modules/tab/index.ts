@@ -5,6 +5,7 @@ import type {
 } from 'vue-router'
 import { defineStore } from 'pinia'
 import { useThemeStore } from '../theme'
+import { PageConfig } from '@/config/page'
 import {
   setTabCache,
   getTabCache,
@@ -74,7 +75,10 @@ export const useTabStore = defineStore('TabStore', {
         currentRoute.fullPath === this.homeTab.fullPath
       const index = getIndexByName(tabs, currentRoute.name)
 
-      if (!isHome) {
+      if (
+        !isHome &&
+        currentRoute.name !== PageConfig.ERROR_PAGE_NAME
+      ) {
         const currentTab = getRouteByTab(currentRoute)
 
         if (!currentRoute.meta.multiTab) {

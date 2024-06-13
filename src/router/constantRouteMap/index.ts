@@ -29,12 +29,25 @@ export const ConstantRoute: RouteRecordRaw[] = [
   },
   {
     path: '/404',
-    name: '404',
-    component: () =>
-      import('@/components/PageStatus/404.vue'),
+    name: 'ErrorPage',
+    redirect: '/404/page',
+    component: BasicLayout,
     meta: {
-      title: '404'
-    }
+      title: '404',
+      hideBreadcrumb: true
+    },
+    children: [
+      {
+        path: 'page',
+        name: PageConfig.ERROR_PAGE_NAME,
+        component: () =>
+          import('@/components/PageStatus/404.vue'),
+        meta: {
+          title: '404',
+          hideBreadcrumb: true
+        }
+      }
+    ]
   }
 ]
 
