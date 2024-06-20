@@ -39,7 +39,7 @@ The project uses unocss, vue3, naiveui, pinia and other new technologies to achi
 pnpm install
 
 # launch Project
-npm run serve
+pnpm run serve
 ```
 
 ## Documentation

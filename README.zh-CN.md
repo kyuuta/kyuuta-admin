@@ -40,7 +40,7 @@
 pnpm install
 
 # 启动项目
-npm run serve
+pnpm run serve
 ```
 
 ## 文档
