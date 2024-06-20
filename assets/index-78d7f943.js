@@ -1,0 +1,1 @@
+import{I as o}from"./index-5a763445.js";import{d as t,o as e,n as r}from"./index-8c9c6f94.js";import"./index.vue_vue_type_script_setup_true_lang-dd735f01.js";import"./Spin-6abc876d.js";import"./use-compitable-264e5443.js";const d=t({__name:"index",setup(n){return(a,i)=>(e(),r(o,{src:"https://www.naiveui.com/zh-CN/os-theme/docs/introduction"}))}});export{d as default};
