@@ -15,6 +15,7 @@
           v-if="breadcrumb?.children?.length"
           placement="bottom-start"
           :options="breadcrumb.children"
+          :render-icon="renderDropdownIcon"
           :render-label="renderDropdownLabel"
           @select="(key) => routerPush({ name: key })"
         >
@@ -59,8 +60,25 @@ const breadcrumbs = computed(() =>
   transformRouteToBreadcrumb(route.matched)
 )
 
+const renderDropdownIcon = (option: DropdownOption) => {
+  return h(option.icon, {
+    class:
+      route.name === option.routeName ? 'color-primary' : ''
+  })
+}
 const renderDropdownLabel = (option: DropdownOption) => {
-  return t(option.label as string)
+  return h(
+    'span',
+    {
+      class:
+        route.name === option.routeName
+          ? 'color-primary'
+          : ''
+    },
+    {
+      default: () => t(option.label as string)
+    }
+  )
 }
 </script>
 
