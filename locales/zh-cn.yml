@@ -80,3 +80,5 @@ routes:
     naive: NaiveUI
   about:
     index: 关于
+  multiLevel:
+    index: 多层级菜单

@@ -80,3 +80,5 @@ routes:
     naive: NaiveUI
   about:
     index: About
+  multiLevel:
+    index: multiLevel Menu

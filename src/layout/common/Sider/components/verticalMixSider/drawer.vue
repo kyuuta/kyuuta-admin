@@ -6,9 +6,10 @@
       'left-70px top-0',
       'flex',
       'h-full',
-      'border-r-1px border-#efeff5 dark:border-#ffffff17',
+      'border-#efeff5 dark:border-#ffffff17',
       'nowrap-hidden',
       'transition-width duration-300 ease-in-out',
+      { 'border-l-1px border-r-1px': visible || fixed },
       { absolute: !fixed }
     ]"
   >
@@ -38,6 +39,7 @@
           class="menu"
           :value="activeKey"
           :options="menus"
+          :indent="14"
           :renderLabel="val => t(val.label as string)"
           @update:value="handleUpdateMenu"
         />
@@ -73,7 +75,7 @@ const handleUpdateMenu = (key: string) => {
 <style lang="less" scoped>
 .menu {
   ::v-deep(.n-menu-item-content) {
-    padding-left: 22px !important;
+    // padding-left: 22px !important;
   }
 }
 </style>

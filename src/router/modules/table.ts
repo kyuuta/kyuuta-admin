@@ -29,7 +29,6 @@ const routes: RouteRecordRaw[] = [
         path: 'product',
         name: `${moduleName}Product`,
         component: ParentLayout,
-        props: { name: `${moduleName}Product` },
         redirect: '/table/product/index',
         meta: {
           requiresAuth: true,
@@ -56,8 +55,8 @@ const routes: RouteRecordRaw[] = [
             component: () =>
               import('@/views/table/product/detail.vue'),
             meta: {
+              requiresAuth: true,
               hide: true,
-              keepAlive: true,
               multiTab: true,
               activeMenu: `${moduleName}Product`
             }
