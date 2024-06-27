@@ -5,6 +5,7 @@
     title="创建帕鲁"
     preset="card"
     @after-leave="clear"
+    @after-enter="useDragModal($event)"
   >
     <div class="mx-auto max-w-500px pr-40px">
       <NForm
@@ -63,6 +64,7 @@
 <script lang="ts" setup>
 import type { FormRules, FormInst } from 'naive-ui'
 import { cloneDeep } from 'lodash-es'
+import { useDragModal } from '@/hooks'
 
 type formType = {
   name?: string
