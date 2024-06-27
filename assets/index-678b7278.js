@@ -1,1 +1,0 @@
-import{I as o}from"./index-5a763445.js";import{d as r,o as e,n as t}from"./index-8c9c6f94.js";import"./index.vue_vue_type_script_setup_true_lang-dd735f01.js";import"./Spin-6abc876d.js";import"./use-compitable-264e5443.js";const f=r({__name:"index",setup(n){return(a,p)=>(e(),t(o,{src:"https://v3.cn.vuejs.org/"}))}});export{f as default};
