@@ -1,14 +1,16 @@
 import { isNull, isUndefined } from 'lodash-es'
 
-export const sleep = (data: any) => {
-  return new Promise((resolve) =>
-    setTimeout(resolve, 1000, data)
+export const sleep = <T>(data: T): Promise<T> =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(data), 1000)
   )
-}
 
-export const filterParam = (
-  data: [],
-  params = {},
+export const filterParam = <
+  T extends Record<string, any>,
+  P extends Record<string, any>
+>(
+  data: T[],
+  params: P = {} as P,
   fn: (value: any, param: any, key: string) => boolean
 ) => {
   const paramKeys = Object.keys(params).filter(

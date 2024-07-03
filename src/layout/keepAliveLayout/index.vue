@@ -22,13 +22,24 @@
 </template>
 
 <script lang="ts" setup>
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
+
 const theme = useThemeStore()
 
-const wrapperMap = new Map()
+const wrapperMap = new Map<
+  string,
+  ReturnType<typeof defineComponent>
+>()
 const tabStore = useTabStore()
 
-function formatComponentInstance(component, route) {
-  let wrapper
+function formatComponentInstance(
+  component: ReturnType<typeof defineComponent> | null,
+  route: RouteLocationNormalizedLoaded
+) {
+  let wrapper:
+    | ReturnType<typeof defineComponent>
+    | undefined
+
   if (component) {
     const wrapperName = route.fullPath
     if (wrapperMap.has(wrapperName)) {

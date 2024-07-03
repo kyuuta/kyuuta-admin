@@ -6,7 +6,17 @@ import {
 } from './productList'
 import { sleep, filterParam } from '../mockData/mockUtil'
 
-export const getBasicTableData: Promise = (params) => {
+interface PageParams {
+  page: number
+  pageSize: number
+}
+
+interface Params {
+  pageParams: PageParams
+  [key: string]: any
+}
+
+export const getBasicTableData = (params: Params) => {
   const { page, pageSize } = params.pageParams
   const result = filterParam(
     tableData,
@@ -15,7 +25,7 @@ export const getBasicTableData: Promise = (params) => {
       if (key === 'fallDown') {
         return value.split(',').includes(param)
       } else if (['property', 'adaptive'].includes(key)) {
-        return param.every((fieldKey) =>
+        return param.every((fieldKey: string) =>
           value.split(',').includes(fieldKey)
         )
       } else {
@@ -33,7 +43,7 @@ export const getBasicTableData: Promise = (params) => {
   })
 }
 
-export const getProductList: Promise = (params) => {
+export const getProductList = (params: Params) => {
   const result = filterParam(
     prodList,
     params,
@@ -49,13 +59,13 @@ export const getProductList: Promise = (params) => {
   })
 }
 
-export const getSkuProperties: Promise = () => {
+export const getSkuProperties = () => {
   return sleep({
     data: skuProperties
   })
 }
 
-export const getProductDetail: Promise = (params) => {
+export const getProductDetail = (params: Params) => {
   const detail = filterParam(
     productDetail,
     params,

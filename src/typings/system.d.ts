@@ -72,6 +72,8 @@ declare namespace Theme {
     breadcrumb: Breadcrumb
     /** 动画配置 */
     animation: Animation
+    /** 语言 */
+    language: 'zh-cn' | 'en'
   }
   /** 头部配置 */
   interface Hedaer {

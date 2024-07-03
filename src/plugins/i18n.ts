@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 import { createI18n } from 'vue-i18n'
-import { ThemeConfig } from '@/config/theme'
+import type { Locale } from 'vue-i18n'
 
 export const i18n = createI18n({
   legacy: false,

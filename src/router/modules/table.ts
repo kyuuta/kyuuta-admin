@@ -1,4 +1,5 @@
 import { BasicLayout, ParentLayout } from '@/layout'
+import type { RouteRecordRaw } from 'vue-router'
 
 const moduleName = 'Table'
 

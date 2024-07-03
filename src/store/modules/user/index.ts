@@ -41,7 +41,7 @@ export const useUserStore = defineStore({
       await this.handleAfterLogin(data as string)
     },
     async handleAfterLogin(token: string) {
-      const route = useRouteStore()
+      // const route = useRouteStore()
       const { toLoginRedirect } = useRouterPush(false)
 
       // await route.initAuthRoute()

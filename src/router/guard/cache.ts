@@ -1,7 +1,4 @@
-import type {
-  NavigationGuardNext,
-  RouteLocationNormalized
-} from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 
 export function createCacheComponents(
   to: RouteLocationNormalized,

@@ -15,6 +15,6 @@ declare module 'vue-router' {
     /** 是否支持页面多标签 */
     multiTab?: boolean
     /** 页面是否缓存 */
-    keepAlive: boolean
+    keepAlive?: boolean
   }
 }

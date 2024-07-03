@@ -1,4 +1,4 @@
-export default {
+const dictData: { [key: string]: SearchForm.dictItem[] } = {
   property: [
     { name: '无属性', value: '0' },
     { name: '火属性', value: '1' },
@@ -37,3 +37,5 @@ export default {
     { name: '吃喝玩乐', value: 2 }
   ]
 }
+
+export default dictData

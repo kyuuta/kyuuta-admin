@@ -1,18 +1,28 @@
 import { isNull, isUndefined, isArray } from 'lodash-es'
 import { getDictionary } from '@/service/api/common'
 
-export function useDict(dictKeys?: Array = []) {
-  const dict: SearchForm.dict = ref({})
+interface DictResponse {
+  type: string
+  items?: SearchForm.dictItem[]
+}
+
+export function useDict(dictKeys: string[] | [] = []) {
+  const dict: Ref<SearchForm.dict> = ref({})
   const dictLoading = ref(false)
 
   if (dictKeys.length) {
     dictLoading.value = true
     getDictionary(dictKeys)
-      .then((res) => {
-        dict.value = res.reduce((prev, next) => {
-          prev[next.type] = next.items
-          return prev
-        }, {})
+      .then((res: DictResponse[]) => {
+        dict.value = res.reduce(
+          (prev: SearchForm.dict, next: DictResponse) => {
+            if (next.items && next.items.length > 0) {
+              prev[next.type] = next.items
+            }
+            return prev
+          },
+          {} as SearchForm.dict
+        )
       })
       .finally(() => {
         dictLoading.value = false
@@ -27,10 +37,10 @@ export function useDict(dictKeys?: Array = []) {
    * @param {String} valueField 字典中value字段名
    */
   const formatDict = (
-    value,
+    value: string | number,
     targetDictName: string | SearchForm.dictItem[],
-    labelField = 'name',
-    valueField = 'value'
+    labelField: keyof SearchForm.dictItem = 'name',
+    valueField: keyof SearchForm.dictItem = 'value'
   ) => {
     if (isNull(value) || isUndefined(value)) {
       return '-'

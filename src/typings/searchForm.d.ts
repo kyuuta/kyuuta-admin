@@ -7,12 +7,22 @@ interface Item {
    * - select: 下拉选择框
    * - date: 日期
    * - radio: 单选组
+   * - inputNumber: 数字输入框
    */
-  type: 'input' | 'select' | 'date' | 'radio'
+  type:
+    | 'input'
+    | 'select'
+    | 'date'
+    | 'radio'
+    | 'inputNumber'
   /** 表单项名称的宽度 */
   labelWidth?: string | number
   /** 栅格化布局列 默认为占位1列 */
   span?: number
+  /** 用于继承组件源生的一些属性 */
+  props?: {
+    [key: string]: any
+  }
 
   // Select生效
   /** 该Select Options在字典中的字段名 */

@@ -14,7 +14,7 @@ export function createRouterGuard(router: Router) {
   })
 
   router.afterEach((to, from) => {
-    useTitle(i18n.global.t(to.meta.title))
+    to.meta.title && useTitle(i18n.global.t(to.meta.title))
     createCacheComponents(to, from)
     window.$loadingBar?.finish()
   })

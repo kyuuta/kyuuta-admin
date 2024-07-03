@@ -61,6 +61,7 @@ const breadcrumbs = computed(() =>
 )
 
 const renderDropdownIcon = (option: DropdownOption) => {
+  if (!option.icon) return
   return h(option.icon, {
     class:
       route.name === option.routeName ? 'color-primary' : ''

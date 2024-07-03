@@ -71,11 +71,3 @@ const handleUpdateMenu = (key: string) => {
   routerPush({ name: key })
 }
 </script>
-
-<style lang="less" scoped>
-.menu {
-  ::v-deep(.n-menu-item-content) {
-    // padding-left: 22px !important;
-  }
-}
-</style>

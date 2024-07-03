@@ -123,10 +123,10 @@ export const useThemeStore = defineStore({
       this.menu.collapseType = type
     },
     /** 设置标签页 */
-    setTabVisible(visible: Theme.Tab.visible) {
+    setTabVisible(visible: Theme.Tab['visible']) {
       this.tab.visible = visible
     },
-    setTabCache(isCache: Theme.Tab.isCache) {
+    setTabCache(isCache: Theme.Tab['isCache']) {
       this.tab.isCache = isCache
     },
     /** 设置菜单展开宽度 */
@@ -154,7 +154,7 @@ export const useThemeStore = defineStore({
       localStorage.set('themeSettings', this.$state)
     },
     /** 语言相关 */
-    setLanguage(lang: string) {
+    setLanguage(lang: 'zh-cn' | 'en') {
       this.language = lang
     },
     /** 清除缓存 重置store状态 */

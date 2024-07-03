@@ -1,4 +1,5 @@
 import type {
+  RouteRecordName,
   RouteRecordNormalized,
   RouteLocationNormalizedLoaded
 } from 'vue-router'
@@ -30,7 +31,7 @@ export function getRouteByTab(
     ? route.fullPath
     : route.path
 
-  const tabRoute: lobalTabRoute = {
+  const tabRoute = {
     name: route.name,
     fullPath,
     meta: route.meta,
@@ -49,8 +50,8 @@ export function getRouteByTab(
  */
 export function getIndexByName(
   tabs: GlobalTabRoute[],
-  routeName: string
-) {
+  routeName: RouteRecordName | null | undefined
+): number {
   return tabs.findIndex((tab) => tab.name === routeName)
 }
 

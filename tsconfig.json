@@ -23,7 +23,8 @@
       "unplugin-icons/types/vue",
       "naive-ui/volar",
       "unplugin-vue-macros/macros-global"
-    ]
+    ],
   },
+  "include": ["./src/typings/*.d.ts", "./src/**/*.ts", "./src/**/*.vue"],
   "exclude": ["node_modules", "dist"]
 }

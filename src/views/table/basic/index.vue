@@ -91,6 +91,7 @@ import { getBasicTableData } from '@/service/api/table'
 
 type rowType = {
   property: string
+  adaptive: string
 }
 
 const { dict, dictLoading, formatDict } = useDict([
@@ -164,7 +165,9 @@ const columns: DataTableColumns = [
     render: (row) => {
       return (row as rowType).adaptive
         .split(',')
-        .map((item) => formatDict(item, 'adaptive'))
+        .map((item: string | number) =>
+          formatDict(item, 'adaptive')
+        )
         .toString()
     }
   },
@@ -184,7 +187,7 @@ const exportBtnList = [
 
 onMounted(() => loadData())
 
-const loadData = (trigger: string | undefined) => {
+const loadData = (trigger?: string) => {
   if (trigger === 'search') {
     pagination.page = 1
   }

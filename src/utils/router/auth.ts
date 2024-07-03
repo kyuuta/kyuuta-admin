@@ -57,7 +57,7 @@ export function filterAsyncRoutes(
  */
 export function getPermission(
   route: RouteRecordRaw,
-  permission: array
+  permission: string[]
 ): boolean {
   if (route.meta && route.meta.permissions) {
     const { permissions } = route.meta
@@ -78,7 +78,7 @@ export function getPermission(
  */
 export function filterRoutePermisson(
   route: RouteRecordRaw,
-  permission: array
+  permission: string[]
 ) {
   const filterRoute = { ...route }
   const hasPermission = getPermission(route, permission)

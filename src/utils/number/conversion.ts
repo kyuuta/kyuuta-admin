@@ -16,7 +16,7 @@ export function conversionPrice(
   value: number | string,
   binary = 10000,
   thousandBitSeparator = true
-): number | string {
+): number | string | void {
   const amount = isNumber(value) ? value : Number(value)
 
   if (isNaN(amount)) {

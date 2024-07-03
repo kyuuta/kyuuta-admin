@@ -1,5 +1,4 @@
 import { useOsTheme } from 'naive-ui'
-import type { GlobalThemeOverrides } from 'naive-ui'
 import { useThemeStore } from '../modules'
 import { loadLanguageAsync } from '@/plugins/i18n'
 import {
