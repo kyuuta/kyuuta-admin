@@ -177,14 +177,21 @@
 
 <script lang="ts" setup>
 import { conversionPrice } from '@/utils'
-import { getPrime } from './helpers.ts'
+import { getPrime } from './helpers'
 import { cloneDeep } from 'lodash-es'
 import {
   getSkuProperties,
   getProductDetail
 } from '@/service/api/table'
 
-type Skus = {
+type ProdDetail = {
+  id?: number
+  brand?: number
+  category?: number
+  name: string
+  skuList: Sku[]
+}
+type Sku = {
   name: string
   activityNo: string
   typeId: number
@@ -214,19 +221,19 @@ const route = useRoute()
 const tabStore = useTabStore()
 const loading = ref<boolean>(false)
 
-const skus = ref<Skus[]>([])
+const skus = ref<Sku[]>([])
 const skuInPrime = ref<SkuInPrime>({})
 const primeMatrix = ref<number[][]>([])
 const skuPrimeList = ref<number[]>([])
 const stateMatrix = ref<number[][]>([])
-const skuProperties = ref<SkuPropertie>([])
+const skuProperties = ref<SkuPropertie[]>([])
 const primeCoordinate = ref<primeCoordinate>({})
 
 const selected = ref<number[]>([])
 const disabled = ref<number[]>([])
 const purchaseNum = ref<number>(1)
 
-const prodDetail = ref({
+const prodDetail = ref<ProdDetail>({
   name: '',
   skuList: []
 })
@@ -253,7 +260,7 @@ const generateSpecPrimeDict = (
 }
 
 /** 生成sku乘积 */
-const generateSKU = (list: Skus[]) => {
+const generateSKU = (list: Sku[]) => {
   const skuKeys = ['typeId', 'faceValueId', 'billId']
   const skuList = list.map((item) => {
     const prime = Object.entries(item)
@@ -398,12 +405,12 @@ const loadDetail = () => {
     getProductDetail({
       id: +route.params.id
     }).then((res) => {
-      prodDetail.value = res.data
+      prodDetail.value = res.data as ProdDetail
       tabStore.modifyTabMeta(route.fullPath, {
         ...route.meta,
-        title: res.data.name
+        title: (res.data as ProdDetail).name
       })
-      resolve()
+      resolve(true)
     })
   })
 }
@@ -412,7 +419,7 @@ const loadProperties = () => {
   return new Promise((resolve, reject) => {
     getSkuProperties().then((res) => {
       skuProperties.value = res.data
-      resolve()
+      resolve(true)
     })
   })
 }
@@ -472,12 +479,21 @@ const productPrice = computed(() => {
 })
 
 const purchaseButton = ref<HTMLElement | null>(null)
-const handlerMouseMove = (e) => {
-  const rect = purchaseButton.value.getBoundingClientRect()
-  const x = e.clientX - rect.left
-  const y = e.clientY - rect.top
-  e.target.style.setProperty('--x', `${x}px`)
-  e.target.style.setProperty('--y', `${y}px`)
+const handlerMouseMove = (e: MouseEvent) => {
+  if (purchaseButton.value) {
+    const rect =
+      purchaseButton.value.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    ;(e.target as HTMLElement).style.setProperty(
+      '--x',
+      `${x}px`
+    )
+    ;(e.target as HTMLElement).style.setProperty(
+      '--y',
+      `${y}px`
+    )
+  }
 }
 
 onMounted(() => {

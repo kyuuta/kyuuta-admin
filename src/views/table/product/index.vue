@@ -81,24 +81,33 @@ import AvatarDark from '@/assets/images/avatar_dark.jpg'
 
 defineOptions({ name: 'TableProductIndex' })
 
-const aaa = ref(0)
+type ProdItem = {
+  id: number
+  brand: number
+  category: number
+  name: string
+  minSellPrice: number
+}
+type ParamsType = {
+  brand?: number | string
+  category?: number | string
+  name: string
+}
+
 const { routerPush } = useRouterPush()
-const { dict, dictLoading, formatDict } = useDict([
-  'brand',
-  'category'
-])
+const { dict, dictLoading } = useDict(['brand', 'category'])
 
 const loading = shallowRef<boolean>(false)
-const params = ref({
-  brand: null,
-  category: null,
-  name: null
+const params = ref<ParamsType>({
+  brand: undefined,
+  category: undefined,
+  name: ''
 })
-const list = shallowRef([])
+const list = shallowRef<ProdItem[]>([])
 
 onMounted(() => loadData())
 
-const goDetail = (index) => {
+const goDetail = (index: number | string) => {
   routerPush({
     path: `/table/product/detail/${index}`
   })
@@ -115,11 +124,16 @@ const loadData = () => {
     })
 }
 
-const changeVal = (target, checkedVal) => {
+const changeVal = <
+  K extends keyof Omit<ParamsType, 'name'>
+>(
+  target: K,
+  checkedVal?: number | string
+) => {
   params.value[target] =
     params.value[target] === checkedVal
       ? undefined
-      : checkedVal
+      : (checkedVal as number | undefined)
   loadData()
 }
 </script>

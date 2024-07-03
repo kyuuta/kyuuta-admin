@@ -7,16 +7,19 @@ import {
 import { sleep, filterParam } from '../mockData/mockUtil'
 
 interface PageParams {
-  page: number
-  pageSize: number
+  pageParams: {
+    page: number
+    pageSize: number
+  }
 }
 
 interface Params {
-  pageParams: PageParams
   [key: string]: any
 }
 
-export const getBasicTableData = (params: Params) => {
+export const getBasicTableData = (
+  params: PageParams & Params
+) => {
   const { page, pageSize } = params.pageParams
   const result = filterParam(
     tableData,
