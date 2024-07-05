@@ -13,7 +13,7 @@ export function getTabCache() {
   const cacheData = localStorage.get(tabCacheKey)
 
   if (cacheData) {
-    const defaultTabRoutes = cacheData.map((item) => ({
+    const defaultTabRoutes = cacheData.map((item: any) => ({
       ...item,
       scrollPosition: {
         left: 0,
