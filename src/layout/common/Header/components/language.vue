@@ -21,7 +21,9 @@
             '!bg-primary_active': locale === lang
           }
         ]"
-        @click="setLanguage(lang)"
+        @click="
+          setLanguage(lang as Theme.Setting['language'])
+        "
       >
         <component :is="dict[lang].icon" class="mr-10px" />
         <span class="text-14px">{{

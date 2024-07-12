@@ -1,4 +1,4 @@
-type ServiceEnv = Record<ServiceEnvType>
+type ServiceEnv = Record<ServiceEnvType, ServiceEnvConfig>
 
 const serviceEnv: ServiceEnv = {
   dev: {
@@ -21,7 +21,7 @@ export function getServiceEnvConfig(
 ): ServiceEnvConfigWithProxyPattern {
   const { VITE_SERVICE_ENV = 'dev' } = env
 
-  const config = serviceEnv[VITE_SERVICE_ENV]
+  const config = serviceEnv[VITE_SERVICE_ENV as ServiceEnvType]
 
   return {
     ...config,

@@ -1,4 +1,4 @@
-import path from 'node:path'
+import path from 'path'
 import VueMacros from 'unplugin-vue-macros/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
