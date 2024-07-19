@@ -74,6 +74,10 @@ declare namespace Theme {
     animation: Animation
     /** 语言 */
     language: 'zh-cn' | 'en'
+    /** 是否移动端 */
+    isMobile: boolean
+    /** 菜单Drawer模式显示隐藏 */
+    siderDrawerVisible: boolean
   }
   /** 头部配置 */
   interface Hedaer {

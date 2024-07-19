@@ -4,11 +4,15 @@ import type {
   AxiosInstance,
   AxiosResponse
 } from 'axios'
+import type {
+  CreateAxiosOptions,
+  RequestOptions,
+  Result
+} from '@/typings/request'
 import { AxiosCanceler } from './cancel'
-import { ContentTypeEnum } from '@/enums/http'
+// import { ContentTypeEnum } from '@/enums/http'
 
 import { cloneDeep, isFunction } from 'lodash-es'
-import { RequestOptions } from 'https'
 
 export class KAxios {
   private axiosInstance: AxiosInstance

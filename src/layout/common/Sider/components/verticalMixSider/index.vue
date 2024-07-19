@@ -75,11 +75,13 @@ const setActiveParentRouteName = () => {
     return flag
   })
 }
+
 const {
   bool: drawerVisible,
   setTrue: openDrawer,
   setFalse: hideDrawer
 } = useBoolean()
+const theme = useThemeStore()
 const { routerPush } = useRouterPush()
 const handleClickMenu = (
   routeName: string,
@@ -90,6 +92,7 @@ const handleClickMenu = (
     openDrawer()
   } else {
     routerPush({ name: routeName })
+    theme.setSiderDrawerVisible(false)
     hideDrawer()
   }
 }

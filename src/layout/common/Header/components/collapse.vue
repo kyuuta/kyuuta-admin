@@ -4,7 +4,7 @@
     @click="theme.setCollapse(!menuConfig.collapse)"
   >
     <SvgIcon
-      v-if="menuConfig.collapse"
+      v-if="menuConfig.collapse || theme.getIsMobile"
       class="text-24px"
       icon="line-md:menu-fold-right"
     />

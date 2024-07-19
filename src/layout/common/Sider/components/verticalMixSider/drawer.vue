@@ -20,18 +20,25 @@
         <div />
         <div
           class="cursor-pointer mt-7px"
-          @click="fixed = !fixed"
+          @click="handleChangeFixed(!fixed)"
         >
           <SvgIcon
-            v-if="fixed"
-            class="text-primary text-22px"
-            icon="ph:push-pin-slash-fill"
+            v-if="getIsMobile"
+            class="text-#666 text-22px cursor-not-allowed"
+            icon="ph:push-pin-fill"
           />
-          <SvgIcon
-            v-else
-            class="text-primary text-22px"
-            icon="ph:push-pin-bold"
-          />
+          <template v-else>
+            <SvgIcon
+              v-if="fixed"
+              class="text-primary text-22px"
+              icon="ph:push-pin-slash-fill"
+            />
+            <SvgIcon
+              v-else
+              class="text-primary text-22px"
+              icon="ph:push-pin-bold"
+            />
+          </template>
         </div>
       </div>
       <NScrollbar class="flex-1 overflow-hidden">
@@ -49,10 +56,15 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+
 defineProps<{
   visible: boolean
   menus: App.GlobalMenuOption[]
 }>()
+
+const theme = useThemeStore()
+const { getIsMobile } = storeToRefs(theme)
 
 const fixed = ref(false)
 
@@ -67,7 +79,13 @@ const activeKey = computed(
       : route.name) as string
 )
 
+const handleChangeFixed = (state: boolean) => {
+  if (getIsMobile.value) return
+  fixed.value = state
+}
+
 const handleUpdateMenu = (key: string) => {
   routerPush({ name: key })
+  theme.setSiderDrawerVisible(false)
 }
 </script>

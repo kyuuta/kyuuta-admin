@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { darkTheme } from 'naive-ui'
 import { localStorage } from '@/utils'
+import { mergeWith } from 'lodash-es'
 import {
   getUIThemeOverrides,
   initThemeSetting
@@ -10,7 +11,11 @@ type ThemeState = Theme.Setting
 
 export const useThemeStore = defineStore({
   id: 'ThemeStore',
-  state: (): ThemeState => initThemeSetting(),
+  state: (): ThemeState =>
+    mergeWith(initThemeSetting(), {
+      isMobile: false,
+      siderDrawerVisible: false
+    }),
   getters: {
     /** naiveUI的主题配置 */
     uiThemeOverrides(state) {
@@ -53,9 +58,31 @@ export const useThemeStore = defineStore({
     /** 动画配置 */
     animationConfig(state) {
       return state.animation
+    },
+    getIsMobile(state) {
+      return state.isMobile
+    },
+    getSiderDrawerVisible(state) {
+      return state.siderDrawerVisible
     }
   },
   actions: {
+    setIsMobile(isMobile: boolean) {
+      this.isMobile = isMobile
+
+      if (isMobile) {
+        this.setSiderCollapseVisible(false)
+        // this.setCollapse(false)
+        this.menu.collapse = false
+      } else {
+        this.setSiderCollapseVisible(true)
+        // this.setCollapse(false)
+        this.menu.collapse = false
+      }
+    },
+    setSiderDrawerVisible(visible: boolean) {
+      this.siderDrawerVisible = visible
+    },
     /** 设置主题色 */
     setThemeColor(themeColor: string) {
       this.themeColor = themeColor
@@ -104,7 +131,12 @@ export const useThemeStore = defineStore({
     },
     /** 设置展开菜单状态 */
     setCollapse(collapse: boolean) {
-      this.menu.collapse = collapse
+      console.log(this.isMobile)
+      if (this.isMobile) {
+        this.setSiderDrawerVisible(collapse)
+      } else {
+        this.menu.collapse = collapse
+      }
     },
     /** 设置显示头部折叠图标 */
     setHeaderCollapseVisible(visible: boolean) {

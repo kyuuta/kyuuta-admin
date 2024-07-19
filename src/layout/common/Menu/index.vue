@@ -17,7 +17,7 @@
         : routeStore.menu
     "
     :renderLabel="(val) => t(val.label as string)"
-    @update:value="(name) => routerPush({ name })"
+    @update:value="menuClick"
     @update:expanded-keys="(keys) => (expandedKeys = keys)"
   />
 </template>
@@ -46,6 +46,10 @@ const activeRouteName = computed(
       ? route.meta.activeMenu
       : route.name) as string
 )
+const menuClick = (name: string) => {
+  routerPush({ name })
+  theme.setSiderDrawerVisible(false)
+}
 
 watch(
   () => route.name,

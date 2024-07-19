@@ -11,7 +11,9 @@
         v-if="
           ['vertical', 'horizontal-mix'].includes(
             theme.layoutMode
-          )
+          ) ||
+          (getIsMobile &&
+            theme.layoutMode === 'vertical-mix')
         "
       />
       <Breadcrumb
@@ -57,6 +59,7 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import {
   Avatar,
   Breadcrumb,
@@ -73,6 +76,7 @@ import Menu from '../Menu/index.vue'
 import HorizontalMix from '../Menu/horizontalMix.vue'
 
 const theme = useThemeStore()
+const { getIsMobile } = storeToRefs(theme)
 const props = defineProps<{
   height: string
 }>()
