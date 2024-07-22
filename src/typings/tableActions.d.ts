@@ -1,7 +1,11 @@
-import { NButton as NaiveUIButton } from 'naive-ui'
+import { NButton } from 'naive-ui'
 
 // 定义扩展的属性
-export interface ActionItem extends NaiveUIButton {
+declare interface Fn<T = any, R = T> {
+  (...arg: T[]): R;
+}
+
+export interface ActionItem extends Partial<InstanceType<typeof NButton>> {
   onClick?: Fn
   label?: string
   type?:
@@ -16,6 +20,7 @@ export interface ActionItem extends NaiveUIButton {
   auth?: string | string[]
   ifShow?: boolean | ((action: ActionItem) => boolean)
 }
+
 declare namespace Table {
   type Action = ActionItem
   type Actions = ActionItem[]

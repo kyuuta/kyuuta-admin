@@ -9,7 +9,7 @@
         <NGrid
           x-gap="18"
           y-gap="10"
-          :cols="cols"
+          :cols="`2 800:${cols}`"
           :collapsed="expand"
           :collapsed-rows="3"
         >
