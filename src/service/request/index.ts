@@ -5,7 +5,6 @@ import type {
   RequestOptions,
   Result
 } from '@/typings/request'
-import { getServiceEnvConfig } from '~/.env-config'
 import { ContentTypeEnum, ResultEnum } from '@/enums/http'
 
 import { merge, isString } from 'lodash-es'
