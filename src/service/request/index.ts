@@ -186,8 +186,6 @@ const transform: AxiosTransform = {
 }
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
-  const test = getServiceEnvConfig(import.meta.env)
-
   return new KAxios(
     merge(
       {
