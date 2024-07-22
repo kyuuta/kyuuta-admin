@@ -2,7 +2,8 @@ import axios from 'axios'
 import type {
   AxiosRequestConfig,
   AxiosInstance,
-  AxiosResponse
+  AxiosResponse,
+  InternalAxiosRequestConfig
 } from 'axios'
 import type {
   CreateAxiosOptions,
@@ -10,7 +11,6 @@ import type {
   Result
 } from '@/typings/request'
 import { AxiosCanceler } from './cancel'
-// import { ContentTypeEnum } from '@/enums/http'
 
 import { cloneDeep, isFunction } from 'lodash-es'
 
@@ -140,23 +140,24 @@ export class KAxios {
 
     // 请求拦截器配置处理
     this.axiosInstance.interceptors.request.use(
-      (config: AxiosRequestConfig) => {
+      (config: InternalAxiosRequestConfig) => {
         const {
           headers: { ignoreCancelToken }
         } = config
-
         const ignoreCancel =
           ignoreCancelToken !== undefined
             ? ignoreCancelToken
             : this.options.requestOptions?.ignoreCancelToken
-
         ignoreCancel && axiosCanceler.addPending(config)
 
         if (
           requestInterceptors &&
           isFunction(requestInterceptors)
         ) {
-          config = requestInterceptors(config, this.options)
+          return requestInterceptors(
+            config,
+            this.options
+          ) as InternalAxiosRequestConfig
         }
 
         return config

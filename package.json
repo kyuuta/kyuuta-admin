@@ -40,6 +40,7 @@
     "@intlify/unplugin-vue-i18n": "^0.10.1",
     "@types/lodash-es": "^4.17.10",
     "@types/node": "^15.14.9",
+    "@types/qs": "^6.9.15",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@unocss/preset-uno": "0.56.5",

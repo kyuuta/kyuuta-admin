@@ -1,5 +1,8 @@
-import { defineConfig, loadEnv } from 'vite'
+import type { ConfigEnv, UserConfig } from 'vite'
+import { loadEnv } from 'vite'
+import { wrapperEnv } from './build/utils'
 import { getServiceEnvConfig } from './.env-config'
+
 import {
   createViteProxy,
   getSrcPath,
@@ -8,15 +11,15 @@ import {
   viteDefine
 } from './build'
 
-export default defineConfig((configEnv) => {
-  const viteEnv = loadEnv(configEnv.mode, process.cwd())
+export default ({ mode }: ConfigEnv): UserConfig => {
+  const root = process.cwd()
+  const env = loadEnv(mode, root)
+  const viteEnv = wrapperEnv(env)
+
+  const proxyConfig = getServiceEnvConfig(viteEnv)
 
   const rootPath = getRootPath()
   const srcPath = getSrcPath()
-
-  const isOpenProxy = viteEnv.VITE_HTTP_PROXY === 'Y'
-
-  const envConfig = getServiceEnvConfig(viteEnv)
 
   return {
     base: viteEnv.VITE_BASE_URL,
@@ -32,7 +35,10 @@ export default defineConfig((configEnv) => {
       open: false,
       cors: true,
       host: true,
-      proxy: createViteProxy(isOpenProxy, envConfig)
+      proxy: createViteProxy(
+        viteEnv.VITE_HTTP_PROXY,
+        proxyConfig
+      )
     },
     optimizeDeps: {
       include: ['@better-scroll/core']
@@ -45,4 +51,4 @@ export default defineConfig((configEnv) => {
       }
     }
   }
-})
+}

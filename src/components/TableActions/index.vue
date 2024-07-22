@@ -44,8 +44,8 @@ const getActions = computed(() => {
     })
     .map((action: Table.Action) => {
       return {
-        size: 'small',
         text: true,
+        size: action.size ?? 'small',
         ...action
       }
     })

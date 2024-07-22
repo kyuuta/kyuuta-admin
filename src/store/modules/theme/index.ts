@@ -131,7 +131,6 @@ export const useThemeStore = defineStore({
     },
     /** 设置展开菜单状态 */
     setCollapse(collapse: boolean) {
-      console.log(this.isMobile)
       if (this.isMobile) {
         this.setSiderDrawerVisible(collapse)
       } else {

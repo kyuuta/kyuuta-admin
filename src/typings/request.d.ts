@@ -95,6 +95,7 @@ export interface RequestOptions {
 export interface Result<T = any> {
   code: number
   type?: 'success' | 'error' | 'warning'
+  data: any
   message: string
   result?: T
 }

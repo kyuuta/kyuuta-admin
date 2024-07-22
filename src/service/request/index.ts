@@ -1,23 +1,25 @@
 import { KAxios } from './axios'
+import type {
+  CreateAxiosOptions,
+  AxiosTransform,
+  RequestOptions,
+  Result
+} from '@/typings/request'
 import { getServiceEnvConfig } from '~/.env-config'
 import { ContentTypeEnum, ResultEnum } from '@/enums/http'
 
 import { merge, isString } from 'lodash-es'
-import {
-  isUrl,
-  localStorage,
-  replaceEmptyStringWithNull
-} from '@/utils'
+import { isUrl } from '@/utils'
 import axios, { AxiosResponse } from 'axios'
 
-const transform = {
+const transform: AxiosTransform = {
   // 请求前处理Config
   beforeRequestHook: (config, options) => {
     const { apiUrl, joinPrefix, urlPrefix } = options
 
     const isUrlStr = isUrl(config.url as string)
 
-    if (!isUrlStr & joinPrefix) {
+    if (!isUrlStr && joinPrefix) {
       config.url = `${urlPrefix}${config.url}`
     }
 
@@ -39,14 +41,15 @@ const transform = {
     const token = userStore.getToken
 
     if (token && options?.requestOptions?.withToken) {
-      config.headers.Authorization = token
+      ;(config as Common.Recordable).headers.Authorization =
+        token
     }
 
     return config
   },
   // 处理响应数据
   transformRequestData: (
-    res: AxiosResponse<any>,
+    res: AxiosResponse<Result>,
     options: RequestOptions
   ) => {
     // 根据我司风格护理返回数据 服务端返回错误 报错等等
@@ -82,29 +85,32 @@ const transform = {
         hasSuccess &&
         (successMessageText || isShowSuccessMessage)
       ) {
-        $message.success(
-          successMessageText || message || '操作成功!'
-        )
+        $message &&
+          $message.success(
+            successMessageText || message || '操作成功!'
+          )
       } else if (
         !hasSuccess &&
         (errorMessageText || isShowErrorMessage)
       ) {
-        $message.error(
-          data?.errors ||
-            message ||
-            errorMessageText ||
-            '操作失败!'
-        )
+        $message &&
+          $message.error(
+            data?.errors ||
+              message ||
+              errorMessageText ||
+              '操作失败!'
+          )
       } else if (
         !hasSuccess &&
         options.errorMessageMode === 'modal'
       ) {
-        $dialog.info({
-          title: '提示',
-          content: message,
-          positiveText: '确定',
-          onPositiveClick: () => {}
-        })
+        $dialog &&
+          $dialog.info({
+            title: '提示',
+            content: message,
+            positiveText: '确定',
+            onPositiveClick: () => {}
+          })
       }
     }
 
@@ -117,7 +123,7 @@ const transform = {
     // 处理错误
     switch (code) {
       case ResultEnum.ERROR:
-        $message.error(message)
+        $message && $message.error(message)
         break
       case ResultEnum.LOGINEXPIRED:
         const { resetUserStore } = useUserStore()
@@ -126,8 +132,6 @@ const transform = {
     }
 
     throw new Error(errorMsg)
-
-    return res
   },
   /**
    * @description: 响应错误处理
@@ -137,29 +141,32 @@ const transform = {
     const $message = window['$message']
     const { response, code, message } = error || {}
 
-    const msg: string =
-      response && response.data && response.data.message
-        ? response.data.message
-        : ''
+    // const msg: string =
+    //   response && response.data && response.data.message
+    //     ? response.data.message
+    //     : ''
+
     const err: string = error.toString()
     try {
       if (
         code === 'ECONNABORTED' &&
         message.indexOf('timeout') !== -1
       ) {
-        $message.error('接口请求超时，请刷新页面重试!')
+        $message &&
+          $message.error('接口请求超时，请刷新页面重试!')
         return
       }
       if (err && err.includes('Network Error')) {
-        $dialog.info({
-          title: '网络异常',
-          content: '请检查您的网络连接是否正常',
-          positiveText: '确定',
-          closable: false,
-          maskClosable: false,
-          onPositiveClick: () => {},
-          onNegativeClick: () => {}
-        })
+        $dialog &&
+          $dialog.info({
+            title: '网络异常',
+            content: '请检查您的网络连接是否正常',
+            positiveText: '确定',
+            closable: false,
+            maskClosable: false,
+            onPositiveClick: () => {},
+            onNegativeClick: () => {}
+          })
         return Promise.reject(error)
       }
     } catch (error) {
@@ -169,6 +176,7 @@ const transform = {
     const isCancel = axios.isCancel(error)
     if (!isCancel) {
       console.log(error)
+      // checkStatus msg
     } else {
       console.warn(error, '请求被取消')
     }
@@ -177,10 +185,8 @@ const transform = {
   }
 }
 
-function createAxios(opt?: object) {
-  const { url, proxyPattern } = getServiceEnvConfig(
-    import.meta.env.VITE_HTTP_PROXY === 'Y'
-  )
+function createAxios(opt?: Partial<CreateAxiosOptions>) {
+  const test = getServiceEnvConfig(import.meta.env)
 
   return new KAxios(
     merge(
@@ -193,17 +199,11 @@ function createAxios(opt?: object) {
         // 配置项，下面的选项都可以在独立的接口请求中覆盖
         requestOptions: {
           // 接口地址
-          apiUrl:
-            import.meta.env.VITE_HTTP_PROXY === 'Y'
-              ? ''
-              : url,
+          // apiUrl: '/proxy-pattern',
           // 默认将prefix 添加到url
           joinPrefix: true,
           // 接口拼接地址
-          urlPrefix:
-            import.meta.env.VITE_HTTP_PROXY === 'Y'
-              ? proxyPattern
-              : '',
+          urlPrefix: '/proxy-pattern',
           // 是否返回原生响应头 比如：需要获取响应头时使用该属性
           isReturnNativeResponse: false,
           // 需要对返回数据进行处理

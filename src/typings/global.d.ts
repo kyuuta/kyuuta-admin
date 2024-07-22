@@ -17,4 +17,6 @@ declare namespace Common {
    * Select Option List
    */
   type OptionWithKey<K> = { value: K; label: string }
+
+  type Recordable<T = any> = Record<string, T>
 }

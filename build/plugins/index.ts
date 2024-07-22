@@ -11,7 +11,7 @@ import unplugin from './unplugin'
 export function setupVitePlugins(
   viteEnv: ImportMetaEnv
 ): (PluginOption | PluginOption[])[] {
-  const { VITE_VISUALIZER = 'N', VITE_COMPRESS = 'N' } =
+  const { VITE_VISUALIZER = false, VITE_COMPRESS = false } =
     viteEnv
 
   const plugins = [
@@ -26,11 +26,11 @@ export function setupVitePlugins(
     progress()
   ]
 
-  if (VITE_VISUALIZER === 'Y') {
+  if (VITE_VISUALIZER) {
     plugins.push(visualizer as PluginOption)
   }
 
-  if (VITE_COMPRESS === 'Y') {
+  if (VITE_COMPRESS) {
     plugins.push(compress(viteEnv))
   }
 

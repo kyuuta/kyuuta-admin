@@ -19,6 +19,9 @@ export const useUserStore = defineStore({
   getters: {
     isLogin(state): boolean {
       return Boolean(state.token)
+    },
+    getToken(): string {
+      return this.token
     }
   },
   actions: {
