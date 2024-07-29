@@ -274,7 +274,10 @@ const generateSKU = (list: Sku[]) => {
     return {
       ...item,
       skuPrime: prime,
-      skuPrimeTotal: eval(prime.join('*'))
+      skuPrimeTotal: prime.reduce(
+        (prev, next) => prev * next,
+        prime.length ? 1 : 0
+      )
     }
   })
 
@@ -284,7 +287,7 @@ const generateSKU = (list: Sku[]) => {
       /** 库存处理 */
       item.stockNum > 0 ? item.skuPrimeTotal : null
     )
-    .filter((item) => item)
+    .filter((item) => item) as number[]
 }
 
 /** 生成质数对应规格坐标 & 生成状态表 */
@@ -440,8 +443,9 @@ const selectedSKU = computed(() => {
   if (
     selected.value.length === skuProperties.value.length
   ) {
-    const selectedMultipication = eval(
-      selected.value.join('*')
+    const selectedMultipication = selected.value.reduce(
+      (prev, next) => prev * next,
+      1
     )
     const index = skus.value.findIndex((sku) => {
       return sku.skuPrimeTotal
