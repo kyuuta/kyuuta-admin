@@ -53,7 +53,7 @@ export const useUserStore = defineStore({
 
       window.$notification?.success({
         title: '登录成功',
-        content: '测试成功',
+        content: '欢迎登录',
         duration: 2000
       })
 

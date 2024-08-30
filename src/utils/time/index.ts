@@ -9,7 +9,8 @@ import {
   startOfSecond,
   setSeconds,
   getTime,
-  endOfDay
+  endOfDay,
+  format
 } from 'date-fns'
 
 /**
@@ -173,4 +174,18 @@ export function rangeTimeDisabled(
       }
     }
   }
+}
+
+/**
+ * 格式化日期时间
+ * @param {Date|Number|String} date 需要格式化的日期值
+ * @param {String} dateFormat 需要改变成的格式
+ * @returns {String} 格式化后的时间
+ */
+export function formatDate(
+  date: Date | number | string,
+  dateFormat = 'yyyy-MM-dd HH:mm:ss'
+): string {
+  const parsedDate = new Date(date)
+  return format(parsedDate, dateFormat)
 }
