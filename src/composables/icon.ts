@@ -6,6 +6,7 @@ export const useIconRender = () => {
     localIcon?: string
     color?: string
     fontSize?: number
+    className?: string
   }
 
   interface IconStyle {
@@ -15,7 +16,13 @@ export const useIconRender = () => {
 
   const iconRender = (config: IconConfig) => {
     const style: IconStyle = {}
-    const { icon, localIcon, color, fontSize = 20 } = config
+    const {
+      icon,
+      localIcon,
+      color,
+      className,
+      fontSize = 20
+    } = config
 
     if (color) {
       style.color = color
@@ -31,7 +38,13 @@ export const useIconRender = () => {
       )
     }
 
-    return () => h(SvgIcon, { icon, localIcon, style })
+    return () =>
+      h(SvgIcon, {
+        icon,
+        localIcon,
+        style,
+        class: className
+      })
   }
 
   return {

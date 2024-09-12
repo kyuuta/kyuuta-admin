@@ -87,18 +87,20 @@
 </template>
 
 <script lang="ts" setup>
+import type { RouteRecordRaw } from 'vue-router'
+
 const searchKey = ref('')
 const routeStore = useRouteStore()
-const resultOptions = shallowRef<App.GlobalMenuOption[]>([])
+const resultOptions = shallowRef<RouteRecordRaw[]>([])
 const activeIndex = ref<number>()
 const { t } = useI18n()
 const { routerPush } = useRouterPush()
 
 const flattenArray = (
-  arr: App.GlobalMenuOption[]
-): App.GlobalMenuOption[] => {
-  const result: App.GlobalMenuOption[] = []
-  const processChildren = (item: App.GlobalMenuOption) => {
+  arr: RouteRecordRaw[]
+): RouteRecordRaw[] => {
+  const result: RouteRecordRaw[] = []
+  const processChildren = (item: RouteRecordRaw) => {
     if (item.children && item.children.length > 0) {
       result.push({ ...item, children: [] })
       item.children.forEach(processChildren)
@@ -116,18 +118,16 @@ const searchPage = () => {
   ).filter(
     (menu) =>
       searchKey.value &&
-      t(menu.label)
+      t(menu.meta?.title || '')
         .toLocaleLowerCase()
         .includes(
           searchKey.value.toLocaleLowerCase().trim()
         )
   )
 
-  if (resultOptions.value.length) {
-    activeIndex.value = 0
-  } else {
-    activeIndex.value = undefined
-  }
+  activeIndex.value = resultOptions.value.length
+    ? 0
+    : undefined
 }
 const handleDown = () => {
   const { length } = resultOptions.value
@@ -153,9 +153,8 @@ const handleUp = () => {
 }
 const handleEnter = () => {
   if (activeIndex.value === undefined) return
-  const { routeName } =
-    resultOptions.value[activeIndex.value]
-  routerPush({ name: routeName })
+  const { name } = resultOptions.value[activeIndex.value]
+  routerPush({ name: name })
   handleClose()
 }
 const handleSearch = useDebounceFn(searchPage, 300)

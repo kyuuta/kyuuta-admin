@@ -6,35 +6,35 @@ import type { RouteRecordRaw } from 'vue-router'
  * @param {Array} treeArr 权限树
  * @returns {Array} 组装后返回唯一值routeName的权限数组
  */
-export function menuTreeFlat(treeArr): string[] {
-  return [].concat(
-    ...treeArr.map((v) => {
-      // v.type:0 是判断权限是菜单还是按钮级
-      return v.type === 0
-        ? v.list && v.list.length
-          ? [].concat(v.code, ...menuTreeFlat(v.list))
-          : [].concat(v.code)
-        : []
-    })
-  )
-}
+// export function menuTreeFlat(treeArr): string[] {
+//   return [].concat(
+//     ...treeArr.map((v) => {
+//       // v.type:0 是判断权限是菜单还是按钮级
+//       return v.type === 0
+//         ? v.list && v.list.length
+//           ? [].concat(v.code, ...menuTreeFlat(v.list))
+//           : [].concat(v.code)
+//         : []
+//     })
+//   )
+// }
 
 /**
  * 权限按钮树扁平
  * @param {Array} treeArr 权限树
  * @returns {Array} 组装后返回唯一值code的权限数组
  */
-export function buttonTreeFlat(treeArr): string[] {
-  return treeArr.reduce((result, item) => {
-    if (item.type === 1) {
-      result.push(item.code)
-    }
-    if (item.list.length > 0) {
-      result.push(...buttonTreeFlat(item.list))
-    }
-    return result
-  }, [] as number[])
-}
+// export function buttonTreeFlat(treeArr): string[] {
+//   return treeArr.reduce((result, item) => {
+//     if (item.type === 1) {
+//       result.push(item.code)
+//     }
+//     if (item.list.length > 0) {
+//       result.push(...buttonTreeFlat(item.list))
+//     }
+//     return result
+//   }, [] as number[])
+// }
 
 /**
  * 根据用户权限过滤路由表
@@ -43,7 +43,7 @@ export function buttonTreeFlat(treeArr): string[] {
  */
 export function filterAsyncRoutes(
   routes: RouteRecordRaw[],
-  permission: string
+  permission: string[]
 ) {
   return routes
     .map((route) => filterRoutePermisson(route, permission))

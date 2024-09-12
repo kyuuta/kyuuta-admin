@@ -9,8 +9,7 @@ import ConstantRouteMap from '@/router/constantRouteMap'
 import {
   filterAsyncRoutes,
   getConstantRouteMapNames,
-  transformRouteToMenu,
-  transformFirstDegreeMenu
+  transformRouteToMenu
 } from '@/utils'
 
 interface IRouteStore {
@@ -19,9 +18,9 @@ interface IRouteStore {
   /** 路由首页name */
   routeHomeName: string
   /** 菜单 */
-  menu: App.GlobalMenuOption[]
+  menu: RouteRecordRaw[]
   /** 一级菜单 */
-  firstDegreeMenus: App.GlobalMenuOption[]
+  firstDegreeMenus: RouteRecordRaw[]
 }
 
 export const useRouteStore = defineStore({
@@ -46,9 +45,7 @@ export const useRouteStore = defineStore({
         userStore.role
       )
       this.handleAuthRoute(routes)
-
       initHomeTab(this.routeHomeName, Router)
-
       this.isInitAuthRoute = true
     },
     /**
@@ -57,9 +54,6 @@ export const useRouteStore = defineStore({
      */
     handleAuthRoute(routes: RouteRecordRaw[]) {
       this.menu = transformRouteToMenu(routes)
-      this.firstDegreeMenus =
-        transformFirstDegreeMenu(routes)
-
       routes.forEach((route) => {
         Router.addRoute(route)
       })

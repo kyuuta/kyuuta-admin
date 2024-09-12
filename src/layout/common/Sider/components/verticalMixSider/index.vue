@@ -20,18 +20,13 @@
       </div>
       <NScrollbar class="flex-1 px-4px w-70px">
         <MenuItem
-          v-for="menu in routeStore.firstDegreeMenus"
-          :key="menu.routeName"
-          :label="menu.label"
-          :icon="menu.icon"
-          :routeName="menu.routeName"
+          v-for="menu in routeStore.menu"
+          :key="menu.name"
+          :label="t(menu.meta?.title)"
+          :icon="iconRender(menu.meta)"
+          :routeName="menu.name"
           :activeRouteName="activeRouteName"
-          @click="
-            handleClickMenu(
-              menu.routeName,
-              menu.hasChildren as boolean
-            )
-          "
+          @click="handleClickMenu(menu)"
         />
       </NScrollbar>
     </div>
@@ -51,6 +46,10 @@ import Drawer from './drawer.vue'
 import MenuItem from './menuItem.vue'
 import { Logo } from '@/layout/common'
 import { getActiveMenuChild } from '@/utils'
+import type {
+  RouteRecordRaw,
+  RouteRecordNameGeneric
+} from 'vue-router'
 
 withDefaults(
   defineProps<{
@@ -61,16 +60,18 @@ withDefaults(
   }
 )
 
+const { t } = useI18n()
 const route = useRoute()
 const routeStore = useRouteStore()
+const { iconRender } = useIconRender()
 
-const activeRouteName = ref('')
+const activeRouteName = ref<RouteRecordNameGeneric>('')
 const setActiveParentRouteName = () => {
-  routeStore.firstDegreeMenus.some((item) => {
+  routeStore.menu.some((item: RouteRecordRaw) => {
     const activeName = route.name as string
-    const flag = activeName.includes(item.routeName)
+    const flag = activeName.includes(item.name as string)
     if (flag) {
-      activeRouteName.value = item.routeName
+      activeRouteName.value = item.name
     }
     return flag
   })
@@ -83,10 +84,13 @@ const {
 } = useBoolean()
 const theme = useThemeStore()
 const { routerPush } = useRouterPush()
-const handleClickMenu = (
-  routeName: string,
-  hasChildren: boolean
-) => {
+const handleClickMenu = (menu: RouteRecordRaw) => {
+  const routeName = menu.name as string
+  const hasChildren = Boolean(
+    menu.children &&
+      menu.children.length &&
+      !menu.children?.every((item) => item.meta?.hide)
+  )
   activeRouteName.value = routeName
   if (hasChildren) {
     openDrawer()

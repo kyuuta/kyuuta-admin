@@ -1,4 +1,4 @@
-const sleep = (data: any, delay = 1000) => {
+const sleep = <T>(data: T, delay = 1000): Promise<T> => {
   return new Promise((resolve) =>
     setTimeout(resolve, delay, data)
   )
@@ -11,3 +11,31 @@ export const getLoginCaptcha = () =>
   )
 
 export const pwdLogin = () => sleep('tokenkyutua1231231')
+
+export const getUserDetail = (): Promise<Auth.UserInfo> =>
+  sleep({
+    id: '1',
+    name: 'KYUUTA',
+    status: 1,
+    roles: [
+      {
+        id: 'role1',
+        name: '管理员admin',
+        status: 1,
+        describe: '管理员',
+        permissions: [
+          {
+            permissionId: 'Dashboard',
+            permissionPath: '/dashboard',
+            permissionName: 'routes.dashboard.index',
+            actionEntitySet: [
+              {
+                actionCode: 'DashboardAdd',
+                describe: '新增'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  })

@@ -1,8 +1,7 @@
-const ThemeConfig
-: Omit<
-    Theme.Setting, 
-    'isMobile' | 'siderDrawerVisible'
-  > = {
+const ThemeConfig: Omit<
+  Theme.Setting,
+  'isMobile' | 'siderDrawerVisible'
+> = {
   darkMode: false,
   followOSTheme: true,
   scrollMode: 'content',

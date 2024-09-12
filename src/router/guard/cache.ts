@@ -1,8 +1,7 @@
 import type { RouteLocationNormalized } from 'vue-router'
 
 export function createCacheComponents(
-  to: RouteLocationNormalized,
-  from: RouteLocationNormalized
+  to: RouteLocationNormalized
 ) {
   const fullPath = to.fullPath
   const tabStore = useTabStore()

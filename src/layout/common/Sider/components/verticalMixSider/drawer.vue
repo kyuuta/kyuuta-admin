@@ -47,7 +47,8 @@
           :value="activeKey"
           :options="menus"
           :indent="14"
-          :renderLabel="val => t(val.label as string)"
+          :renderIcon="(menu: RouteRecordRaw) => iconRender(menu.meta)()"
+          :renderLabel="(menu: RouteRecordRaw) => t(menu.meta?.title)"
           @update:value="handleUpdateMenu"
         />
       </NScrollbar>
@@ -57,10 +58,11 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
+import type { RouteRecordRaw } from 'vue-router'
 
 defineProps<{
   visible: boolean
-  menus: App.GlobalMenuOption[]
+  menus: RouteRecordRaw[]
 }>()
 
 const theme = useThemeStore()
@@ -71,6 +73,7 @@ const fixed = ref(false)
 const { t } = useI18n()
 const route = useRoute()
 const { routerPush } = useRouterPush()
+const { iconRender } = useIconRender()
 
 const activeKey = computed(
   () =>

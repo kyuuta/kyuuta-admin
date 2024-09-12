@@ -5,7 +5,7 @@
 export function exeStrategyActions(
   actions: Common.StrategyAction[]
 ) {
-  actions.some((item, index) => {
+  actions.some((item) => {
     const [flag, action] = item
     if (flag) {
       action()

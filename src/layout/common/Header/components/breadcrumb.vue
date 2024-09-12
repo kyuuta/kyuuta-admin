@@ -13,30 +13,31 @@
       <NBreadcrumbItem>
         <NDropdown
           v-if="breadcrumb?.children?.length"
+          key-field="name"
           placement="bottom-start"
           :options="breadcrumb.children"
-          :render-icon="renderDropdownIcon"
-          :render-label="renderDropdownLabel"
-          @select="(key) => routerPush({ name: key })"
+          :renderIcon="(option: RouteRecordRaw) => renderIcon(option, true)"
+          :renderLabel="
+            (option: RouteRecordRaw) => renderLabel(option, true)
+          "
+          @select="(name: string) => routerPush({ name: name })"
         >
           <span class="flex-y-center">
             <component
-              :is="breadcrumb.icon"
-              v-if="breadcrumb.icon"
+              :is="renderIcon(breadcrumb)"
               class="mr-4px"
             />
-            <span>{{ t(breadcrumb.label) }}</span>
+            <component :is="renderLabel(breadcrumb)" />
           </span>
         </NDropdown>
 
         <template v-else>
           <span class="flex-y-center">
             <component
-              :is="breadcrumb.icon"
-              v-if="breadcrumb.icon"
+              :is="renderIcon(breadcrumb)"
               class="mr-4px"
             />
-            <span>{{ t(breadcrumb.label) }}</span>
+            <component :is="renderLabel(breadcrumb)" />
           </span>
         </template>
       </NBreadcrumbItem>
@@ -45,9 +46,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { DropdownOption } from 'naive-ui'
+import { some } from 'lodash-es'
 import { storeToRefs } from 'pinia'
-import { transformRouteToMenu as transformRouteToBreadcrumb } from '@/utils'
+import { transformRouteToMenu } from '@/utils'
+import { RouteRecordRaw } from 'vue-router'
+import { VNodeChild } from 'vue'
+import { RouteRecordNameGeneric } from 'vue-router'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -57,29 +61,62 @@ const theme = useThemeStore()
 const { breadcrumbConfig } = storeToRefs(theme)
 
 const breadcrumbs = computed(() =>
-  transformRouteToBreadcrumb(route.matched)
+  transformRouteToMenu(route.matched)
 )
 
-const renderDropdownIcon = (option: DropdownOption) => {
-  if (!option.icon) return
-  return h(option.icon, {
-    class:
-      route.name === option.routeName ? 'color-primary' : ''
-  })
+const hasName = (
+  data: RouteRecordRaw,
+  targetName: RouteRecordNameGeneric
+): boolean => {
+  return (
+    data.name === targetName ||
+    some(data.children, (child) =>
+      hasName(child, targetName)
+    )
+  )
 }
-const renderDropdownLabel = (option: DropdownOption) => {
+
+const renderLabel = (
+  option: RouteRecordRaw,
+  deepFind = false
+): VNodeChild => {
+  const flag = deepFind
+    ? hasName(option, route.name)
+    : route.name === option.name
+
   return h(
     'span',
     {
       class:
-        route.name === option.routeName
+        flag || route.meta?.activeMenu === option.name
           ? 'color-primary'
           : ''
     },
     {
-      default: () => t(option.label as string)
+      default: () => t(option.meta?.title || '')
     }
   )
+}
+const renderIcon = (
+  option: RouteRecordRaw,
+  deepFind = false
+) => {
+  const { iconRender } = useIconRender()
+  const { icon, localIcon } = option?.meta || {}
+  const flag = deepFind
+    ? hasName(option, route.name)
+    : route.name === option.name
+
+  const className =
+    flag || route.meta?.activeMenu === option.name
+      ? 'color-primary'
+      : ''
+
+  return iconRender({
+    icon,
+    localIcon,
+    className
+  })()
 }
 </script>
 

@@ -1,12 +1,12 @@
 <template>
   <div class="flex-y-center">
     <MenuItem
-      v-for="menu in routeStore.firstDegreeMenus"
-      :key="menu.routeName"
+      v-for="menu in routeStore.menu"
+      :key="menu.name"
       mode="horizontal"
-      :label="menu.label"
-      :icon="menu.icon"
-      :routeName="menu.routeName"
+      :label="menu.meta?.title"
+      :icon="iconRender(menu.meta)"
+      :routeName="menu.name"
       :activeRouteName="activeRouteName"
       @click="handleClickMenu(menu)"
     />
@@ -14,16 +14,21 @@
 </template>
 
 <script lang="ts" setup>
+import type {
+  RouteRecordRaw,
+  RouteRecordNameGeneric
+} from 'vue-router'
 import MenuItem from '../Sider/components/verticalMixSider/menuItem.vue'
 
 const route = useRoute()
 const routeStore = useRouteStore()
 const { routerPush } = useRouterPush()
-const activeRouteName = ref('')
+const { iconRender } = useIconRender()
+const activeRouteName = ref<RouteRecordNameGeneric>('')
 
-const handleClickMenu = (menu: App.GlobalMenuOption) => {
+const handleClickMenu = (menu: RouteRecordRaw) => {
   if (menu.redirect) {
-    routerPush({ path: menu.redirect })
+    routerPush({ path: menu.redirect as string })
   } else {
     console.warn(
       '请设置一级路由的重定向路由地址, Please set the redirect route address for the primary route!'
@@ -32,11 +37,11 @@ const handleClickMenu = (menu: App.GlobalMenuOption) => {
 }
 
 const setActiveParentRouteName = () => {
-  routeStore.firstDegreeMenus.some((item) => {
+  routeStore.menu.some((item: RouteRecordRaw) => {
     const activeName = route.name as string
-    const flag = activeName.includes(item.routeName)
+    const flag = activeName.includes(item.name as string)
     if (flag) {
-      activeRouteName.value = item.routeName
+      activeRouteName.value = item.name
     }
     return flag
   })

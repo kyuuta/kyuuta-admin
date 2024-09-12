@@ -11,6 +11,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
@@ -23,7 +25,7 @@
       "unplugin-icons/types/vue",
       "naive-ui/volar",
       "unplugin-vue-macros/macros-global"
-    ],
+    ]
   },
   "exclude": ["node_modules", "dist"]
 }

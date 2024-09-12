@@ -65,11 +65,11 @@
                   item.dictValueField || 'value'
                 "
                 :filter="
-                  (pattern, option) =>
+                  (pattern: string, option: object) =>
                     selectFilter(item, pattern, option)
                 "
                 :render-label="
-                  (option) =>
+                  (option: SelectOption | SelectGroupOption) =>
                     selectRenderLabel(item, option)
                 "
                 @update:value="
@@ -162,9 +162,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { SelectOption } from 'naive-ui'
-import { isNumber, isNull, isUndefined } from 'lodash-es'
 import type { VNodeChild } from 'vue'
+import { isNumber, isNull, isUndefined } from 'lodash-es'
+import type {
+  SelectOption,
+  SelectGroupOption
+} from 'naive-ui'
 const expand = shallowRef<boolean>(true)
 const formRows = shallowRef<number>(0)
 

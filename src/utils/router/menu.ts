@@ -6,67 +6,30 @@ import type { RouteRecordRaw } from 'vue-router'
  */
 export function transformRouteToMenu(
   routes: RouteRecordRaw[]
-) {
-  const menu: App.GlobalMenuOption[] = []
+): RouteRecordRaw[] {
+  const menu: RouteRecordRaw[] = []
 
   routes.forEach((route) => {
-    const { name, path, meta } = route
-    const routeName = name as string
-    let menuChildren: App.GlobalMenuOption[] | undefined
+    const { meta } = route
+    let menuChildren: RouteRecordRaw[] | undefined
 
     if (
       route.children &&
       route.children.length &&
-      !route.children?.every((item) => item.meta.hide)
+      !route.children?.every((item) => item.meta?.hide)
     ) {
       menuChildren = transformRouteToMenu(route.children)
     }
 
-    const menuItem: App.GlobalMenuOption = addPartialProps({
-      key: routeName,
-      label: meta?.title || routeName,
-      routeName,
-      routePath: path,
-      icon: meta?.icon,
-      localIcon: meta?.localIcon,
-      children: menuChildren
-    })
-
     if (!meta?.hide) {
-      menu.push(menuItem)
+      menu.push({
+        ...route,
+        children: menuChildren
+      } as RouteRecordRaw)
     }
   })
 
   return menu
-}
-
-/**
- * 将路由表转换为只有一级路由
- * @param routes - 路由
- */
-export function transformFirstDegreeMenu(
-  routes: RouteRecordRaw[]
-) {
-  return routes.map((route) => {
-    const { name, label, meta, redirect } = route
-    const icon = route?.icon
-    const hasChildren = Boolean(
-      route.children &&
-        route.children.length &&
-        !route.children?.every((item) => item.meta.hide)
-    )
-
-    const menuItem = addPartialProps({
-      routeName: name,
-      label: meta?.title || name,
-      redirect,
-      icon: meta?.icon,
-      localIcon: meta?.localIcon,
-      hasChildren
-    })
-
-    return menuItem
-  })
 }
 
 /**
@@ -76,7 +39,7 @@ export function transformFirstDegreeMenu(
  */
 export function getActiveKeyPathsOfMenus(
   activeKey: string,
-  menus: App.GlobalMenuOption[]
+  menus: RouteRecordRaw[]
 ) {
   const keys = menus
     .map((menu) => getActiveKeyPathsOfMenu(activeKey, menu))
@@ -86,21 +49,18 @@ export function getActiveKeyPathsOfMenus(
 
 function getActiveKeyPathsOfMenu(
   activeKey: string,
-  menu: App.GlobalMenuOption
+  menu: RouteRecordRaw
 ) {
   const keys: string[] = []
-  if (activeKey.startsWith(menu.routeName)) {
-    keys.push(menu.routeName)
+  if (activeKey.startsWith(menu.name as string)) {
+    keys.push(menu.name as string)
   }
 
   if (menu.children) {
     keys.push(
       ...menu.children
         .map((item) =>
-          getActiveKeyPathsOfMenu(
-            activeKey,
-            item as App.GlobalMenuOption
-          )
+          getActiveKeyPathsOfMenu(activeKey, item)
         )
         .flat(1)
     )
@@ -117,12 +77,12 @@ function getActiveKeyPathsOfMenu(
 
 export function getActiveMenuChild(
   activeKey: string,
-  menu: App.GlobalMenuOption[]
+  menu: RouteRecordRaw[]
 ) {
-  const menus: App.GlobalMenuOption[] = []
+  const menus: RouteRecordRaw[] = []
   menu.some((item) => {
     const flag =
-      item.routeName ===
+      item.name ===
         getActiveKeyPathsOfMenus(activeKey, menu)[0] &&
       Boolean(item.children?.length)
     if (flag) {
@@ -131,27 +91,4 @@ export function getActiveMenuChild(
     return flag
   })
   return menus
-}
-
-/** 给菜单添加可选属性 */
-function addPartialProps(config: {
-  menu: App.GlobalMenuOption
-  icon?: string
-  localIcon?: string
-}) {
-  const { iconRender } = useIconRender()
-
-  const item = { ...config }
-
-  const { icon, localIcon } = config
-
-  if (localIcon) {
-    Object.assign(item, { icon: iconRender({ localIcon }) })
-  }
-
-  if (icon) {
-    Object.assign(item, { icon: iconRender({ icon }) })
-  }
-
-  return item
 }
