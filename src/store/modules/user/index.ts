@@ -35,15 +35,15 @@ export const useUserStore = defineStore({
       code: string
     }) {
       try {
-        const response = await pwdLogin()
+        const response = await pwdLogin(loginForm)
         this.setToken(response as string)
-        await this.handleAfterLogin(response as string)
+        await this.handleAfterLogin()
         return Promise.resolve(response)
       } catch (e) {
         return Promise.reject(e)
       }
     },
-    async handleAfterLogin(token: string) {
+    async handleAfterLogin() {
       const route = useRouteStore()
       const { toLoginRedirect } = useRouterPush(false)
 

@@ -10,22 +10,21 @@
     :expandedKeys="expandedKeys"
     :value="activeRouteName"
     :options="
-      theme.layoutMode === 'horizontal-mix'
+      (theme.layoutMode === 'horizontal-mix'
         ? getActiveMenuChild(
             activeRouteName,
             routeStore.menu
           )
-        : routeStore.menu
+        : routeStore.menu) as any
     "
-    :renderIcon="(menu: RouteRecordRaw) => iconRender(menu.meta)()"
-    :renderLabel="(menu: RouteRecordRaw) => t(menu.meta?.title)"
+    :renderIcon="(menu: any) => iconRender(menu.meta)()"
+    :renderLabel="(menu: any) => t(menu.meta?.title)"
     @update:value="menuClick"
     @update:expanded-keys="(keys: Array<string>) => (expandedKeys = keys)"
   />
 </template>
 
 <script lang="ts" setup>
-import type { RouteRecordRaw } from 'vue-router'
 import {
   getActiveKeyPathsOfMenus,
   getActiveMenuChild

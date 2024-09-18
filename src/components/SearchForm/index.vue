@@ -69,7 +69,7 @@
                     selectFilter(item, pattern, option)
                 "
                 :render-label="
-                  (option: SelectOption | SelectGroupOption) =>
+                  (option: SelectOption) =>
                     selectRenderLabel(item, option)
                 "
                 @update:value="
@@ -126,6 +126,12 @@
           :loading="loading"
           @click="emit('load', 'search')"
         >
+          <template #icon>
+            <SvgIcon
+              class="text-16px"
+              icon="icon-park-outline:search"
+            />
+          </template>
           查询
         </NButton>
         <NButton
@@ -133,6 +139,12 @@
           :loading="loading"
           @click="reset"
         >
+          <template #icon>
+            <SvgIcon
+              class="text-16px"
+              icon="system-uicons:reset-alt"
+            />
+          </template>
           重置
         </NButton>
 

@@ -26,7 +26,7 @@
       >
         <div
           v-for="(menu, index) in resultOptions"
-          :key="menu.key"
+          :key="menu.name"
           :class="[
             'item',
             'bg-#e5e7eb',
@@ -40,11 +40,15 @@
         >
           <div class="info">
             <component
-              :is="menu.icon"
-              v-if="menu.icon"
+              :is="
+                iconRender({
+                  icon: menu.meta?.icon,
+                  localIcon: menu.meta?.localIcon
+                })()
+              "
               class="mr-6px"
             />
-            <span>{{ t(menu.label) }}</span>
+            <span>{{ t(menu.meta?.title || '') }}</span>
           </div>
           <SvgIcon
             icon="fluent:arrow-enter-left-20-filled"
@@ -95,6 +99,7 @@ const resultOptions = shallowRef<RouteRecordRaw[]>([])
 const activeIndex = ref<number>()
 const { t } = useI18n()
 const { routerPush } = useRouterPush()
+const { iconRender } = useIconRender()
 
 const flattenArray = (
   arr: RouteRecordRaw[]

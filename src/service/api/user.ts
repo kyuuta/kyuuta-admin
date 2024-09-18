@@ -10,7 +10,8 @@ export const getLoginCaptcha = () =>
     100
   )
 
-export const pwdLogin = () => sleep('tokenkyutua1231231')
+export const pwdLogin = (_param: any) =>
+  sleep('tokenkyutua1231231')
 
 export const getUserDetail = (): Promise<Auth.UserInfo> =>
   sleep({

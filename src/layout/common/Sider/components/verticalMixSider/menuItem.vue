@@ -30,17 +30,18 @@
 
 <script lang="ts" setup>
 import type { VNodeChild } from 'vue'
+import type { RouteRecordNameGeneric } from 'vue-router'
 import { useBoolean } from '@/hooks'
 
 const { t } = useI18n()
 const props = withDefaults(
   defineProps<{
     /** 路由名称 */
-    routeName: string
+    routeName: RouteRecordNameGeneric
     /** 路由名称文本 */
     label: string
     /** 当前激活状态的理由名称 */
-    activeRouteName: string
+    activeRouteName: RouteRecordNameGeneric
     /** 路由图标 */
     icon?: () => VNodeChild
     /** 布局模式 */

@@ -13,9 +13,9 @@ export function createRouterGuard(router: Router) {
     await createPermissionGuard(to, from, next)
   })
 
-  router.afterEach((to, from) => {
+  router.afterEach((to) => {
     to.meta.title && useTitle(i18n.global.t(to.meta.title))
-    createCacheComponents(to, from)
+    createCacheComponents(to)
     window.$loadingBar?.finish()
   })
 

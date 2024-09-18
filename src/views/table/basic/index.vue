@@ -85,6 +85,7 @@ import type {
   DataTableColumns,
   DataTableInst
 } from 'naive-ui'
+import { NRate } from 'naive-ui'
 import DetailModal from './detailModal.vue'
 import { mergeTableColumn } from '@/utils/table'
 import { getBasicTableData } from '@/service/api/table'
@@ -92,6 +93,7 @@ import { getBasicTableData } from '@/service/api/table'
 type rowType = {
   property: string
   adaptive: string
+  quantityFood: number
 }
 
 const { dict, dictLoading, formatDict } = useDict([
@@ -110,7 +112,8 @@ const formItems: SearchForm.FormItems = [
     type: 'select',
     dictKey: 'property',
     props: {
-      multiple: true
+      multiple: true,
+      maxTagCount: 1
     }
   },
   {
@@ -128,7 +131,8 @@ const formItems: SearchForm.FormItems = [
     type: 'select',
     dictKey: 'adaptive',
     props: {
-      multiple: true
+      multiple: true,
+      maxTagCount: 1
     }
   },
   { label: '掉落物', value: 'fallDown', type: 'input' },
@@ -140,6 +144,7 @@ const formItems: SearchForm.FormItems = [
   }
 ]
 const tableData = shallowRef([])
+const { iconRender } = useIconRender()
 const pagination = shallowReactive({
   page: 1,
   pageSize: 10,
@@ -158,7 +163,23 @@ const columns: DataTableColumns = [
         .toString()
     }
   },
-  { title: '进食量', key: 'quantityFood' },
+  {
+    title: '进食量',
+    key: 'quantityFood',
+    render: (row) =>
+      h(
+        NRate,
+        {
+          value: row.quantityFood as number,
+          readonly: true
+        },
+        {
+          default: iconRender({
+            icon: 'mdi:meat'
+          })
+        }
+      )
+  },
   {
     title: '工作适应性',
     key: 'adaptive',

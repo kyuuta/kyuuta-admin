@@ -108,7 +108,7 @@ export function timeDisabled(
  * 禁止选择当前时间之前的时间 RangeTime类使用
  */
 export function rangeTimeDisabled(
-  current: number,
+  _current: number,
   rangeType: 'start' | 'end',
   range: [number, number],
   type: 'before' | 'after' = 'after'

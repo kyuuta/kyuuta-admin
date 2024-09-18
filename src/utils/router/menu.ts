@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 /**
- * 将路由表转换成Naive Menu格式&Breadcrumb格式
+ * 将路由表过滤提供给各种menu&breadcrumb用
  * @param routes - 路由
  */
 export function transformRouteToMenu(

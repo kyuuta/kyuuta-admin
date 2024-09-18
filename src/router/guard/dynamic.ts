@@ -10,7 +10,7 @@ import { PageConfig } from '@/config/page'
  */
 export async function createDynamicRouteGuard(
   to: RouteLocationNormalized,
-  from: RouteLocationNormalized,
+  _from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
   const {

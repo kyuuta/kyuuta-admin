@@ -6,42 +6,42 @@
     "
     class="breadcrumb ml-10px"
   >
-    <template
+    <NBreadcrumbItem
       v-for="breadcrumb in breadcrumbs"
-      :key="breadcrumb.key"
+      :key="breadcrumb.name"
     >
-      <NBreadcrumbItem>
-        <NDropdown
-          v-if="breadcrumb?.children?.length"
-          key-field="name"
-          placement="bottom-start"
-          :options="breadcrumb.children"
-          :renderIcon="(option: RouteRecordRaw) => renderIcon(option, true)"
-          :renderLabel="
-            (option: RouteRecordRaw) => renderLabel(option, true)
+      <NDropdown
+        v-if="breadcrumb?.children?.length"
+        key-field="name"
+        placement="bottom-start"
+        :options="(breadcrumb.children as any)"
+        :renderIcon="
+            (option: any) => renderIcon(option as RouteRecordRaw, true)
           "
-          @select="(name: string) => routerPush({ name: name })"
-        >
-          <span class="flex-y-center">
-            <component
-              :is="renderIcon(breadcrumb)"
-              class="mr-4px"
-            />
-            <component :is="renderLabel(breadcrumb)" />
-          </span>
-        </NDropdown>
+        :renderLabel="
+            (option: any) => renderLabel(option  as RouteRecordRaw, true)
+          "
+        @select="(name: string) => routerPush({ name: name })"
+      >
+        <span class="flex-y-center">
+          <component
+            :is="renderIcon(breadcrumb)"
+            class="mr-4px"
+          />
+          <component :is="renderLabel(breadcrumb)" />
+        </span>
+      </NDropdown>
 
-        <template v-else>
-          <span class="flex-y-center">
-            <component
-              :is="renderIcon(breadcrumb)"
-              class="mr-4px"
-            />
-            <component :is="renderLabel(breadcrumb)" />
-          </span>
-        </template>
-      </NBreadcrumbItem>
-    </template>
+      <template v-else>
+        <span class="flex-y-center">
+          <component
+            :is="renderIcon(breadcrumb)"
+            class="mr-4px"
+          />
+          <component :is="renderLabel(breadcrumb)" />
+        </span>
+      </template>
+    </NBreadcrumbItem>
   </NBreadcrumb>
 </template>
 

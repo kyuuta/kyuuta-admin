@@ -4,8 +4,13 @@
       v-for="menu in routeStore.menu"
       :key="menu.name"
       mode="horizontal"
-      :label="menu.meta?.title"
-      :icon="iconRender(menu.meta)"
+      :label="menu.meta?.title || ''"
+      :icon="
+        iconRender({
+          icon: menu.meta?.icon,
+          localIcon: menu.meta?.localIcon
+        })
+      "
       :routeName="menu.name"
       :activeRouteName="activeRouteName"
       @click="handleClickMenu(menu)"

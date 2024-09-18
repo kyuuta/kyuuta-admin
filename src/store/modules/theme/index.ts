@@ -116,15 +116,15 @@ export const useThemeStore = defineStore({
     setHeaderVisible(visible: boolean) {
       this.header.visible = visible
     },
-    setHeaderHeight(height: number) {
-      this.header.height = height
+    setHeaderHeight(height: number | null) {
+      this.header.height = height || 0
     },
     /** 底部设置 */
     setFooterVisible(visible: boolean) {
       this.footer.visible = visible
     },
-    setFooterHeight(height: number) {
-      this.footer.height = height
+    setFooterHeight(height: number | null) {
+      this.footer.height = height || 0
     },
     setFooterFixed(isFixed: boolean) {
       this.footer.fixed = isFixed

@@ -34,7 +34,7 @@
       :max="300"
       :value="headerConfig.height"
       buttonPlacement="both"
-      @update:value="height => setHeaderHeight(height as number)"
+      @update:value="(height) => setHeaderHeight(height)"
     />
   </Item>
   <Item :title="t('system.footer')">
@@ -50,7 +50,7 @@
       :max="300"
       :value="footerConfig.height"
       buttonPlacement="both"
-      @update:value="height => setFooterHeight(height as number)"
+      @update:value="(height) => setFooterHeight(height)"
     />
   </Item>
   <Item :title="t('system.fixedFooter')">

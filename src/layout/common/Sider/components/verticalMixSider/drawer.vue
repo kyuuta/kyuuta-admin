@@ -45,10 +45,10 @@
         <NMenu
           class="menu"
           :value="activeKey"
-          :options="menus"
+          :options="(menus as any)"
           :indent="14"
-          :renderIcon="(menu: RouteRecordRaw) => iconRender(menu.meta)()"
-          :renderLabel="(menu: RouteRecordRaw) => t(menu.meta?.title)"
+          :renderIcon="(menu: any) => iconRender(menu.meta)()"
+          :renderLabel="(menu: any) => t(menu.meta?.title)"
           @update:value="handleUpdateMenu"
         />
       </NScrollbar>
